@@ -5,7 +5,7 @@ menuIcon.addEventListener("click", () => {
   container.classList.toggle("change");
 });
 document.addEventListener('DOMContentLoaded', function() {
-  const buttons = document.querySelectorAll('.project-btn');
+  const buttons = document.querySelectorAll('.github-btn');
 
   buttons.forEach(button => {
       button.addEventListener('click', function() {

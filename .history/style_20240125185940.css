@@ -57,7 +57,7 @@ html {
   width: 50rem;
   transform: rotateZ(-15deg);
   height: 100vh;
-  background-color: #1259af;
+  background-color: #31363c;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -141,14 +141,14 @@ html {
 }
 
 .logo span:nth-child(1) {
-  color: rgb(255, 255, 255);
+  color: #fff;
 }
 
 .logo span:nth-child(2) {
   font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;
-  color: #29a52f;
+  color: #29a587;
 }
 
 .banner {
@@ -294,7 +294,7 @@ html {
   content: "";
   width: 5rem;
   height: 0.2rem;
-  background-color: rgb(187, 187, 187);
+  background-color: #bbb;
   position: absolute;
   top: 50%;
   right: -5rem;
@@ -311,7 +311,7 @@ html {
   width: 60rem;
   height: 70rem;
   border-radius: 50%;
-  background-color: #33a529;
+  background-color: #29a587;
   padding: 0rem 0rem 0 0rem;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -357,7 +357,7 @@ html {
 }
 
 .dev-work span:nth-child(2) {
-  color: #3ea529;
+  color: #29a587;
   width: 50%;
 }
 
@@ -384,7 +384,7 @@ html {
 
 .sub-heading {
   font-size: 2rem;
-  color: #29a52f;
+  color: #29a587;
   text-transform: uppercase;
 }
 
@@ -423,7 +423,7 @@ html {
 }
 
 .skill span:nth-child(2) {
-  color: #46a529;
+  color: #29a587;
 }
 
 .skills-card p {
@@ -455,7 +455,7 @@ html {
 .skills-card-progress::after {
   content: "";
   height: 0.2rem;
-  background-color: rgb(163, 30, 30);
+  background-color: #777;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
