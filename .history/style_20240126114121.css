@@ -1062,34 +1062,3 @@ textarea {
   }
 }
 /* End of Responsive */
-/*tooltip design*/
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip::after {
-  content: attr(data-tooltip);
-  content: replace(attr(data-tooltip), '||', '\A');
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #ff6868; /* Adjusted to mild red */
-  color: white;
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: pre-wrap; /* Allows line breaks */
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.tooltip:hover::after, .tooltip:focus::after {
-  visibility: visible;
-  opacity: 1;
-}
-
-/*end of tooltip design*/
