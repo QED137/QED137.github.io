@@ -323,7 +323,7 @@ html {
   height: 100%;
 }
 /* Responsive adjustments for mobile screens */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 600px) {
   .dev-img-wrapper {
     width: 100%; /* Adjust width for mobile screens */
     height: auto; /* Adjust height for mobile screens */
