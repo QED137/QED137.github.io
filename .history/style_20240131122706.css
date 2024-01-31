@@ -167,7 +167,6 @@ body{
   color: #1d20d1;
 }
 .logo span:nth-child(3) {
-  margin-top: -20px;
   font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;

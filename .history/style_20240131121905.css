@@ -144,17 +144,9 @@ body{
   left: 5rem;
   font-size: 3rem;
   display: flex;
-  flex-direction: column; /* Align children in a column */
-  align-items: flex-start; /* Align children to the start of the flex container */
-
-
-}
-.logo span {
+  align-items: center;
   
-  font-weight: bold;
-  margin-top: 0; /* Remove top margin from all spans */
 }
-
 
 .logo span:nth-child(1) {
   color: rgb(255, 255, 255);
@@ -164,10 +156,9 @@ body{
   font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;
-  color: #1d20d1;
+  color: #29a52f;
 }
 .logo span:nth-child(3) {
-  margin-top: -20px;
   font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;

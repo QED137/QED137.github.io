@@ -149,12 +149,7 @@ body{
 
 
 }
-.logo span {
-  
-  font-weight: bold;
-  margin-top: 0; /* Remove top margin from all spans */
-}
-
+.
 
 .logo span:nth-child(1) {
   color: rgb(255, 255, 255);
@@ -167,7 +162,6 @@ body{
   color: #1d20d1;
 }
 .logo span:nth-child(3) {
-  margin-top: -20px;
   font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;
