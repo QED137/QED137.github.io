@@ -11,20 +11,13 @@
 html {
   font-size: 62.5%;
 }
-body{
-  margin: 0;
-  padding: 0;
-  
-  background-size:cover;
-}
 /* Default Styles */
 
 /* Container */
 .container {
   width: 100%;
   height: 100%;
-  background: linear-gradient(#232932, #2c3138, #232932); 
-  
+  background: linear-gradient(#232932, #2c3138, #232932);
 }
 
 /* Navigation */
@@ -323,13 +316,12 @@ body{
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
-  display: flex;
 }
 
 .dev-img-wrapper img {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: flex
 }
 /* Responsive adjustments for mobile screens */
 @media screen and (max-width: 1024px) {
@@ -341,7 +333,7 @@ body{
     box-shadow: none; /* Optional: adjust or remove shadow for mobile screens */
     /* ... other style adjustments for mobile screens ... */
   }
-  .dev-img-wrapper img {
+  dev-img-wrapper img {
     width: 100%;
     height: auto;
   }
