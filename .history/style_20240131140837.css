@@ -364,7 +364,30 @@ body{
 }
 /* ... (Your existing CSS styles) ... */
 
+/* Responsive adjustments for mobile screens */
+@media screen and (max-width: 600px) {
+  .container {
+      padding: 0 10px;
+  }
 
+  .nav-items a, .contact-btn, .project-btn {
+      font-size: 16px; /* Increase for better readability */
+      padding: 10px; /* Bigger touch area */
+  }
+
+  .developer-info, .skills-card, .project-card, .contact-content {
+      width: 100%; /* Adjust widths for smaller screens */
+      padding: 0 15px;
+  }
+
+  .menu-icon {
+      /* Adjustments for mobile menu icon */
+  }
+
+  /* Additional mobile-specific styles */
+}
+
+/*ended responive lay out for mobule */
 .dev-work {
   width: 25rem;
   height: 9rem;
@@ -1042,7 +1065,7 @@ textarea {
   }
 }
 
- /*@media (max-width: 700px) {
+/*@media (max-width: 700px) {
   html {
     font-size: 35%;
   }
@@ -1052,7 +1075,7 @@ textarea {
   }
 
   .developer-img {
-    display: none;
+   /* display: none;*/
   }
 
   .skills-cards {
@@ -1070,14 +1093,7 @@ textarea {
   .contact-left {
     display: none;
   }
-}*/
-@media (max-width:700px) {
-  .container{
-    width: 100%;
-  }
-  
 }
-
 
 @media (max-width: 500px) {
   .navigation {
@@ -1085,13 +1101,7 @@ textarea {
     right: -100rem;
     justify-content: center;
   }
-  .dev-img-wrapper {
-    /* Ensuring the image is displayed and positioned correctly */
-    display: center;  /* Make sure the image is displayed */
-    order: 1;  /* Position below the about section */
-    width: 100%;  /* Full width for smaller screens */
-    margin-top: 20px;  /* Space between about section and image */
-  }
+
   .banner {
     width: 70%;
   }
@@ -1113,9 +1123,8 @@ textarea {
   }
 
   .icons {
-    display: center;
+    /*display: none;*/
   }
-
 }
 /* End of Responsive */
 /*tooltip design*/

@@ -1071,12 +1071,18 @@ textarea {
     display: none;
   }
 }*/
-@media (max-width:700px) {
-  .container{
-    width: 100%;
+
+@media (max-width: 700px) {
+  /* Assuming .dev-img-wrapper is the container of your image */
+  .dev-img-wrapper {
+    display: block; /* Or flex, depending on your design */
+    width: 80%; /* Full width to ensure it's within the viewport */
+    height: auto; /* Maintain aspect ratio of the image */
+    /* Make sure the margin and padding are set correctly */
+    margin-top: 20px; /* Add top margin if needed */
+    padding: 0; /* Reset padding if it's pushing the image out of view */
   }
-  
-}
+
 
 
 @media (max-width: 500px) {

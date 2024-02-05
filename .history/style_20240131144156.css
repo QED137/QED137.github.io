@@ -1070,13 +1070,8 @@ textarea {
   .contact-left {
     display: none;
   }
-}*/
-@media (max-width:700px) {
-  .container{
-    width: 100%;
-  }
-  
 }
+
 
 
 @media (max-width: 500px) {

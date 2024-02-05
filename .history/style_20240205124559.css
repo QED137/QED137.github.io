@@ -1071,12 +1071,60 @@ textarea {
     display: none;
   }
 }*/
-@media (max-width:700px) {
-  .container{
-    width: 100%;
+@media (max-width: 700px) {
+  .dev-img-wrapper {
+    display: block; /* Change to block if flex doesn't work as expected */
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 20px; /* Adjust spacing as needed */
+    padding: 0; /* Adjust padding as needed */
+  }
+
+  .dev-img-wrapper img {
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Adjust other elements as needed for mobile layout */
+}
+
+@media (max-width: 700px) {
+  /* Assuming .dev-img-wrapper is the container of your image */
+  .dev-img-wrapper {
+    display: flex; /* Or flex, depending on your design */
+    width: 100%; /* Full width to ensure it's within the viewport */
+    height: auto; /* Maintain aspect ratio of the image */
+    /* Make sure the margin and padding are set correctly */
+    margin-top: 20px; /* Add top margin if needed */
+    padding: 0; /* Reset padding if it's pushing the image out of view */
+  }
+
+  .dev-img-wrapper img {
+    width: 100%; /* This will make sure the image scales with its container */
+    height: auto; /* Maintain aspect ratio */
+    /* Remove any max-width or max-height properties that could be hiding the image */
   }
   
+  /* Rest of your CSS for other elements to ensure they stack in a column */
+  .container,
+  .landing,
+  .skills,
+  .projects,
+  .contact,
+  .footer {
+    /* Stack all containers in a column on small screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align to make it look neat */
+  }
+  
+  /* Adjust this based on the class or ID that wraps your about section */
+  .about{
+    order: 1; /* Ensure it's positioned before the image */
+  }
 }
+
+
 
 
 @media (max-width: 500px) {

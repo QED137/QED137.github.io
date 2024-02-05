@@ -1042,7 +1042,7 @@ textarea {
   }
 }
 
- /*@media (max-width: 700px) {
+/*@media (max-width: 700px) {
   html {
     font-size: 35%;
   }
@@ -1071,11 +1071,54 @@ textarea {
     display: none;
   }
 }*/
-@media (max-width:700px) {
-  .container{
-    width: 100%;
+/*new designed added */
+@media (max-width: 700px) {
+  html {
+    font-size: 35%;
   }
-  
+
+  .section-bg-heading {
+    font-size: 17rem;
+  }
+
+  /* Ensure the developer image is visible and appropriately sized */
+  .dev-img-wrapper {
+    display: flex; /* Show the image */
+    width: 100%; /* Full width of the screen */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 20px; /* Space above the image */
+    
+  }
+
+  /* Set the layout of the main container and other sections to column */
+  .container, .landing, .skills, .projects, .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the content */
+  }
+
+  /* Adjust the skills-cards to fit the column layout */
+  .skills-cards {
+    width: 100%; /* Full width of the screen */
+    justify-content: center; /* Center the cards within the section */
+  }
+
+  /* Adjust the projects-cards for the column layout */
+  .projects-cards {
+    width: 100%; /* Full width of the screen */
+  }
+
+  /* Adjust the contact-content for the column layout */
+  .contact-content {
+    width: 100%; /* Full width of the screen */
+    flex-direction: column; /* Stack the content in a column */
+    align-items: center; /* Center align the content */
+  }
+
+  /* Since contact-left is hidden, make sure contact-right or similar elements are adjusted if needed */
+  .contact-right {
+    width: 100%; /* Adjust width as needed */
+  }
 }
 
 

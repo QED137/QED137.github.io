@@ -1042,7 +1042,7 @@ textarea {
   }
 }
 
- /*@media (max-width: 700px) {
+/*@media (max-width: 700px) {
   html {
     font-size: 35%;
   }
@@ -1071,13 +1071,51 @@ textarea {
     display: none;
   }
 }*/
-@media (max-width:700px) {
-  .container{
-    width: 100%;
-  }
-  
-}
+/*new designed added */
 
+@media (max-width: 700px) {
+  html {
+    font-size: 35%;
+  }
+
+  .section-bg-heading {
+    font-size: 17rem;
+  }
+  /* Container that holds both the image and about sections */
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .developer-img {
+    order: 2; /* This will place the image section second */
+    width: 100%; /* Adjust the width as necessary */
+    height: auto; /* Adjust the height as necessary */
+    display: block; /* Ensures the image is displayed */
+  }
+
+  /* About Section */
+  .about-section {
+    order: 1; /* This will place the about section first */
+  }
+
+
+  .skills-cards {
+    width: 60rem;
+  }
+
+  .projects-cards {
+    width: 60rem;
+  }
+
+  .contact-content {
+    width: 70rem;
+  }
+
+  .contact-left {
+    display: none;
+  }
+}
 
 @media (max-width: 500px) {
   .navigation {
@@ -1085,12 +1123,8 @@ textarea {
     right: -100rem;
     justify-content: center;
   }
-  .dev-img-wrapper {
-    /* Ensuring the image is displayed and positioned correctly */
-    display: center;  /* Make sure the image is displayed */
-    order: 1;  /* Position below the about section */
-    width: 100%;  /* Full width for smaller screens */
-    margin-top: 20px;  /* Space between about section and image */
+  .developer-img{
+    justify-content: center;
   }
   .banner {
     width: 70%;
@@ -1113,9 +1147,8 @@ textarea {
   }
 
   .icons {
-    display: center;
+    /*display: none;*/
   }
-
 }
 /* End of Responsive */
 /*tooltip design*/
