@@ -1074,11 +1074,11 @@ textarea {
 
 @media (max-width: 500px) {
   html {
-    font-size: 25%;
+    font-size: 35%;
   }
 
   .section-bg-heading {
-    font-size: 13rem;
+    font-size: 17rem;
   }
 
   /*.developer-img {
@@ -1086,20 +1086,20 @@ textarea {
   }*/
 
   .skills-cards {
-    width: 40rem;
+    width: 60rem;
   }
 
   .projects-cards {
-    width: 40rem;
+    width: 60rem;
   }
 
   .contact-content {
-    width: 50rem;
+    width: 70rem;
   }
 
-  /*.contact-left {
+  .contact-left {
     display: none;
-  }*/
+  }
 }
 
 
@@ -1109,7 +1109,13 @@ textarea {
     right: -100rem;
     justify-content: center;
   }
-
+  .dev-img-wrapper {
+    /* Ensuring the image is displayed and positioned correctly */
+    display: center;  /* Make sure the image is displayed */
+    order: 1;  /* Position below the about section */
+    width: 100%;  /* Full width for smaller screens */
+    margin-top: 20px;  /* Space between about section and image */
+  }
   .banner {
     width: 70%;
   }
