@@ -1105,8 +1105,8 @@ textarea {
 
 @media (max-width: 500px) {
   .navigation {
-    width: 80%;
-    right: -130rem;
+    width: 100%;
+    right: -0rem;
     justify-content: center;
   }
 

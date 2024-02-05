@@ -1105,11 +1105,17 @@ textarea {
 
 @media (max-width: 500px) {
   .navigation {
-    width: 80%;
-    right: -130rem;
+    width: 100%;
+    right: -100rem;
     justify-content: center;
   }
-
+  .dev-img-wrapper {
+    /* Ensuring the image is displayed and positioned correctly */
+    display: center;  /* Make sure the image is displayed */
+    order: 1;  /* Position below the about section */
+    width: 100%;  /* Full width for smaller screens */
+    margin-top: 20px;  /* Space between about section and image */
+  }
   .banner {
     width: 70%;
   }
