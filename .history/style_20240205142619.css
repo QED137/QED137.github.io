@@ -1025,7 +1025,6 @@ textarea {
     font-size: 39%;
   }
 
-
   .section-border {
     display: none;
   }
@@ -1074,17 +1073,13 @@ textarea {
 }
 
 
- 
 
 
 @media (max-width: 500px) {
   .navigation {
-    width: 100%;
+    width: 80%;
     right: -130rem;
     justify-content: center;
-  }
-  .container{
-    width: 100%;
   }
 
   .banner {

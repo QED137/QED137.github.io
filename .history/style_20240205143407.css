@@ -1024,7 +1024,7 @@ textarea {
   html {
     font-size: 39%;
   }
-
+  
 
   .section-border {
     display: none;
@@ -1082,9 +1082,6 @@ textarea {
     width: 100%;
     right: -130rem;
     justify-content: center;
-  }
-  .container{
-    width: 100%;
   }
 
   .banner {

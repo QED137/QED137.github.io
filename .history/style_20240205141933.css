@@ -1025,7 +1025,6 @@ textarea {
     font-size: 39%;
   }
 
-
   .section-border {
     display: none;
   }
@@ -1073,18 +1072,46 @@ textarea {
   }
 }
 
+@media (max-width: 500px) {
+  html {
+    font-size: 25%;
+  }
 
- 
+  .section-bg-heading {
+    font-size: 13rem;
+  }
+
+  .developer-img {
+    display: flex;
+    flex-direction: column;
+  }
+  .about{
+    di
+  }
+
+  .skills-cards {
+    width: 40rem;
+  }
+
+  .projects-cards {
+    width: 40rem;
+  }
+
+  .contact-content {
+    width: 50rem;
+  }
+
+  /*.contact-left {
+    display: none;
+  }*/
+}
 
 
 @media (max-width: 500px) {
   .navigation {
-    width: 100%;
+    width: 80%;
     right: -130rem;
     justify-content: center;
-  }
-  .container{
-    width: 100%;
   }
 
   .banner {
