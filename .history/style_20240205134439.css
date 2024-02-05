@@ -1083,32 +1083,6 @@ textarea {
     padding: 0; /* Reset padding if it's pushing the image out of view */
   }
 
-  .dev-img-wrapper img {
-    width: 100%; /* This will make sure the image scales with its container */
-    height: auto; /* Maintain aspect ratio */
-    /* Remove any max-width or max-height properties that could be hiding the image */
-  }
-  
-  /* Rest of your CSS for other elements to ensure they stack in a column */
-  .container,
-  .landing,
-  .skills,
-  .projects,
-  .contact,
-  .footer {
-    /* Stack all containers in a column on small screens */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center align to make it look neat */
-  }
-  
-  /* Adjust this based on the class or ID that wraps your about section */
-  .about{
-    order: 1; /* Ensure it's positioned before the image */
-  }
-}
-
-
 
 
 @media (max-width: 500px) {
