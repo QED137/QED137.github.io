@@ -1082,7 +1082,7 @@ textarea {
 
  @media (max-width: 700px) {
   html {
-    font-size: 30%;
+    font-size: 35%;
   }
  
   .section-bg-heading {
@@ -1112,19 +1112,21 @@ textarea {
   }
  
  .banner,.logo, .about{
+  width: 100%;;
+  
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
   text-align: center;
   flex-direction: column;
-  justify-content: center;
 
   .dev-img-wrapper  {
     width: 90%;
     border-radius: 50%;
   
   }
- 
+  
+  
  }
  .cv{
   display: block;
@@ -1172,25 +1174,27 @@ textarea {
     width: 45rem;
   }
   .contact-content {
-    width: 45rem;
+    width: 55rem;
   }
 
   .contact-content {
-    width: 45rem;
+    width: 55rem;
   }
   .contact-info {
     width: 100%;
   }
 
   .input-groups input {
-    width: 45rem;
+    width: 50rem;
   }
 
   .icons {
     display: block;
   }
   
- .landing{
+ .banner,.logo, .about{
+  width: 100%;
+  
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
@@ -1200,20 +1204,15 @@ textarea {
   .dev-img-wrapper  {
     width: 90%;
     border-radius: 50%;
-
   
   }
- 
+  
   
  }
-  .cv{
-    display: block;
-    margin-bottom: 20px;
-    text-align: center;}
-
- .cv-skills{
-  display: none;
-  
+ .cv{
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 }

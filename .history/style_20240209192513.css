@@ -331,7 +331,7 @@ body{
 }
 
 .dev-img-wrapper {
-  width: 80rem;
+  width: 60rem;
   height: 70rem;
   border-radius: 50%;
   background-color: #33a529;
@@ -1082,7 +1082,7 @@ textarea {
 
  @media (max-width: 700px) {
   html {
-    font-size: 30%;
+    font-size: 35%;
   }
  
   .section-bg-heading {
@@ -1110,21 +1110,21 @@ textarea {
     display: none;
     
   }
- 
  .banner,.logo, .about{
+  
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
   text-align: center;
   flex-direction: column;
-  justify-content: center;
 
   .dev-img-wrapper  {
     width: 90%;
     border-radius: 50%;
   
   }
- 
+  
+  
  }
  .cv{
   display: block;
@@ -1157,67 +1157,78 @@ textarea {
 
 
 @media (max-width: 500px) {
-  .html {
-    font-size: 30%;
-  }
   .navigation {
     width: 100%;
     right: -130rem;
     justify-content: center;
   }
  
+ .container{
+  display: block;
+  margin-bottom: 20px;
+  flex-direction: column;
+  text-align: center;
+ }
  
+ .body{
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  text-align: center;
+}
+  .banner {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .cv{
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
+  .section-heading {
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .dev-img-wrapper{
+    margin: top 20px;
+    width: 80%;
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .dev-img-wrapper img{
+   
+    width: 100%;
+  }
   .skills-cards {
-    width: 45rem;
+    width: 55rem;
   }
   .contact-content {
-    width: 45rem;
+    width: 55rem;
   }
 
   .contact-content {
-    width: 45rem;
+    width: 55rem;
   }
   .contact-info {
     width: 100%;
   }
 
   .input-groups input {
-    width: 45rem;
+    width: 50rem;
   }
 
   .icons {
     display: block;
   }
-  
- .landing{
-  display: flex;
-  margin-bottom: 5px;
-  flex-direction: column;
-  text-align: center;
-  flex-direction: column;
-
-  .dev-img-wrapper  {
-    width: 90%;
-    border-radius: 50%;
-
-  
-  }
- 
-  
- }
-  .cv{
-    display: block;
-    margin-bottom: 20px;
-    text-align: center;}
-
- .cv-skills{
-  display: none;
-  
-}
 
 }
-
+*/
 
 /* End of Responsive */
 /*tooltip design*/

@@ -1082,7 +1082,7 @@ textarea {
 
  @media (max-width: 700px) {
   html {
-    font-size: 30%;
+    font-size: 35%;
   }
  
   .section-bg-heading {
@@ -1112,19 +1112,21 @@ textarea {
   }
  
  .banner,.logo, .about{
+  width: 100%;;
+  
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
   text-align: center;
   flex-direction: column;
-  justify-content: center;
 
   .dev-img-wrapper  {
     width: 90%;
     border-radius: 50%;
   
   }
- 
+  
+  
  }
  .cv{
   display: block;
@@ -1190,7 +1192,9 @@ textarea {
     display: block;
   }
   
- .landing{
+ .banner,.logo, .about{
+  width: 100%;
+  
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
@@ -1203,7 +1207,7 @@ textarea {
 
   
   }
- 
+  .landing
   
  }
   .cv{

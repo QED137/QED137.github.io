@@ -1191,6 +1191,7 @@ textarea {
   }
   
  .landing{
+  width: 80rem;
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;

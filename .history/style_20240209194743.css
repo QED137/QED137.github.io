@@ -1112,6 +1112,8 @@ textarea {
   }
  
  .banner,.logo, .about{
+  width: 100%;;
+  
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
@@ -1124,7 +1126,10 @@ textarea {
     border-radius: 50%;
   
   }
- 
+  .name{
+    jus
+  }
+  
  }
  .cv{
   display: block;
@@ -1191,6 +1196,7 @@ textarea {
   }
   
  .landing{
+  width: 80rem;
   display: flex;
   margin-bottom: 5px;
   flex-direction: column;
