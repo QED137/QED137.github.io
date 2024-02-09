@@ -1087,6 +1087,9 @@ textarea {
     display: none;
     
   }
+  /*.contact-right {
+    margin-right: -5rem;
+  }*/
  .banner,.logo, .about{
   
   display: flex;
@@ -1108,7 +1111,6 @@ textarea {
   margin-bottom: 20px;
   text-align: center;
 }
- }
 /* Mobile devices (up to 700px) */
 /*@media (max-width: 700px) {
   .container, .banner, .skills-cards, .projects-cards, .contact-content {

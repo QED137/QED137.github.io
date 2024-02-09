@@ -1087,19 +1087,12 @@ textarea {
     display: none;
     
   }
- .banner,.logo, .about{
+  /*.the following of styling is take a parent dive class and adjust . but for the pareent
+   class has to be put initialy in flex mode like this proeject.
+  }*/
+ .bannert{
   
-  display: flex;
-  margin-bottom: 5px;
-  flex-direction: column;
-  text-align: center;
-  flex-direction: column;
-
-  .dev-img-wrapper  {
-    width: 90%;
-    border-radius: 50%;
-  
-  }
+ 
   
   
  }
@@ -1108,7 +1101,6 @@ textarea {
   margin-bottom: 20px;
   text-align: center;
 }
- }
 /* Mobile devices (up to 700px) */
 /*@media (max-width: 700px) {
   .container, .banner, .skills-cards, .projects-cards, .contact-content {
