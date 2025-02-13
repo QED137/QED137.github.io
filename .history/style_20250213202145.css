@@ -342,7 +342,20 @@ body{
   color: #fff;
 }
 
+.dev-img-wrapper {
+  width: 30rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.dev-img-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.3)); /* Adds a soft floating shadow */
+}
 
 
 .element {

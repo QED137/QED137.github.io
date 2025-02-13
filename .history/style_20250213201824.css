@@ -341,9 +341,50 @@ body{
   text-transform: uppercase;
   color: #fff;
 }
+/*
+
+.dev-img-wrapper {
+  width: 45rem;
+  height: 55rem;
+  border-radius: 50%;
+  /* background-color: #33a529; */
+
+  padding: 0rem 0rem 0 0rem;
+  /*box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);*/
+ /* box-shadow: 
+    8px 8px 0px rgba(0, 0, 0.2, 0.2), 
+    16px 16px 0px rgba(0, 0, 0.2, 0.15), 
+    24px 24px 0px rgba(0, 0, 0.2, 0.1); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: perspective(1000px) translateZ(0);
+    box-shadow: 0 10px 20px rgba(31, 12, 202, 0.19), 0 10px 26px rgba(33, 7, 177, 0.23);  
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.dev-img-wrapper:hover {
+  transform: perspective(1000px) translateZ(50px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+@-moz-document url-prefix() {
+  .dev-img-wrapper img {
+    clip-path: ellipse(50% 50% at center);
+  }
+}
 
 
-
+.dev-img-wrapper img {
+  width: auto !important; /* Fit the image inside the oval */
+  height: 100% !important; /* Maintain aspect ratio */
+  max-height: 100% !important; /* Prevents excessive cropping */
+  object-fit: contain !important; /* Ensures full image is inside */
+  object-position: center center !important; /* Keeps the face centered */
+  display: block;
+}
+*
 
 .element {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
