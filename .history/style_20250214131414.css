@@ -319,8 +319,7 @@ html {
 }
 
 .dev-img-wrapper {
-  width: 400px; /* Fixed size */
-  height: 500px;
+  
   border-radius: 50%;
   background-color: #29a587;
   padding: 2rem 2rem 0 2rem;
