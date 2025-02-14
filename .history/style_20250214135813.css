@@ -44,12 +44,12 @@ html body{
 }
 
 .change .line-1 {
-  transform: rotateZ(45deg) ;
+  transform: rotateZ(45deg) translate(0.7rem, -0.1rem);
   
 }
 
 .change .line-2 {
-  transform: rotateZ(-45deg) ;
+  transform: rotateZ(-45deg) translate(0.7rem, -0.1rem);
 }
 
 .navigation {

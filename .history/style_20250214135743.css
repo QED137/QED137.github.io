@@ -26,7 +26,7 @@ html body{
   width: 3rem;
   height: 3rem;
   position: fixed;
-  top: 5rem;
+  top: 15rem;
   right: 5rem;
   display: flex;
   flex-direction: column;
@@ -44,12 +44,12 @@ html body{
 }
 
 .change .line-1 {
-  transform: rotateZ(45deg) ;
-  
+  transform: rotateZ(45deg) translate(0.7rem, -0.1rem);
+  top: 2rem;
 }
 
 .change .line-2 {
-  transform: rotateZ(-45deg) ;
+  transform: rotateZ(-45deg) translate(0.7rem, -0.1rem);
 }
 
 .navigation {

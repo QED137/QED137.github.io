@@ -39,17 +39,18 @@ html body{
 .line {
   width: 3rem;
   height: 0.2rem;
+  to
   background-color: #bbb;
   transition: transform 0.3s;
 }
 
 .change .line-1 {
-  transform: rotateZ(45deg) ;
+  transform: rotateZ(45deg) translate(0.7rem, -0.1rem);
   
 }
 
 .change .line-2 {
-  transform: rotateZ(-45deg) ;
+  transform: rotateZ(-45deg) translate(0.7rem, -0.1rem);
 }
 
 .navigation {
