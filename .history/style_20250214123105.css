@@ -126,7 +126,7 @@ html {
   width: 100%;
   text-align: center;
   font-size: 30rem;
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   color: #31363d;
   opacity: 0.5;
 }

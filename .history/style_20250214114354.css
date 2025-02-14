@@ -5,11 +5,21 @@
   box-sizing: border-box;
   text-decoration: none;
   outline: none;
-  font-family: "Rowdies", sans-serif;
+  /* font-family: "Rowdies", sans-serif; */
+  font-family:'Times New Roman', Times, serif
 }
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
+}
+body{
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow  : hidden;
+  
+  background-size:cover;
 }
 /* Default Styles */
 
@@ -17,7 +27,8 @@ html {
 .container {
   width: 100%;
   height: 100%;
-  background: linear-gradient(#232932, #2c3138, #232932);
+  background: linear-gradient(#232932, #2c3138, #232932); 
+  
 }
 
 /* Navigation */
@@ -57,7 +68,7 @@ html {
   width: 50rem;
   transform: rotateZ(-15deg);
   height: 100vh;
-  background-color: #31363c;
+  background-color: #1259af;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -118,18 +129,18 @@ html {
   position: relative;
 }
 
-.section-bg-heading {
+/* .section-bg-heading {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   text-align: center;
-  font-size: 30rem;
-  font-family: "Caveat", cursive;
+  font-size: 20rem;
+  font-family : "Poppins", sans-serif; 
   color: #31363d;
   opacity: 0.5;
-}
+} */
 
 .logo {
   position: absolute;
@@ -137,31 +148,43 @@ html {
   left: 5rem;
   font-size: 3rem;
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Align children in a column */
+  align-items: flex-start; /* Align children to the start of the flex container */
+
+
+}
+.logo span {
+  
+  font-weight: bold;
+  margin-top: 0; /* Remove top margin from all spans */
 }
 
+
 .logo span:nth-child(1) {
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 .logo span:nth-child(2) {
-  font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-size: 5rem;
+  font-family : "Poppins", sans-serif; 
   font-weight: bold;
-  color: #29a587;
+  color: #1d20d1;
 }
 .logo span:nth-child(3) {
-  color: #29a587;
-  font-weight: bold;
+  margin-top: -2px;
   font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-family : "Caveat", cursive; 
+  font-weight: bold;
+  color: #29a52f;
 }
 .logo span:nth-child(4) {
+  margin-top: -2px;
   font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-family : "Caveat", cursive; 
   font-weight: bold;
-  color: #29a587;
+  color: #29a52f;
 }
+
 .banner {
   position: absolute;
   top: 50%;
@@ -214,7 +237,7 @@ html {
 }
 
 .greeting span {
-  color: #29a587;
+  color: #29a539;
 }
 
 .name {
@@ -226,7 +249,7 @@ html {
 }
 
 .name span {
-  color: #29a587;
+  color: #a52944;
 }
 
 .prof {
@@ -239,7 +262,7 @@ html {
 }
 
 .prof span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 3rem;
   font-weight: bold;
   text-transform: capitalize;
@@ -248,7 +271,8 @@ html {
 
 .about {
   width: 60rem;
-  font-family: "Caveat", cursive;
+  /*font-family : "Poppins", sans-serif; */
+ 
   font-size: 2.5rem;
   line-height: 1;
   color: #a9abae;
@@ -305,7 +329,7 @@ html {
   content: "";
   width: 5rem;
   height: 0.2rem;
-  background-color: #bbb;
+  background-color: rgb(187, 187, 187);
   position: absolute;
   top: 50%;
   right: -5rem;
@@ -318,21 +342,22 @@ html {
   color: #fff;
 }
 
-.dev-img-wrapper {
-  width: 60rem;
-  height: 60rem;
-  border-radius: 50%;
-  background-color: #29a587;
-  padding: 2rem 2rem 0 2rem;
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  position: relative;
+
+
+
+.element {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: perspective(1000px) translateZ(0);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.dev-img-wrapper img {
-  width: 100%;
-  height: auto;
+.element:hover {
+  transform: perspective(1000px) translateZ(50px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+
+
 
 .dev-work {
   width: 25rem;
@@ -368,7 +393,7 @@ html {
 }
 
 .dev-work span:nth-child(2) {
-  color: #29a587;
+  color: #3ea529;
   width: 50%;
 }
 
@@ -395,12 +420,12 @@ html {
 
 .sub-heading {
   font-size: 2rem;
-  color: #29a587;
+  color: #29a52f;
   text-transform: uppercase;
 }
 
 .sub-heading span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 3.5rem;
   text-transform: capitalize;
   color: #fff;
@@ -429,17 +454,17 @@ html {
 }
 
 .skill span {
-  font-size: 2rem;
+  font-size: 3rem;
   color: #eee;
 }
 
 .skill span:nth-child(2) {
-  color: #29a587;
+  color: #46a529;
 }
 
 .skills-card p {
-  font-family: "Caveat", cursive;
-  font-size: 2rem;
+  font-family : "Poppins", sans-serif; 
+  font-size: 1.7rem;
   color: #bbb;
   margin-bottom: 4rem;
 }
@@ -466,7 +491,7 @@ html {
 .skills-card-progress::after {
   content: "";
   height: 0.2rem;
-  background-color: #777;
+  background-color: rgb(163, 30, 30);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -623,7 +648,7 @@ html {
 }
 
 .techs span {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 300;
   text-transform: uppercase;
   color: #29a587;
@@ -631,15 +656,15 @@ html {
 }
 
 .project-name {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 300;
   color: #fff;
   margin-top: -2rem;
 }
 
 .project-desc {
-  font-family: "Caveat", cursive;
-  font-size: 2.2rem;
+  font-family : "Poppins", sans-serif; 
+  font-size: 1.8rem;
   color: #ccc;
 }
 
@@ -749,7 +774,7 @@ html {
 }
 
 .contact-info span:nth-child(1) {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 3rem;
   font-weight: bold;
   color: #fff;
@@ -806,6 +831,7 @@ textarea {
   padding: 1rem 1rem 1rem 2rem;
 }
 
+
 .input-groups input {
   width: 35rem;
 }
@@ -856,7 +882,7 @@ textarea {
 }
 
 .copyright span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2.5rem;
   font-weight: bold;
   color: #29a587;
@@ -864,7 +890,7 @@ textarea {
 }
 
 .author span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2.5rem;
   font-weight: bold;
   color: #29a587;
@@ -893,6 +919,7 @@ textarea {
   .contact-content {
     width: 120rem;
   }
+  
 }
 
 @media (max-width: 1500px) {
@@ -912,6 +939,7 @@ textarea {
   .dev-img-wrapper {
     width: 40rem;
     height: 40rem;
+    
   }
 
   .dev-work {
@@ -987,11 +1015,41 @@ textarea {
     width: 60rem;
   }
 }
+/* Responsive adjustments for mobile screens */
+/*@media screen and (max-width: 1024px) {
+  .container, .banner, .skills-cards, .projects-cards, .contact-content, .banner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px; 
+    margin-bottom: 20px; 
+    margin-top: 20px; 
+    
+  }
+  .dev-img-wrapper {
+    width: auto; 
+    height: auto; 
+    border-radius: 50%; 
+    margin: 0 auto; 
+    box-shadow: none; 
+  
+  }
+  .dev-img-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.section-bg-heading {
+  font-size: 15rem;
+}*/
+
 
 @media (max-width: 900px) {
   html {
     font-size: 39%;
   }
+
 
   .section-border {
     display: none;
@@ -1010,17 +1068,18 @@ textarea {
   }
 }
 
-@media (max-width: 700px) {
+ @media (max-width: 700px) {
   html {
-    font-size: 35%;
+    font-size: 30%;
   }
-
+ 
   .section-bg-heading {
     font-size: 17rem;
   }
 
   .developer-img {
-    display: none;
+    width: 40rem;
+   
   }
 
   .skills-cards {
@@ -1037,38 +1096,146 @@ textarea {
 
   .contact-left {
     display: none;
+    
   }
+ 
+ .banner,.logo, .about{
+  display: flex;
+  margin-bottom: 5px;
+  flex-direction: column;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .dev-img-wrapper  {
+    width: 90%;
+    border-radius: 50%;
+  
+  }
+ 
+ }
+ .cv{
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
 }
+ }
+/* Mobile devices (up to 700px) */
+/*@media (max-width: 700px) {
+  .container, .banner, .skills-cards, .projects-cards, .contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px; 
+  }
+
+  .navigation, .nav-items {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .nav-items a {
+    text-align: center; 
+  }
+
+ 
+}*/
+
+ 
+
 
 @media (max-width: 500px) {
+  .html {
+    font-size: 30%;
+  }
   .navigation {
     width: 100%;
-    right: -100rem;
+    right: -130rem;
     justify-content: center;
   }
-
-  .banner {
-    width: 70%;
-  }
-
-  .section-heading {
-    text-align: center;
-  }
+ 
+ 
 
   .skills-cards {
-    width: 55rem;
+    width: 45rem;
+  }
+  .contact-content {
+    width: 45rem;
   }
 
   .contact-content {
-    width: 55rem;
+    width: 45rem;
+  }
+  .contact-info {
+    width: 100%;
   }
 
   .input-groups input {
-    width: 50rem;
+    width: 45rem;
   }
 
   .icons {
-    display: none;
+    display: block;
   }
+  
+ .landing{
+  display: flex;
+  margin-bottom: 5px;
+  flex-direction: column;
+  text-align: center;
+  flex-direction: column;
+
+  .dev-img-wrapper  {
+    width: 90%;
+    border-radius: 50%;
+
+  
+  }
+ 
+  
+ }
+  .cv{
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;}
+
+ .cv-skills{
+  display: none;
+  
 }
+
+}
+
+
 /* End of Responsive */
+/*tooltip design*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  content: replace(attr(data-tooltip), '||', '\A');
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff8b68; /* Adjusted to mild red */
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: pre-wrap; /* Allows line breaks */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.tooltip:hover::after, .tooltip:focus::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*end of tooltip design*/

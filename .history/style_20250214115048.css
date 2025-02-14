@@ -145,7 +145,7 @@ html {
 }
 
 .logo span:nth-child(2) {
-  font-size: 4rem;
+  font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;
   color: #29a587;
@@ -153,11 +153,11 @@ html {
 .logo span:nth-child(3) {
   color: #29a587;
   font-weight: bold;
-  font-size: 4rem;
+  font-size: ;
   font-family: "Caveat", cursive;
 }
 .logo span:nth-child(4) {
-  font-size: 4rem;
+  font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;
   color: #29a587;

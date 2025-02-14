@@ -145,23 +145,15 @@ html {
 }
 
 .logo span:nth-child(2) {
-  font-size: 4rem;
+  font-size: 5rem;
   font-family: "Caveat", cursive;
   font-weight: bold;
   color: #29a587;
 }
 .logo span:nth-child(3) {
-  color: #29a587;
-  font-weight: bold;
-  font-size: 4rem;
-  font-family: "Caveat", cursive;
+  color: #fff;
 }
-.logo span:nth-child(4) {
-  font-size: 4rem;
-  font-family: "Caveat", cursive;
-  font-weight: bold;
-  color: #29a587;
-}
+.logo
 .banner {
   position: absolute;
   top: 50%;

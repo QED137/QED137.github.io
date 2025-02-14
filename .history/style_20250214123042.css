@@ -126,7 +126,7 @@ html {
   width: 100%;
   text-align: center;
   font-size: 30rem;
-  font-family: "Caveat", cursive;
+  font-fmaily:  "Caveat"
   color: #31363d;
   opacity: 0.5;
 }
@@ -146,7 +146,7 @@ html {
 
 .logo span:nth-child(2) {
   font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-fmaily:  "Caveat"
   font-weight: bold;
   color: #29a587;
 }
@@ -154,11 +154,11 @@ html {
   color: #29a587;
   font-weight: bold;
   font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-fmaily:  "Caveat"
 }
 .logo span:nth-child(4) {
   font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-weight: bold;
   color: #29a587;
 }
@@ -239,7 +239,7 @@ html {
 }
 
 .prof span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 3rem;
   font-weight: bold;
   text-transform: capitalize;
@@ -248,7 +248,7 @@ html {
 
 .about {
   width: 60rem;
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2.5rem;
   line-height: 1;
   color: #a9abae;
@@ -400,7 +400,7 @@ html {
 }
 
 .sub-heading span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 3.5rem;
   text-transform: capitalize;
   color: #fff;
@@ -438,7 +438,7 @@ html {
 }
 
 .skills-card p {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2rem;
   color: #bbb;
   margin-bottom: 4rem;
@@ -638,7 +638,7 @@ html {
 }
 
 .project-desc {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2.2rem;
   color: #ccc;
 }
@@ -749,7 +749,7 @@ html {
 }
 
 .contact-info span:nth-child(1) {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 3rem;
   font-weight: bold;
   color: #fff;
@@ -856,7 +856,7 @@ textarea {
 }
 
 .copyright span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2.5rem;
   font-weight: bold;
   color: #29a587;
@@ -864,7 +864,7 @@ textarea {
 }
 
 .author span {
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-size: 2.5rem;
   font-weight: bold;
   color: #29a587;

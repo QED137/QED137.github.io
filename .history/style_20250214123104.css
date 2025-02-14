@@ -126,7 +126,7 @@ html {
   width: 100%;
   text-align: center;
   font-size: 30rem;
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   color: #31363d;
   opacity: 0.5;
 }
@@ -146,7 +146,7 @@ html {
 
 .logo span:nth-child(2) {
   font-size: 4rem;
-  font-family: "Caveat", cursive;
+  font-family : "Poppins", sans-serif; 
   font-weight: bold;
   color: #29a587;
 }
