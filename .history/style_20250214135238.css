@@ -134,8 +134,8 @@ html body{
 
 .logo {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 4rem;
+  left: 5rem;
   font-size: 3rem;
   display: flex;
   align-items: center;
@@ -166,8 +166,8 @@ html body{
 }
 .banner {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0%;
+  left: 0%;
   transform: translate(-50%, -50%);
   display: flex;
   z-index: 1;

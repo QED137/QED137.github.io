@@ -9,7 +9,7 @@
 }
 
 html body{
-  font-size: 50.5%;
+  font-size: 8.5%;
   zoom: 1;
 }
 /* Default Styles */
@@ -134,12 +134,11 @@ html body{
 
 .logo {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 4rem;
+  left: 5rem;
   font-size: 3rem;
   display: flex;
   align-items: center;
-  z-index: 2;
 }
 
 .logo span:nth-child(1) {
@@ -170,7 +169,6 @@ html body{
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  z-index: 1;
 }
 
 .section-border {

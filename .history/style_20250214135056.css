@@ -133,9 +133,9 @@ html body{
 }
 
 .logo {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
+  position: relative;
+  top: 4rem;
+  left: 5rem;
   font-size: 3rem;
   display: flex;
   align-items: center;

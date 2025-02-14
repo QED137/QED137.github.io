@@ -134,12 +134,13 @@ html body{
 
 .logo {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 4rem;
+  left: 5rem;
   font-size: 3rem;
   display: flex;
   align-items: center;
-  z-index: 2;
+  z-index: 1
+  ;
 }
 
 .logo span:nth-child(1) {
