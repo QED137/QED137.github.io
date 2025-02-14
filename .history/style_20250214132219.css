@@ -8,9 +8,10 @@
   font-family: "Rowdies", sans-serif;
 }
 
-html {
-  font-size: 50%;
+html, body {
+  font-size: 62.5% !important; 
 }
+
 /* Default Styles */
 
 /* Container */
