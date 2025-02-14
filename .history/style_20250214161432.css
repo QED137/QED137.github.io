@@ -176,7 +176,7 @@ html body{
 }
 
 .section-border {
-  height: auto;
+  height: 55rem;
   width: 0.3rem;
   background-color: #bbb;
   margin-right: 10rem;
@@ -208,7 +208,6 @@ html body{
 }
 
 .developer-info {
-  top: 50%;
   margin-right: 15rem;
 }
 
@@ -246,7 +245,7 @@ html body{
 
 .prof span {
   font-family: "Caveat", cursive;
-  font-size: 3rem;
+  font-size: rem;
   font-weight: bold;
   text-transform: capitalize;
   margin-left: 1.2rem;
@@ -255,10 +254,10 @@ html body{
 .about {
   width: 60rem;
   font-family: "Caveat", cursive;
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1;
   color: #a9abae;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
 .social-media {
@@ -912,7 +911,7 @@ textarea {
   }
 
   .about {
-    width: 40rem;
+    width: 45rem;
   }
 
   .dev-img-wrapper {

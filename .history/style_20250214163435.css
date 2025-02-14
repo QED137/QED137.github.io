@@ -176,7 +176,7 @@ html body{
 }
 
 .section-border {
-  height: auto;
+  height: 55rem;
   width: 0.3rem;
   background-color: #bbb;
   margin-right: 10rem;
@@ -208,7 +208,7 @@ html body{
 }
 
 .developer-info {
-  top: 50%;
+  
   margin-right: 15rem;
 }
 

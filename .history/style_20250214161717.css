@@ -176,7 +176,7 @@ html body{
 }
 
 .section-border {
-  height: auto;
+  height: 55rem;
   width: 0.3rem;
   background-color: #bbb;
   margin-right: 10rem;
@@ -208,7 +208,6 @@ html body{
 }
 
 .developer-info {
-  top: 50%;
   margin-right: 15rem;
 }
 
@@ -258,7 +257,7 @@ html body{
   font-size: 3rem;
   line-height: 1;
   color: #a9abae;
-  margin-bottom: 1rem;
+  margin-bottom: rem;
 }
 
 .social-media {
@@ -912,7 +911,7 @@ textarea {
   }
 
   .about {
-    width: 40rem;
+    width: 45rem;
   }
 
   .dev-img-wrapper {
