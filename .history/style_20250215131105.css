@@ -346,7 +346,7 @@ html body{
 }
 .dev-img-wrapper:hover {
   transform: perspective(1000px) translateZ(50px);
-  box-shadow: 0 20px 40px rgba(12, 44, 113, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 20px 40px rgba(12, 44, 113, 0.25), 0 10px 10px rgba(18, 16, 138, 0.22);
   border-radius: 50%;
 }
 
@@ -951,6 +951,7 @@ textarea {
     bottom: 14rem;
     right: -4rem;
   }
+  .de
 
   .section-bg-heading {
     font-size: 23rem;

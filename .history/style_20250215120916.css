@@ -253,20 +253,18 @@ html body{
 }
 
 .about {
-  margin-top: 4rem;
-  width: 60rem; /* Adjust width as needed */
-  font-family: "Rowdies", Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  color: #fff;
-  margin-bottom: 6rem;
-
+  width: 60rem;
+  font-family: "Caveat", cursive;
+  font-size: 3rem;
+  line-height: 1;
+  color: #a9abae;
+  margin-bottom: 4rem;
 
 }
 
-
 .social-media {
-  margin-top: 5rem;
-  margin-bottom: 1rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 
 .social-media i {
@@ -322,7 +320,6 @@ html body{
 }
 
 .cv span {
-  margin-top: 2.5rem;
   font-size: 1.4rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -344,12 +341,6 @@ html body{
   width: 100%;
   height: auto;
 }
-.dev-img-wrapper:hover {
-  transform: perspective(1000px) translateZ(50px);
-  box-shadow: 0 20px 40px rgba(12, 44, 113, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border-radius: 50%;
-}
-
 
 .dev-work {
   width: 25rem;

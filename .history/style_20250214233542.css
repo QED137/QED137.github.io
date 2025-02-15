@@ -181,7 +181,6 @@ html body{
   background-color: #bbb;
   margin-right: 10rem;
   position: relative;
-  margin-top: 5rem;
 }
 
 .section-border::before {
@@ -241,7 +240,7 @@ html body{
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 0.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 6rem;
 }
 
 .prof span {
@@ -253,20 +252,16 @@ html body{
 }
 
 .about {
-  margin-top: 4rem;
-  width: 60rem; /* Adjust width as needed */
-  font-family: "Rowdies", Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  color: #fff;
-  margin-bottom: 6rem;
-
-
+  width: 60rem;
+  font-family: "Caveat", cursive;
+  font-size: 3rem;
+  line-height: 1;
+  color: #a9abae;
+  margin-bottom: 1rem;
 }
 
-
 .social-media {
-  margin-top: 5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
 .social-media i {
@@ -322,7 +317,6 @@ html body{
 }
 
 .cv span {
-  margin-top: 2.5rem;
   font-size: 1.4rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -330,8 +324,8 @@ html body{
 }
 
 .dev-img-wrapper {
-  width: 55rem; /* Fixed size */
-  height: 55rem; /* Fixed size */
+  width: 500px; /* Fixed size */
+  height: 5;
   border-radius: 50%;
   background-color: #29a587;
   padding: 2rem 2rem 0 2rem;
@@ -344,12 +338,6 @@ html body{
   width: 100%;
   height: auto;
 }
-.dev-img-wrapper:hover {
-  transform: perspective(1000px) translateZ(50px);
-  box-shadow: 0 20px 40px rgba(12, 44, 113, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border-radius: 50%;
-}
-
 
 .dev-work {
   width: 25rem;

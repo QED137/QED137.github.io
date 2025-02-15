@@ -256,9 +256,10 @@ html body{
   margin-top: 4rem;
   width: 60rem; /* Adjust width as needed */
   font-family: "Rowdies", Arial, Helvetica, sans-serif;
+  font-family: ;
   font-size: 2rem;
   color: #fff;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 
 
 }
@@ -344,12 +345,6 @@ html body{
   width: 100%;
   height: auto;
 }
-.dev-img-wrapper:hover {
-  transform: perspective(1000px) translateZ(50px);
-  box-shadow: 0 20px 40px rgba(12, 44, 113, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border-radius: 50%;
-}
-
 
 .dev-work {
   width: 25rem;
