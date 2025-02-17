@@ -393,7 +393,7 @@ html body{
   width: 100%;
   overflow: hidden;
   background: #111; /* Dark background */
-  padding: 20px 0;
+  padding: 10px 0;
   position: relative;
 }
 
@@ -419,19 +419,6 @@ html body{
   }
 }
 
-.open-to-work {
-  width: 100%;
-  background-color: #111; /* Dark background */
-  color: #fff;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 15px 0;
-  margin-top: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}
 
 /* End of Landing */
 
