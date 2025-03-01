@@ -15,11 +15,6 @@ html body{
 /* Default Styles */
 
 /* Container */
-.container {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#232932, #2c3138, #232932);
-}
 .landing {
   margin-bottom: 0; /* Remove unnecessary spacing */
   padding-bottom: 0;
@@ -34,6 +29,13 @@ html body{
   margin-top: 0;
   padding-top: 6rem; /* Adjust as needed */
 }
+.container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#232932, #2c3138, #232932);
+}
+
+
 /* Navigation */
 .menu-icon {
   width: 3rem;
@@ -344,7 +346,6 @@ html body{
 }
 
 .dev-img-wrapper {
-  
   width: 100%;
   max-width: 40rem; /* Limits size on larger screens */
   height: auto;
@@ -357,7 +358,6 @@ html body{
 }
 
 .dev-img-wrapper img {
-  display: flex;
   width: 100%;
   height: auto;
 }
@@ -938,80 +938,6 @@ textarea {
 /* End of Container */
 
 /* Responsive */
-@media screen and (min-width:2032px) {
-  html {
-    font-size: 62.5%;
-  }
-
-  .navigation {
-    right: -70rem;
-  }
-
-  .skills .section-border {
-    left: 10rem;
-  }
-
-  .contact .section-border {
-    left: 10rem;
-  }
-
-  .contact-content {
-    width: 120rem;
-  }
-  .dev-img-wrapper {
-    max-width: 38rem; /* Reduce width slightly */
-    min-width: 35rem; /* Prevent shrinking */
-    height: 38rem;
-    min-height: 35rem;
-}
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
-}
-}
-
-@media screen and (max-width: 2000px) {
-  html {
-    font-size: 60%;
-  }
-
-  .navigation {
-    right: -70rem;
-  }
-
-  .skills .section-border {
-    left: 10rem;
-  }
-
-  .contact .section-border {
-    left: 10rem;
-  }
-
-  .contact-content {
-    width: 120rem;
-  }
-  .dev-img-wrapper {
-    max-width: 38rem; /* Reduce width slightly */
-    min-width: 35rem; /* Prevent shrinking */
-    height: 38rem;
-    min-height: 35rem;
-}
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
-}
-  
-}
 @media (max-width: 1700px) {
   html {
     font-size: 57%;
@@ -1032,21 +958,6 @@ textarea {
   .contact-content {
     width: 120rem;
   }
-  .dev-img-wrapper {
-    max-width: 38rem; /* Reduce width slightly */
-    min-width: 35rem; /* Prevent shrinking */
-    height: 38rem;
-    min-height: 35rem;
-}
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
-}
 }
 
 @media (max-width: 1500px) {
@@ -1064,11 +975,10 @@ textarea {
   }
 
   .dev-img-wrapper {
-    max-width: 38rem; /* Reduce width slightly */
-    min-width: 35rem; /* Prevent shrinking */
-    height: 38rem;
-    min-height: 35rem;
-}
+    width: 40rem;
+    height: 40rem;
+  }
+
   .dev-work {
     width: 20rem;
     height: 7rem;
@@ -1141,7 +1051,6 @@ textarea {
   .input-groups input {
     width: 60rem;
   }
-  
 }
 
 @media (max-width: 900px) {
@@ -1177,10 +1086,6 @@ textarea {
     flex-direction: column;
     text-align: center; /* Center elements when stacked */
     gap: 2rem; /* Add space between elements */
-    margin-bottom: 2rem; /* Adjust spacing */
-}
-.skill{
-  padding-top: 2rem;
 }
   .developer-img {
     display: block; /* Ensure the image is displayed */

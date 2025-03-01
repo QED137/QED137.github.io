@@ -964,15 +964,6 @@ textarea {
     height: 38rem;
     min-height: 35rem;
 }
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
-}
 }
 
 @media screen and (max-width: 2000px) {
@@ -1001,15 +992,7 @@ textarea {
     height: 38rem;
     min-height: 35rem;
 }
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
 
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
-}
   
 }
 @media (max-width: 1700px) {

@@ -938,7 +938,7 @@ textarea {
 /* End of Container */
 
 /* Responsive */
-@media screen and (min-width:2032px) {
+@media screen(min-width:2032px) {
   html {
     font-size: 62.5%;
   }
@@ -963,15 +963,6 @@ textarea {
     min-width: 35rem; /* Prevent shrinking */
     height: 38rem;
     min-height: 35rem;
-}
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
 }
 }
 
@@ -1001,15 +992,6 @@ textarea {
     height: 38rem;
     min-height: 35rem;
 }
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
-}
   
 }
 @media (max-width: 1700px) {
@@ -1037,15 +1019,6 @@ textarea {
     min-width: 35rem; /* Prevent shrinking */
     height: 38rem;
     min-height: 35rem;
-}
-.dev-experience {
-  bottom: 22rem;
-  right: 25rem;
-}
-
-.dev-projects {
-  bottom: 14rem;
-  right: -4rem;
 }
 }
 
