@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h1>Visual Worlds</h1>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="blogs/blogs.html">Blogs</a>
+            <!-- <a href="statistics.html">Statistics</a>
+            <a href="physics.html">Physics</a>
+            <a href="mathematics.html">Mathematics</a>-->
+            <a href="gallery.html" class="active">Gallery</a>
+           
+            <a href="../about/about.html">About</a>
+        </nav>
+    </header>
+
+    <section class="gallery-section">
+        <h1>Photo Gallery</h1>
+        <p><i style="font-size: 1.2em;">"A thing of beauty is a joy forever"</i> - Keats</p>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="gllary/myimage.jpg" alt="Photo 6" onclick="openLightbox('gllary/myimage.jpg')">
+            </div>
+
+            <div class="gallery-item">
+                <img src="gllary/pi2.jpg" alt="Photo 6" onclick="openLightbox('gllary/pi2.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="gllary/106250110.png" alt="Photo 1" onclick="openLightbox('gllary/106250110.png')">
+            </div>
+            <div class="gallery-item">
+                <img src="gllary/picfour.jpg" alt="Photo 6" onclick="openLightbox('gllary/picfour.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="gllary/harvard.png" alt="Photo 2" onclick="openLightbox('gllary/harvard.png')">
+            </div>
+            <div class="gallery-item">
+                <img src="gllary/IMG20210106-2.jpg" alt="Photo 3" onclick="openLightbox('gllary/IMG20210106-2')">
+            </div>
+            <div class="gallery-item">
+                <img src="gllary/IMG20201025.jpg" alt="Photo 4" onclick="openLightbox('gllary/IMG20201025.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="gllary/IMG20210116.jpg" alt="Photo 5" onclick="openLightbox('gllary/IMG20210116.jpg')">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Popup -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Gallery & Blog | Created by Janmajay Kumar</p>
+    </footer>
+
+    <script src="gallery.js"></script>
+</body>
+</html>

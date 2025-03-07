@@ -1,0 +1,473 @@
+/* Full Navbar (for Large Screens) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #222;
+    color: white;
+    
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-size: 2rem;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background: #29a587;
+    border-radius: 5px;
+  }
+  
+  
+  /* Style for the Explore text */
+  .menu-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px; /* Space between lines and text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-family: "Rowdies", sans-serif;
+  }
+  
+  /* When Menu is Clicked - Change Color */
+  .menu-container:hover .menu-text {
+    color: #29a587;
+    transform: scale(1.1);
+  }
+
+/* Navigation */
+.menu-icon {
+    display: none;
+  
+  }
+  .menu-btn::after {
+    content: "";
+    width: 5rem;
+    height: 0.2rem;
+    background-color: #bbb;
+    position: absolute;
+    top: 50%;
+    right: -5rem;
+  }
+  
+  .line {
+    width: 3rem;
+    height: 0.2rem;
+    
+    background-color: #bbb;
+    transition: transform 0.3s;
+  }
+  
+  .change .line-1 {
+    transform: rotateZ(45deg) translate(0.7rem, -0.1rem);
+    
+  }
+  
+  .change .line-2 {
+    transform: rotateZ(-45deg) translate(0.7rem, -0.1rem);
+  }
+  
+  .navigation {
+    position: fixed;
+    top: -8rem;
+    right: -63rem;
+    width: 50rem;
+    transform: rotateZ(-15deg);
+    height: 100vh;
+    background-color: #31363c;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding-left: 8rem;
+    z-index: 150;
+    transition: all 0.6s;
+  }
+  
+  .change .navigation {
+    top: 0;
+    right: 0;
+    transform: rotateZ(0);
+  }
+  
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .change .nav-items {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s 0.7s;
+  }
+  
+  .navigation .section-border {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .change .navigation .section-border {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s 0.7s;
+  }
+  
+  .nav-items a {
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #eee;
+    margin: 1rem 0;
+    transition: color 0.5s;
+  }
+  
+  .nav-items a:hover {
+    color: #29a587;
+  }
+  /* End of Navigation */
+/* Responsive */
+@media screen and (min-width:2032px) {
+    html {
+      font-size: 62.5%;
+    }
+  
+    .navigation {
+      right: -70rem;
+    }
+  
+    .skills .section-border {
+      left: 10rem;
+    }
+  
+    .contact .section-border {
+      left: 10rem;
+    }
+  
+    .contact-content {
+      width: 120rem;
+    }
+    .dev-img-wrapper {
+      max-width: 38rem; /* Reduce width slightly */
+      min-width: 35rem; /* Prevent shrinking */
+      height: 38rem;
+      min-height: 35rem;
+  }
+  .dev-experience {
+    bottom: 22rem;
+    right: 25rem;
+  }
+  
+  .dev-projects {
+    bottom: 14rem;
+    right: -4rem;
+  }
+  }
+  
+  @media screen and (max-width: 2000px) {
+    html {
+      font-size: 60%;
+    }
+  
+    .navigation {
+      right: -70rem;
+    }
+  
+    .skills .section-border {
+      left: 10rem;
+    }
+  
+    .contact .section-border {
+      left: 10rem;
+    }
+  
+    .contact-content {
+      width: 120rem;
+    }
+    .dev-img-wrapper {
+      max-width: 38rem; /* Reduce width slightly */
+      min-width: 35rem; /* Prevent shrinking */
+      height: 38rem;
+      min-height: 35rem;
+  }
+  .dev-experience {
+    bottom: 22rem;
+    right: 25rem;
+  }
+  
+  .dev-projects {
+    bottom: 14rem;
+    right: -4rem;
+  }
+    
+  }
+  @media (max-width: 1700px) {
+    html {
+      font-size: 57%;
+    }
+  
+    .navigation {
+      right: -70rem;
+    }
+  
+    .skills .section-border {
+      left: 10rem;
+    }
+  
+    .contact .section-border {
+      left: 10rem;
+    }
+  
+    .contact-content {
+      width: 120rem;
+    }
+    .dev-img-wrapper {
+      max-width: 38rem; /* Reduce width slightly */
+      min-width: 35rem; /* Prevent shrinking */
+      height: 38rem;
+      min-height: 35rem;
+  }
+  .dev-experience {
+    bottom: 22rem;
+    right: 25rem;
+  }
+  
+  .dev-projects {
+    bottom: 14rem;
+    right: -4rem;
+  }
+  }
+  
+  @media (max-width: 1500px) {
+    html {
+      font-size: 52%;
+    }
+  
+    .name {
+      font-size: 7rem;
+      width: 40rem;
+    }
+  
+    .about {
+      width: 40rem;
+    }
+  
+    .dev-img-wrapper {
+      max-width: 38rem; /* Reduce width slightly */
+      min-width: 35rem; /* Prevent shrinking */
+      height: 38rem;
+      min-height: 35rem;
+  }
+    .dev-work {
+      width: 20rem;
+      height: 7rem;
+      padding: 0 1rem;
+    }
+  
+    .dev-work span:nth-child(1) {
+      font-size: 2rem;
+      width: 35%;
+    }
+  
+    .dev-experience {
+      bottom: 22rem;
+      right: 25rem;
+    }
+  
+    .dev-projects {
+      bottom: 14rem;
+      right: -4rem;
+    }
+  
+    .section-bg-heading {
+      font-size: 23rem;
+    }
+  
+    .skills {
+      height: 100%;
+      padding: 10rem 0 20rem 0;
+    }
+  
+    .skills-cards {
+      width: 100rem;
+    }
+  
+    .skills .section-border {
+      height: 85rem;
+    }
+  
+    .projects-cards {
+      width: 100rem;
+    }
+  
+    .contact-content {
+      width: 110rem;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    html {
+      font-size: 45%;
+    }
+  
+    .projects .section-border {
+      right: 10rem;
+    }
+    
+    .contact-content {
+      width: 100rem;
+      justify-content: space-evenly;
+    }
+  
+    .contact-right {
+      margin-right: -15rem;
+    }
+  
+    .input-groups {
+      flex-direction: column;
+    }
+  
+    .input-groups input {
+      width: 60rem;
+    }
+    
+  }
+  
+  @media screen and (max-width: 900px) {
+    html {
+      font-size: 39%;
+    }
+    .navbar{
+      display:none;
+    }
+    .menu-icon{
+      width: 3rem;
+      height: 3rem;
+      position: fixed;
+      top: 5rem;
+      right: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      cursor: pointer;
+      z-index: 200;
+    }
+  
+    .section-border {
+      display: none;
+    }
+  
+    .section-bg-heading {
+      font-size: 20rem;
+    }
+  
+    .contact-content {
+      width: 110rem;
+    }
+  
+    .contact-right {
+      margin-right: -5rem;
+    }
+  }
+  @media (max-width: 700px) {
+    html {
+      font-size: 35%;
+    }
+  
+    .section-bg-heading {
+      font-size: 17rem;
+    }
+    .banner {
+      flex-direction: column;
+      text-align: center; /* Center elements when stacked */
+      gap: 2rem; /* Add space between elements */
+      margin-bottom: 2rem; /* Adjust spacing */
+  }
+  .skill{
+    padding-top: 2rem;
+  }
+    .developer-img {
+      display: block; /* Ensure the image is displayed */
+      width: 100%; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .dev-experience{
+      display:none; 
+    }
+    .dev-projects{
+      display:none; 
+    }
+  
+    .skills-cards {
+      width: 60rem;
+    }
+  
+    .projects-cards {
+      width: 60rem;
+    }
+  
+    .contact-content {
+      width: 70rem;
+    }
+  
+    .contact-left {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .navigation {
+      width: 100%;
+      right: -100rem;
+      justify-content: center;
+    }
+  
+    .banner {
+      width: 70%;
+    }
+  
+    .section-heading {
+      text-align: center;
+    }
+  
+    .skills-cards {
+      width: 55rem;
+    }
+  
+    .contact-content {
+      width: 55rem;
+    }
+  
+    .input-groups input {
+      width: 50rem;
+    }
+  
+    .icons {
+      display: none;
+    }
+  
+    .developer-img {
+      display: block; /* Ensure the image is displayed */
+      width: 100%; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+  /* End of Responsive */    

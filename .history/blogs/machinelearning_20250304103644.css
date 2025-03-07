@@ -1,0 +1,99 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: "Rowdies", sans-serif;  /* Use the same font across all pages */
+}
+
+/* Background Styling */
+body {
+    background: linear-gradient(#232932, #2c3138, #232932);
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+}
+
+.navbar h1 {
+    font-size: 24px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover, .navbar nav .active {
+    background: #29a587; /* Unified green highlight */
+    border-radius: 5px;
+}
+
+/* Blog & Index Container Consistency */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Button Styling */
+.btn, .read-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #29a587;  /* Ensure same button color everywhere */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover, .read-more:hover {
+    background: #1f7c66; /* Darker green hover effect */
+}
+
+/* Blog Card Styling */
+.blog-card {
+    background: #1f242b; /* Darker card to match the index theme */
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.blog-card:hover {
+    transform: scale(1.05);
+}
+
+.blog-card h3 {
+    color: white;
+    font-size: 22px;
+    padding: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+    margin-top: 30px;
+}

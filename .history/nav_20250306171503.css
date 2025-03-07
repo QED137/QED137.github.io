@@ -1,0 +1,146 @@
+/* Full Navbar (for Large Screens) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #222;
+    color: white;
+    
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-size: 2rem;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background: #29a587;
+    border-radius: 5px;
+  }
+  
+  
+  /* Style for the Explore text */
+  .menu-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px; /* Space between lines and text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-family: "Rowdies", sans-serif;
+  }
+  
+  /* When Menu is Clicked - Change Color */
+  .menu-container:hover .menu-text {
+    color: #29a587;
+    transform: scale(1.1);
+  }
+
+/* Navigation */
+.menu-icon {
+    display: none;
+  
+  }
+  .menu-btn::after {
+    content: "";
+    width: 5rem;
+    height: 0.2rem;
+    background-color: #bbb;
+    position: absolute;
+    top: 50%;
+    right: -5rem;
+  }
+  
+  .line {
+    width: 3rem;
+    height: 0.2rem;
+    
+    background-color: #bbb;
+    transition: transform 0.3s;
+  }
+  
+  .change .line-1 {
+    transform: rotateZ(45deg) translate(0.7rem, -0.1rem);
+    
+  }
+  
+  .change .line-2 {
+    transform: rotateZ(-45deg) translate(0.7rem, -0.1rem);
+  }
+  
+  .navigation {
+    position: fixed;
+    top: -8rem;
+    right: -63rem;
+    width: 50rem;
+    transform: rotateZ(-15deg);
+    height: 100vh;
+    background-color: #31363c;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding-left: 8rem;
+    z-index: 150;
+    transition: all 0.6s;
+  }
+  
+  .change .navigation {
+    top: 0;
+    right: 0;
+    transform: rotateZ(0);
+  }
+  
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .change .nav-items {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s 0.7s;
+  }
+  
+  .navigation .section-border {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .change .navigation .section-border {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s 0.7s;
+  }
+  
+  .nav-items a {
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #eee;
+    margin: 1rem 0;
+    transition: color 0.5s;
+  }
+  
+  .nav-items a:hover {
+    color: #29a587;
+  }
+  /* End of Navigation */
+    

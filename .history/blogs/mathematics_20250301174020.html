@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Blog</title>
+    <link rel="stylesheet" href="mathematics.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".navbar a").forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+    <!-- MathJax for Rendering Math Equations -->
+    <script type="text/javascript" async
+        src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="statistics.html">Statistics</a>
+        <a href="physics.html">Physics</a>
+        <a href="machine-learning.html">Machine Learning</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to Mathematics Blog</h1>
+        <p>Exploring the world of numbers, equations, and theorems.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            <h2>Introduction to Mathematics</h2>
+            <p>Mathematics is the foundation of logical reasoning and problem-solving. We will explore key concepts like algebra, calculus, and statistics.</p>
+        </section>
+
+        <section>
+            <h2>Mathematical Equations</h2>
+            <p>Here’s an example of a mathematical equation:</p>
+            <p>\[
+                E = mc^2
+            \]</p>
+            <p>And a more complex one:</p>
+            <p>\[
+                \int_{0}^{\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+            \]</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mathematics Blog | Designed by You</p>
+    </footer>
+
+</body>
+</html>

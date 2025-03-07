@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Blog</title>
+    <link rel="stylesheet" href="statistics.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <h1>Statistics & Data Science</h1>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="blogs.html">Blogs</a>
+            <!-- <a href="statistics.html" class="active">Statistics</a>
+            <a href="physics.html">Physics</a>
+            <a href="mathematics.html">Mathematics</a>
+            <a href="machinelearning.html">Machine Learning</a> -->
+            <a href="../about/about.html">About</a>
+        </nav>
+    </header>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Data to Decisions: A Beginner’s Guide to Statistical Inference</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        ol, ul {
+            margin-left: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .latex-equation {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>From Data to Decisions: A Beginner’s Guide to Statistical Inference</h1>
+    <p><strong>Author:</strong> Janmajay Kumar</p>
+    <p><strong>Date:</strong> October 2024</p>
+
+    <section>
+        <h2>Real-World Questions: Needing Statistical Inference</h2>
+
+        <p>Statistical inference is essential when we need to make sense of real-world data. Often, we observe differences or trends, but how do we know whether those observations are meaningful or simply due to chance? Let's look at five common real-life questions across different fields, each requiring statistical inference to find answers.</p>
+
+        <ol>
+            <li>
+                <strong>Social Science: Does Education Affect Income?</strong>
+                <ul>
+                    <li>
+                        <strong>Question:</strong> Do people with a college degree earn more than those without one?
+                    </li>
+                    <li>
+                        <strong>Example:</strong> In a survey of 100 people, 50 college graduates have an average income of $60,000, while the average income for 50 people without a degree is $45,000.
+                    </li>
+                    <li>
+                        <strong>Objective:</strong> We want to determine if the observed income difference is real or simply a result of random variation in the sample.
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Business: Does Customer Happiness Drive Sales?</strong>
+                <ul>
+                    <li>
+                        <strong>Question:</strong> Do happier customers spend more money?
+                    </li>
+                    <li>
+                        <strong>Example:</strong> Out of 200 surveyed customers, those who spent more than $500 rated their satisfaction at 8.5 out of 10, while those who spent less gave a rating of 7.2.
+                    </li>
+                    <li>
+                        <strong>Objective:</strong> The goal is to find out whether customer satisfaction truly influences how much people spend, or if the difference in ratings is just coincidental.
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Finance: Is the Stock Market More Unstable During Recessions?</strong>
+                <ul>
+                    <li>
+                        <strong>Question:</strong> Is the stock market more volatile during economic downturns?
+                    </li>
+                    <li>
+                        <strong>Example:</strong> During a recession, daily stock price changes averaged 2.8%, while in stable economic times, the changes averaged 1.5%.
+                    </li>
+                    <li>
+                        <strong>Objective:</strong> We want to figure out if the stock market genuinely becomes more unstable during recessions or if the observed volatility could just be random.
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Physics: Does Gravity Vary in Different Locations?</strong>
+                <ul>
+                    <li>
+                        <strong>Question:</strong> Is the gravitational force slightly different at two different locations on Earth?
+                    </li>
+                    <li>
+                        <strong>Example:</strong> At one location, gravity was measured 10 times and averaged 9.81 m/s². At another location, it was measured at 9.78 m/s².
+                    </li>
+                    <li>
+                        <strong>Objective:</strong> We aim to see if this small difference in gravity is significant or just due to random measurement variation.
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Biology: Is the New Drug Better for Lowering Blood Pressure?</strong>
+                <p><strong>Question:</strong> Does a new drug reduce blood pressure more effectively than the current treatment?</p>
+                <p><strong>Example:</strong> In a clinical trial, 50 patients taking the new drug had an average blood pressure drop of 12 mmHg, while 50 patients on the existing drug experienced a 9 mmHg drop.</p>
+                <p><strong>Objective:</strong> We’re interested in determining if the new drug is truly more effective at lowering blood pressure or if the observed difference is just a coincidence.</p>
+            </li>
+            <li>
+                <strong>Sports: Does Practicing More Improve Performance?</strong>
+                <p><strong>Question:</strong> Do athletes who practice more hours each week perform better in competitions?</p>
+                <p><strong>Example:</strong> We tracked the weekly practice hours of 50 soccer players. Players who practiced more than 10 hours per week scored an average of 15 goals in the season, while those practicing fewer than 10 hours scored 10 goals on average.</p>
+                <p><strong>Objective:</strong> We want to determine if practicing more hours genuinely improves performance or if the difference in goal-scoring could have occurred by chance.</p>
+            </li>
+            <li>
+                <strong>Sports: Does Team A Have a Home Advantage?</strong>
+                <p><strong>Question:</strong> Do teams win more often when they play at home compared to playing away?</p>
+                <p><strong>Example:</strong> Over a season, Team A won 70% of its home games but only 40% of its away games.</p>
+                <p><strong>Objective:</strong> We’re interested in figuring out if the "home advantage" is real or if the difference in winning percentage could be just random variation.</p>
+            </li>
+
+        </ol>
+    </section>
+
+    <section>
+        <h2>Introduction: What is Statistical Inference?</h2>
+        <p>Statistical inference is the process by which we use data from a sample to make generalizations or conclusions about a larger population. The core idea is that, in many situations, it is impractical or impossible to collect data from every individual in a population. Instead, we gather data from a smaller, manageable subset of the population, known as a sample, and use that information to make educated guesses or inferences about the entire population.</p>
+        <p>Statistical inference helps answer questions like: "Is this observed effect real, or could it have occurred by chance?" or "How confident can we be in the results from our sample?" Two primary tools used in statistical inference are estimation and hypothesis testing.</p>
+
+        <p>Let’s look at two examples to clarify how statistical inference works:</p>
+
+        <p><strong>Example 1: Estimating Average Household Income</strong></p>
+        <p>Suppose a city wants to know the average household income of its residents. Instead of surveying every household, which could be expensive and time-consuming, they survey 500 randomly selected households. From this sample, they find that the average income is $60,000. But the question remains: does this sample accurately reflect the income of all households in the city?</p>
+        <p>Statistical inference allows us to estimate the true average income of the city’s households based on this sample. By using techniques such as confidence intervals, we can say something like: "We are 95% confident that the true average household income in this city is between $58,000 and $62,000."</p>
+
+        <p><strong>Example 2: Testing the Effectiveness of a New Drug</strong></p>
+        <p>Imagine that a pharmaceutical company is testing a new drug that aims to reduce blood pressure. They conduct a clinical trial with 100 participants: 50 take the new drug, and 50 take the standard treatment. After several weeks, they observe that the group taking the new drug has an average reduction in blood pressure of 12 mmHg, while the standard treatment group has an average reduction of 9 mmHg.</p>
+        <p>Is this difference in blood pressure reduction (3 mmHg) meaningful? Or could it just be due to random chance? Statistical inference allows the researchers to test whether the observed difference is statistically significant. Through hypothesis testing, they can infer whether the new drug is likely to be more effective than the standard treatment for the population at large, or if the observed difference is too small to conclude anything definitively.</p>
+    </section>
+
+    <section>
+        <h2>What is to be Inferred?</h2>
+        <p>Explain what we aim to infer in statistics, using clear, non-technical language. Discuss concepts like population mean, mode, proportion, standard deviation, and comparisons of means. Use real-life examples to describe these concepts without relying on complex mathematical jargon.</p>
+        <p>[Content for "What is to be Inferred?" goes here]</p>
+    </section>
+
+    <section>
+        <h2>How to Infer?</h2>
+        <p>Discuss the process of making inferences by using sample data. Emphasize the importance of sampling and why it matters. Introduce foundational concepts like the Central Limit Theorem and the Law of Large Numbers, explaining how they provide the theoretical basis for statistical inference. Include examples of hypothesis testing and types of statistical tests (e.g., t-tests, chi-square tests) in a conceptual manner.</p>
+        <p>[Content for "How to Infer?" goes here]</p>
+    </section>
+
+    <section>
+        <h2>How Confident Are We About Our Inference?</h2>
+        <p>Introduce the idea of confidence intervals and how they help us measure the reliability of our estimates. Explain the concept of hypothesis testing, including the role of errors (Type I and Type II errors) in statistical tests. Provide conceptual explanations without getting too technical.</p>
+        <p>[Content for "How Confident Are We About Our Inference?" goes here]</p>
+    </section>
+
+    <section>
+        <h2>Common Pitfalls</h2>
+        <p>Statistical inference can be tricky for newcomers, and it's easy to fall into a few common pitfalls. Let’s highlight some of these mistakes and misconceptions to help you avoid them:</p>
+
+        <ol>
+            <li>
+                <strong>Confusing Correlation with Causation</strong>
+                <p>One of the most frequent errors in data analysis is assuming that correlation implies causation. Just because two variables move together doesn’t mean one causes the other. For example, if sales of ice cream increase during hot weather, it doesn’t mean that ice cream causes hot weather! Always be cautious about interpreting relationships — correlation shows association, not causation.</p>
+            </li>
+
+            <li>
+                <strong>Misunderstanding the p-value</strong>
+                <p>Many beginners believe that a p-value is the probability that the null hypothesis is true. This is incorrect. The p-value measures how likely it is to observe your data (or something more extreme) if the null hypothesis were true. For example, a p-value of 0.03 doesn’t mean there’s a 3% chance the null hypothesis is true — it means that, if the null hypothesis were true, there’s a 3% chance of seeing data as extreme as what you observed.</p>
+            </li>
+
+            <li>
+                <strong>Relying Too Much on Small Sample Sizes</strong>
+                <p>Small samples can lead to misleading conclusions. A common mistake is thinking that a small sample will always represent the population accurately. In reality, smaller samples are much more likely to show random variations that don’t reflect the true population characteristics. Larger sample sizes generally provide more reliable and stable results.</p>
+            </li>
+
+            <li>
+                <strong>Ignoring Assumptions of Statistical Tests</strong>
+                <p>Many statistical tests have underlying assumptions — such as normality of data, equal variances, or independence of observations. Ignoring these assumptions can lead to inaccurate conclusions. For example, using a t-test when your data is not normally distributed or has outliers can distort your results. Always check that your data meets the assumptions of the test you're using.</p>
+            </li>
+
+            <li>
+                <strong>Over-Interpreting Confidence Intervals</strong>
+                <p>Confidence intervals are useful tools, but they can be misinterpreted. A common mistake is to think that a 95% confidence interval means there’s a 95% chance the true parameter lies within the interval. In fact, it means that if you were to repeat the sampling process many times, 95% of those intervals would contain the true parameter — but for any given interval, the parameter either is or isn’t within it.</p>
+            </li>
+
+            <li>
+                <strong>Cherry-Picking Data</strong>
+                <p>It’s tempting to choose only the data that supports your hypothesis or business goal. However, cherry-picking data or ignoring contradictory information can lead to biased conclusions and flawed decisions. It’s important to take a holistic view of all the data and remain objective.</p>
+            </li>
+
+            <li>
+                <strong>Misusing Statistical Significance</strong>
+                <p>Just because something is statistically significant doesn’t necessarily mean it’s practically important. A result might show statistical significance (e.g., a p-value < 0.05), but the actual effect size could be so small that it’s irrelevant in the real world. Always consider the magnitude of the effect alongside statistical significance.</p>
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Steps from Data to Decision</h2>
+
+        <p>In practice, statistical inference follows a series of structured steps that take us from the raw data collection stage to making data-driven decisions. Below is an outline of these steps, presented as an algorithm for conducting statistical inference.</p>
+
+        <h3>Algorithm: Steps for Statistical Inference in Practice</h3>
+
+        <ol>
+            <li>
+                <strong>Define the Problem and Research Question</strong>
+                <ul>
+                    <li>Clearly articulate the problem you are trying to solve or the question you are investigating.</li>
+                    <li><strong>Example:</strong> "Is the new drug more effective at lowering blood pressure than the standard treatment?" or "Do college graduates earn more than non-graduates?"</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Collect a Representative Sample of Data</strong>
+                <ul>
+                    <li>Design the data collection process carefully, ensuring the sample is random and representative of the population. The quality of the sample is crucial for making valid inferences.</li>
+                    <li><strong>Example:</strong> Survey 500 randomly selected households for income data, or conduct a controlled clinical trial for the new drug.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Summarize and Explore the Data</strong>
+                <ul>
+                    <li>Organize the data in tables, graphs, and descriptive statistics (mean, median, standard deviation, etc.).</li>
+                    <li>Explore patterns, trends, or anomalies in the data to get a preliminary understanding.</li>
+                    <li><strong>Example:</strong> For income data, calculate the mean and median incomes of the sample and look for any outliers or extreme values.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Formulate the Hypothesis</strong>
+                <ul>
+                    <li>Establish the <strong>null hypothesis (H<sub>0</sub>)</strong> and the <strong>alternative hypothesis (H<sub>1</sub>)</strong> based on the problem.
+                        <ul>
+                            <li><strong>H<sub>0</sub></strong>: There is no effect or difference.</li>
+                            <li><strong>H<sub>1</sub></strong>: There is an effect or a difference.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example:</strong> For the new drug:
+                        <ul>
+                            <li><strong>H<sub>0</sub></strong>: The new drug’s effect is the same as the standard treatment.</li>
+                            <li><strong>H<sub>1</sub></strong>: The new drug is more effective.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Choose the Appropriate Statistical Test</strong>
+                <ul>
+                    <li>Select the correct test based on the type of data and the research question. Common tests include:
+                        <ul>
+                            <li><strong>t-test</strong> for comparing means.</li>
+                            <li><strong>Chi-square test</strong> for categorical data.</li>
+                            <li><strong>ANOVA</strong> for comparing multiple groups.</li>
+                            <li><strong>Regression analysis</strong> for predicting relationships between variables.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example:</strong> For comparing blood pressure reductions between two drugs, you might use a t-test for independent samples.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Check Assumptions</strong>
+                <ul>
+                    <li>Verify the assumptions behind the statistical test (e.g., normal distribution of data, equal variances). If these assumptions do not hold, consider alternative methods or data transformations.</li>
+                    <li><strong>Example:</strong> Check whether blood pressure reductions are normally distributed and if variances are similar between the two groups.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Compute the Test Statistic and p-Value</strong>
+                <ul>
+                    <li>Perform the statistical test to calculate the test statistic (e.g., t-value, F-value, etc.).</li>
+                    <li>Calculate the <strong>p-value</strong>, which measures the probability that the observed effect could have occurred by chance under the null hypothesis.</li>
+                    <li><strong>Example:</strong> Compute the t-value for the difference in average blood pressure reduction, and find the associated p-value.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Make the Decision</strong>
+                <ul>
+                    <li>Compare the p-value to a predefined significance level (usually \( \alpha = 0.05 \)):
+                    <ul>
+                        <li>If \(p \leq \alpha\), reject the null hypothesis (<strong>H<sub>0</sub></strong>) and conclude that there is a statistically significant effect.</li>
+                        <li>If \(p > \alpha\), fail to reject the null hypothesis and conclude that the observed effect may have occurred by chance.</li>
+                    </ul>
+                    </li>
+                    <li><strong>Example:</strong> If the p-value for the blood pressure test is less than 0.05, conclude that the new drug is statistically more effective than the standard treatment.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Quantify the Uncertainty (Confidence Interval)</strong>
+                <ul>
+                    <li>Calculate the <strong>confidence interval (CI)</strong> to quantify the uncertainty around your estimate. A 95% confidence interval means you are 95% confident that the true parameter lies within this range.</li>
+                    <li><strong>Example:</strong> If the difference in blood pressure reduction is estimated to be 3 mmHg, the 95% confidence interval might be [1.5, 4.5] mmHg.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Draw Conclusions and Make Decisions</strong>
+                <ul>
+                    <li>Use the results of the statistical test and the confidence intervals to make data-driven decisions or recommendations.</li>
+                    <li><strong>Example:</strong> If the new drug shows statistically significant and clinically meaningful improvements in lowering blood pressure, consider recommending it over the standard treatment.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Report and Communicate Findings</strong>
+                <ul>
+                    <li>Present the results in a clear and understandable format, including key statistics, test results, and confidence intervals.</li>
+                    <li>Explain the implications of the results for the decision-making process.</li>
+                    <li><strong>Example:</strong> Present findings to a medical board or company leadership, recommending the new drug based on the evidence.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+     <section>
+        <h2>Problem and Stepwise Solution</h2>
+        <section>
+        <h3>Problem: Does the New Weight Loss Program Work?</h3>
+        <p>Suppose a fitness company has introduced a new weight loss program. The company claims that participants lose an average of 5 kilograms more than with the current program. To test this claim, the company conducts an experiment with 40 people: 20 use the new program, and 20 use the current program. After 8 weeks, the results are as follows:</p>
+        <ul>
+            <li><strong>New program:</strong> mean weight loss = 7 kg, standard deviation = 2 kg</li>
+            <li><strong>Current program:</strong> mean weight loss = 5 kg, standard deviation = 1.5 kg</li>
+        </ul>
+        <p><strong>Objective:</strong> We want to determine whether the difference in weight loss between the two programs is statistically significant or if it could have happened by chance.</p>
+
+        <h4>Step 1: State the Hypotheses</h4>
+        <ul>
+            <li><strong>Null Hypothesis (H<sub>0</sub>):</strong> There is no difference in the mean weight loss between the two programs.
+            <p class="latex-equation">H<sub>0</sub>: μ<sub>new</sub> = μ<sub>current</sub></p></li>
+            <li><strong>Alternative Hypothesis (H<sub>1</sub>):</strong> The new program leads to greater weight loss.
+            <p class="latex-equation">H<sub>1</sub>: μ<sub>new</sub> > μ<sub>current</sub></p></li>
+        </ul>
+
+        <h4>Step 2: Choose the Significance Level (α)</h4>
+        <p>We choose a significance level of α = 0.05.</p>
+
+        <h4>Step 3: Gather the Data</h4>
+        <p>We are given the following data:</p>
+        <ul>
+            <li><strong>New program:</strong> 
+            <p class="latex-equation">X̄<sub>new</sub> = 7 kg, S<sub>new</sub> = 2 kg, n<sub>new</sub> = 20</p></li>
+            <li><strong>Current program:</strong> 
+            <p class="latex-equation">X̄<sub>current</sub> = 5 kg, S<sub>current</sub> = 1.5 kg, n<sub>current</sub> = 20</p></li>
+        </ul>
+
+        <h4>Step 4: Perform the Calculation</h4>
+        <ol>
+            <li><strong>Calculate the Standard Error (SE) for the difference between means:</strong>
+            <p class="latex-equation">SE = √( (S<sub>new</sub><sup>2</sup> / n<sub>new</sub>) + (S<sub>current</sub><sup>2</sup> / n<sub>current</sub>) )</p>
+            Substitute the values:
+            <p class="latex-equation">SE = √( (2<sup>2</sup> / 20) + (1.5<sup>2</sup> / 20) ) = √( (4 / 20) + (2.25 / 20) ) = √(0.2 + 0.1125) = √(0.3125) = 0.559</p></li>
+            <li><strong>Compute the Test Statistic (t-value):</strong>
+            <p class="latex-equation">t = (X̄<sub>new</sub> - X̄<sub>current</sub>) / SE</p>
+            Substitute the values:
+            <p class="latex-equation">t = (7 - 5) / 0.559 = 2 / 0.559 = 3.58</p></li>
+        </ol>
+
+        <h4>Step 5: Determine the p-value</h4>
+        <p>Using a t-distribution table or calculator, the p-value corresponding to t = 3.58 with 38 degrees of freedom is approximately:</p>
+        <p class="latex-equation">p = 0.0004</p>
+
+        <h4>Step 6: Make the Decision</h4>
+        <p>Compare the p-value to the significance level α = 0.05:</p>
+        <ul>
+            <li>If p ≤ α, reject the null hypothesis H<sub>0</sub>.</li>
+            <li>If p > α, fail to reject H<sub>0</sub>.</li>
+        </ul>
+        <p>In this case, p = 0.0004, which is less than α = 0.05, so we <strong>reject the null hypothesis</strong>. This suggests that the new weight loss program leads to significantly greater weight loss than the current program.</p>
+
+        <h4>Step 7: Conclusion</h4>
+        <p>Based on the statistical test, the new weight loss program leads to more weight loss than the current program. With a t-value of 3.58 and a p-value of 0.0004, we can confidently conclude that the observed difference in weight loss is statistically significant and not due to random chance.</p>
+    </section>
+
+    <section>
+        <h3>Problem: Two-Population Testing (Independent t-test)</h3>
+        <p>A school is testing two different teaching methods to determine which one leads to better student performance. The school randomly assigns 30 students to each method. After 12 weeks, the results (mean test scores) are as follows:</p>
+        <ul>
+            <li><strong>Method A:</strong> Mean test score = 85, Standard deviation = 5, Sample size = 30</li>
+            <li><strong>Method B:</strong> Mean test score = 80, Standard deviation = 6, Sample size = 30</li>
+        </ul>
+        <p><strong>Objective:</strong> Determine whether the difference in test scores between the two methods is statistically significant.</p>
+
+        <h4>Step 1: State the Hypotheses</h4>
+        <ul>
+            <li><strong>Null Hypothesis (H<sub>0</sub>):</strong> There is no difference in the mean test scores between the two teaching methods.
+            <p class="latex-equation">H<sub>0</sub>: μ<sub>A</sub> = μ<sub>B</sub></p></li>
+            <li><strong>Alternative Hypothesis (H<sub>1</sub>):</strong> Method A leads to higher test scores than Method B.
+            <p class="latex-equation">H<sub>1</sub>: μ<sub>A</sub> > μ<sub>B</sub></p></li>
+        </ul>
+
+        <h4>Step 2: Choose the Significance Level (α)</h4>
+        <p>We choose a significance level of α = 0.05.</p>
+
+        <h4>Step 3: Gather the Data</h4>
+        <p>The provided data for each teaching method is as follows:</p>
+        <ul>
+            <li><strong>Method A:</strong> <p class="latex-equation">X̄<sub>A</sub> = 85, S<sub>A</sub> = 5, n<sub>A</sub> = 30</p></li>
+            <li><strong>Method B:</strong> <p class="latex-equation">X̄<sub>B</sub> = 80, S<sub>B</sub> = 6, n<sub>B</sub> = 30</p></li>
+        </ul>
+
+        <h4>Step 4: Conduct the Independent Two-Sample t-test</h4>
+        <p>We use the following formula to compute the t-statistic for independent samples:</p>
+        <p class="latex-equation">t = (X̄<sub>A</sub> - X̄<sub>B</sub>) / √( (S<sub>A</sub><sup>2</sup> / n<sub>A</sub>) + (S<sub>B</sub><sup>2</sup> / n<sub>B</sub>) )</p>
+
+        <p>Substituting the values:</p>
+        <p class="latex-equation">t = (85 - 80) / √( (5<sup>2</sup> / 30) + (6<sup>2</sup> / 30) ) = 5 / √( (25 / 30) + (36 / 30) ) = 5 / √(0.833 + 1.2) = 5 / √(2.033) = 5 / 1.426 ≈ 3.51</p>
+
+        <h4>Step 5: Determine the Degrees of Freedom (df)</h4>
+        <p>The degrees of freedom for an independent t-test are approximated using the following formula:</p>
+        <p class="latex-equation">df = ( (S<sub>A</sub><sup>2</sup> / n<sub>A</sub>) + (S<sub>B</sub><sup>2</sup> / n<sub>B</sub>) )<sup>2</sup> / ( ( (S<sub>A</sub><sup>2</sup> / n<sub>A</sub>)<sup>2</sup> / (n<sub>A</sub> - 1) ) + ( (S<sub>B</sub><sup>2</sup> / n<sub>B</sub>)<sup>2</sup> / (n<sub>B</sub> - 1) ) )</p>
+
+        <p>Substituting the values:</p>
+        <p class="latex-equation">df = ( (0.833 + 1.2)<sup>2</sup> ) / ( ( (0.833)<sup>2</sup> / 29 ) + ( (1.2)<sup>2</sup> / 29 ) ) = (2.033)<sup>2</sup> / ( (0.694 / 29) + (1.44 / 29) ) = 4.133 / (0.0239 + 0.0497) = 4.133 / 0.0736 ≈ 56.15</p>
+
+        <p>So the degrees of freedom are approximately df = 56.</p>
+
+        <h4>Step 6: Compare the t-Statistic to the Critical Value</h4>
+        <p>Using a t-distribution table, the critical value for a one-tailed test at α = 0.05 and df = 56 is approximately t<sub>critical</sub> = 1.67.</p>
+
+        <p>Since the computed t = 3.51 is greater than t<sub>critical</sub> = 1.67, we reject the null hypothesis.</p>
+
+        <h4>Step 7: Conclusion</h4>
+        <p>The test provides sufficient evidence to conclude that Method A leads to significantly higher test scores than Method B.</p>
+    </section>
+
+        <section>
+        <h3>Problem: Chi-Square Test for Independence</h3>
+        <p><strong>Problem:</strong> Is There a Relationship Between Exercise and Sleep Quality?</p>
+
+        <p>A health study examines whether exercise frequency is related to sleep quality. The data is collected from 100 individuals and presented in the following contingency table:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Good Sleep Quality</th>
+                    <th>Poor Sleep Quality</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Exercises</th>
+                    <td>30</td>
+                    <td>10</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <th>Does Not Exercise</th>
+                    <td>20</td>
+                    <td>40</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Objective:</strong> Determine whether there is a relationship between exercise and sleep quality.</p>
+
+        <h4>Step 1: State the Hypotheses</h4>
+        <ul>
+            <li><strong>Null Hypothesis (H<sub>0</sub>):</strong> Exercise and sleep quality are independent (no relationship).
+            <p class="latex-equation">H<sub>0</sub>: Exercise is independent of sleep quality</p></li>
+            <li><strong>Alternative Hypothesis (H<sub>1</sub>):</strong> There is a relationship between exercise and sleep quality.
+            <p class="latex-equation">H<sub>1</sub>: Exercise is not independent of sleep quality</p></li>
+        </ul>
+
+        <h4>Step 2: Choose the Significance Level (α)</h4>
+        <p>We choose α = 0.05.</p>
+
+        <h4>Step 3: Calculate Expected Frequencies</h4>
+        <p>First, we calculate the expected frequencies based on the marginal totals in the contingency table. The formula to compute the expected frequency for each cell is:</p>
+        <p class="latex-equation">E<sub>ij</sub> = (Row Total * Column Total) / Grand Total</p>
+
+        <p><strong>Expected Frequencies:</strong></p>
+        <ul>
+            <li>For <strong>Exercises</strong> and <strong>Good Sleep Quality</strong>:
+            <p class="latex-equation">E = (40 * 50) / 100 = 20</p></li>
+            <li>For <strong>Exercises</strong> and <strong>Poor Sleep Quality</strong>:
+            <p class="latex-equation">E = (40 * 50) / 100 = 20</p></li>
+            <li>For <strong>Does Not Exercise</strong> and <strong>Good Sleep Quality</strong>:
+            <p class="latex-equation">E = (60 * 50) / 100 = 30</p></li>
+            <li>For <strong>Does Not Exercise</strong> and <strong>Poor Sleep Quality</strong>:
+            <p class="latex-equation">E = (60 * 50) / 100 = 30</p></li>
+        </ul>
+
+        <p>The expected frequencies are as follows:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Good Sleep Quality</th>
+                    <th>Poor Sleep Quality</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Exercises (Expected)</th>
+                    <td>20</td>
+                    <td>20</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <th>Does Not Exercise (Expected)</th>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 4: Conduct the Chi-Square Test</h4>
+        <p>Using the observed and expected frequencies, we calculate the chi-square statistic using the formula:</p>
+        <p class="latex-equation">χ<sup>2</sup> = Σ ( (O<sub>i</sub> - E<sub>i</sub>)<sup>2</sup> / E<sub>i</sub> )</p>
+
+        <p><strong>Observed Values:</strong> O = {30, 10, 20, 40}</p>
+        <p><strong>Expected Values:</strong> E = {20, 20, 30, 30}</p>
+
+        <p>Now, calculate χ<sup>2</sup>:</p>
+        <p class="latex-equation">χ<sup>2</sup> = ( (30 - 20)<sup>2</sup> / 20 ) + ( (10 - 20)<sup>2</sup> / 20 ) + ( (20 - 30)<sup>2</sup> / 30 ) + ( (40 - 30)<sup>2</sup> / 30 )</p>
+        <p class="latex-equation">χ<sup>2</sup> = (10<sup>2</sup> / 20) + (-10<sup>2</sup> / 20) + (-10<sup>2</sup> / 30) + (10<sup>2</sup> / 30)</p>
+        <p class="latex-equation">χ<sup>2</sup> = 100 / 20 + 100 / 20 + 100 / 30 + 100 / 30</p>
+        <p class="latex-equation">χ<sup>2</sup> = 5 + 5 + 3.33 + 3.33 = 16.66</p>
+
+        <h4>Step 5: Compare the Chi-Square Statistic to the Critical Value</h4>
+
+        <p>We have 1 degree of freedom (df = (r - 1)(c - 1) = 1).</p>
+
+        <p>From the chi-square distribution table, the critical value for α = 0.05 and 1 degree of freedom is 3.84.</p>
+
+        <p>Since χ<sup>2</sup> = 16.66 is greater than 3.84, we reject the null hypothesis.</p>
+
+        <h4>Step 6: Conclusion</h4>
+
+        <p>There is sufficient evidence to conclude that exercise frequency is related to sleep quality.</p>
+    </section>
+    <section>
+         <h3>Problem: One-Way ANOVA</h3>
+        <p><strong>Problem:</strong> Do Different Fertilizers Affect Plant Growth?</p>
+
+        <p>A botanist tests whether three different fertilizers lead to different levels of plant growth. She applies Fertilizer A, B, and C to three groups of plants. The average growth (in cm) after one month is as follows:</p>
+        <ul>
+            <li><strong>Fertilizer A:</strong> Growth = 10 cm, 12 cm, 11 cm</li>
+            <li><strong>Fertilizer B:</strong> Growth = 14 cm, 15 cm, 16 cm</li>
+            <li><strong>Fertilizer C:</strong> Growth = 9 cm, 8 cm, 10 cm</li>
+        </ul>
+
+        <p><strong>Objective:</strong> Determine whether there is a significant difference in plant growth between the three fertilizers.</p>
+
+        <h4>Step 1: State the Hypotheses</h4>
+        <ul>
+            <li><strong>Null Hypothesis (H<sub>0</sub>):</strong> All three fertilizers lead to the same
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Unraveling Insights from Data</h2>
+        <p>Explore statistical methods, probability theories, and real-world data applications.</p>
+    </section>
+
+    <!-- Blog Posts -->
+    <!-- <section class="blog-container">
+        <article class="blog-card">
+            <img src="images/probability.jpg" alt="Probability">
+            <h3>Understanding Probability</h3>
+            <p>Dive into the fundamentals of probability and how it influences statistical analysis.</p>
+            <a href="probability.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="blog-card">
+            <img src="images/hypothesis_testing.jpg" alt="Hypothesis Testing">
+            <h3>Hypothesis Testing</h3>
+            <p>Learn how to make data-driven decisions using hypothesis testing techniques.</p>
+            <a href="hypothesis.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="blog-card">
+            <img src="images/machine_learning_stats.jpg" alt="ML & Statistics">
+            <h3>Statistics in Machine Learning</h3>
+            <p>Discover the role of statistics in modern AI and machine learning algorithms.</p>
+            <a href="ml_statistics.html" class="read-more">Read More</a>
+        </article>
+    </section> -->
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Statistics Blog | Designed by Janmajay</p>
+    </footer>
+
+</body>
+</html>

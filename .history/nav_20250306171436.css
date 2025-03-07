@@ -1,0 +1,53 @@
+/* Full Navbar (for Large Screens) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #222;
+    color: white;
+    
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-size: 2rem;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background: #29a587;
+    border-radius: 5px;
+  }
+  
+  
+  /* Style for the Explore text */
+  .menu-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px; /* Space between lines and text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-family: "Rowdies", sans-serif;
+  }
+  
+  /* When Menu is Clicked - Change Color */
+  .menu-container:hover .menu-text {
+    color: #29a587;
+    transform: scale(1.1);
+  }
+  

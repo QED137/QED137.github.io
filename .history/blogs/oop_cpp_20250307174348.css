@@ -1,0 +1,206 @@
+
+/* body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0px;
+    padding: 0px;
+    background-color: #f4f4f4;
+}
+h1, h2, h3 {
+    color: #333;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+code {
+    background-color: #f4f4f4;
+    padding: 2px 5px;
+    border-radius: 3px;
+} */
+
+
+        /* Navbar */
+        /* .navbar {
+            background: #333;
+            padding: 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background: #555;
+        } */
+
+        /* Blog Content */
+        /* .blog-content {
+            padding: 20px;
+            text-align: justify;
+        }
+
+        .blog-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #222;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .blog-meta {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        /* @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            .navbar a {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+        } */ 
+        @import url(machinelearning.css);
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/* Blog Header */
+.blog-header {
+   background: #007bff;
+   color: white;
+   padding: 50px 10%;
+   text-align: center;
+}
+
+.blog-header h1 {
+   font-size: 2.5rem;
+}
+
+.blog-header p {
+   font-size: 1.1rem;
+   margin-top: 10px;
+}
+
+/* Blog Content */
+
+.blog-content {
+   max-width: 800px;
+   margin: auto;
+   padding: 40px;
+   background: white;
+    
+   color:black;
+   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+   border-radius: 10px;
+   margin-top: 30px;
+   
+}
+
+.blog-content h2 {
+   color: #007bff;
+   margin-top: 20px;
+}
+
+.blog-content h3 {
+   color: #222;
+   margin-top: 15px;
+}
+
+.blog-content p {
+   font-size: 1.1rem;
+   line-height: 1.6;
+   margin-top: 10px;
+}
+
+.blog-content ul {
+   padding-left: 20px;
+   margin-top: 10px;
+}
+
+.blog-content ul li {
+   margin-bottom: 8px;
+}
+
+/* Footer */
+footer {
+   text-align: center;
+   padding: 20px;
+   background: #222;
+   color: white;
+   margin-top: 30px;
+}
+/* Main Styling for Code Blocks */
+pre {
+    background-color: #1e1e1e; /* VS Code dark theme */
+    color: #d4d4d4; /* Default light text color */
+    font-family: "Consolas", "Courier New", monospace;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #007acc; /* VS Code Blue Accent */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: pre-wrap;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure Inline Code is Distinct */
+code {
+    background-color: #252526; /* Slightly darker than pre for contrast */
+    color: #dcdcdc;
+    font-family: "Consolas", "Courier New", monospace;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* Code inside pre blocks */
+pre code {
+    display: block;
+    padding: 0;
+    border: none;
+    overflow: visible;
+}
+
+/* Customizing Syntax Highlighting */
+pre code .keyword { color: #569CD6; } /* Keywords (class, int, void, etc.) */
+pre code .string { color: #CE9178; }  /* Strings */
+pre code .comment { color: #6A9955; font-style: italic; } /* Comments */
+pre code .function { color: #DCDCAA; } /* Function names */
+pre code .number { color: #B5CEA8; } /* Numbers */
+pre code .operator { color: #D4D4D4; } /* Operators (+, -, =, etc.) */
+pre code .variable { color: #9CDCFE; } /* Variables */
+
+/* Scrollbar Customization */
+pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+pre::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+/* Make the font look more like VS Code */
+pre code::selection {
+    background: rgba(0, 122, 204, 0.3);
+}
+
+ 

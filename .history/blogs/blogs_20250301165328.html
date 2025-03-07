@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MathJax for LaTeX Math Equations -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+
+ <
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="statistics.html">Statistics</a>
+        <a href="mathematics.html">Mathematics</a>
+        <a href="physics.html">Physics</a>
+        <a href="ai.html">AI</a>
+        <a href="machine-learning.html">Machine Learning</a>
+        <a href="cloud-computing.html">Cloud Computing</a>
+        <a href="about.html">About</a>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <h1 class="blog-title">Welcome to My Blog</h1>
+        <p class="blog-meta">Published on <span id="currentDate"></span></p>
+
+        <div class="blog-content">
+            <p>This blog covers topics in <b>Statistics, Mathematics, Physics, AI, Machine Learning, and Cloud Computing</b>. Stay tuned for insightful posts!</p>
+
+            <h2>📌 Latest Post: Understanding Probability</h2>
+            <p>Probability theory is a branch of mathematics concerned with analyzing random events. The probability of an event \( A \) occurring is defined as:</p>
+
+            <p>
+                \[
+                P(A) = \frac{\text{Number of Favorable Outcomes}}{\text{Total Number of Outcomes}}
+                \]
+            </p>
+
+            <p>Probability plays a fundamental role in **Statistics, AI, and Machine Learning**.</p>
+
+            <h3>📍 Example</h3>
+            <p>If we roll a fair six-sided die, the probability of rolling a **3** is:</p>
+            
+            <p>
+                \[
+                P(3) = \frac{1}{6}
+                \]
+            </p>
+
+            <p>Stay tuned for more interesting posts!</p>
+        </div>
+    </div>
+
+    <script>
+        // Automatically display the current date
+        document.getElementById("currentDate").textContent = new Date().toDateString();
+    </script>
+
+</body>
+</html>

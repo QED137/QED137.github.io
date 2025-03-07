@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+  <!-- Prism.js for Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+
+  <link rel="stylesheet" href="oop_cpp.css" />
+
+  <meta name="author" content="Janmajay Kumar" />
+  <title>Minimum Object-Oriented Programming in C++ for GEANT4</title>
+
+  <style>
+    /* Additional styling to ensure VS Code-like experience */
+    pre {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        font-family: "Consolas", "Courier New", monospace;
+        padding: 12px;
+        border-radius: 8px;
+        border-left: 4px solid #007acc;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    code {
+        background-color: #252526;
+        color: #dcdcdc;
+        font-family: "Consolas", "Courier New", monospace;
+        padding: 2px 5px;
+        border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <h1>OOP in CPP</h1>
+      <nav>
+          <a href="../index.html">Home</a>
+          <a href="blogs.html" class="active">Blogs</a>
+          <a href="../gallery.html">Gallery</a>
+          <a href="../about/about.html">About</a>
+      </nav>
+  </header>
+
+  <section class="blog-header">
+    <div class="container">
+        <h1>Minimum Object-Oriented Programming to Start with GEANT4</h1>
+        <p>By <strong>Janmajay Kumar</strong> | April 2022</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+
+      <h1 id="introduction">Introduction</h1>
+      <p>
+        Geant4 is a powerful simulation toolkit widely used in high-energy physics,
+        medical physics, and space science. It allows users to simulate the interactions 
+        of particles with matter. The toolkit is designed using Object-Oriented Programming (OOP) 
+        in C++, making it modular, reusable, and scalable.
+      </p>
+
+      <p>
+        To effectively use Geant4, understanding OOP is essential. OOP helps organize 
+        code into structured components (objects), making it easier to model detector 
+        geometries, particle interactions, and physics processes.
+      </p>
+
+      <p>
+        This blog introduces key OOP concepts in C++ and how they are applied in
+        Geant4, helping beginners develop well-structured and maintainable simulation code.
+      </p>
+
+      <h1 id="key-oop-concepts-in-c-used-in-geant4">Key OOP Concepts in C++ Used in Geant4</h1>
+
+      <h2 id="classes-and-objects">1. Classes and Objects</h2>
+      <p>A class is a blueprint for creating objects. Objects are instances of a class.</p>
+
+      <pre><code class="language-cpp">
+class Detector
+{
+public:
+    void Construct();  // Method to construct the detector
+};
+
+int main()
+{
+    Detector myDetector;  // Create an object of Detector
+    myDetector.Construct();  // Call the method
+}
+      </code></pre>
+
+      <h2 id="inheritance">2. Inheritance</h2>
+      <p>Inheritance allows a class to inherit properties and methods from another class.</p>
+
+      <pre><code class="language-cpp">
+class Animal  // Base class
+{
+public:
+    void Eat() { std::cout << "Eating..." << std::endl; }
+};
+
+class Dog : public Animal  // Derived class
+{
+public:
+    void Bark() { std::cout << "Barking..." << std::endl; }
+};
+
+int main()
+{
+    Dog myDog;
+    myDog.Eat();  // Inherited from Animal
+    myDog.Bark(); // Defined in Dog
+}
+      </code></pre>
+
+      <p>In Geant4:</p>
+      <ul>
+        <li><p><code>G4VUserDetectorConstruction</code> is an abstract base class.</p></li>
+        <li><p>You inherit from it and define your own detector in <code>MyDetectorConstruction</code>.</p></li>
+      </ul>
+
+      <pre><code class="language-cpp">
+class MyDetectorConstruction : public G4VUserDetectorConstruction
+{
+public:
+    G4VPhysicalVolume* Construct() override;
+};
+      </code></pre>
+
+      <h2 id="polymorphism-virtual-functions">3. Polymorphism (Virtual Functions)</h2>
+      <p>Polymorphism allows derived classes to override functions from the base class while keeping a common interface.</p>
+
+      <pre><code class="language-cpp">
+class Base
+{
+public:
+    virtual void Show() { std::cout << "Base class" << std::endl; }  // Virtual function
+};
+
+class Derived : public Base
+{
+public:
+    void Show() override { std::cout << "Derived class" << std::endl; } // Overriding
+};
+
+int main()
+{
+    Base* obj = new Derived(); // Pointer to base class, but calling derived class method
+    obj->Show();  // Output: Derived class
+}
+      </code></pre>
+
+      <h2 id="constructors-initialization-lists">4. Constructors & Initialization Lists</h2>
+      <p>Constructors initialize objects, and initialization lists help optimize member initialization.</p>
+
+      <pre><code class="language-cpp">
+class Detector
+{
+private:
+    int id;
+public:
+    Detector(int val) : id(val) {}  // Initialization list
+};
+      </code></pre>
+
+      <p>In Geant4, you will see initialization lists in constructors:</p>
+
+      <pre><code class="language-cpp">
+class MyActionInitialization : public G4VUserActionInitialization
+{
+private:
+    MyDetectorConstruction* fDetector;
+
+public:
+    MyActionInitialization(MyDetectorConstruction* detector) : fDetector(detector) {}
+};
+      </code></pre>
+
+    </div>
+  </section>
+
+  <script>Prism.highlightAll();</script> <!-- Ensure Prism.js applies syntax highlighting -->
+
+</body>
+</html>

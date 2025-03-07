@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+<link rel="stylesheet" href="oop_cpp.css" />
+
+  <meta name="author" content="Janmajay Kumar" />
+  <title>Minimum Object-Oriented Programming in C++ for GEANT4</title>
+  <!-- <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      display: block;
+      background-color: #1e1e1e; /* Dark background like a terminal */
+      color: #dcdcdc; /* Light gray text */
+      font-family: "Courier New", monospace;
+      padding: 10px;
+      border-radius: 5px;
+      border-left: 5px solid #29a587; /* Green left border */
+      overflow-x: auto; /* Enable scrolling for long code */
+      white-space: pre-wrap;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style> -->
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <h1>Statistics & Data Science</h1>
+      <nav>
+          <a href="../index.html">Home</a>
+          <a href="blogs.html" class="active">Blogs</a>
+         <!-- <a href="statistics.html" class="active">Statistics</a>
+          <a href="physics.html">Physics</a>
+          <a href="mathematics.html">Mathematics</a>
+          <a href="machinelearning.html">Machine Learning</a> -->
+          <a href="../gallery.html">Gallery</a>
+          <a href="../about/about.html">About</a>
+      </nav>
+  </header>
+<header id="title-block-header">
+<h1 class="title">Minimum Object-Oriented Programming to start with GEANT4</h1>
+<p class="author">Janmajay Kumar</p>
+<p class="date">April 2022</p>
+</header>
+<h1 id="introduction">Introduction</h1>
+<p>To understand Geant4 semantics, you need a good grasp of
+Object-Oriented Programming (OOP) in C++. Geant4 is designed using OOP
+principles, which allow modular, reusable, and extendable simulation
+components.</p>
+<h1 id="key-oop-concepts-in-c-used-in-geant4">Key OOP Concepts in C++
+Used in Geant4</h1>
+<h2 id="classes-and-objects">Classes and Objects</h2>
+<p>A class is a blueprint for creating objects. Objects are instances of
+a class. Example Basic Class:</p>
+<pre><code>class Detector
+{
+public:
+    void Construct();  // Method to construct the detector
+};
+
+int main()
+{
+    Detector myDetector;  // Create an object of Detector
+    myDetector.Construct();  // Call the method
+}
+</code></pre>
+<p>G4RunManager, G4VUserDetectorConstruction, and
+G4VUserActionInitialization are classes that you instantiate in
+main().</p>
+<h2 id="inheritance">Inheritance</h2>
+<p>Inheritance allows a class to inherit properties and methods from
+another class. Example: Inheritance</p>
+<pre><code>    class Animal  // Base class
+{
+public:
+    void Eat() { std::cout &lt;&lt; &quot;Eating...&quot; &lt;&lt; std::endl; }
+};
+
+class Dog : public Animal  // Derived class
+{
+public:
+    void Bark() { std::cout &lt;&lt; &quot;Barking...&quot; &lt;&lt; std::endl; }
+};
+
+int main()
+{
+    Dog myDog;
+    myDog.Eat();  // Inherited from Animal
+    myDog.Bark(); // Defined in Dog
+}
+</code></pre>
+<p>In Geant4:</p>
+<ul>
+<li><p>G4VUserDetectorConstruction is an abstract base class (it has no
+direct implementation).</p></li>
+<li><p>You inherit from it and define your own detector in
+MyDetectorConstruction.</p></li>
+</ul>
+<p>Geant4 Example</p>
+<pre><code>    class MyDetectorConstruction : public G4VUserDetectorConstruction
+{
+public:
+    G4VPhysicalVolume* Construct() override;
+};
+</code></pre>
+<ul>
+<li><p>The override keyword tells the compiler that this function
+overrides a method from the base class.</p></li>
+</ul>
+<h2 id="polymorphism-virtual-functions">Polymorphism (Virtual
+Functions)</h2>
+<p>Polymorphism allows derived classes to override functions from the
+base class while keeping a common interface. Example: Polymorphism</p>
+<pre><code>    class Base
+{
+public:
+    virtual void Show() { std::cout &lt;&lt; &quot;Base class&quot; &lt;&lt; std::endl; }  // Virtual function
+};
+
+class Derived : public Base
+{
+public:
+    void Show() override { std::cout &lt;&lt; &quot;Derived class&quot; &lt;&lt; std::endl; } // Overriding
+};
+
+int main()
+{
+    Base* obj = new Derived(); // Pointer to base class, but calling derived class method
+    obj-&gt;Show();  // Output: Derived class
+}
+</code></pre>
+<p>In Geant4:</p>
+<ul>
+<li><p>Many Geant4 base classes, like G4VUserPhysicsList,
+G4VUserDetectorConstruction, and G4VUserActionInitialization, contain
+virtual functions that you must override.</p></li>
+</ul>
+<p>Geant4 Example</p>
+<pre><code>    class MyPhysicsList : public G4VUserPhysicsList
+{
+public:
+    void ConstructParticle() override;
+    void ConstructProcess() override;
+};</code></pre>
+<h2 id="encapsulation-access-control">Encapsulation (Access
+Control)</h2>
+<p>Encapsulation means hiding internal details of a class while exposing
+a controlled interface. Example: Encapsulation</p>
+<pre><code>    class Detector
+{
+private:
+    int sensitiveVolume;  // Private member (not accessible outside)
+
+public:
+    void SetVolume(int v) { sensitiveVolume = v; }
+    int GetVolume() { return sensitiveVolume; }
+};
+
+int main()
+{
+    Detector d;
+    d.SetVolume(10);
+    std::cout &lt;&lt; d.GetVolume();  // Access controlled via methods
+}
+</code></pre>
+<p>In Geant4:</p>
+<ul>
+<li><p>Most classes keep their data members private and provide public
+methods to interact with them.</p></li>
+</ul>
+<p>Geant4 Example</p>
+<pre><code>    class MyDetectorConstruction : public G4VUserDetectorConstruction
+{
+private:
+    G4LogicalVolume* fLogicalVolume; // Private member
+
+public:
+    G4LogicalVolume* GetLogicalVolume() { return fLogicalVolume; } // Controlled access
+};
+</code></pre>
+<h2 id="constructors-initialization-lists">Constructors &amp;
+Initialization Lists</h2>
+<p>A constructor is a special function that is called when an object is
+created. Initialization lists optimize member initialization. Example:
+Constructor with Initialization List</p>
+<pre><code>    class Detector
+{
+private:
+    int id;
+public:
+    Detector(int val) : id(val) {}  // Initialization list
+};
+</code></pre>
+<p>In Geant4:<br />
+You will see initialization lists in constructors.<br />
+Geant4 Example</p>
+<pre><code>    class MyActionInitialization : public G4VUserActionInitialization
+{
+private:
+    MyDetectorConstruction* fDetector;
+
+public:
+    MyActionInitialization(MyDetectorConstruction* detector) : fDetector(detector) {}
+};
+</code></pre>
+</body>
+</html>

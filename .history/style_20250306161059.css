@@ -1,0 +1,121 @@
+/* General Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+  background: rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  color: white;
+  font-size: 1.6rem;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+  color: #f4a261;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  bottom: 0;
+  left: 50%;
+  background: #f4a261;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.nav-links li a:hover::after {
+  width: 70%;
+}
+
+/* Mobile Navigation */
+.navigation {
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  width: 70%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.4s ease-in-out;
+  z-index: 999;
+}
+
+.navigation a {
+  color: white;
+  font-size: 2rem;
+  margin: 1rem 0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navigation a:hover {
+  color: #f4a261;
+}
+
+/* Show Mobile Nav when Active */
+.navigation.active {
+  right: 0;
+}
+
+/* Menu Button (Mobile) */
+.menu-icon {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.menu-btn {
+  background: #f4a261;
+  color: white;
+  font-size: 1.8rem;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Hide Mobile Navigation and Show Desktop for Larger Screens */
+@media screen and (min-width: 900px) {
+  .menu-icon {
+    display: none;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .navbar {
+    display: flex;
+  }
+}
+
+/* Show Mobile Navigation and Hide Desktop for Small Screens */
+@media screen and (max-width: 900px) {
+  .navbar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
