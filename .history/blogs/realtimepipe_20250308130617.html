@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Blog</title>
+    <link rel="stylesheet" href="statistics.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/kapakana" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    
+                
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <h1>Statistics & Data Science</h1>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="blogs.html" class="active">Blogs</a>
+            <!-- <a href="statistics.html" class="active">Statistics</a>
+            <a href="physics.html">Physics</a>
+            <a href="mathematics.html">Mathematics</a>
+            <a href="machinelearning.html">Machine Learning</a> -->
+            <a href="../gallery.html">Gallery</a>
+            <a href="../about/about.html">About</a>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <!-- <section class="hero">
+        <h2>Unraveling Insights from Data</h2>
+        <p>Explore statistical methods, probability theories, and real-world data applications.</p>
+    </section> -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>Automating Real-Time Data Pipelines: Integrating Weather and Flight APIs with Python and MySQL</h1>
+            <p>Learn how to build a real-time data pipeline using Python to fetch weather and flight information and store it in a MySQL database.</p>  
+            <p>By <strong>Janmajay Kumar</strong> | October 2024</p>
+        </div>
+    </section>
+
+    <section class="blog-content">
+        <div class="container">
+
+            <h2>Introduction</h2>
+            <p ><i>
+                In this article, we'll walk you through the steps of building an automated data 
+                pipeline that integrates data from OpenWeather API and AeroDataBox API to store 
+                real-time weather and flight information into a MySQL database. Along the way, we'll 
+                learn about the importance of data pipelines in ensuring smooth and scalable data processing 
+                workflows and how to secure sensitive credentials such as API keys and database passwords.</i>
+            </p>
+            <div style="width: 500px; ">
+                <img src="etlblog.jpg" alt="Google Cloud Architecture" style="max-width: 100%; height: auto;">
+            </div>
+            <h2>The Importance of Database Pipelines in Modern Data Engineering</h2>
+            <p>In today’s data-driven world, businesses and organizations rely on vast amounts of 
+                data to make informed decisions, optimize operations, and predict future trends.
+                 This data comes from multiple sources: customer transactions, IoT devices, weather
+                  APIs, flight information, and more. The challenge lies not only in collecting 
+                this data but also in storing, processing, and analyzing it effectively.</p>
+
+                <p>This is where <strong>database pipelines </strong>come into play. A well-structured 
+                    database pipeline ensures data flows seamlessly from source to storage 
+                    and then to analysis. It connects different systems and data sources,
+                     ensuring the right information 
+                    is available in the right format at the right time.</p>
+                    
+            <h2>What is a Database Pipeline?</h2>   
+            <p>A <strong>database pipeline</strong> is a series of
+                 steps that data goes through from collection to storage in a database, 
+                and then further to processing or analysis. 
+                The pipeline typically involves multiple stages: 
+            </p> 
+                    <ul >
+                        <li><strong>Data Collection:</strong>  Fetching data from various sources like APIs, internal systems, or third-party services.</li>
+                        <li><strong>Data Transformation:</strong> Cleaning, formatting, and preparing the data for storage, and use.</li>
+                        <li><strong>Data Storage:</strong> Storing the processed data in a database or data warehouse.</li>
+                        <li><strong>Data Retrieval:</strong> Querying the database to retrieve stored data for analysis, reporting, or decision-making.</li>   
+                    </ul>
+                
+                    A pipeline’s primary function is to automate and streamline the flow of data, minimizing manual 
+            intervention and ensuring consistency across systems.
+            <h2>Building a Real-Time Data Pipeline</h2>
+            <p>Let's dive into building a real-time data pipeline that fetches weather and flight information 
+                from APIs and stores it in a MySQL database. We'll use Python for data collection and transformation, 
+                and MySQL for data storage. Here's an overview of the pipeline:</p>
+
+
+                <h3>Architecture Overview</h3>
+                <p>The real-time data pipeline consists of:</p>
+                <ul>
+                    <li><strong>Google Pub/Sub</strong> - Event ingestion & messaging</li>
+                    <li><strong>Cloud Dataflow</strong> - Stream processing & transformations</li>
+                    <li><strong>BigQuery</strong> - Data storage & analytics</li>
+                    <li><strong>Cloud Functions</strong> - Event-driven triggers</li>
+                </ul>
+
+         
+            <h2>1: Data Collection</h2>
+            <p>Fetching City Data from Wikipedia Using BeautifulSoup,
+                 we scrape the coordinates and country for each city from Wikipedia:</p>
+                
+            
+                 <pre><code class="language-python">
+                    from bs4 import BeautifulSoup
+                    import requests
+                    from lat_lon_parser import parse
+                    import pandas as pd
+                    
+                    def cities_data(cities):
+                        city_data = []
+                        for city in cities:
+                            url = f"https://www.wikipedia.org/wiki/{city}"
+                            response = requests.get(url)
+                            city_soup = BeautifulSoup(response.content, 'html.parser')
+                            latitude = city_soup.find(class_="latitude").get_text()
+                            longitude = city_soup.find(class_="longitude").get_text()
+                            country = city_soup.find(class_="infobox-data").get_text()
+                    
+                            city_data.append({
+                                "City": city,
+                                "Country": country,
+                                "Latitude": parse(latitude),
+                                "Longitude": parse(longitude),
+                            })
+                        return pd.DataFrame(city_data)
+                        </code></pre>
+          <h2>2. Fetching Weather Data </h2> 
+          <p>
+          from OpenWeather API We use the OpenWeather API to retrieve weather data like temperature, humidity, and weather
+             conditions for the cities. The following is a brief sketch of the code. 
+             (Full code one can find on <a href="https://github.com" target="_blank">GitHub</a>)  </p>
+             <pre><code class="language-python">
+                def get_weather_data(lat, lon, api_key):
+                    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}&units=metric"
+                    response = requests.get(url)
+                    if response.status_code == 200:
+                        weather_data = response.json()
+                        return weather_data
+                    else:
+                        print(f"Failed to retrieve data: {response.status_code}")
+                        return None
+                </code></pre>
+   
+       <h2>3. Fetching Flight Data from AeroDataBox API </h2>
+       <p>The AeroDataBox API provides flight information such as scheduled arrivals for specific airports. 
+        The following is a brief sketch of the code. (Full code one can find  on <a href="https://github.com" target="_blank">GitHub</a>)</p>
+        <pre><code class="language-python">
+    def get_flight_data(icao_list, api_key):
+    flight_items = []
+    for icao in icao_list:
+        url = f"https://aerodatabox.p.rapidapi.com/flights/airports/icao/{icao}/2024-10-10T00:00/2024-10-10T23:59"
+        headers = {
+            'x-rapidapi-key': api_key
+        }
+        response = requests.get(url, headers=headers)
+        flights_json = response.json()
+        
+        for item in flights_json["arrivals"]:
+            flight_items.append({
+                "arrival_airport_icao": icao,
+                "flight_number": item.get("number", None),
+                "scheduled_arrival_time": item["arrival"]["scheduledTime"].get("local", None)
+            })
+    return pd.DataFrame(flight_items)
+        </code></pre> 
+        <h2>4. Storing Data in MySQL Database</h2>
+        <p>The retrieved data is stored in a MySQL database for future retrieval and analysis. We use SQLAlchemy to interact with the database. 
+        The following is a brief sketch of the code. (Full code one can find  on <a href="https://github.com" target="_blank">GitHub</a>)  
+    </p>
+    <pre><code class="language-python">
+        from sqlalchemy import create_engine
+        def connect_database(config):
+           connect_string = f'mysql+pymysql://{config["user"]}:{config["password"]}@{config["host"]}:{config["port"]}/{config["database"]}'
+           engine = create_engine(connect_string)
+           return engine
+        def push_to_database(df, table_name, engine):
+           df.to_sql(table_name, con=engine, if_exists='append', index=False)    
+     </code></pre>
+     <h2>Retrieving and Analyzing Data</h2>
+     <p>Once the data is stored, it can be queried and analyzed 
+        from the database. Here’s how we retrieve the weather data for analysis:</p>
+        <pre><code class="language-python">
+            
+def retrieve_from_db(table, engine):
+    query = f"SELECT * FROM {table}"
+    return pd.read_sql(query, con=engine)
+
+engine = connect_database(config)
+weather_df = retrieve_from_db('weather_data', engine)  
+        </code></pre> 
+
+        <p>On can keep main workflow in a main.py file. The 
+            project also contains a main.py file, which serves
+             as the central point for executing the code and controlling
+              the various components of the data pipeline. One can maneuver
+               this file to adjust what data
+             is fetched, stored, or retrieved, depending on the desired output.</p>
+        <h2>Automating with Cron job</h2>     
+        
+         <p>To ensure the pipeline runs automatically at regular intervals, I used a cron job for scheduling. This allows the system to fetch weather and flight data, store it in the database, and send notifications — without manual input.
+
+            For example, to run the script daily at midnight, one can set up the following cron job:</p>
+            <pre><code class="language-python">
+              # Open the crontab editor  
+              crontab -e
+
+              # Add this line to schedule the Python script
+              0 0 * * * /path/to/your/project/automation.sh
+            </code></pre>
+            <p>and automation.sh look like the following, one can tailor it according to the need :</p>
+            <pre><code class="language-python">
+                
+ 
+            </code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <h2>2. Setting Up Pub/Sub for Data Streaming</h2>
+            <p>Google Pub/Sub acts as a messaging service, allowing multiple sources to publish data, which is then processed downstream.</p>
+            <pre><code>
+gcloud pubsub topics create my-topic
+gcloud pubsub subscriptions create my-subscription --topic=my-topic
+            </code></pre>
+
+            <h2>3. Processing Data Using Cloud Dataflow</h2>
+            <p>Google Cloud Dataflow, powered by Apache Beam, is used for stream processing.</p>
+            <pre><code>
+python my_dataflow_pipeline.py --runner=DataflowRunner --project=my-project
+            </code></pre>
+
+            <h2>4. Storing Data in BigQuery</h2>
+            <p>Processed data is stored in BigQuery for analytics.</p>
+            <pre><code>
+bq query --use_legacy_sql=false 'SELECT * FROM my_dataset.realtime_data'
+            </code></pre>
+
+            <h2>5. Automating with Cloud Functions</h2>
+            <p>Google Cloud Functions automate the pipeline by triggering actions when new data arrives.</p>
+            <pre><code>
+gcloud functions deploy my-function --trigger-topic=my-topic
+            </code></pre>
+
+            <h2>Conclusion</h2>
+            <p>By integrating these GCP services, we create a scalable, automated, and real-time data pipeline. This architecture is ideal for applications requiring instant data processing and analytics.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Data Engineering Blog | Created by Janmajay Kumar</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>

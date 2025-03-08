@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Syntax Highlighting</title>
+    <style>
+        pre {
+            background-color: #1e1e1e; /* VS Code dark background */
+            color: #d4d4d4; /* Default text color */
+            padding: 16px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .token.keyword { /* Keywords like `import`, `def`, `for` */
+            color: #569cd6; /* Blue */
+        }
+
+        .token.function { /* Function names */
+            color: #dcdcaa; /* Light yellow */
+        }
+
+        .token.string { /* Strings */
+            color: #ce9178; /* Orange */
+        }
+
+        .token.comment { /* Comments */
+            color: #6a9955; /* Green */
+        }
+
+        .token.punctuation { /* Punctuation like `(`, `)`, `{`, `}` */
+            color: #d4d4d4; /* Light gray */
+        }
+
+        .token.operator { /* Operators like `=`, `+`, `-` */
+            color: #d4d4d4; /* Light gray */
+        }
+
+        .token.number { /* Numbers */
+            color: #b5cea8; /* Light green */
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Code Example</h1>
+    <p>Below is the Python code for fetching city data from Wikipedia:</p>
+    <pre><code class="language-python">
+from bs4 import BeautifulSoup
+import requests
+from lat_lon_parser import parse
+import pandas as pd
+
+def cities_data(cities):
+    city_data = []
+    for city in cities:
+        url = f"https://www.wikipedia.org/wiki/{city}"
+        response = requests.get(url)
+        city_soup = BeautifulSoup(response.content, 'html.parser')
+        latitude = city_soup.find(class_="latitude").get_text()
+        longitude = city_soup.find(class_="longitude").get_text()
+        country = city_soup.find(class_="infobox-data").get_text()
+
+        city_data.append({
+            "City": city,
+            "Country": country,
+            "Latitude": parse(latitude),
+            "Longitude": parse(longitude),
+        })
+    return pd.DataFrame(city_data)
+    </code></pre>
+
+    <!-- Prism.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>
