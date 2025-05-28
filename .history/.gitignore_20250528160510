@@ -39,9 +39,3 @@ public_html/.htaccess # Only if modified manually
 # Ignore personal files
 *.pdf  # Avoid uploading your CV unless intentional
 state_text.html
-# Ignore specific files
-*.log            # Log files
-*.bak            # Backup files
-*.tmp            # Temporary files
-# Ignore history files
-.history/       # Local history files

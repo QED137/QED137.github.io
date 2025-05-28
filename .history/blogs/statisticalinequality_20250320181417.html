@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Inequalities and Their Practical Applications</title>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; }
+        h1, h2 { color: #333; }
+        .inequality { background: #f4f4f4; padding: 10px; border-left: 5px solid #333; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Probability Inequalities and Their Practical Applications</h1>
+
+    <div class="inequality">
+        <h2>1. Markov's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(X \geq a) \leq \frac{E[X]}{a} \)</p>
+        <p><strong>Solved Example:</strong> Given \( E[X] = 4 \) and \( a = 16 \), we compute:</p>
+        <p>\( P(X \geq 16) \leq \frac{4}{16} = 0.25 \)</p>
+    </div>
+
+    <div class="inequality">
+        <h2>2. Chebyshev's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2} \)</p>
+        <p><strong>Solved Example:</strong> For \( k = 2 \), we compute:</p>
+        <p>\( P(|X - 70| \geq 20) \leq \frac{1}{2^2} = 0.25 \)</p>
+    </div>
+
+    <div class="inequality">
+        <h2>3. Jensen's Inequality</h2>
+        <p><strong>Formula:</strong> \( f(E[X]) \leq E[f(X)] \)</p>
+        <p><strong>Solved Example:</strong> Let \( X \) be income, with \( E[X] = 3 \) and \( X = \{2, 4\} \), we compute:</p>
+        <p>\( f(3) = 3^2 = 9, \quad E[f(X)] = \frac{2^2 + 4^2}{2} = 10 \)</p>
+    </div>
+
+    <div class="inequality">
+        <h2>4. Hoeffding's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(|\bar{X} - \mu| \geq t) \leq 2\exp(-2nt^2) \)</p>
+        <p><strong>Solved Example:</strong> If \( n = 1000, t = 0.1 \), then:</p>
+        <p>\( P(|\bar{X} - \mu| \geq 0.1) \leq 2\exp(-2 \times 1000 \times 0.1^2) \approx 0.00004 \)</p>
+    </div>
+
+    <div class="inequality">
+        <h2>7. Azuma-Hoeffding Inequality</h2>
+        <p><strong>Formula:</strong> \( P\left(\sum X_i - E[\sum X_i] \geq t\right) \leq \exp\left(\frac{-t^2}{2nc^2}\right) \)</p>
+        <p><strong>Solved Example:</strong> If \( n = 100, t = 10, c = 1 \), then:</p>
+        <p>\( P(S_n - E[S_n] \geq 10) \leq \exp\left(-\frac{10^2}{2 \times 100 \times 1^2}\right) \approx 0.6065 \)</p>
+    </div>
+
+</body>
+</html>

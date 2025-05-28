@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Inequalities and Their Practical Applications</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; }
+        h1, h2 { color: #333; }
+        .inequality { background: #f4f4f4; padding: 10px; border-left: 5px solid #333; margin-bottom: 20px; }
+        code { background: #e4e4e4; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+    <h1>Probability Inequalities and Their Practical Applications</h1>
+
+    <div class="inequality">
+        <h2>1. Markov's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(X \geq a) \leq \frac{E[X]}{a} \)</p>
+        <p><strong>Example:</strong> A website records an average visit time of 4 minutes. Markov's inequality tells us that at most 25% of users spend 16 minutes or more on the website.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>2. Chebyshev's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2} \)</p>
+        <p><strong>Example:</strong> In a class where the average score is 70 and standard deviation is 10, at least 75% of students score between 50 and 90.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>3. Jensen's Inequality</h2>
+        <p><strong>Formula:</strong> \( f(E[X]) \leq E[f(X)] \)</p>
+        <p><strong>Example:</strong> Doubling income does not double happiness. The happiness of an average income is lower than the average happiness of individual incomes.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>4. Hoeffding's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(|\bar{X} - \mu| \geq t) \leq 2\exp(-2nt^2) \)</p>
+        <p><strong>Example:</strong> Used in election polls to estimate the margin of error.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>5. Chernoff Bound</h2>
+        <p><strong>Formula:</strong> \( P(X \geq (1+\delta)E[X]) \leq \exp(-\frac{\delta^2 E[X]}{3}) \)</p>
+        <p><strong>Example:</strong> Used in data centers to predict server overload risks.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>6. Bernstein's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(S_n \geq t) \leq \exp(-\frac{nt^2}{2V + 2Mt/3}) \)</p>
+        <p><strong>Example:</strong> Used in finance to analyze stock market fluctuations.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>7. Azuma-Hoeffding Inequality</h2>
+        <p><strong>Formula:</strong> \( P\left(\sum X_i - E[\sum X_i] \geq t\right) \leq \exp\left(\frac{-t^2}{2nc^2}\right) \)</p>
+        <p><strong>Example:</strong> Used in fraud detection for online reviews.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>8. Talagrand's Concentration Inequality</h2>
+        <p><strong>Formula:</strong> \( P(|X - E[X]| \geq t) \leq 2\exp\left(\frac{-t^2}{4\sigma^2}\right) \)</p>
+        <p><strong>Example:</strong> Helps in machine learning to ensure training models generalize well.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>9. Doob’s Maximal Inequality</h2>
+        <p><strong>Formula:</strong> \( P\left(\sup_{k \leq n} X_k \geq \lambda \right) \leq \frac{E[X_n]}{\lambda} \)</p>
+        <p><strong>Example:</strong> Used in stock market analysis to measure portfolio risks.</p>
+    </div>
+
+    <div class="inequality">
+        <h2>10. Bennett's Inequality</h2>
+        <p><strong>Formula:</strong> \( P(X \geq t) \leq \exp(-\frac{nt^2}{2V + 2Mt/3}) \)</p>
+        <p><strong>Example:</strong> Used in A/B testing to ensure statistical significance.</p>
+    </div>
+
+</body>
+</html>

@@ -43,5 +43,4 @@ state_text.html
 *.log            # Log files
 *.bak            # Backup files
 *.tmp            # Temporary files
-# Ignore history files
-.history/       # Local history files
+# Ignore specific directories
