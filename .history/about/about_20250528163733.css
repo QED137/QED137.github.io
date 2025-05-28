@@ -69,13 +69,15 @@
     transform: scale(1.05);
 } */
 
-.collegeLogo {
-    width: 20px;
-    height: 20;
-    border-radius: 50%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-}
+.developer-info .collegeLogo {
+    text-align: left; /* Align with the rest of the developer-info text */
+    margin-top: 1.5rem; /* Space between name/about and logos */
+    margin-bottom: 1.5rem; /* Space before the 'about' paragraph if it's next */
+    /* If you have multiple logos and want them side-by-side: */
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 1.5rem; */ /* Space between logos if multiple */
+}+
 .about-image img:hover {
     transform: scale(1.05);
 }

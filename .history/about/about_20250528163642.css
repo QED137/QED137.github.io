@@ -69,13 +69,28 @@
     transform: scale(1.05);
 } */
 
-.collegeLogo {
-    width: 20px;
-    height: 20;
-    border-radius: 50%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
+.developer-info .collegeLogo {
+    text-align: left; /* Align with the rest of the developer-info text */
+    margin-top: 1.5rem; /* Space between name/about and logos */
+    margin-bottom: 1.5rem; /* Space before the 'about' paragraph if it's next */
+    /* If you have multiple logos and want them side-by-side: */
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 1.5rem; */ /* Space between logos if multiple */
 }
+.developer-info .uni-logo {
+    height: 4rem;   /* Adjust size based on your font sizes (rem units) */
+    width: auto;    /* Maintain aspect ratio */
+    /* If you have multiple logos and want them side-by-side: */
+    /* margin-right: 1.5rem; */ /* Space to the right of each logo except the last */
+    vertical-align: middle; /* Good for inline-block behavior if needed */
+    opacity: 0.85; /* Slightly subtle, optional */
+    transition: opacity 0.3s ease;
+}
+.developer-info .uni-logo:hover {
+    opacity: 1;
+}
+
 .about-image img:hover {
     transform: scale(1.05);
 }

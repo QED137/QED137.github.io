@@ -1,0 +1,174 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('../blogs/generalblogstyling.css');
+
+/* About Section */
+.about {
+    background: linear-gradient(#232932, #2c3138, #232932); /* Dark theme */
+    padding: 50px 10%;
+    color: white; /* Ensure text is visible */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* About Content */
+.about-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    color: #29a587; /* Use green from index page */
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: #ddd; /* Light grey for better contrast */
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #29a587; /* Green button */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #218c6b;
+    transform: scale(1.05);
+}
+
+/* Profile Image */
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+/* .about-image img {
+    width: 300px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+} */
+
+.developer-info .collegeLogo {
+    text-align: left; /* Align with the rest of the developer-info text */
+    margin-top: 1.5rem; /* Space between name/about and logos */
+    margin-bottom: 1.5rem; /* Space before the 'about' paragraph if it's next */
+    /* If you have multiple logos and want them side-by-side: */
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 1.5rem; */ /* Space between logos if multiple */
+}
+.developer-info .uni-logo {
+    height: 4rem;   /* Adjust size based on your font sizes (rem units) */
+    width: auto;    /* Maintain aspect ratio */
+    /* If you have multiple logos and want them side-by-side: */
+    /* margin-right: 1.5rem; */ /* Space to the right of each logo except the last */
+    vertical-align: middle; /* Good for inline-block behavior if needed */
+    opacity: 0.85; /* Slightly subtle, optional */
+    transition: opacity 0.3s ease;
+}
+.developer-info .uni-logo:hover {
+    opacity: 1;
+}
+/* --- Styles for Social Icons under the Developer Image --- */
+.developer-img {
+    position: relative; /* Ensure this is set if not already, for positioning children */
+    display: flex;      /* This will help align the image wrapper and icons vertically */
+    flex-direction: column; /* Stack image wrapper and icons vertically */
+    align-items: center;  /* Center them horizontally */
+}
+
+/* Adjust .dev-img-wrapper if needed, though your existing styles might be fine */
+/* .dev-img-wrapper {
+    max-width: 40rem;
+    /* ... your existing styles ... */
+/* } */
+
+.developer-img .dev-social-icons {
+    /* text-align: center; /* Already handled by align-items: center on parent */
+    margin-top: 2rem;   /* Space between image and icons */
+    display: flex;      /* To arrange icons in a row */
+    gap: 2rem;          /* Space between icons */
+}
+
+.developer-img .dev-social-icons a {
+    color: #bbb; /* Lighter color to match other subtle elements */
+    font-size: 2.8rem; /* Adjust icon size */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.developer-img .dev-social-icons a:hover {
+    color: #29a587; /* Your theme's accent color */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* --- Adjustments to existing elements if necessary --- */
+
+/* The .developer-info and .developer-img are flex items of .banner.
+   Their alignment is handled by the .banner's flex properties.
+   You might not need to change much here unless the new elements
+   cause overflow or unexpected wrapping. */
+
+/* .banner {
+    display: flex;
+    gap: 5rem;
+    /* ... your existing styles ... */
+/* } */
+
+/* .developer-info {
+    margin-right: 15rem; /* You have this, it creates space */
+    /* ... your existing styles ... */
+/* } */
+
+/* --- Responsive adjustments for the new logos --- */
+@media (max-width: 700px) {
+    .developer-info .collegeLogo {
+        text-align: center; /* Center logos when layout stacks */
+        margin-bottom: 2rem;
+    }
+
+    .developer-info .uni-logo {
+        height: 3.5rem; /* Slightly smaller on mobile */
+    }
+
+    .developer-img .dev-social-icons {
+        margin-top: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .developer-img .dev-social-icons a {
+        font-size: 2.5rem;
+    }
+}
+.about-image img:hover {
+    transform: scale(1.05);
+}
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+    margin-top: 30px;
+}

@@ -69,16 +69,7 @@
     transform: scale(1.05);
 } */
 
-.collegeLogo {
-    width: 20px;
-    height: 20;
-    border-radius: 50%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-}
-.about-image img:hover {
-    transform: scale(1.05);
-}
+
 /* Footer */
 footer {
     text-align: center;
