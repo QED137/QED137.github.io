@@ -45,3 +45,4 @@ state_text.html
 *.tmp            # Temporary files
 # Ignore history files
 .history/       # Local history files
+.history/*
