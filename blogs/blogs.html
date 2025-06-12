@@ -4,24 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs | QED137</title>
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="blogs.css">
 </head>
 <body>
 
     <!-- Navbar -->
-    <header class="navbar">
-        <h1>Explore Our Knowledge Hub</h1>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="blogs.html" class="active">Blogs</a>
-            <!-- <a href="statistics.html">Statistics</a>
-            <a href="physics.html">Physics</a>
-            <a href="mathematics.html">Mathematics</a>
-            <a href="machinelearning.html">Machine Learning</a> -->
-            <a href="../gallery.html">Gallery</a>
-            <a href="../about/about.html">About</a>
-        </nav>
-    </header>
+      
+    <!-- <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about/about.html">About</a></li>
+            <li><a href="/projects/project.html" class="active">Projects</a></li>
+            <li><a href="/blogs/blogs.html">Blog</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/index.html#contacts">Contact</a></li>
+        </ul>
+    </nav> -->
+          <!--new design for menu bar ended-->
+      <nav class="navigation">
+        <div class="section-border"></div>
+        <div class="nav-items">
+          <a href="#index.html">Home</a>
+          <a href="../about/about.html">About</a>
+          <a href="../projects/project.html">Projects</a>
+          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
+          <a href="../gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
+          <a href="../blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+
+          <a href="#contacts" class="tooltip">Contact</a>
+        </div>
+      </nav>
+      <!-- End of Navigation -->
+       <!-- Navigation for bigger screen -->
+             <!-- Full Navbar for Large Screens -->
+             <nav class="navbar">
+              <ul class="nav-links">
+                  <li><a href="../index.html">Home</a></li>
+                  <li><a href="../about/about.html">About</a></li>
+                  <li><a href="../projects/project.html">Projects</a></li>
+                  <li><a href="../blogs/blogs.html" class="active">Blog</a></li>
+                  <li><a href="../gallery.html">Gallery</a></li>
+                  <li><a href="../index.html#contacts">Contact</a></li>
+              </ul>
+          </nav>
+       <!-- end of navigation for bigger screen-->
 
     <!-- Hero Section -->
     <section class="hero">
@@ -33,20 +60,20 @@
     <section class="blog-container">
 
         <article class="blog-card">
-            <img src="images/statistics.jpg" alt="Statistics">
+            <img src="../images/statistics.jpg"  >
             <h3>Statistics & Data Science</h3>
             <p>Master statistical concepts, probability, and hypothesis testing.</p>
             <a href="statistics.html" class="read-more">Explore</a>
         </article>
         
             <article class="blog-card">
-                 <img src="#" alt="Pipeline"> 
+                 <img src="../images/datapipe.png" > 
                 <h3>Real-Time Data Pipelines</h3>
                 <p>Automating Real-Time Data Pipelines: Integrating Weather and Flight APIs with Python and MySQL</p>
                 <a href="realtimepipe.html"class="read-more">Explore</a>
             </article>
             <article class="blog-card">
-                 <img src="#" alt="C++"> 
+                 <img src="../images/cppoop2.png" > 
                 <h3>Object Programming in C++</h3>
                 <p>Geant4, a powerful toolkit for particle physics simulations, is designed using Object-Oriented Programming (OOP) principles in C++. Understanding OOP is essential for 
                     effectively developing and extending Geant4-based simulations.</p>

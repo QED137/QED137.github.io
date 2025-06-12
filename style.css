@@ -1,4 +1,10 @@
 /* Default Styles */
+:root {
+  /* ... other variables ... */
+  --font-heading: 'Rowdies', sans-serif;
+  --font-body: 'Inter', sans-serif; /* Your new, consistent body font */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +12,7 @@
   text-decoration: none;
   outline: none;
   /* font-family: "Rowdies", sans-serif; */
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
 }
 
 html body{
@@ -27,6 +33,7 @@ html body{
 
 }
 /* Full Navbar (for Large Screens) */
+
 .navbar {
   display: flex;
   
@@ -36,6 +43,11 @@ html body{
   background: #222;
   color: white;
   
+}
+.active{
+  color: #29a587;
+  background:#29a587;
+  border-radius: 5px;
 }
 .nav-links {
   list-style: none;
@@ -338,7 +350,7 @@ html body{
 .about {
   margin-top: 4rem;
   width: 60rem; /* Adjust width as needed */
-  font-family: "Rowdies", Arial, Helvetica, sans-serif;
+  /* font-family: "Rowdies", Arial, Helvetica, sans-serif; */
   font-size: 2rem;
   color: #fff;
   margin-bottom: 6rem;
@@ -575,9 +587,9 @@ html body{
 .skills-card p {
   /* font-family: "Caveat", cursive; */
   font-family: "Arial", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color:white;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .skills-card-progress {

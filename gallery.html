@@ -4,23 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="gallery.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <h1>Visual World</h1>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="blogs/blogs.html">Blogs</a>
-            <!-- <a href="statistics.html">Statistics</a>
-            <a href="physics.html">Physics</a>
-            <a href="mathematics.html">Mathematics</a>-->
-            <a href="gallery.html" class="active">Gallery</a>
-           
-            <a href="../about/about.html">About</a>
-        </nav>
-    </header>
+
+    <!--new design for menu bar ended-->
+      <nav class="navigation">
+        <div class="section-border"></div>
+        <div class="nav-items">
+          <a href="../index.html" >Home</a>
+          <a href="about/about.html">About</a>
+          <a href="projects/project.html">Projects</a>
+          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
+          <a href="/gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
+          <a href="./blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+
+          <a href="#contacts" class="tooltip">Contact</a>
+        </div>
+      </nav>
+      <!-- End of Navigation -->
+       <!-- Navigation for bigger screen -->
+             <!-- Full Navbar for Large Screens -->
+             <nav class="navbar">
+              <ul class="nav-links">
+                  <li><a href="#top">Home</a></li>
+                  <li><a href="about/about.html">About</a></li>
+                  <li><a href="projects/project.html">Projects</a></li>
+                  <li><a href="blogs/blogs.html">Blog</a></li>
+                  <li><a href="gallery.html" class="active">Gallery</a></li>
+                  <li><a href="index.html#contacts">Contact</a></li>
+              </ul>
+          </nav>
+       <!-- end of navigation for bigger screen-->
+
 
     <section class="gallery-section">
         <h1>Photo Gallery</h1>

@@ -1,7 +1,15 @@
 /* Import common styles */
-@import url('generalblogstyling.css');
+/* @import url('generalblogstyling.css'); */
 
 /* Hero Section */
+body{
+    background: linear-gradient(#232932, #2c3138, #232932);
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+
 .hero {
     background: url('images/blogs_bg.jpg') no-repeat center center/cover;
     text-align: center;
@@ -10,12 +18,12 @@
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 4rem;
     margin-bottom: 10px;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 /* Blog Container */
@@ -47,7 +55,7 @@
 
 .blog-card img {
     width: 100%;
-    height: auto;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -62,6 +70,7 @@
 }
 
 .blog-card .read-more {
+    
     display: block;
     text-align: center;
     padding: 10px;
@@ -75,9 +84,11 @@
     background: #29a587;
 }
 
+
 /* Footer */
 footer {
     text-align: center;
+    font-size: 1.5rem;
     padding: 20px;
     background: #333;
     color: white;

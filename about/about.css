@@ -1,53 +1,54 @@
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-@import url('../blogs/generalblogstyling.css');
+/* @import url('../blogs/generalblogstyling.css'); */
 
 /* About Section */
-.about {
+.about-page {
     background: linear-gradient(#232932, #2c3138, #232932); /* Dark theme */
-    padding: 50px 10%;
+    padding: 60px 10% 0;
     color: white; /* Ensure text is visible */
 }
 
-.container {
+.about-page-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    
 }
 
 /* About Content */
-.about-content {
+.about-page-content {
     flex: 1;
     max-width: 600px;
 }
 
-.about-content h1 {
-    font-size: 2.5rem;
+.about-page-content h1 {
+    font-size: 5rem;
     color: #29a587; /* Use green from index page */
 }
 
-.about-content p {
-    font-size: 1.1rem;
+.about-page-content p {
+    font-size: 2rem;
     color: #ddd; /* Light grey for better contrast */
     margin: 15px 0;
     line-height: 1.6;
 }
 
 /* Button */
-.btn {
+.about-btn {
     display: inline-block;
-    margin-top: 15px;
     padding: 10px 20px;
-    background: #29a587; /* Green button */
+    margin: 10px 5px;
+    background-color: #29a587;
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
+    font-size: 2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn:hover {
+.about-btn:hover {
     background: #218c6b;
     transform: scale(1.05);
 }
@@ -85,5 +86,44 @@ footer {
     padding: 20px;
     background: #222;
     color: white;
-    margin-top: 30px;
+    margin-top: 0px;
+    font-size: 1.4rem;
+}
+
+.template {
+    background: linear-gradient(#232932, #2c3138, #232932); /* Dark theme */
+    padding: 60px 10%;
+    color: white; /* Ensure text is visible */
+}
+.template-container {
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+}
+
+.template-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+ color: #29a587; /* Use green from index page */
+}
+
+.template-container p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.template-container strong {
+  color: #29a587;
+}
+
+.template-container em {
+  color: #ccc;
+  font-style: italic;
 }

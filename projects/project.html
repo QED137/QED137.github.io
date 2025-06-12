@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - Janmajay Kumar</title>
+    
+    <!-- Single, efficient link for all Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    
+    <!-- Link to your main stylesheet to inherit base fonts and styles -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Favicon links -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/favicon.ico">
+
+    <!-- Styles specifically for this projects page -->
+    <style>
+        body {
+            background: linear-gradient(#232932, #2c3138, #232932);
+            padding-top: 0;
+        }
+        .projects-page-container {
+            width: 100%;
+            padding: 8rem 2rem 10rem 2rem;
+            min-height: 100vh;
+        }
+        .projects-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .projects-header h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .projects-header p {
+            font-size: 2rem;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        .projects-header p span {
+            color: #29a587;
+            font-weight: bold;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .recruiter-project-card {
+            background-color: #1d222a;
+            border: 1px solid #444;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .recruiter-project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .project-image-wrapper {
+            height: 220px;
+            overflow: hidden;
+        }
+        .project-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out;
+        }
+        .recruiter-project-card:hover .project-image-wrapper img {
+            transform: scale(1.05);
+        }
+        .project-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .project-content h3 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .project-content p {
+            font-size: 1.6rem;
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .tech-tags span {
+            background-color: rgba(41, 165, 135, 0.1);
+            color: #29a587;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid #29a587;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .project-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        .recruiter-btn {
+            flex: 1;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+        .recruiter-btn i {
+            margin-right: 0.8rem;
+        }
+        .btn-github {
+            background-color: #29a587;
+            color: #fff;
+            border-color: #29a587;
+        }
+        .btn-github:hover {
+            background-color: #218b6b;
+            border-color: #218b6b;
+        }
+        .btn-live {
+            background-color: transparent;
+            color: #29a587;
+            border-color: #29a587;
+        }
+        .btn-live:hover {
+            background-color: rgba(41, 165, 135, 0.1);
+            color: #5dc4a8;
+        }
+   
+    </style>
+</head>
+<body>
+    
+    <!-- <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about/about.html">About</a></li>
+            <li><a href="/projects/project.html" class="active">Projects</a></li>
+            <li><a href="/blogs/blogs.html">Blog</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/index.html#contacts">Contact</a></li>
+        </ul>
+    </nav> -->
+
+          <!--new design for menu bar ended-->
+      <nav class="navigation">
+        <div class="section-border"></div>
+        <div class="nav-items">
+          <a href="../index.html">Home</a>
+          <a href="../about/about.html">About</a>
+          <a href="../projects/project.html" class="active">Projects</a>
+          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
+          <a href="..//gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
+          <a href="../blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+
+          <a href="../index.html#contacts" class="tooltip">Contact</a>
+        </div>
+      </nav>
+      <!-- End of Navigation -->
+       <!-- Navigation for bigger screen -->
+             <!-- Full Navbar for Large Screens -->
+             <nav class="navbar">
+              <ul class="nav-links">
+                  <li><a href="../index.html">Home</a></li>
+                  <li><a href="../about/about.html">About</a></li>
+                  <li><a href="../projects/project.html" class="active">Projects</a></li>
+                  <li><a href="../blogs/blogs.html">Blog</a></li>
+                  <li><a href="../gallery.html">Gallery</a></li>
+                  <li><a href="../index.html#contacts">Contact</a></li>
+              </ul>
+          </nav>
+       <!-- end of navigation for bigger screen-->
+
+    <div class="projects-page-container">
+        <header class="projects-header">
+            <h1>My Work</h1>
+            <p>From cloud-native data pipelines to complex physics simulations, this gallery is a showcase of my skills in action. Each project represents a challenge I've tackled using technology like <span>Python, C++, Machine Learning, and Cloud Platforms</span>.</p>
+        </header>
+
+        <main class="projects-grid">
+
+            <!-- Card 1: RAG App -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/graphpoweredRag.png" alt="Graph RAG Project">
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>Neo4j</span><span>LLM & RAG</span><span>Streamlit</span>
+                    </div>
+                    <h3>Graph-Powered RAG Recommendations</h3>
+                    <p>An intelligent system using Retrieval-Augmented Generation (RAG) with a Neo4j graph database to provide contextual, accurate recommendations.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/Graph-Powered-RAG-for-Smarter-Recommendations" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://qed137-cinebot-app-yvadoa.streamlit.app/" target="_blank" class="recruiter-btn btn-live"><i class="fas fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Flask App -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/flask.jpg" alt="Flask Web App">
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>Flask</span><span>Python</span><span>JavaScript</span>
+                    </div>
+                    <h3>Full Stack Job Board Prototype</h3>
+                    <p>A dynamic web application built with Flask, serving as a prototype for a job advertisement platform with full front-end and back-end functionality.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/FlaskOnReplit" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://web-development-with-flask.onrender.com/" target="_blank" class="recruiter-btn btn-live"><i class="fas fa-link"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: ETL Pipeline -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/eltpic.png" alt="ETL Pipeline Project">
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>GCP</span><span>Cloud Functions</span><span>BigQuery</span>
+                    </div>
+                    <h3>ETL Pipeline on Google Cloud</h3>
+                    <p>An automated, serverless ETL pipeline on GCP that extracts data from APIs, transforms it, and loads it into BigQuery for analysis.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/Google-Cloud-ETL-Pipeline.git" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Geant4 Simulation -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/logo-tuebingen.jpg" alt="Geant4 Simulation Project">
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>GEANT4</span><span>C++</span><span>Monte Carlo</span>
+                    </div>
+                    <h3>Neutron Capture Simulation</h3>
+                    <p>A high-fidelity simulation using Geant4 and C++ to model neutron interactions for the LEGEND-1000 dark matter experiment.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/GEANT4_Netron_Capture_LEGEND100.git" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: PINNs -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/deci-pytorch-2.0-supergradients-v1.jpg" alt="PINNs Project">
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>PyTorch</span><span>PINN</span><span>Deep Learning</span>
+                    </div>
+                    <h3>Physics-Informed Machine Learning</h3>
+                    <p>Using Physics-Informed Neural Networks (PINNs) in PyTorch to solve complex partial differential equations, blending deep learning with domain knowledge.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/PIML" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Telescope Classification -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/ml_in_Astro.jpg" alt="Cherenkov Telescope Project">
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>Scikit-learn</span><span>PyTorch</span><span>Computer Vision</span>
+                    </div>
+                    <h3>Gamma Telescope Event Classification</h3>
+                    <p>Developed ML models to classify astronomical events, discriminating gamma signals from background noise in telescope images.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/ComputerVisionProject" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Higgs Boson Challenge -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/TF Image.jpg" alt="Higgs Boson Project"/>
+                </div>
+                <div class="project-content">
+                  <div class="tech-tags">
+                      <span>TensorFlow</span><span>Kaggle</span><span>Machine Learning</span>
+                  </div>
+                  <h3>Higgs Boson Machine Learning Challenge</h3>
+                  <p>Applied data science using TensorFlow to predict particle collisions at the Large Hadron Collider for a Kaggle competition.</p>
+                  <div class="project-buttons">
+                      <a href="https://github.com/QED137/HiggsBoson_Kaggle_Challenge" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 8: Computational Astrophysics -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/laneEmden.png" alt="Computational Astrophysics Coursework"/>
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>Astrophysics</span><span>NumPy</span><span>Fluid Dynamics</span>
+                    </div>
+                    <h3>Computational Astrophysics Coursework</h3>
+                    <p>Projects from my Master's course, including modeling the life of a star and other celestial phenomena using numerical methods.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/ComputationalAstrophysics" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9: N-Body Simulation -->
+            <div class="recruiter-project-card">
+                <div class="project-image-wrapper">
+                    <img src="../images/nbody.jpeg" alt="N-Body Simulation"/>
+                </div>
+                <div class="project-content">
+                    <div class="tech-tags">
+                        <span>N-Body Sims</span><span>NumPy</span><span>Diff. Equations</span>
+                    </div>
+                    <h3>N-Body Problem Simulation</h3>
+                    <p>Implemented N-Body simulations to study the dynamics of celestial bodies using numerical methods in Python as part of my Master's.</p>
+                    <div class="project-buttons">
+                        <a href="https://github.com/QED137/N-Body" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Janmajay Kumar | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
