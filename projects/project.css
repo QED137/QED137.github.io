@@ -25,7 +25,8 @@
             font-size: 5rem;
             font-weight: 300;
             text-transform: uppercase;
-            color: #fff;
+            /* color: #fff; */
+            color: #29a587; /* Use green from index page */
             margin-bottom: 1.5rem;
         }
         .projects-header p {

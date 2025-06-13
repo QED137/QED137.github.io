@@ -14,14 +14,18 @@ body{
 }
 
 .gallery-section h1 {
-    font-size: 2.5rem;
-    /* color: #333; */
-    color: #29a587; /* Use green from index page */
+             font-size: 4rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1.5rem;
+    color: #29a587;  
+    text-transform: uppercase;
 
 }
 
 .gallery-section p {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     color: white;
     margin-bottom: 20px;
 }
