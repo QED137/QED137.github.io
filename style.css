@@ -67,11 +67,16 @@ html body{
   padding: 8px 15px;
   transition: 0.3s;
   font-size: 2rem;
+  border-radius: 50px;
+  background: #3d5b49;
+  background: linear-gradient(135deg, #142521, #1f7e66);
+
+  
 }
 
 .nav-links a:hover {
-  background: #29a587;
-  border-radius: 5px;
+  background: #04c796;
+  border-radius: 50px;
 }
 
 
