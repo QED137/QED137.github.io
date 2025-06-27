@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Restored My Firefox Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #333;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .carousel-image {
+      max-width: 100%;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>How I Restored My Firefox Profile After a System Update Broke Everything</h1>
+    <p>After a recent system update, Firefox stopped working — my passwords, bookmarks, and extensions were gone. I managed to restore everything using an old backup. Here's how I did it, step-by-step.</p>
+
+    <h2>🔧 The Problem</h2>
+    <ul>
+      <li>Firefox wouldn’t start</li>
+      <li>Saved passwords and bookmarks disappeared</li>
+      <li>Snap package was broken</li>
+    </ul>
+
+    <h2>✅ The Goal</h2>
+    <ul>
+      <li>Restore saved passwords</li>
+      <li>Recover bookmarks, extensions, and preferences</li>
+      <li>Use the original profile seamlessly</li>
+    </ul>
+
+    <h2>🛠 Step-by-Step Recovery</h2>
+    <ol>
+      <li>Close Firefox:
+        <pre>pkill firefox</pre>
+      </li>
+      <li>Backup current config:
+        <pre>mv ~/.mozilla ~/.mozilla-old</pre>
+      </li>
+      <li>Launch profile manager:
+        <pre>firefox --no-remote -P</pre>
+        Create profile: <strong>restore-login</strong>
+      </li>
+      <li>Copy backup files:
+        <pre>
+cp ~/firefox-backup/3hnkc405.default-1671367803155/logins.json ~/.mozilla/firefox/restore-profile/
+cp ~/firefox-backup/3hnkc405.default-1671367803155/key4.db ~/.mozilla/firefox/restore-profile/
+cp ~/firefox-backup/3hnkc405.default-1671367803155/places.sqlite ~/.mozilla/firefox/restore-profile/
+cp ~/firefox-backup/3hnkc405.default-1671367803155/prefs.js ~/.mozilla/firefox/restore-profile/
+        </pre>
+      </li>
+      <li>Edit <code>profiles.ini</code>:
+        <pre>
+[Profile0]
+Name=restore-login
+IsRelative=1
+Path=restore-profile
+Default=1
+
+[General]
+StartWithLastProfile=1
+Version=2
+        </pre>
+      </li>
+      <li>Launch Firefox:
+        <pre>firefox</pre>
+      </li>
+    </ol>
+
+    <h2>📸 The Visual Story</h2>
+    <img src="A_series_of_eight_slides_in_a_carousel_presentatio.png" alt="Firefox Carousel" class="carousel-image">
+
+    <h2>💬 Conclusion</h2>
+    <p>By carefully managing profiles and matching the encryption keys, I was able to recover all 243 saved passwords, bookmarks, and my browser experience. Always back up your profile folder!</p>
+
+    <div class="footer">
+      📘 Part of my blog series at <a href="/blogs/machineLearningRoadmap.html">janmajay.de/blogs</a>
+    </div>
+  </div>
+</body>
+</html>
