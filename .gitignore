@@ -46,3 +46,26 @@ state_text.html
 # Ignore history files
 .history/       # Local history files
 .history/*
+.git/
+.vscode/
+.idea/
+*.swp
+# Ignore build artifacts
+dist/
+public/
+# Ignore large files
+*.mp4
+*.mov
+*.iso
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+ENV/
+env.bak/
+venv.bak/
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+# Ignore TensorFlow model files

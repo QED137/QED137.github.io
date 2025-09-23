@@ -80,6 +80,41 @@
 .about-image img:hover {
     transform: scale(1.05);
 }
+
+.tech-stack-logos {
+  margin-top: 8rem;
+  text-align: center;
+}
+
+.tech-stack-logos h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tech-logos img {
+  height: 5rem;
+  transition: transform 0.3s ease;
+ 
+}
+
+.tech-logos img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+
+
+
 /* Footer */
 footer {
     text-align: center;
