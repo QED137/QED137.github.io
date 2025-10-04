@@ -1,23 +1,97 @@
-/* === YOUR ORIGINAL CSS WITH ONLY RESPONSIVENESS REWRITTEN === */
+/* === CROSS-BROWSER COMPATIBILITY & MOBILE OPTIMIZATIONS === */
 
-/* Default Styles (UNCHANGED) */
+/* CSS Custom Properties with Fallbacks */
 :root {
   --font-heading: 'Rowdies', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --primary-color: #29a587;
+  --bg-dark: #1d222a;
+  --text-light: #fff;
 }
+
+/* Universal Reset with Cross-Browser Support */
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   text-decoration: none;
   outline: none;
 }
+
+/* iOS Safari specific fixes */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Prevent zoom on input focus (iOS Safari) */
+input, textarea, select {
+  font-size: 16px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Smooth scrolling with fallbacks */
+html {
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+  -ms-scroll-behavior: smooth;
+}
+
+/* Mobile viewport fix */
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+/* Webkit scrollbar styling for consistency */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1d222a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #29a587;
+  border-radius: 4px;
+}
+
+/* === YOUR ORIGINAL CSS WITH ONLY RESPONSIVENESS REWRITTEN === */
 body, html {
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+  -ms-overflow-style: scrollbar; /* IE/Edge scrollbar */
 }
+
+/* Enhanced mobile support */
+body {
+  -webkit-text-size-adjust: 100%; /* Prevent text scaling in iOS Safari */
+  -ms-text-size-adjust: 100%; /* Prevent text scaling in IE/Edge */
+  text-size-adjust: 100%; /* Standard property */
+  -webkit-font-smoothing: antialiased; /* Better font rendering on macOS/iOS */
+  -moz-osx-font-smoothing: grayscale; /* Better font rendering on macOS */
+}
+
 .menu-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
   align-items: center;
   position: fixed;
   top: 20px;
@@ -26,8 +100,17 @@ body, html {
   z-index: 200;
 }
 .navbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: end;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 20px;
   background: #222;
@@ -307,13 +390,41 @@ body, html {
   text-align: center; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
   clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 95% 88%, 90% 82%, 85% 88%, 80% 82%, 75% 88%, 70% 82%, 65% 88%, 60% 82%, 55% 88%, 50% 82%, 45% 88%, 40% 82%, 35% 88%, 30% 82%, 25% 88%, 20% 82%, 15% 88%, 10% 82%, 5% 88%, 0% 85%);
   z-index: 5;
+  -webkit-animation: wave 3s ease-in-out infinite;
   animation: wave 3s ease-in-out infinite;
+  -webkit-transform-origin: top center;
+  -ms-transform-origin: top center;
   transform-origin: top center;
 }
+/* Cross-browser keyframes */
+@-webkit-keyframes wave {
+  0% { 
+    -webkit-transform: rotate(-4deg) translateY(0);
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% { 
+    -webkit-transform: rotate(-2deg) translateY(2px);
+    transform: rotate(-2deg) translateY(2px);
+  }
+  100% { 
+    -webkit-transform: rotate(-4deg) translateY(0);
+    transform: rotate(-4deg) translateY(0);
+  }
+}
+
 @keyframes wave {
-  0% { transform: rotate(-4deg) translateY(0); }
-  50% { transform: rotate(-2deg) translateY(2px); }
-  100% { transform: rotate(-4deg) translateY(0); }
+  0% { 
+    -webkit-transform: rotate(-4deg) translateY(0);
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% { 
+    -webkit-transform: rotate(-2deg) translateY(2px);
+    transform: rotate(-2deg) translateY(2px);
+  }
+  100% { 
+    -webkit-transform: rotate(-4deg) translateY(0);
+    transform: rotate(-4deg) translateY(0);
+  }
 }
 .tech-stack-logos {
   margin-top: 6rem; margin-bottom: 0rem; text-align: center;
@@ -975,13 +1086,40 @@ html {
   }
 }
 
-/* FIX FOR SCREENS AROUND 800px */
+/* Mobile Touch Optimizations */
 @media (max-width: 800px) {
+  /* iOS Safari specific fixes */
+  body {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+  
+  /* Touch target size optimization */
   .menu-icon {
     position: fixed !important;
     top: 1rem !important;
     right: 1rem !important;
     z-index: 200 !important;
+    -webkit-tap-highlight-color: transparent; /* iOS touch highlight removal */
+    -webkit-touch-callout: none; /* iOS callout removal */
+    -webkit-user-select: none; /* iOS text selection prevention */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    min-height: 44px; /* iOS minimum touch target */
+    min-width: 44px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
   
   .menu-btn {
@@ -989,10 +1127,23 @@ html {
     height: 3.2rem !important;
     font-size: 1.1rem !important;
     border-radius: 0.5rem !important;
+    -webkit-border-radius: 0.5rem !important;
+    -moz-border-radius: 0.5rem !important;
     background: #29a587 !important;
     color: white !important;
     border: none !important;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    cursor: pointer;
+    /* Touch-friendly button */
+    -webkit-tap-highlight-color: rgba(41, 165, 135, 0.3);
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
   }
   
   .menu-btn::after {
