@@ -174,7 +174,7 @@ body, html {
 /* Landing Section (UNCHANGED) */
 .landing {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
 }
 .section-bg-heading {
@@ -395,7 +395,7 @@ body, html {
 
 /* Skills Section (UNCHANGED) */
 .skills {
-  width: 100%; height: 100vh; position: relative;
+  width: 100%; min-height: 100vh; position: relative;
   display: flex; flex-direction: column; align-items: center;
 }
 .section-heading {
@@ -463,7 +463,7 @@ body, html {
 
 /* Projects Section (UNCHANGED) */
 .projects {
-  width: 100%; height: 100%; position: relative;
+  width: 100%; min-height: 100%; position: relative;
   display: flex; flex-direction: column; align-items: center;
 }
 .projects-cards {
@@ -512,7 +512,7 @@ body, html {
 
 /* Contact Section (UNCHANGED) */
 .contact {
-  width: 100%; height: 100vh; position: relative;
+  width: 100%; min-height: 100vh; position: relative;
   display: flex; flex-direction: column; align-items: center;
 }
 .contact .section-border {
@@ -618,38 +618,6 @@ html {
   font-size: 35%; /* Start with the smallest size from your original code */
 }
 
-/* SMALL MOBILE (up to 500px) - This is our base, most styles are already here */
-@media (max-width: 500px) {
-  .navigation {
-    width: 100%;
-    right: -100%; /* Use percentage for full slide out */
-    justify-content: center;
-    padding-left: 0;
-  }
-  .change .navigation {
-    right: 0;
-  }
-  .banner {
-    width: 90%; /* Use percentage instead of fixed width */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .section-heading {
-    text-align: center;
-  }
-  .skills-cards, .projects-cards, .contact-content {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .input-groups input {
-    width: 100%;
-  }
-  .icons {
-    display: none;
-  }
-}
-
 /* LARGER MOBILE & SMALL TABLETS (501px to 767px) */
 @media (min-width: 576px) {
   html {
@@ -660,6 +628,225 @@ html {
   }
   .contact-left {
     display: none; /* As per your original 700px rule */
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 52%;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .container {
+    padding: 0 2rem 6rem;
+  }
+  .navbar {
+    display: none;
+  }
+  .menu-icon {
+    display: flex;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 200;
+  }
+  .menu-btn {
+    width: 16rem;
+    height: 4.8rem;
+    font-size: 1.4rem;
+  }
+  .navigation {
+    width: 100%;
+    right: -100%;
+    justify-content: center;
+    padding-left: 0;
+  }
+  .change .navigation {
+    right: 0;
+  }
+  .banner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+    padding-top: 8rem;
+  }
+  .section-border,
+  .dev-experience,
+  .dev-projects {
+    display: none;
+  }
+  .hire-torn-note {
+    position: static;
+    width: 100%;
+    max-width: 26rem;
+    margin: 2rem auto 0;
+    animation: none;
+    transform: none;
+  }
+  .developer-info {
+    align-items: center;
+    margin-right: 0;
+  }
+  .greeting {
+    font-size: 2.4rem;
+  }
+  .name {
+    width: 100%;
+    font-size: 6rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .about {
+    width: 100%;
+    font-size: 2.2rem;
+    margin: 2rem 0 3rem;
+    text-align: center;
+  }
+  .social-media {
+    margin: 2rem 0 0;
+    display: flex;
+    justify-content: center;
+  }
+  .developer-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .dev-img-wrapper {
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+  .tech-stack-logos {
+    margin: 4rem auto 2rem;
+    padding: 0 1rem;
+  }
+  .tech-logos {
+    gap: 1.5rem;
+  }
+  .tech-logos img {
+    height: 3rem;
+  }
+  .skills {
+    padding: 6rem 0;
+  }
+  .skills-cards {
+    width: 100%;
+    margin: 4rem 0 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .skills-card {
+    width: 100%;
+    margin: 1.5rem 0;
+    height: auto;
+    padding: 0 2rem;
+  }
+  .skills-card-progress {
+    display: none;
+  }
+  .projects-cards {
+    width: 100%;
+    padding: 0 1rem 6rem;
+    margin-top: 4rem;
+  }
+  .project-card {
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+  .contact {
+    padding: 6rem 0;
+  }
+  .contact .section-border {
+    display: none;
+  }
+  .contact-content {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 3rem;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .contact-left,
+  .contact-right {
+    width: 100%;
+  }
+  .contact-left div {
+    margin: 2rem 0;
+  }
+  .input-groups {
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+  }
+  .input-group {
+    width: 100%;
+  }
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+  }
+  .contact-btn {
+    width: 100%;
+  }
+  .footer {
+    padding: 4rem 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 48%;
+  }
+  .container {
+    padding: 0 1.5rem 5rem;
+  }
+  .menu-btn {
+    width: 14rem;
+    height: 4.4rem;
+    font-size: 1.2rem;
+  }
+  .banner {
+    padding-top: 6rem;
+  }
+  .name {
+    font-size: 5rem;
+  }
+  .about {
+    font-size: 2rem;
+  }
+  .dev-img-wrapper {
+    max-width: 24rem;
+  }
+  .tech-logos img {
+    height: 2.6rem;
+  }
+  .skills-cards,
+  .projects-cards {
+    padding: 0;
+    width: 100%;
+  }
+  .project-card {
+    padding: 2rem;
+  }
+  .contact-content {
+    gap: 3rem;
+  }
+  .contact-left div {
+    align-items: flex-start;
+  }
+  .contact-left i {
+    margin-bottom: 0.8rem;
+  }
+  .contact-btn {
+    font-size: 1.8rem;
+  }
+  .icons {
+    display: none;
   }
 }
 
