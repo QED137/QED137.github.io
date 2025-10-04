@@ -767,21 +767,51 @@ html {
     height: 3rem;
   }
   .skills {
-    padding: 6rem 0;
+    padding: 4rem 0;
   }
+  
+  .section-heading {
+    font-size: 4rem !important;
+    margin-bottom: 2rem !important;
+    text-align: center;
+  }
+  
+  .sub-heading {
+    font-size: 1.6rem !important;
+    text-align: center;
+  }
+  
+  .sub-heading span {
+    font-size: 2.5rem !important;
+  }
+  
   .skills-cards {
     width: 100%;
-    margin: 4rem 0 0;
-    padding: 0;
+    margin: 3rem 0 0;
+    padding: 0 1rem;
     flex-direction: column;
     align-items: stretch;
   }
+  
   .skills-card {
     width: 100%;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     height: auto;
-    padding: 0 2rem;
+    padding: 2rem;
+    background: rgba(29, 34, 42, 0.7);
+    border-radius: 1rem;
+    border: 1px solid #444;
   }
+  
+  .skill span {
+    font-size: 1.8rem !important;
+  }
+  
+  .skills-card p {
+    font-size: 1.5rem !important;
+    line-height: 1.5;
+  }
+  
   .skills-card-progress {
     display: none;
   }
@@ -889,7 +919,38 @@ html {
   .tech-logos img {
     height: 2.6rem;
   }
-  .skills-cards,
+  .section-heading {
+    font-size: 3.5rem !important;
+  }
+  
+  .sub-heading {
+    font-size: 1.4rem !important;
+  }
+  
+  .sub-heading span {
+    font-size: 2rem !important;
+  }
+  
+  .skills-cards {
+    padding: 0 0.5rem;
+    width: 100%;
+    margin: 2rem 0 0;
+  }
+  
+  .skills-card {
+    padding: 1.5rem !important;
+    margin: 0.8rem 0 !important;
+  }
+  
+  .skill span {
+    font-size: 1.6rem !important;
+  }
+  
+  .skills-card p {
+    font-size: 1.3rem !important;
+    line-height: 1.4;
+  }
+  
   .projects-cards {
     padding: 0;
     width: 100%;
@@ -1028,6 +1089,22 @@ html {
   }
   .section-border, .dev-experience, .dev-projects {
     display: none; /* Keep decorative elements hidden on tablets */
+  }
+  
+  .section-heading {
+    font-size: 5rem;
+  }
+  
+  .skills-cards {
+    width: 90%;
+    margin: 5rem auto 0;
+    justify-content: center;
+  }
+  
+  .skills-card {
+    width: 45%;
+    margin: 2rem 1rem;
+    min-height: 16rem;
   }
   
   .hire-torn-note {
