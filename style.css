@@ -97,15 +97,19 @@ body, html {
 .menu-icon {
   display: none;
 }
-.menu-btn::after {
-  content: "";
-  width: 5rem;
-  height: 0.2rem;
-  background-color: #bbb;
-  position: absolute;
-  top: 50%;
-  right: -5rem;
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 0.5rem;
 }
+/* Removed menu-btn::after to prevent triangular corner overlap */
 .line {
   width: 3rem;
   height: 0.2rem;
@@ -639,7 +643,7 @@ html {
     overflow-x: hidden;
   }
   .container {
-    padding: 0 2rem 6rem;
+    padding: 7rem 2rem 6rem;
   }
   .navbar {
     display: none;
@@ -647,41 +651,75 @@ html {
   .menu-icon {
     display: flex;
     position: fixed;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
     z-index: 200;
   }
   .menu-btn {
-    width: 16rem;
-    height: 4.8rem;
-    font-size: 1.4rem;
+    width: 12rem;
+    height: 3.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    background: #29a587;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .menu-btn::after {
+    display: none;
   }
   .navigation {
     width: 100%;
     right: -100%;
+    top: -100vh;
     justify-content: center;
     padding-left: 0;
+    transform: translateX(100%);
   }
   .change .navigation {
     right: 0;
+    top: 0;
+    transform: translateX(0);
   }
   .banner {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 3rem;
-    padding-top: 8rem;
+    padding-top: 4rem;
+  }
+  .landing {
+    padding-top: 6rem;
+  }
+  .logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 auto 2.5rem;
+    justify-content: center;
+    gap: 0.8rem;
+    text-align: center;
+    z-index: 1; /* Ensure logo stays below menu */
+    width: 100%;
+  }
+  .logo span,
+  .logo span:nth-child(2),
+  .logo span:nth-child(3),
+  .logo span:nth-child(4) {
+    font-size: 2.8rem;
   }
   .section-border,
   .dev-experience,
   .dev-projects {
     display: none;
   }
+  
   .hire-torn-note {
     position: static;
     width: 100%;
     max-width: 26rem;
-    margin: 2rem auto 0;
+    margin: 1.5rem auto 0;
     animation: none;
     transform: none;
   }
@@ -803,15 +841,41 @@ html {
     font-size: 48%;
   }
   .container {
-    padding: 0 1.5rem 5rem;
+    padding: 6rem 1.5rem 5rem;
+  }
+  .menu-icon {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
   }
   .menu-btn {
-    width: 14rem;
-    height: 4.4rem;
-    font-size: 1.2rem;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background: #29a587;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .menu-btn::after {
+    display: none;
+  }
+  .landing {
+    padding-top: 3rem;
   }
   .banner {
-    padding-top: 6rem;
+    padding-top: 3rem;
+  }
+  .logo {
+    margin: 0 auto 2rem;
+  }
+  .logo span,
+  .logo span:nth-child(2),
+  .logo span:nth-child(3),
+  .logo span:nth-child(4) {
+    font-size: 2.4rem;
   }
   .name {
     font-size: 5rem;
@@ -850,10 +914,104 @@ html {
   }
 }
 
+/* FIX FOR SCREENS AROUND 800px */
+@media (max-width: 800px) {
+  .menu-icon {
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 200 !important;
+  }
+  
+  .menu-btn {
+    width: 11rem !important;
+    height: 3.2rem !important;
+    font-size: 1.1rem !important;
+    border-radius: 0.5rem !important;
+    background: #29a587 !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .menu-btn::after {
+    display: none !important;
+  }
+  
+  .navigation {
+    right: -100% !important;
+    width: 100% !important;
+    top: -100vh !important;
+  }
+  
+  .container {
+    padding-top: 6rem !important;
+  }
+}
+
+/* SPECIFIC FIX FOR SCREENS BELOW 700px */
+@media (max-width: 700px) {
+  .navigation {
+    right: -100% !important;
+    width: 100vw !important;
+    top: -100vh !important;
+    transform: translateX(100%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+  }
+  
+  .change .navigation {
+    right: 0 !important;
+    top: 0 !important;
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Ensure nav items are hidden by default */
+  .nav-items {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-50px) !important;
+  }
+  
+  .change .nav-items {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    transition: all 0.5s ease 0.3s !important;
+  }
+}
+
+/* FIX FOR SPECIFIC TABLET RESOLUTION (977x647) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hire-torn-note {
+    position: static !important;
+    width: 100%;
+    max-width: 20rem;
+    margin: 2rem auto 0;
+    animation: none;
+    transform: none;
+  }
+  
+  .logo {
+    text-align: center;
+    margin: 2rem auto 1rem;
+  }
+  
+  .banner {
+    margin-top: 2rem;
+  }
+}
+
 /* TABLETS & SMALL DESKTOPS (768px to 1199px) */
 @media (min-width: 768px) {
   html {
     font-size: 42%; /* A blend between your 900px and 1200px breakpoints */
+  }
+  .container {
+    padding-top: 0; /* Reset padding for larger screens */
   }
   .navbar {
     display: none; /* Still use hamburger menu */
@@ -868,8 +1026,13 @@ html {
     text-align: left;
     gap: 4rem;
   }
-  .section-border, .dev-experience, .dev-projects, .hire-torn-note {
+  .section-border, .dev-experience, .dev-projects {
     display: none; /* Keep decorative elements hidden on tablets */
+  }
+  
+  .hire-torn-note {
+    position: relative;
+    animation: wave 3s ease-in-out infinite;
   }
   .input-groups {
     flex-direction: row; /* Side-by-side inputs */
@@ -886,10 +1049,36 @@ html {
   }
 }
 
+/* MEDIUM TABLETS TO SMALL DESKTOPS (1025px to 1199px) */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .hire-torn-note {
+    position: absolute;
+    top: 10rem; 
+    left: 1rem;
+    width: 18rem; 
+    height: 10rem;
+    font-size: 1.8rem;
+    animation: wave 3s ease-in-out infinite;
+  }
+  
+  .logo {
+    font-size: 2.5rem;
+  }
+  
+  .logo span:nth-child(2),
+  .logo span:nth-child(3),
+  .logo span:nth-child(4) {
+    font-size: 3rem;
+  }
+}
+
 /* LARGE DESKTOPS (1200px and up) */
 @media (min-width: 1200px) {
   html {
     font-size: 55%; /* A good average for your larger breakpoints */
+  }
+  .container {
+    padding-top: 0; /* Reset padding for desktop */
   }
   .navbar {
     display: flex; /* Show the full navbar */
@@ -900,6 +1089,16 @@ html {
   /* Restore all decorative elements */
   .section-border, .dev-experience, .dev-projects, .hire-torn-note {
     display: block;
+  }
+  
+  .hire-torn-note {
+    position: absolute;
+    top: 13rem; 
+    left: 2rem;
+    width: 20rem; 
+    height: 12rem;
+    margin: 0;
+    animation: wave 3s ease-in-out infinite;
   }
   .name {
     font-size: 8rem;
