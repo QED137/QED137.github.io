@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Automating Real-Time Data Pipelines — Blog</title>
+  <title>Work Ethics — Real & Imaginary | Janmajay Kumar</title>
   <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Tailwind -->
@@ -56,6 +56,7 @@
     .dark .content img { border-color: rgba(255,255,255,.12); }
     pre { border-radius: .75rem; overflow: auto; }
     @media (max-width: 640px) { #toTopBtn { right: 1rem; bottom: 1rem; } }
+    
   </style>
 
   <!-- Prism (code highlighting) - dark theme looks great in both modes -->
@@ -71,7 +72,7 @@
           <span>Janmajay Kumar</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
-            <a class="hover:text-brand-600" href="../index.html">Home</a>
+          <a class="hover:text-brand-600" href="../index.html">Home</a>
           <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
           <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
           <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
@@ -106,159 +107,60 @@
       </div>
     </div>
   </header>
+  
 
-  <!-- Hero -->
+  <!-- Main -->
+
+   <!-- Hero -->
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-4">
-    <nav class="text-xs text-slate-500 dark:text-slate-400">
+    <nav class="text-xs text-slate-500">
       <a class="hover:text-brand-600" href="../blogs/blogs.html">← Back to Blog</a>
     </nav>
-    <h1 class="mt-3 text-3xl sm:text-4xl font-black">Automating Real-Time Data Pipelines: Weather & Flights with Python + MySQL</h1>
-    <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">By <strong>Janmajay Kumar</strong> · October 2024 · Data Engineering</p>
+    <h1 class="mt-3 text-3xl sm:text-4xl font-black"> Work Ethics: The Real & Imaginary Parts of Life</h1>
+    <p class="mt-3 text-sm text-slate-600">By <strong>Janmajay Kumar</strong> </p>
   </section>
+  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14">
+    <article class="prose prose-slate dark:prose-invert max-w-none">
+      <p>Life, like a complex number, has both <strong>real</strong> and <strong>imaginary</strong> parts. The imaginary part reflects our broader human experience — how we relate to others, define purpose, and navigate society. The real part is the grounded, day-to-day layer — earning a living, solving practical problems, or pursuing creativity and craft.</p>
 
-  <!-- Content -->
-  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
-    <article class="content rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 sm:p-8 shadow-soft leading-relaxed text-slate-800 dark:text-slate-200">
-      <p><em>In this article, we build an automated pipeline that integrates the OpenWeather API and AeroDataBox API, stores results in MySQL, and schedules recurring runs — with clean Python patterns for secrets and orchestration.</em></p>
+      <p>For the imaginary part, I draw inspiration from <strong>Stephen Hawking</strong>, whose motto — “<em>No matter how difficult life is, there is always a way</em>” — reminds me that solutions exist, even when hidden. Similarly, <strong>Einstein</strong> said: “<em>There are two ways of living: One is as though nothing is a miracle, the other is as though everything is</em>.” I choose the latter — to treat life as a continuous unfolding of wonder, beauty, and growth.</p>
 
-      <div class="my-4"><img src="etlblog.jpg" alt="Real-time data pipeline diagram" class="w-full h-auto" /></div>
+      <p>For the real part of life, I’m grounded by the logic of <strong>George Pólya</strong>: “<em>If you can't solve a problem, then there is an easier problem you can solve: find it</em>.” This approach helps me break complex tasks into smaller, solvable steps. And to keep learning alive, I turn to <strong>Feynman’s</strong> favorite quote from a Buddhist temple: “<em>If anyone has done that, any fool can do this</em>.” It fuels my belief that mastery is not mystery — it’s repetition, curiosity, and honesty with one’s ignorance.</p>
 
-      <h2>The Importance of Database Pipelines</h2>
-      <p>Modern systems depend on continuous data. Pipelines standardize collection, transformation, storage, and access, reducing manual toil and making analytics reliable.</p>
+      <p>Work ethics, then, is not a rigid rulebook but a rhythm between imagination and execution — the balance between Hawking’s hope and Pólya’s practicality. To stay ethical in one’s work means to stay truthful to this rhythm: to dream, but also to deliver.</p>
 
-      <h2>What is a Database Pipeline?</h2>
+      <!-- <blockquote class="border-l-4 pl-4 not-italic">
+        “Ethics is not only about what we build — but how sincerely we build it.”
+      </blockquote> -->
+
+      <!-- Optional closing bullets -->
+       <span></span>
+
+      <h2>Three habits I try to keep</h2>
       <ul>
-        <li><strong>Data Collection</strong> — fetch from APIs or internal systems</li>
-        <li><strong>Transformation</strong> — clean/normalize</li>
-        <li><strong>Storage</strong> — persist in DB/warehouse</li>
-        <li><strong>Retrieval</strong> — query for analytics/apps</li>
+        <li><strong>Reduce to the soluble:</strong> If a problem feels impossible, I haven’t made it small enough.</li>
+        <li><strong>Bias for action:</strong> Progress beats perfection — ship, learn, iterate.</li>
+        <li><strong>Respect reality & people:</strong> Data first, empathy always.</li>
       </ul>
-
-      <h3>Architecture Overview</h3>
-      <ul>
-        <li><strong>Google Pub/Sub</strong> — event ingestion</li>
-        <li><strong>Cloud Dataflow</strong> — streaming transforms</li>
-        <li><strong>BigQuery</strong> — storage & analytics</li>
-        <li><strong>Cloud Functions</strong> — triggers</li>
-      </ul>
-
-      <h2>1) Data Collection — Cities via Wikipedia (BeautifulSoup)</h2>
-      <pre><code class="language-python">from bs4 import BeautifulSoup
-import requests
-from lat_lon_parser import parse
-import pandas as pd
-
-def cities_data(cities):
-    city_data = []
-    for city in cities:
-        url = f"https://www.wikipedia.org/wiki/{city}"
-        r = requests.get(url)
-        soup = BeautifulSoup(r.content, 'html.parser')
-        latitude = soup.find(class_="latitude").get_text()
-        longitude = soup.find(class_="longitude").get_text()
-        country = soup.find(class_="infobox-data").get_text()
-        city_data.append({
-            "City": city,
-            "Country": country,
-            "Latitude": parse(latitude),
-            "Longitude": parse(longitude),
-        })
-    return pd.DataFrame(city_data)</code></pre>
-
-      <h2>2) Weather from OpenWeather</h2>
-      <pre><code class="language-python">def get_weather_data(lat, lon, api_key):
-    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}&units=metric"
-    r = requests.get(url)
-    if r.status_code == 200:
-        return r.json()
-    print(f"Failed to retrieve data: {r.status_code}")
-    return None</code></pre>
-
-      <h2>3) Flights from AeroDataBox</h2>
-      <pre><code class="language-python">def get_flight_data(icao_list, api_key):
-    import pandas as pd
-    flight_items = []
-    for icao in icao_list:
-        url = f"https://aerodatabox.p.rapidapi.com/flights/airports/icao/{icao}/2024-10-10T00:00/2024-10-10T23:59"
-        headers = { 'x-rapidapi-key': api_key }
-        r = requests.get(url, headers=headers)
-        flights_json = r.json()
-        for item in flights_json["arrivals"]:
-            flight_items.append({
-                "arrival_airport_icao": icao,
-                "flight_number": item.get("number"),
-                "scheduled_arrival_time": item["arrival"]["scheduledTime"].get("local")
-            })
-    return pd.DataFrame(flight_items)</code></pre>
-
-      <h2>4) Persist to MySQL with SQLAlchemy</h2>
-      <pre><code class="language-python">from sqlalchemy import create_engine
-
-def connect_database(cfg):
-    conn = f"mysql+pymysql://{cfg['user']}:{cfg['password']}@{cfg['host']}:{cfg['port']}/{cfg['database']}"
-    return create_engine(conn)
-
-def push_to_database(df, table, engine):
-    df.to_sql(table, con=engine, if_exists='append', index=False)</code></pre>
-
-      <h2>Retrieve & Analyze</h2>
-      <pre><code class="language-python">def retrieve_from_db(table, engine):
-    import pandas as pd
-    return pd.read_sql(f"SELECT * FROM {table}", con=engine)
-
-engine = connect_database(config)
-weather_df = retrieve_from_db('weather_data', engine)</code></pre>
-
-      <h2>Automation with cron</h2>
-      <pre><code class="language-bash"># open editor
-crontab -e
-
-# run daily at midnight
-0 0 * * * /path/to/your/project/automation.sh</code></pre>
-
-      <pre><code class="language-bash">#!/bin/bash
-LOG_FILE="automation.log"
-
-echo "Fetching weather data..." >> $LOG_FILE
-python3 main.py --weather >> $LOG_FILE 2>&1
-
-echo "Fetching flight data..." >> $LOG_FILE
-python3 main.py --flights >> $LOG_FILE 2>&1
-
-notify-send "Automation Complete" "Weather and Flight data fetching completed."</code></pre>
-
-      <p><strong>Full project:</strong> <a class="text-brand-600 hover:underline" href="https://github.com/QED137/Data-Engineering" target="_blank" rel="noopener">GitHub →</a></p>
-
-      <h2>Database Schema Overview</h2>
-      <ul>
-        <li><strong>cities</strong> — name, country, coordinates</li>
-        <li><strong>airports</strong> — ICAO, location</li>
-        <li><strong>weather_data</strong> — temp, humidity, conditions</li>
-        <li><strong>flight_data</strong> — flight number, scheduled arrival</li>
-      </ul>
-
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li>Pipelines reduce manual work and standardize data flow.</li>
-        <li>Secure secrets; validate sources and schemas.</li>
-        <li>Automate with cron or cloud schedulers.</li>
-      </ul>
-
-      <h2>Conclusion</h2>
-      <p>Automated pipelines ensure fresh, reliable data for decision-making. With a small set of Python functions and a scheduler, you can ingest, store, and query real-time signals at scale.</p>
-
-      <hr class="my-8" />
-      <div class="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm">
-        <a href="../blogs/blogs.html" class="inline-flex items-center gap-2 text-brand-600 hover:underline"><i class="fa-solid fa-arrow-left"></i> Back to all posts</a>
-        <a href="oop_cpp.html" class="inline-flex items-center gap-2 text-brand-600 hover:underline">Next: OOP in C++ for Geant4 <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
     </article>
+
+    <!-- Share buttons -->
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="https://twitter.com/intent/tweet?text=Work%20Ethics%20%E2%80%94%20Real%20%26%20Imaginary%20Parts%20of%20Life&url=https://janmajay.de/blogs/workethics.html" target="_blank"
+         class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm hover:border-slate-300 dark:hover:border-slate-600">
+        <i class="fa-brands fa-x-twitter text-sm"></i> Share
+      </a>
+      <button id="copyLink"
+        class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm hover:border-slate-300 dark:hover:border-slate-600">
+        <i class="fa-regular fa-copy text-sm"></i> Copy link
+      </button>
+    </div>
   </main>
 
   <!-- Footer -->
   <footer class="border-t border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-300">
-      <p>© <span id="year"></span> QED137 Blog | Designed by Janmajay</p>
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600 dark:text-slate-300 flex items-center justify-between">
+      <p>© <span id="year"></span> Janmajay Kumar — Code & Cosmos</p>
       <div class="flex items-center gap-4">
         <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
         <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
@@ -268,19 +170,13 @@ notify-send "Automation Complete" "Weather and Flight data fetching completed."<
 
   <!-- Back-to-top button -->
   <button id="toTopBtn"
-    class="fixed right-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full
-           bg-brand-600 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
-           transition duration-200 ease-out
-           opacity-0 translate-y-2 pointer-events-none
+    class="fixed right-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
+           transition duration-200 ease-out opacity-0 translate-y-2 pointer-events-none
            hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/80"
     aria-label="Back to top" title="Back to top">
     <i class="fa-solid fa-arrow-up text-base"></i>
   </button>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
   <script>
     // mobile menu
     const btn = document.getElementById('menuBtn');
@@ -305,6 +201,18 @@ notify-send "Automation Complete" "Weather and Flight data fetching completed."<
       toggle?.addEventListener('click', () => {
         root.classList.toggle('dark');
         localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+      });
+    })();
+
+    // Copy link
+    (function () {
+      const btn = document.getElementById('copyLink');
+      btn?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          btn.innerHTML = '<i class="fa-solid fa-check text-sm"></i> Copied';
+          setTimeout(() => btn.innerHTML = '<i class="fa-regular fa-copy text-sm"></i> Copy link', 1500);
+        } catch (_) {}
       });
     })();
 

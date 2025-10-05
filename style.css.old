@@ -7,7 +7,7 @@
   --primary-color: #29a587;
   --bg-dark: #1d222a;
   --text-light: #fff;
-  --tilt-}
+}
 
 /* Universal Reset with Cross-Browser Support */
 * {
@@ -1415,3 +1415,39 @@ html {
     height: 12rem;
     margin: 0;
     animation: wave 3s ease-in-out infinite;
+  }
+  .name {
+    font-size: 8rem;
+    width: 50rem;
+  }
+  .about {
+    width: 50rem;
+  }
+  .dev-work {
+    width: 22rem;
+    height: 8rem;
+  }
+  .dev-work span:nth-child(1) { font-size: 2.5rem; }
+  .dev-experience { bottom: 20%; right: 2%; transform: translateX(-50%); }
+  .dev-projects { bottom: 12%; left: 60%; transform: translateX(-50%); }
+  
+  .skills, .projects {
+    height: auto; /* Let content define height */
+    padding-bottom: 15rem;
+  }
+  .skills-cards, .projects-cards {
+    width: 120rem;
+  }
+  .projects .section-border { right: 15rem; }
+  .contact-content { width: 110rem; }
+}
+
+/* EXTRA LARGE DESKTOPS (Optional, for very wide screens) */
+@media (min-width: 1600px) {
+    html {
+        font-size: 62.5%; /* This makes 1rem = 10px */
+    }
+    .navigation { right: -70rem; }
+    .skills .section-border, .contact .section-border { left: 15rem; }
+    .contact-content { width: 120rem; }
+}

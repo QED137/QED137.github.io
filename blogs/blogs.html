@@ -1,122 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janmajay's Blogs</title>
-    <link rel="icon" href="../images/myfavicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="blogs.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blogs — Janmajay Kumar</title>
+  <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: { brand: { 500: '#29a587', 600: '#1f8a72' } },
+          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.08)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* light & dark background accents */
+    body {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
+        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent);
+    }
+    .dark body, .dark {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent),
+        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.06), transparent);
+    }
+
+    /* card hover */
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+
+    /* mobile button positions */
+    @media (max-width: 640px) {
+      #backBtn { bottom: 1rem; left: 1rem; }
+      #toTopBtn { bottom: 1rem; right: 1rem; }
+    }
+    /* Canvas background animation */
+        #graph-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;              /* was -1 — this hides it under the body background */
+  pointer-events:none;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent);
+}
+  </style>
 </head>
-<body>
+<body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:bg-brand-500/10 selection:text-slate-900">
+  <canvas id="graph-bg"></canvas>
+    <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between relative">
+        <a href="../index.html#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600">
+          <span>Janmajay Kumar</span>
+        </a>
 
-    <!-- Navbar -->
-      
-    <!-- <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/about/about.html">About</a></li>
-            <li><a href="/projects/project.html" class="active">Projects</a></li>
-            <li><a href="/blogs/blogs.html">Blog</a></li>
-            <li><a href="/gallery.html">Gallery</a></li>
-            <li><a href="/index.html#contacts">Contact</a></li>
-        </ul>
-    </nav> -->
-          <!--new design for menu bar ended-->
-      <nav class="navigation">
-        <div class="section-border"></div>
-        <div class="nav-items">
-          <a href="#index.html">Home</a>
-          <a href="../about/about.html">About</a>
-          <a href="../projects/project.html">Projects</a>
-          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
-          <a href="../gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
-          <a href="../blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
+          <a class="hover:text-brand-600" href="../index.html">Home</a>
+          <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
+          <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
+          <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
+          <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
+          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
+            <i class="fa-solid fa-download text-xs"></i>
+            <span>Download CV</span>
+          </a>
+        </nav>
 
-          <a href="#contacts" class="tooltip">Contact</a>
+        <div class="flex items-center gap-2">
+          <!-- Theme toggle -->
+          <button id="theme-toggle"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700
+                   bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
+            aria-label="Toggle dark mode" title="Toggle theme">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:inline"></i>
+          </button>
+
+          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
-      </nav>
-      <!-- End of Navigation -->
-       <!-- Navigation for bigger screen -->
-             <!-- Full Navbar for Large Screens -->
-             <nav class="navbar">
-              <ul class="nav-links">
-                  <li><a href="../index.html">Home</a></li>
-                  <li><a href="../about/about.html">About</a></li>
-                  <li><a href="../projects/project.html">Projects</a></li>
-                  <li><a href="../blogs/blogs.html" class="active">Blog</a></li>
-                  <li><a href="../gallery.html">Gallery</a></li>
-                  <li><a href="../index.html#contacts">Contact</a></li>
-              </ul>
-          </nav>
-       <!-- end of navigation for bigger screen-->
+      </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>My Blog</h1>
-        <p>Discover insights in Statistics, Physics, Mathematics, and Machine Learning.</p>
-    </section>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
+      <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
+        <a class="hover:text-brand-600" href="../index.html">Home</a>
+        <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
+        <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
+        <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
+        <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Blog Categories -->
-    <section class="blog-container">
+  <!-- Hero -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 text-center">
+    <p class="text-xs font-semibold uppercase tracking-wider text-brand-600">Writing</p>
+    <h1 class="mt-2 text-4xl font-black">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-teal-500">Blogs</span>
+    </h1>
+    <p class="mt-4 max-w-2xl mx-auto text-sm text-slate-600 dark:text-slate-400 italic">"Write the first sentence so that the reader will want to read the second sentence" -William Faulkner</p>
 
-        <article class="blog-card">
-            <img src="../images/statistics.jpg"  >
-            <h3>Statistics & Data Science</h3>
-            <p>Master statistical concepts, probability, and hypothesis testing.</p>
-            <a href="statistics.html" class="read-more">Explore</a>
-        </article>
-        
-            <article class="blog-card">
-                 <img src="../images/datapipe.png" > 
-                <h3>Real-Time Data Pipelines</h3>
-                <p>Automating Real-Time Data Pipelines: Integrating Weather and Flight APIs with Python and MySQL</p>
-                <a href="realtimepipe.html"class="read-more">Explore</a>
-            </article>
-            <article class="blog-card">
-                 <img src="../images/cppoop2.png" > 
-                <h3>Object Programming in C++</h3>
-                <p>Geant4, a powerful toolkit for particle physics simulations, is designed using Object-Oriented Programming (OOP) principles in C++. Understanding OOP is essential for 
-                    effectively developing and extending Geant4-based simulations.</p>
-                <a href="oop_cpp.html"class="read-more">Explore</a>
+    <!-- Filter + Search -->
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+      <div id="tagBar" class="flex flex-wrap justify-center gap-2">
+        <button data-tag="all"     class="tag-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">All</button>
+        <button data-tag="ml"      class="tag-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">ML</button>
+        <button data-tag="physics" class="tag-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">Physics</button>
+        <button data-tag="devops"  class="tag-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">DevOps</button>
+        <button data-tag="cpp"     class="tag-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">C++</button>
+        <button data-tag="stats"   class="tag-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">Statistics</button>
+      </div>
+      <div class="sm:ml-4">
+        <label class="relative block">
+          <span class="sr-only">Search</span>
+          <input id="searchInput" type="text" placeholder="Search posts…"
+                 class="w-full sm:w-72 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2 pl-9 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20" />
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+        </label>
+      </div>
+    </div>
+  </section>
 
-            </article>
-           
-        
-        <!-- <article class="blog-card">
-            <img src="images/physics.jpg" alt="Physics">
-            <h3>Physics & The Universe</h3>
-            <p>Dive into quantum mechanics, relativity, and astrophysics.</p>
-            <a href="physics.html" class="read-more">Explore</a>
-        </article>
+  <!-- Blog Grid -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div id="blogGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- 1 Statistics & Data Science -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="stats,ml">
+        <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/statistics.jpg" alt="Statistics" class="h-full w-full object-cover" />
+        </div>
+        <h3 class="mt-4 text-lg font-semibold">Statistics & Data Science</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Mastering probability, inference, and the practical stats every engineer uses.</p>
+        <a href="statistics.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
+      </article>
 
-        <article class="blog-card">
-            <img src="images/mathematics.jpg" alt="Mathematics">
-            <h3>Mathematics & Theorems</h3>
-            <p>Explore calculus, algebra, and real-world math applications.</p>
-            <a href="mathematics.html" class="read-more">Explore</a>
-        </article>
+      <!-- 2 Real-Time Data Pipelines -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="devops,ml">
+        <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/datapipe.png" alt="Real-Time Pipelines" class="h-full w-full object-cover" />
+        </div>
+        <h3 class="mt-4 text-lg font-semibold">Real-Time Data Pipelines</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Weather + Flight APIs with Python & MySQL, automation patterns, and lessons learned.</p>
+        <a href="realtimepipe.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
+      </article>
 
-        <article class="blog-card">
-            <img src="images/machine_learning.jpg" alt="Machine Learning">
-            <h3>Machine Learning & AI</h3>
-            <p>Discover how ML algorithms and AI power modern technology.</p>
-            <a href="machine-learning.html" class="read-more">Explore</a>
-        </article> -->
+      <!-- 3 OOP in C++ -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="cpp,physics">
+        <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/cppoop2.png" alt="OOP C++" class="h-full w-full object-cover" />
+        </div>
+        <h3 class="mt-4 text-lg font-semibold">Object Programming in C++</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">How OOP underpins Geant4 simulations and extensible scientific software.</p>
+        <a href="oop_cpp.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
+      </article>
 
-        <article class="blog-card">
-    <img src="myfavicon.png" alt="From Probability to Machine Learning">
-    <h3>From School Probability to Machine Learning</h3>
-    <p>My personal journey into the world of AI. This isn’t a unique roadmap — but it might help you find your own path.</p>
-    <a href="machineLearningRoadmap.html" class="read-more">Explore</a>  
-</article>
+      <!-- 4 Roadmap Article -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="ml">
+        <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="myfavicon.png" alt="ML Roadmap" class="h-full w-full object-cover" />
+        </div>
+        <h3 class="mt-4 text-lg font-semibold">From Probability to Deep Learning: A Self-Study Roadmap</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">My personal journey into AI — not a unique roadmap, but a useful compass.</p>
+        <a href="machineLearningRoadmap.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
+      </article>
 
-    </section>
+      <!-- 5 Placeholder -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="physics">
+        <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="Richard_Feynman_Nobel.jpg" alt="Work Ethics" class="h-full w-full object-cover" />
+        </div>
+        <h3 class="mt-4 text-lg font-semibold">Work Ethics</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">A practical approach to work ethics in tech.</p>
+        <a href="../blogs/workethics.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
+      </article>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 QED137 Blog | Designed by Janmajay</p>
-    </footer>
-    <script>Prism.highlightAll();</script>
+    <!-- Load More -->
+    <div class="mt-10 flex justify-center">
+      <button id="loadMoreBtn" class="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-3 text-sm hover:border-slate-300 dark:hover:border-slate-600">Load more</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-300">
+      <p>© <span id="year"></span> QED137 Blog | Designed by Janmajay</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const mm = document.getElementById('mobileMenu');
+    btn && btn.addEventListener('click', () => mm.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Client-side filtering + search + pagination ---
+    const chips = document.querySelectorAll('.tag-chip');
+    const searchInput = document.getElementById('searchInput');
+    const grid = document.getElementById('blogGrid');
+    const cards = Array.from(grid.querySelectorAll('article'));
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+    let activeTag = 'all';
+    let query = '';
+    const PAGE_SIZE = 6;
+    let shown = 0;
+
+    function matches(card) {
+      const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      const text = (card.textContent || '').toLowerCase();
+      const tagOk = activeTag === 'all' || tags.split(',').map(t=>t.trim()).includes(activeTag);
+      const queryOk = !query || text.includes(query);
+      return tagOk && queryOk;
+    }
+
+    function applyFilters() {
+      cards.forEach(c => c.classList.add('hidden'));
+      shown = 0;
+      for (const c of cards) {
+        if (matches(c)) {
+          if (shown < PAGE_SIZE) {
+            c.classList.remove('hidden');
+            shown++;
+          }
+        }
+      }
+      updateLoadMoreVisibility();
+    }
+
+    function showMore() {
+      let added = 0;
+      for (const c of cards) {
+        if (matches(c) && c.classList.contains('hidden')) {
+          if (added < PAGE_SIZE) {
+            c.classList.remove('hidden');
+            added++;
+            shown++;
+          } else break;
+        }
+      }
+      updateLoadMoreVisibility();
+    }
+
+    function updateLoadMoreVisibility() {
+      const remaining = cards.some(c => matches(c) && c.classList.contains('hidden'));
+      loadMoreBtn.style.display = remaining ? 'inline-flex' : 'none';
+    }
+
+    function setActiveChip(target) {
+      chips.forEach(ch => {
+        ch.classList.remove('bg-brand-600','text-white','border-brand-600');
+        ch.classList.add('bg-white','dark:bg-slate-800','border','border-slate-200','dark:border-slate-700');
+      });
+      target.classList.remove('bg-white','dark:bg-slate-800');
+      target.classList.add('bg-brand-600','text-white','border-brand-600');
+    }
+
+    chips.forEach(ch => ch.addEventListener('click', e => {
+      activeTag = e.currentTarget.getAttribute('data-tag');
+      setActiveChip(e.currentTarget);
+      applyFilters();
+    }));
+
+    searchInput.addEventListener('input', e => {
+      query = e.target.value.trim().toLowerCase();
+      applyFilters();
+    });
+
+    loadMoreBtn.addEventListener('click', showMore);
+
+    // init
+    setActiveChip(document.querySelector('[data-tag="all"]'));
+    applyFilters();
+
+    // --- Theme toggle (persisted) ---
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+
+      if (localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+
+      toggle?.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+      });
+    })();
+  </script>
+
+  <!-- Back-to-home button -->
+  <a href="../index.html"
+     id="backBtn"
+     class="fixed left-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full bg-slate-900 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
+            transition duration-200 ease-out hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-white/80
+            dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90"
+     aria-label="Back to Home" title="Back to Home">
+    <i class="fa-solid fa-arrow-left text-base"></i>
+  </a>
+
+  <!-- Back-to-top button -->
+  <button id="toTopBtn"
+    class="fixed right-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
+           transition duration-200 ease-out opacity-0 translate-y-2 pointer-events-none
+           hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/80"
+    aria-label="Back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up text-base"></i>
+  </button>
+  <script>
+    (function () {
+      const btn = document.getElementById('toTopBtn');
+      if (!btn) return;
+      const SHOW_AT = 300;
+
+      const toggle = () => {
+        if (window.scrollY > SHOW_AT) {
+          btn.classList.remove('opacity-0','translate-y-2','pointer-events-none');
+          btn.classList.add('opacity-100','translate-y-0','pointer-events-auto');
+        } else {
+          btn.classList.add('opacity-0','translate-y-2','pointer-events-none');
+          btn.classList.remove('opacity-100','translate-y-0','pointer-events-auto');
+        }
+      };
+      const toTop = () => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      };
+      window.addEventListener('scroll', toggle, { passive: true });
+      btn.addEventListener('click', toTop);
+      toggle();
+    })();
+  </script>
+   <!-- Canvas background animation -->
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('graph-bg');
+  const ctx = canvas.getContext('2d');
+  let nodes = [], edges = [];
+  const N = 34, MAX_SPEED = 0.18, LINK_DIST = 180;
+
+  function fitCanvas(){
+    // HiDPI scale
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const w = window.innerWidth, h = window.innerHeight;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function init(){
+    fitCanvas();
+    nodes = Array.from({length: N}, () => ({
+      x: Math.random() * canvas.clientWidth,
+      y: Math.random() * canvas.clientHeight,
+      vx: (Math.random() - 0.5) * MAX_SPEED,
+      vy: (Math.random() - 0.5) * MAX_SPEED
+    }));
+    rebuildEdges();
+  }
+
+  function rebuildEdges(){
+    edges = [];
+    for (let i=0;i<nodes.length;i++){
+      for (let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        if (Math.hypot(a.x-b.x, a.y-b.y) < LINK_DIST) edges.push([i,j]);
+      }
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.clientWidth, canvas.clientHeight);
+
+    // subtle pulse
+    const pulse = 0.7 + 0.3 * Math.sin(Date.now()/900);
+
+    // adapt color to theme
+    const dark = document.documentElement.classList.contains('dark');
+    const line = dark ? `rgba(41,165,135,${0.12*pulse})` : `rgba(41,165,135,${0.15*pulse})`;
+    const dot  = dark ? 'rgba(41,165,135,0.85)' : 'rgba(41,165,135,0.9)';
+
+    ctx.strokeStyle = line;
+    ctx.lineWidth = 1.1;
+
+    // edges
+    edges.forEach(([i,j])=>{
+      const a=nodes[i], b=nodes[j];
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+    });
+
+    // nodes
+    ctx.fillStyle = dot;
+    nodes.forEach(n=>{
+      ctx.beginPath(); ctx.arc(n.x,n.y,2.2,0,Math.PI*2); ctx.fill();
+
+      n.x += n.vx; n.y += n.vy;
+      if (n.x<0||n.x>canvas.clientWidth)  n.vx *= -1;
+      if (n.y<0||n.y>canvas.clientHeight) n.vy *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { init(); });
+  // if you toggle dark mode, recolor immediately on next frame (handled automatically)
+
+  init();
+  draw();
+});
+</script>
 </body>
 </html>

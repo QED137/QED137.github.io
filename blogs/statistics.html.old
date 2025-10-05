@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Statistics — Blog</title>
+  <title>Statistics & Data Science — Blog</title>
   <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
 
   <!-- Fonts & Icons -->
@@ -16,7 +16,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
@@ -26,20 +25,10 @@
       }
     }
   </script>
-
-  <!-- Page styles -->
   <style>
     html { scroll-behavior: smooth; }
-    body {
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
-        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent);
-    }
-    .dark body, .dark {
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent),
-        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.06), transparent);
-    }
+    body { background: radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
+                     radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent); }
     .content p { margin-top: .9rem; margin-bottom: .9rem; }
     .content h1, .content h2, .content h3 { scroll-margin-top: 90px; }
     .content h1 { font-size: 1.6rem; font-weight: 800; margin-top: 2.2rem; margin-bottom: 1rem; }
@@ -49,75 +38,58 @@
     .content ul { list-style: disc; padding-left: 1.25rem; margin: .5rem 0; }
     .content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
     .content table th, .content table td { border: 1px solid rgb(226 232 240); padding: .6rem .75rem; }
-    .dark .content table th, .dark .content table td { border-color: rgb(51 65 85); }
     .content table thead th { background: rgb(248 250 252); font-weight: 700; }
-    .dark .content table thead th { background: rgb(30 41 59); }
+    .content code { background: rgba(2,6,23,.04); padding: .15rem .35rem; border-radius: .35rem; }
     .content img { border-radius: .75rem; border: 1px solid rgba(2,6,23,.06); }
-    .dark .content img { border-color: rgba(255,255,255,.12); }
-    pre { border-radius: .75rem; overflow: auto; }
-    @media (max-width: 640px) { #toTopBtn { right: 1rem; bottom: 1rem; } }
-  </style>
-   <!-- MathJax v3: render LaTeX in HTML -->
-<script>
+.content .mjx-container {
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: .25rem; /* tiny spacing under long formulas */
+} 
+</style>
+
+  <!-- MathJax v3 -->
+ <script>
   window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true
-    },
+    tex: { inlineMath: [['$','$'],['\\(','\\)']] },
     svg: {
       fontCache: 'global',
       displayAlign: 'left',
-      linebreaks: { automatic: true, width: 'container' }
-    },
-    options: {
-      skipHtmlTags: ['script','noscript','style','textarea','pre','code'] // don't render inside code blocks
+      linebreaks: { automatic: true, width: 'container' }  // <-- key bit
     }
   };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <!-- Prism (code highlighting) - dark theme looks great in both modes -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-</head>
-<body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:bg-brand-500/10 selection:text-slate-900">
 
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="font-sans text-slate-900 antialiased selection:bg-brand-500/10 selection:text-slate-900">
   <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 border-b border-slate-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
-        <a href="../index.html#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600">
-          <span>Janmajay Kumar</span>
+        <a href="../index.html#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 hover:text-brand-600">
+          <span>Janmajay</span>
         </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
-            <a class="hover:text-brand-600" href="../index.html">Home</a>
-          <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+          <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
           <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
           <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
           <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
-          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
+          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
             <i class="fa-solid fa-download text-xs"></i>
             <span>Download CV</span>
           </a>
         </nav>
-        <div class="flex items-center gap-2">
-          <!-- Theme toggle -->
-          <button id="theme-toggle"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700
-                   bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
-            aria-label="Toggle dark mode" title="Toggle theme">
-            <i class="fa-solid fa-moon dark:hidden"></i>
-            <i class="fa-solid fa-sun hidden dark:inline"></i>
-          </button>
-          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-        </div>
+        <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white/90">
       <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
-        <a class="hover:text-brand-600" href="../index.html">Home</a>
-        <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
+        <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
         <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
         <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
         <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
@@ -139,16 +111,13 @@
     <article class="content rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-soft leading-relaxed text-slate-800">
 
       <h1 id="real-world-questions-needing-statistical-inference">Real-World Questions: Needing Statistical Inference</h1>
-      
-
       <p>Statistical inference is essential when we need to make sense of real-world data. Often, we observe differences or trends, but how do we know whether those observations are meaningful or simply due to chance? Let’s look at five common real-life questions across different fields, each requiring statistical inference to find answers.</p>
-      
       <ol>
         <li>
           <p><strong>Social Science: Does Education Affect Income?</strong></p>
           <ul>
             <li><p><strong>Question</strong>: Do people with a college degree earn more than those without one?</p></li>
-            <li><p><strong>Example</strong>: In a survey of 100 people, 50 college graduates have an average income of \$60,000, while the average income for 50 people without a degree is $45,000.</p></li>
+            <li><p><strong>Example</strong>: In a survey of 100 people, 50 college graduates have an average income of $60,000, while the average income for 50 people without a degree is $45,000.</p></li>
             <li><p><strong>Objective</strong>: We want to determine if the observed income difference is real or simply a result of random variation in the sample.</p></li>
           </ul>
         </li>
@@ -525,61 +494,11 @@
     </div>
   </footer>
 
- 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
   <script>
-    // mobile menu
     const btn = document.getElementById('menuBtn');
     const mm = document.getElementById('mobileMenu');
     btn && btn.addEventListener('click', () => mm.classList.toggle('hidden'));
-
-    // year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // theme toggle (persisted)
-    (function () {
-      const root = document.documentElement;
-      const toggle = document.getElementById('theme-toggle');
-
-      if (localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
-
-      toggle?.addEventListener('click', () => {
-        root.classList.toggle('dark');
-        localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
-      });
-    })();
-
-    // Back-to-top button
-    (function () {
-      const btn = document.getElementById('toTopBtn');
-      if (!btn) return;
-
-      const SHOW_AT = 300;
-      const toggle = () => {
-        if (window.scrollY > SHOW_AT) {
-          btn.classList.remove('opacity-0','translate-y-2','pointer-events-none');
-          btn.classList.add('opacity-100','translate-y-0','pointer-events-auto');
-        } else {
-          btn.classList.add('opacity-0','translate-y-2','pointer-events-none');
-          btn.classList.remove('opacity-100','translate-y-0','pointer-events-auto');
-        }
-      };
-      const toTop = () => {
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      };
-      window.addEventListener('scroll', toggle, { passive: true });
-      btn.addEventListener('click', toTop);
-      toggle();
-    })();
   </script>
 </body>
 </html>

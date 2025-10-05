@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Janmajay Kumar</title>
+    <link rel="icon" href="/images/myfavicon.png" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#29a587">
+    <meta name="keywords" content="Physicist, Data Scientist, Machine Learning, Python, Monte Carlo Simulations, Cloud Computing">
+
+    <meta name="keywords" content="Janmajay Kumar is a Physicist and Data Scientist with a passion for solving complex problems using data-driven approaches">
+
+    <meta name="description" content="Janmajay Kumar is a Data Scientist and Physicist specializing in AI, MLOps, and Cloud Computing. Open to Work - Contact now!">
+
+    <meta name="keywords" content="Data Scientist, Machine Learning Engineer, Cloud MLOps, AI Engineer, Python Developer, Deep Learning, NLP, Computer Vision, GCP, Azure, AWS, Monte Carlo Simulations">
+    <meta name="description" content="Physicist & Data Scientist specializing in AI, MLOps, and Cloud Technologies. Open to Data Science and Engineering Roles.">
+    <!-- <meta property="og:title" content="Hire Janmajay - Data Scientist & MLOps Engineer"> -->
+    <meta property="og:description" content="Physicist & Data Scientist specializing in AI, MLOps, and Cloud Technologies. Open to Data Science and Engineering Roles.">    
+    <!-- <meta property="og:title" content="Janmajay Kumar - Physicist & Data Scientist"> -->
+    <meta property="og:description" content="Transforming Data into Insights with Python, ML, and Cloud Technology">
+    <meta property="og:image" content="images/edit_pic.png">
+    <meta property="og:url" content="https://janmajay.de">
+    <meta property="og:type" content="www.janmajay.de">
+    
+
+
+    
+
+    <link rel="stylesheet" href="style.css">
+   
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Rowdies:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Janmajay Kumar",
+  "url":"https://janmajay.de",
+  "image":"https://janmajay.de/images/edit_pic.png",
+  "jobTitle":"Software/AI Engineer",
+  "alumniOf":[{"@type":"CollegeOrUniversity","name":"IIT Delhi"},{"@type":"CollegeOrUniversity","name":"University of Tübingen"}],
+  "sameAs":[
+    "https://github.com/QED137",
+    "https://www.linkedin.com/in/janmajay-kumar-82b37121/"
+  ]
+}
+</script>
+
+  </head>
+  <body id="top">
+    
+    <!-- Container -->
+    <div class="container">
+      <!-- Navigation -->
+       <!--
+      <div class="menu-icon">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+      </div>
+       -->
+    <!--this is new design for menu bar-->
+    <div class="menu-icon">
+      <a>
+        
+        <button type="button" class="btn menu-btn">Take a look</button>
+      </a>
+    </div>
+      <!--new design for menu bar ended-->
+      <nav class="navigation">
+        <div class="section-border"></div>
+        <div class="nav-items">
+          <a href="#index.html" class="active">Home</a>
+          <a href="about/about.html">About</a>
+          <a href="projects/project.html">Projects</a>
+          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
+          <a href="/gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
+          <a href="./blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+
+          <a href="#contacts" class="tooltip">Contact</a>
+        </div>
+      </nav>
+      <!-- End of Navigation -->
+       <!-- Navigation for bigger screen -->
+             <!-- Full Navbar for Large Screens -->
+             <nav class="navbar">
+              <ul class="nav-links">
+                  <li><a href="#top"class = "active">Home</a></li>
+                  <li><a href="about/about.html">About</a></li>
+                  <li><a href="projects/project.html">Projects</a></li>
+                  <li><a href="blogs/blogs.html">Blog</a></li>
+                  <li><a href="gallery.html">Gallery</a></li>
+                  <li><a href="#contacts">Contact</a></li>
+              </ul>
+          </nav>
+       <!-- end of navigation for bigger screen-->
+
+
+      <!-- Landing -->
+      <section class="landing">
+        
+        <!-- <h1 class="section-bg-heading">Physics/Coding</h1> -->
+        
+        <div class="logo">
+          <span>Physicist</span>
+          <span>&</span>
+          <span>Data Scientist</span>
+        </div>
+        
+        <div class="hire-torn-note">
+          <div class="hire-pin">📌</div>
+          <p><a href="#contacts">HIRE ME!!</a></p>
+        </div>
+
+        
+        <div class="banner">
+          <div class="section-border"></div>
+
+
+
+          <div class="developer-info">
+             <h3 class="greeting">Welcome <span>to the Page of</span></h3>
+            <h1 class="name"><span>Janmajay</span> Kumar</h1>
+            <!-- <h3 class="prof">I am <span>Master in </span></h3> -->
+             
+            <p class="about">
+              <!-- Astrophysics & Particle Physics. <br/> -->
+           
+           <span class="highlight">Open to Work</span> for roles in Data Engineering, AI/ML, and Backend Development.
+            <!-- <b>
+                Skilled in C++, Python, JavaScript, HTML, CSS
+               </b>
+              -->
+              <!--<h3 class="prof"> This Website is still work in progress Some features might not be functioning</h3>-->
+
+            
+
+              <!-- <div class="cv">
+                <a href="images/Janmajay_Kumar_data_analystCV.pdf" download="Janmajay_Kumar_CV.pdf">
+                  
+                  <button type="button" class="btn cv-btn">Download cv</button>
+                </a>
+                <span>open-to-work</span>
+              </div> -->
+            <div class="social-media">
+              <!--
+              <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-twitter"></i>
+              -->
+              <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://github.com/QED137?tab=repositories" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <!--  
+                 <div class="collegeLogo">
+            <img src="./images/iitdlogo.jpeg" width="50px" iit delhi logo" class="uni-logo" />
+              
+            </div> -->
+ 
+            </div>
+            
+          
+          
+            </div>
+          
+
+
+            <div class="developer-img">
+            <div class="dev-img-wrapper">
+              <img src="./images/edit_pic.png" class="myimage"/>
+            </div>
+            
+            
+            <!-- <div class="dev-experience dev-work">
+             
+              <span>7+</span>
+              <span>years in python</span>
+            </div>
+            
+            <div class="dev-projects dev-work">
+              <span>10+</span>
+              <span>completed projects</span>
+            </div> -->
+            
+              
+          </div>
+          
+          
+        </div>
+  <div class="tech-stack-logos">
+  <div class="tech-logos">
+    <img src="images/logos/python.svg" alt="Python" />
+    <img src="images/logos/django-logo-negative.png" alt="Django" />
+    <img src="images/logos/JavaScript-logo.png" alt="JavaScript" />
+    <img src="images/logos/images.png" alt="Neo4j" /> 
+    <img src="images/logos/ubuntu-icon.svg" alt="Ubuntu" />
+    <img src="images/logos/docker-logo-blue.svg" alt="Docker" />
+    <img src="images/logos/1738678976919.png" alt="Azure" />
+    <img src="images/logos/TF_FullColor_PrimaryHorizontal.jpg" alt="TensorFlow" />
+  </div>
+</div>
+  
+
+      </section>
+      
+
+      <!-- End of Landing -->
+
+      <!-- Skills -->
+     <section class="skills">
+  <h1 class="section-heading">Professional Skills</h1>
+  <h3 class="sub-heading">My <span>Skills</span></h3>
+  <div class="section-border"></div>
+  <div class="skills-cards">
+
+    <div class="skills-card">
+      <div class="skill">
+        <span>Statistical Inference</span>
+      </div>
+      <p>
+        Experienced in data analysis, probability theory, and statistical modeling. Proficient in hypothesis testing, regression analysis, and data visualization to extract actionable insights.
+      </p>
+      <div class="skills-card-progress"></div>
+    </div>
+
+    <div class="skills-card">
+      <div class="skill">
+        <span>Python</span>
+      </div>
+      <p>
+        Skilled in Python for computational algorithms, object-oriented and functional programming. Experienced in building robust solutions for data processing and scientific computing.
+      </p>
+      <div class="skills-card-progress"></div>
+    </div>
+
+    <div class="skills-card">
+      <div class="skill">
+        <span>C++</span>
+      </div>
+      <p>
+        Proficient in C++ and object-oriented design. Hands-on experience with scientific frameworks such as GEANT4 for Monte Carlo simulations and numerical modeling.
+      </p>
+      <div class="skills-card-progress"></div>
+    </div>
+
+    <div class="skills-card">
+      <div class="skill">
+        <span>Machine Learning</span>
+      </div>
+      <p>
+        Developed deep learning models with up to 95% accuracy in classification tasks. Experienced in building end-to-end ML pipelines, from preprocessing to hyperparameter tuning.
+      </p>
+      <div class="skills-card-progress"></div>
+    </div>
+
+    <div class="skills-card">
+      <div class="skill">
+        <span>Monte Carlo Simulations</span>
+      </div>
+      <p>
+        Hands-on experience in Monte Carlo methods for modeling complex systems. Used statistical sampling and numerical techniques to analyze probabilistic outcomes in physics research.
+      </p>
+      <div class="skills-card-progress"></div>
+    </div>
+
+    <div class="skills-card">
+      <div class="skill">
+        <span>Cloud Technology</span>
+      </div>
+      <p>
+        Proficient in cloud platforms, especially Google Cloud and Azure. Built and deployed scalable data pipelines using BigQuery, Vertex AI, and Cloud Functions.
+      </p>
+      <div class="skills-card-progress"></div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- End of Skills -->
+
+      <!-- Projects -->
+        
+     
+      <!-- End of Projects -->
+
+      <!-- Contact -->
+      <section class="contact" id = "contacts">
+        <div class="back-to-top">
+          <a href="#top">
+              <i class="fa-solid fa-arrow-up"></i>
+          </a>
+      </div>
+      
+        <!-- <h1 class="section-bg-heading">Contact Me</h1> -->
+        <h1 class="section-heading">Contact</h1>
+        <h3 class="sub-heading">Let's <span>Have Some Talk</span></h3>
+        <div class="section-border"></div>
+        <div class="contact-content">
+          <div class="contact-left">
+            <div class="address">
+              <i class="fa-solid fa-location-dot"></i>
+              <div class="contact-info">
+                <span>Address</span>
+                <span>Mühlstrasse 20, 72074 Tübongen , Germany</span>  
+              </div>
+            </div>
+            <div class="freelance">
+              <i class="fa-regular fa-user"></i>
+              <div class="contact-info">
+                <span>Data Scientist</span>
+                <span>Available Right Now</span>
+              </div>
+            </div>
+            <div class="email">
+              <i class="fa-regular fa-envelope"></i>
+              <div class="contact-info">
+                <span>Email</span>
+                <span>contact@janmajay.de</span>
+              </div>
+            </div>
+            <div class="phone">
+              <i class="fa-solid fa-phone"></i>
+              <div class="contact-info">
+                <span>Phone</span>
+                <span>+xxxxxxxx</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-right">
+            <form action="contact.php" method="post">
+              <div class="input-groups">
+                  <div class="input-group">
+                      <label for="name">Your full name <i class="fa-solid fa-asterisk"></i></label>
+                      <input type="text" name="name" required />
+                  </div>
+                  <div class="input-group">
+                      <label for="email">Your email address <i class="fa-solid fa-asterisk"></i></label>
+                      <input type="email" name="email" required />
+                  </div>
+              </div>
+              <div class="input-group">
+                  <label for="subject">Your subject <i class="fa-solid fa-asterisk"></i></label>
+                  <input type="text" name="subject" required />
+              </div>
+              <div class="input-group">
+                  <label for="message">Your message <i class="fa-solid fa-asterisk"></i></label>
+                  <textarea name="message" required></textarea>
+              </div>
+              <button type="submit" class="contact-btn">Send Message</button>
+          </form>
+          </div>
+          
+        </div>
+        
+      </section>
+      <!-- End of Contact -->
+      
+      <!-- Footer -->
+       
+      <footer class="footer">
+        <div class="icons">
+          <!-- <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-twitter"></i> -->
+        </div>
+        <!-- <div class="copyright">
+          <p>&copy; All Rights Reserved. 2024</p>
+        </div> -->
+        <div class="author">
+          <p>Made By <span>Janmajay</span></p>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+    </div>
+    <!-- End of Container -->
+    <script src="script.js"></script>
+  </body>
+</html>

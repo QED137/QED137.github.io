@@ -3,168 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>From Probability to Deep Learning - A Self-Study Roadmap</title>
-
-  <!-- Original meta (kept) -->
   <meta name="description" content="A complete self-study roadmap from probability and statistics to deep learning. Explore curated books, courses, and hands-on projects to master machine learning." />
   <meta name="keywords" content="machine learning, deep learning, data science, self study, AI roadmap, statistics, probability, LLM, Coursera, Andrew Ng, Python, scikit-learn, TensorFlow, books" />
   <meta name="author" content="Janmajay Kumar" />
   <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="From Probability to Deep Learning - A Self-Study Roadmap" />
   <meta property="og:description" content="Curated journey through data science: books, courses, and hands-on projects." />
   <meta property="og:image" content="URL_TO_THUMBNAIL.jpg" />
   <meta property="og:url" content="https://yourdomain.com/my-ml-roadmap" />
   <meta property="og:type" content="article" />
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="From Probability to Deep Learning - A Self-Study Roadmap" />
   <meta name="twitter:description" content="Step-by-step self-study guide for data science and ML." />
   <meta name="twitter:image" content="URL_TO_THUMBNAIL.jpg" />
 
   <link rel="icon" href="myfavicon.png" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
- <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
-          colors: { brand: { 500: '#29a587', 600: '#1f8a72' } },
-          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.08)' }
-        }
-      }
-    }
-  </script>
-
-  <!-- Page styles -->
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
-        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent);
-    }
-    .dark body, .dark {
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent),
-        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.06), transparent);
-    }
-    .content p { margin-top: .9rem; margin-bottom: .9rem; }
-    .content h1, .content h2, .content h3 { scroll-margin-top: 90px; }
-    .content h1 { font-size: 1.6rem; font-weight: 800; margin-top: 2.2rem; margin-bottom: 1rem; }
-    .content h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1.6rem; margin-bottom: .6rem; }
-    .content h3 { font-size: 1.1rem; font-weight: 700; margin-top: 1.1rem; margin-bottom: .4rem; }
-    .content ol { list-style: decimal; padding-left: 1.25rem; margin: .75rem 0; }
-    .content ul { list-style: disc; padding-left: 1.25rem; margin: .5rem 0; }
-    .content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    .content table th, .content table td { border: 1px solid rgb(226 232 240); padding: .6rem .75rem; }
-    .dark .content table th, .dark .content table td { border-color: rgb(51 65 85); }
-    .content table thead th { background: rgb(248 250 252); font-weight: 700; }
-    .dark .content table thead th { background: rgb(30 41 59); }
-    .content img { border-radius: .75rem; border: 1px solid rgba(2,6,23,.06); }
-    .dark .content img { border-color: rgba(255,255,255,.12); }
-    pre { border-radius: .75rem; overflow: auto; }
-    @media (max-width: 640px) { #toTopBtn { right: 1rem; bottom: 1rem; } }
-  </style>
-   <!-- MathJax v3: render LaTeX in HTML -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true
-    },
-    svg: {
-      fontCache: 'global',
-      displayAlign: 'left',
-      linebreaks: { automatic: true, width: 'container' }
-    },
-    options: {
-      skipHtmlTags: ['script','noscript','style','textarea','pre','code'] // don't render inside code blocks
-    }
-  };
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <!-- Prism (code highlighting) - dark theme looks great in both modes -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="myjournyMl.css">
+  <title>From Probability to Deep Learning - A Self-Study Roadmap</title>
 </head>
-<body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:bg-brand-500/10 selection:text-slate-900">
+<body class="blog-body">
+        <!-- Navbar -->
+      
+    <!-- <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about/about.html">About</a></li>
+            <li><a href="/projects/project.html" class="active">Projects</a></li>
+            <li><a href="/blogs/blogs.html">Blog</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/index.html#contacts">Contact</a></li>
+        </ul>
+    </nav> -->
+          <!--new design for menu bar ended-->
+      <nav class="navigation">
+        <div class="section-border"></div>
+        <div class="nav-items">
+          <a href="#index.html">Home</a>
+          <a href="../about/about.html">About</a>
+          <a href="../projects/project.html">Projects</a>
+          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
+          <a href="../gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
+          <a href="../blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
 
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <a href="../index.html#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600">
-          <span>Janmajay Kumar</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
-           <a class="hover:text-brand-600" href="../index.html">Home</a>
-          <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
-          <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
-          <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
-          <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
-          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
-            <i class="fa-solid fa-download text-xs"></i>
-            <span>Download CV</span>
-          </a>
-        </nav>
-        <div class="flex items-center gap-2">
-          <!-- Theme toggle -->
-          <button id="theme-toggle"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700
-                   bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
-            aria-label="Toggle dark mode" title="Toggle theme">
-            <i class="fa-solid fa-moon dark:hidden"></i>
-            <i class="fa-solid fa-sun hidden dark:inline"></i>
-          </button>
-          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-bars"></i>
-          </button>
+          <a href="#contacts" class="tooltip">Contact</a>
         </div>
-      </div>
-    </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
-      <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
-        <a class="hover:text-brand-600" href="../index.html">Home</a>
-        <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
-        <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
-        <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
-        <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
-      </div>
-    </div>
-  </header>
+      </nav>
+      <!-- End of Navigation -->
+       <!-- Navigation for bigger screen -->
+             <!-- Full Navbar for Large Screens -->
+             <nav class="navbar">
+              <ul class="nav-links">
+                  <li><a href="../index.html">Home</a></li>
+                  <li><a href="../about/about.html">About</a></li>
+                  <li><a href="../projects/project.html">Projects</a></li>
+                  <li><a href="../blogs/blogs.html" class="active">Blog</a></li>
+                  <li><a href="../gallery.html">Gallery</a></li>
+                  <li><a href="../index.html#contacts">Contact</a></li>
+              </ul>
+          </nav>
+       <!-- end of navigation for bigger screen-->
 
-
-  <!-- Top-left back button
-  <a href="../blogs/blogs.html" class="back-button" title="Go back">
-    <i class="fa-solid fa-arrow-left"></i><span class="hidden sm:inline text-sm font-medium">Back</span>
-  </a> -->
-
-  <!-- Hero -->
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-4">
-    <nav class="text-xs text-slate-500">
-      <a class="hover:text-brand-600" href="../blogs/blogs.html">← Back to Blog</a>
-    </nav>
-    <h1 class="mt-3 text-3xl sm:text-4xl font-black">From Probability to Deep Learning: A Self-Study Roadmap</h1>
-    <p class="mt-3 text-sm text-slate-600">By <strong>Janmajay Kumar</strong></p>
-  </section>
-
-  <!-- Article -->
-  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
-    <article class="content rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-soft leading-relaxed text-slate-800">
-
-      <!-- ==== ORIGINAL CONTENT START (unchanged text) ==== -->
-      <h1>From Probability to Deep Learning: A Self-Study Roadmap</h1>
+  <h1>From Probability to Deep Learning: A Self-Study Roadmap</h1>
 <section class="ai-roadmap">
   <div class="intro">
+<!-- <div class="para-wrapper"> -->
    <p>
     People often say that data science and machine learning are the modern-day equivalent of electricity. For me, they represent a new kind of essential education — just like computer literacy became fundamental in the 1990s. Today, data literacy is becoming just as important, no matter what field you're in.
   </p>
@@ -176,6 +84,7 @@
   <p>
     This post outlines my self-study journey — the books, courses, and learning phases that took me from probability to deep learning. Whether you're just starting out or looking to go deeper, you're welcome to follow this roadmap or adapt it to your own pace.
   </p>
+<!-- </div> -->
     </div>
 
 
@@ -474,74 +383,13 @@
 </div>
 </section>
 </main>
-<!-- <a class="back-button" href="javascript:history.back()" title="Go back">
+<a class="back-button" href="javascript:history.back()" title="Go back">
   ⬅ Back
-</a> -->
-  <!-- Footer (site) -->
-  <footer class="border-t border-slate-100 bg-white/70">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-      <p>© <span id="year"></span> QED137 Blog | Designed by Janmajay</p>
-      <div class="flex items-center gap-4">
-        <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
-      </div>
-    </div>
-  </footer>
+</a>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-  <script>
-    // mobile menu
-    const btn = document.getElementById('menuBtn');
-    const mm = document.getElementById('mobileMenu');
-    btn && btn.addEventListener('click', () => mm.classList.toggle('hidden'));
-
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // theme toggle (persisted)
-    (function () {
-      const root = document.documentElement;
-      const toggle = document.getElementById('theme-toggle');
-
-      if (localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
-
-      toggle?.addEventListener('click', () => {
-        root.classList.toggle('dark');
-        localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
-      });
-    })();
-
-    // Back-to-top button
-    (function () {
-      const btn = document.getElementById('toTopBtn');
-      if (!btn) return;
-
-      const SHOW_AT = 300;
-      const toggle = () => {
-        if (window.scrollY > SHOW_AT) {
-          btn.classList.remove('opacity-0','translate-y-2','pointer-events-none');
-          btn.classList.add('opacity-100','translate-y-0','pointer-events-auto');
-        } else {
-          btn.classList.add('opacity-0','translate-y-2','pointer-events-none');
-          btn.classList.remove('opacity-100','translate-y-0','pointer-events-auto');
-        }
-      };
-      const toTop = () => {
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      };
-      window.addEventListener('scroll', toggle, { passive: true });
-      btn.addEventListener('click', toTop);
-      toggle();
-    })();
-  </script>
-</body>
+<footer class="blog-footer">
+    <p>&copy; 2024 - 2025 Janmajay Kumar. All rights reserved.</p>
+    </footer>
+    </body>
 </html>
+

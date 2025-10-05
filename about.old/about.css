@@ -1,0 +1,164 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* @import url('../blogs/generalblogstyling.css'); */
+
+/* About Section */
+.about-page {
+    background: linear-gradient(#232932, #2c3138, #232932); /* Dark theme */
+    padding: 60px 10% 0;
+    color: white; /* Ensure text is visible */
+}
+
+.about-page-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+/* About Content */
+.about-page-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.about-page-content h1 {
+    font-size: 5rem;
+    color: #29a587; /* Use green from index page */
+}
+
+.about-page-content p {
+    font-size: 2rem;
+    color: #ddd; /* Light grey for better contrast */
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+/* Button */
+.about-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    background-color: #29a587;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.about-btn:hover {
+    background: #218c6b;
+    transform: scale(1.05);
+}
+
+/* Profile Image */
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+/* .about-image img {
+    width: 300px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+} */
+
+.collegeLogo {
+    width: 20px;
+    height: 20;
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+.about-image img:hover {
+    transform: scale(1.05);
+}
+
+.tech-stack-logos {
+  margin-top: 8rem;
+  text-align: center;
+}
+
+.tech-stack-logos h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tech-logos img {
+  height: 5rem;
+  transition: transform 0.3s ease;
+ 
+}
+
+.tech-logos img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+    margin-top: 0px;
+    font-size: 1.4rem;
+}
+
+.template {
+    background: linear-gradient(#232932, #2c3138, #232932); /* Dark theme */
+    padding: 60px 10%;
+    color: white; /* Ensure text is visible */
+}
+.template-container {
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+}
+
+.template-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+ color: #29a587; /* Use green from index page */
+}
+
+.template-container p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.template-container strong {
+  color: #29a587;
+}
+
+.template-container em {
+  color: #ccc;
+  font-style: italic;
+}

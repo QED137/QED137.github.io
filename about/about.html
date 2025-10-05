@@ -1,141 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janmajay</title>
-    <link rel="icon" href="/images/myfavicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="../style.css">
-    
-     <link rel="stylesheet" href="about.css"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Janmajay Kumar</title>
+  <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: { brand: { 500: '#29a587', 600: '#1f8a72' } },
+          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.08)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
+                     radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent); }
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+  </style>
 </head>
-<body>
-    <!-- <header class="navbar">
-        <h1>Janmajay Kumar</h1>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../about/about.html"class = "active">About</a>
-            <a href="../projects/project.html">Projects</a>
-            
-            <a href="../blogs/blogs.html">Blogs</a>
-           <a href="../gallery.html">Gallery</a>
-           
-            <a href="../index.html#contacts">Contact</a>
-            
+<body class="font-sans text-slate-900 antialiased selection:bg-brand-500/10 selection:text-slate-900">
+  <!-- Header / Nav (same as index for parity) -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 border-b border-slate-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="../index.html#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 hover:text-brand-600">
+          <span>Janmajay</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+          <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
+          <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
+          <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
+          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
+            <i class="fa-solid fa-download text-xs"></i>
+            <span>Download CV</span>
+          </a>
         </nav>
-    </header> -->
-      <!--new design for menu bar ended-->
-      <nav class="navigation">
-        <div class="section-border"></div>
-        <div class="nav-items">
-          <a href="#index.html">Home</a>
-          <a href="../about/about.html">About</a>
-          <a href="../projects/project.html">Projects</a>
-          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
-          <a href="../gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
-          <a href="../blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
-
-          <a href="#contacts" class="tooltip">Contact</a>
-        </div>
-      </nav>
-      <!-- End of Navigation -->
-       <!-- Navigation for bigger screen -->
-             <!-- Full Navbar for Large Screens -->
-             <nav class="navbar">
-              <ul class="nav-links">
-                  <li><a href="../index.html" >Home</a></li>
-                  <li><a href="../about/about.html" class = "active">About</a></li>
-                  <li><a href="../projects/project.html">Projects</a></li>
-                  <li><a href="../blogs/blogs.html">Blog</a></li>
-                  <li><a href="../gallery.html">Gallery</a></li>
-                  <li><a href="../index.html#contacts">Contact</a></li>
-              </ul>
-          </nav>
-       <!-- end of navigation for bigger screen-->
-  
-    <section class="about-page">
-        <div class="about-page-container">
-            <div class="about-page-content">
-                <h1>Professional Summary</h1>
-                <!-- <p>Welcome to my world of knowledge! I am <strong>Janmajay Kumar</strong>, a passionate explorer of Mathematics, Statistics, Physics, and Machine Learning. This blog is my digital space where I share insights, problem-solving techniques, and interesting discoveries.</p>
-                <p>From the elegance of numbers to the mysteries of the cosmos, I believe **learning is a lifelong journey**. Whether you are a student, researcher, or simply curious, I hope this platform fuels your curiosity and encourages deep learning.</p> -->
-                <div class="summary-banner">
-    <p>
-  Master's in Atro and Particle Physics from the University of Tübingen, Germany. Experienced in <strong>Python</strong>, <strong>Flask</strong>, and <strong>JavaScript</strong>, with a focus on building scalable solutions across <strong>AI/ML pipelines</strong>, <strong>Neo4j-powered RAG systems</strong>, and cloud platforms such as <strong>GCP</strong> and <strong>Azure</strong>.
-  <br><br>
-  I've also contributed to several <strong>full-stack web applications</strong>, enabling end-to-end development — from efficient data pipelines to clean, interactive user interfaces.
-  <br><br>
-  Actively seeking opportunities in <strong>Data Engineering</strong>, <strong>AI/ML</strong>, and <strong>Backend Development</strong>.
-</p>
-
-</div>
-
-                
-                
-                
-                
-                
-                <a href="../about/about.html#template" class="about-btn">A Template for Life</a>
-                <a href="../about/interest.html" class="about-btn">My Interest</a>
-                <a href="../blogs/blogs.html" class="about-btn">Explore Blogs</a>
-                <a href="../projects/project.html" class="about-btn">View Projects</a>
-                
-                
-            </div>
-            <div class="about-image">
-                <img src="../images/edit_pic.png" alt="Author Image">
-            </div>
-        </div>
-
-            <div class="tech-stack-logos">
-  <div class="tech-logos">
-    <img src="../images/logos/python.svg" alt="Python" />
-    <img src="../images/logos/Flask_logo.svg" alt="Flask" />
-    <img src="../images/logos/JavaScript-Symbol.png" alt="JavaScript" />
-    <!-- <img src="images/logos/images.png" alt="Neo4j" /> -->
-    <img src="../images/logos/ubuntu-icon.svg" alt="Ubuntu" />
-    <img src="../images/logos/docker-logo-blue.svg" alt="Docker" />
-    <img src="../images/logos/1738678976919.png" alt="Azure" />
-  </div>
-</div>
-
-
-    </section>
-    <section class="template" id="template">
-         <div class="template-container">
-            <div class="about-content">
-        <h1>A Template for Life</h1>
-        <!-- <p>Once, a wise person said that life is like a complex number—it has both real and imaginary parts. The imaginary part is the broader understanding of life as a social animal, our position within society, and how we navigate the world with purpose and meaning. The real part is about dealing with the day-to-day tasks—whether it’s making a living, working, or pursuing something greater, like fine arts or personal projects.
-
-For the imaginary part of life, I draw inspiration from great thinkers like Stephen Hawking. His motto, “No matter how difficult life is, there is always a way,” reminds me that challenges, no matter how insurmountable, always have a solution if you look for it. Similarly, I resonate deeply with Einstein’s perspective on life: “There are two ways of living: One is as though nothing is a miracle, the other is as though everything is.” I choose to see life as a miracle, where every moment and discovery has the potential to inspire wonder and drive personal growth.
-
-As for the real part of life, I find clarity in my approach through the wisdom of George Polya. His advice, “If you can't solve a problem, then there is an easier problem you can solve: find it,” has shaped the way I tackle challenges. This mindset helps me break down complex issues into smaller, manageable steps, making progress feel more attainable and less overwhelming. It’s not always about solving the hardest problem; it’s about finding the right problem to solve first.
-
-Lastly, I’m constantly motivated by Richard Feynman’s words, which he once read in a Buddhist temple: “If anyone has done that, any fool can do this.” This simple yet powerful statement inspires me to learn anything that comes my way, reinforcing the idea that knowledge and achievement are accessible to all with the right mindset and dedication.</p> -->
-      
-
-<!-- Stanza 1: The Complex Number of Life -->
-<p>
-Life, like a complex number, has both <strong>real</strong> and <strong>imaginary</strong> parts. The imaginary part reflects our broader human experience — how we relate to others, define purpose, and navigate society. The real part is the grounded, day-to-day layer — earning a living, solving practical problems, or pursuing creativity and craft.
-</p>
-
-<!-- Stanza 2: Guiding Philosophies -->
-<p>
-For the imaginary part, I draw inspiration from <strong>Stephen Hawking</strong>, whose motto — “<em>No matter how difficult life is, there is always a way</em>” — reminds me that solutions exist, even when hidden. Similarly, <strong>Einstein</strong> said: “<em>There are two ways of living: One is as though nothing is a miracle, the other is as though everything is</em>.” I choose the latter — to treat life as a continuous unfolding of wonder, beauty, and growth.
-</p>
-
-<!-- Stanza 3: Practical Wisdom -->
-<p>
-For the real part of life, I’m grounded by the logic of <strong>George Polya</strong>: “<em>If you can't solve a problem, then there is an easier problem you can solve: find it</em>.” This approach helps me break complex tasks into smaller, solvable steps. And to keep learning alive, I turn to <strong>Feynman’s</strong> favorite quote from a Buddhist temple: “<em>If anyone has done that, any fool can do this</em>.” It fuels my belief that with effort, anything can be mastered.
-</p>
-
-        </div>
+        <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </div>
-    </section>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white/90">
+      <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
+        <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
+        <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
+        <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </header>
 
-   
-    <footer>
-        <p>&copy; 2024 Math & Science Blog | Created by Janmajay Kumar</p>
-    </footer>
+  <!-- Hero / Intro -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <p class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-600"></span>
+          About me
+        </p>
+        <h1 class="mt-3 text-4xl/tight sm:text-5xl font-black">Physicist → Engineer, 
+          <span class="text-brand-600">building data & ML systems</span></h1>
+        <p class="mt-4 text-slate-700 max-w-2xl">MSc Astro & Particle Physics (University of Tübingen) and prior MSc Physics (IIT Delhi). I build data‑intensive products with Python/FastAPI, Neo4j, and modern DevOps. Focused on graph‑aware RAG, ML pipelines, and readable, production‑ready code.</p>
+        <div class="mt-6 flex flex-wrap gap-2 text-xs">
+          <span class="rounded-full bg-white border border-slate-200 px-3 py-1">Python</span>
+          <span class="rounded-full bg-white border border-slate-200 px-3 py-1">FastAPI</span>
+          <span class="rounded-full bg-white border border-slate-200 px-3 py-1">Neo4j</span>
+          <span class="rounded-full bg-white border border-slate-200 px-3 py-1">Docker</span>
+          <span class="rounded-full bg-white border border-slate-200 px-3 py-1">GCP/Azure</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="../projects/project.html" class="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-white shadow-soft hover:bg-brand-500">
+            <i class="fa-solid fa-rocket text-sm"></i> View projects
+          </a>
+          <a href="../index.html#contact" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 hover:border-slate-300">
+            <i class="fa-regular fa-paper-plane text-sm"></i> Contact
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="relative mx-auto w-56 sm:w-64 md:w-72">
+          <img src="../images/edit_pic.png" alt="Portrait" class="rounded-2xl shadow-soft" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Facts / Highlights -->
+  <section class="bg-white/70 border-y border-slate-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <p class="text-slate-500 text-sm">Primary stack</p>
+        <p class="mt-1 font-semibold">Python • FastAPI • Neo4j</p>
+      </div>
+      <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <p class="text-slate-500 text-sm">Strengths</p>
+        <p class="mt-1 font-semibold">RAG • Vector search • Data Pipelines</p>
+      </div>
+      <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <p class="text-slate-500 text-sm">Tooling</p>
+        <p class="mt-1 font-semibold">Docker • CI/CD • GCP/Azure</p>
+      </div>
+      <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <p class="text-slate-500 text-sm">Location</p>
+        <p class="mt-1 font-semibold">Tübingen, Germany</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Narrative / Template for Life -->
+  <section id="template" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-7">
+        <h2 class="text-2xl font-bold">A Template for Life</h2>
+        <div class="prose prose-slate max-w-none mt-4">
+          <p>Life, like a complex number, has both <strong>real</strong> and <strong>imaginary</strong> parts. The imaginary part reflects our broader human experience — how we relate to others, define purpose, and navigate society. The real part is the grounded, day‑to‑day layer — earning a living, solving practical problems, or pursuing creativity and craft.</p>
+          <p>For the imaginary part, I draw inspiration from <strong>Stephen Hawking</strong>, whose motto — “<em>No matter how difficult life is, there is always a way</em>” — reminds me that solutions exist, even when hidden. Similarly, <strong>Einstein</strong> said: “<em>There are two ways of living: One is as though nothing is a miracle, the other is as though everything is</em>.” I choose the latter — to treat life as a continuous unfolding of wonder, beauty, and growth.</p>
+          <p>For the real part of life, I’m grounded by the logic of <strong>George Pólya</strong>: “<em>If you can't solve a problem, then there is an easier problem you can solve: find it</em>.” This approach helps me break complex tasks into smaller, solvable steps. And to keep learning alive, I turn to <strong>Feynman’s</strong> favorite quote from a Buddhist temple: “<em>If anyone has done that, any fool can do this</em>.” It fuels my belief that with effort, anything can be mastered.</p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="../blogs/blogs.html" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 hover:border-slate-300">
+            <i class="fa-regular fa-newspaper text-sm"></i> Explore blogs
+          </a>
+          <a href="../projects/project.html" class="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-white shadow-soft hover:bg-brand-500">
+            <i class="fa-solid fa-rocket text-sm"></i> View projects
+          </a>
+        </div>
+      </div>
+      <aside class="lg:col-span-5">
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <h3 class="font-semibold">Tech stack</h3>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <span class="rounded bg-slate-100 px-2 py-1">Python</span>
+            <span class="rounded bg-slate-100 px-2 py-1">FastAPI</span>
+            <span class="rounded bg-slate-100 px-2 py-1">Flask</span>
+            <span class="rounded bg-slate-100 px-2 py-1">Neo4j</span>
+            <span class="rounded bg-slate-100 px-2 py-1">Docker</span>
+            <span class="rounded bg-slate-100 px-2 py-1">GCP</span>
+            <span class="rounded bg-slate-100 px-2 py-1">Azure</span>
+            <span class="rounded bg-slate-100 px-2 py-1">C++/GEANT4</span>
+          </div>
+          <div class="mt-5 rounded-xl border border-slate-100 p-4 text-sm bg-slate-50">
+            <p class="text-slate-700">Actively seeking roles in Data Engineering, AI/ML, and Backend Development.</p>
+          </div>
+        </div>
+        <div class="mt-6 card rounded-2xl border border-slate-200 bg-white p-6">
+          <h3 class="font-semibold">Contact</h3>
+          <div class="mt-3 space-y-2 text-sm">
+            <div class="flex items-center gap-3"><i class="fa-regular fa-envelope"></i><a href="mailto:contact@janmajay.de" class="hover:underline">contact@janmajay.de</a></div>
+            <div class="flex items-center gap-3"><i class="fa-solid fa-location-dot"></i><span>Tübingen, Germany</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 bg-white/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
+      <p>© <span id="year"></span> Janmajay Kumar</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const mm = document.getElementById('mobileMenu');
+    btn && btn.addEventListener('click', () => mm.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

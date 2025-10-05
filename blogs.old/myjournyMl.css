@@ -1,0 +1,206 @@
+body {
+  font-family: Arial, sans-serif;
+
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 1.5rem;
+  background: linear-gradient(#232932, #2c3138, #232932);
+  color: #f0f0f0;
+}
+/* body{
+    background: linear-gradient(#232932, #2c3138, #232932);
+    color: white;
+    padding: 0;
+    margin: 0;
+    
+} */
+
+
+.blog-body h1 {
+  font-size: 3.2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #29a587;
+}
+.blog-body h2 {
+  display: block;
+  width: 100%;
+  max-width: 800px; /* Optional: to match content container */
+  margin: 3rem auto 1rem auto; /* Centered block */
+  padding: 1rem;
+  
+  border-top: 2px solid #29a587;
+  border-bottom: 2px solid #29a587;
+  border-left: 5px solid #29a587;
+  border-right: 5px solid #29a587;
+  border-radius: 10px;
+
+  background-color: #1e1e1e; /* Optional: add bg to highlight */
+  color: #29a587;
+  font-size: 2.6rem;
+  text-align: center;
+}
+
+
+.blog-body p {
+  font-size: 3rem;
+  color: #ddd;
+  line-height: 1.75;
+}
+
+
+
+/* Card Layout */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.card {
+  background:linear-gradient(#232932, #2c3138, #232932);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  width: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* .card-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+} */
+
+.card-img {
+  width: 100%;
+  height: auto;               /* smaller height */
+  object-fit: contain;         /* keeps entire image visible with padding */
+  background-color: #fff;      /* optional: shows white around transparent logos */
+  
+
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #0077cc;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: #004080;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+  
+.para-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+    /* background: rgba(255, 255, 255, 0.1); */
+    background: rgb(42, 40, 40);
+    border-radius: 18px;
+    box-shadow: 0 14px 22px rgba(0, 0, 0, 0.1);
+    
+    
+}
+.para-wrapper p {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: justify;
+  padding: 2rem;  
+  font-family: Arial, sans-serif;
+  
+}
+
+.intro{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+    /* background: rgba(255, 255, 255, 0.1); */
+    background: rgb(42, 40, 40);
+    border-radius: 18px;
+    box-shadow: 0 14px 22px rgba(0, 0, 0, 0.1);
+
+}
+.intro p {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: justify;
+  padding: 2rem;  
+  font-style: italic;
+  font-family: Arial, sans-serif;
+}
+
+.blog-footer p {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 20px;
+    background: #333;
+    color: white;
+    margin-top: 40px;
+}
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  /* background: #29a587; */
+  background: linear-gradient(135deg, #142521, #1f7e66);
+  color: #fff;
+  padding: 14px 24px;        /* increased padding */
+  font-size: 1.5rem;         /* larger font */
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: #1f7e66;
+}
+/* Responsive Design */

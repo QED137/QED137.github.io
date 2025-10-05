@@ -1,0 +1,182 @@
+        /* --- General Page Styles --- */
+
+      
+
+        body {
+            background: linear-gradient(#232932, #2c3138, #232932);
+            padding-top: 0;
+        }
+        .projects-page-container {
+            width: 100%;
+            padding: 8rem 2rem 10rem 2rem;
+            min-height: 100vh;
+        }
+     
+
+        /* --- Page Header --- */
+        .projects-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .projects-header h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            /* color: #fff; */
+            color: #29a587; /* Use green from index page */
+            margin-bottom: 1.5rem;
+        }
+        .projects-header p {
+            font-size: 2rem;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        .projects-header p span {
+            color: #29a587;
+            font-weight: bold;
+        }
+
+        /* --- Projects Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* --- Project Card --- */
+        .recruiter-project-card {
+            background-color: #1d222a;
+            border: 1px solid #444;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .recruiter-project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .project-image-wrapper {
+            height: 220px;
+            overflow: hidden;
+        }
+        .project-image-wrapper img {
+            width: 96%;
+            height: 90%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out;
+        }
+        .recruiter-project-card:hover .project-image-wrapper img {
+            transform: scale(1.05);
+        }
+        .project-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .project-content h3 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .project-content p {
+            font-size: 1.6rem;
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        /* --- Tech Tags --- */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .tech-tags span {
+            background-color: rgba(41, 165, 135, 0.1);
+            color: #29a587;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid #29a587;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* --- Action Buttons (Updated for Two Buttons) --- */
+        .project-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        .recruiter-btn {
+            flex: 1;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent; /* Base border for consistent layout */
+        }
+        .recruiter-btn i {
+            margin-right: 0.8rem;
+        }
+        /* Primary Button: GitHub */
+        .btn-github {
+            background-color: #29a587;
+            color: #fff;
+            border-color: #29a587;
+        }
+        .btn-github:hover {
+            background-color: #218b6b;
+            border-color: #218b6b;
+        }
+        /* Secondary Button: Live Demo */
+        .btn-live {
+            background-color: transparent;
+            color: #29a587;
+            border-color: #29a587;
+        }
+        .btn-live:hover {
+            background-color: rgba(41, 165, 135, 0.1);
+            color: #5dc4a8;
+        }
+    
+
+        /* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+    margin-top: 30px;
+}
+        footer p {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        footer a {
+            color: #29a587;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+   .active{
+            color: #29a587;
+            font-weight: bold;
+        } 

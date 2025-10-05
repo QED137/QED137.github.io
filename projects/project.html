@@ -1,381 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janmajay's Projects</title>
-    <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Janmajay Kumar</title>
+  <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
 
-    
-    <!-- Single, efficient link for all Font Awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    
-    <!-- Link to your main stylesheet to inherit base fonts and styles -->
-    <link rel="stylesheet" href="../style.css">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Favicon links -->
-    
-    <!-- Styles specifically for this projects page -->
-    <style>
-        body {
-            background: linear-gradient(#232932, #2c3138, #232932);
-            padding-top: 0;
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: { brand: { 500: '#29a587', 600: '#1f8a72' } },
+          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.08)' }
         }
-        .projects-page-container {
-            width: 100%;
-            padding: 8rem 2rem 10rem 2rem;
-            min-height: 100vh;
-        }
-        .projects-header {
-            text-align: center;
-            margin-bottom: 6rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .projects-header h1 {
-            font-size: 5rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            color:#29a587;
-            margin-bottom: 1.5rem;
-        }
-        .projects-header p {
-            font-size: 2rem;
-            color: #bbb;
-            line-height: 1.6;
-        }
-        .projects-header p span {
-            color: #29a587;
-            font-weight: bold;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .recruiter-project-card {
-            background-color: #1d222a;
-            border: 1px solid #444;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .recruiter-project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        .project-image-wrapper {
-            height: 220px;
-            overflow: hidden;
-        }
-        .project-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease-out;
-        }
-        .recruiter-project-card:hover .project-image-wrapper img {
-            transform: scale(1.05);
-        }
-        .project-content {
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .project-content h3 {
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-        }
-        .project-content p {
-            font-size: 1.6rem;
-            color: #bbb;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-        .tech-tags span {
-            background-color: rgba(41, 165, 135, 0.1);
-            color: #29a587;
-            padding: 0.5rem 1.2rem;
-            border: 1px solid #29a587;
-            border-radius: 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        .project-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-        }
-        .recruiter-btn {
-            flex: 1;
-            padding: 1.2rem;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid transparent;
-        }
-        .recruiter-btn i {
-            margin-right: 0.8rem;
-        }
-        .btn-github {
-            background-color: #29a587;
-            color: #fff;
-            border-color: #29a587;
-        }
-        .btn-github:hover {
-            background-color: #218b6b;
-            border-color: #218b6b;
-        }
-        .btn-live {
-            background-color: transparent;
-            color: #29a587;
-            border-color: #29a587;
-        }
-        .btn-live:hover {
-            background-color: rgba(41, 165, 135, 0.1);
-            color: #5dc4a8;
-        }
-   
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* light & dark background accents */
+    body {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
+        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent);
+    }
+    .dark body, .dark {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent),
+        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.06), transparent);
+    }
+
+    /* hover lift on cards */
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+  @media (max-width: 640px) {
+  #toTopBtn { right: 1rem; bottom: 1rem; }
+}
+     /* Canvas background animation */
+        #graph-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;              /* was -1 — this hides it under the body background */
+  pointer-events:none;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent);
+}
+</style>
+
 </head>
-<body>
-    
-    <!-- <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/about/about.html">About</a></li>
-            <li><a href="/projects/project.html" class="active">Projects</a></li>
-            <li><a href="/blogs/blogs.html">Blog</a></li>
-            <li><a href="/gallery.html">Gallery</a></li>
-            <li><a href="/index.html#contacts">Contact</a></li>
-        </ul>
-    </nav> -->
+<body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:bg-brand-500/10 selection:text-slate-900">
+<canvas id="graph-bg"></canvas>
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between relative">
+        <a href="../index.html#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600">
+          <span>Janmajay Kumar</span>
+        </a>
 
-          <!--new design for menu bar ended-->
-      <nav class="navigation">
-        <div class="section-border"></div>
-        <div class="nav-items">
-          <a href="../index.html">Home</a>
-          <a href="../about/about.html">About</a>
-          <a href="../projects/project.html" class="active">Projects</a>
-          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
-          <a href="..//gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
-          <a href="../blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
+          <a class="hover:text-brand-600" href="../index.html">Home</a>
+          <a class="text-brand-600" href="../index.html#projects">Projects</a>
+          <a class="hover:text-brand-600" href="../blogs/blogs.html">Blog</a>
+          <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
+          <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
+          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
+            <i class="fa-solid fa-download text-xs"></i>
+            <span>Download CV</span>
+          </a>
+        </nav>
 
-          <a href="../index.html#contacts" class="tooltip">Contact</a>
+        <div class="flex items-center gap-2">
+          <!-- Theme toggle -->
+          <button id="theme-toggle"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700
+                   bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
+            aria-label="Toggle dark mode" title="Toggle theme">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:inline"></i>
+          </button>
+          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
-      </nav>
-      <!-- End of Navigation -->
-       <!-- Navigation for bigger screen -->
-             <!-- Full Navbar for Large Screens -->
-             <nav class="navbar">
-                
-              <ul class="nav-links">
-                
-                  <li><a href="../index.html">Home</a></li>
-                  <li><a href="../about/about.html">About</a></li>
-                  <li><a href="../projects/project.html" class="active">Projects</a></li>
-                  <li><a href="../blogs/blogs.html">Blog</a></li>
-                  <li><a href="../gallery.html">Gallery</a></li>
-                  <li><a href="../index.html#contacts">Contact</a></li>
-              </ul>
-          </nav>
-       <!-- end of navigation for bigger screen-->
-
-    <div class="projects-page-container">
-        <header class="projects-header">
-            <h1>My Work</h1>
-            <!-- <p>From cloud-native data pipelines to complex physics simulations, this gallery is a showcase of my skills in action. Each project represents a challenge I've tackled using technology like <span>Python, C++, Machine Learning, and Cloud Platforms</span>.</p>
-              -->
-            <p  style="font-style: italic;">"If you can't solve a problem, there is an easier problem—find it and solve it."<br>— <strong>George Pólya</strong></p>"<br></p>
-        </header>
-
-        <main class="projects-grid">
-
-            <!-- Card 1: RAG App -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/graphpoweredRag.png" alt="Graph RAG Project">
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>Neo4j</span><span>LLM & RAG</span><span>Streamlit</span>
-                    </div>
-                    <h3>Graph-Powered RAG Recommendations</h3>
-                    <p>An intelligent system using Retrieval-Augmented Generation (RAG) with a Neo4j graph database to provide contextual, accurate recommendations.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/Graph-Powered-RAG-for-Smarter-Recommendations" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://qed137-cinebot-app-yvadoa.streamlit.app/" target="_blank" class="recruiter-btn btn-live"><i class="fas fa-link"></i> Live Demo</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 2: Flask App -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/flask.jpg" alt="Flask Web App">
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>Flask</span><span>Python</span><span>JavaScript</span>
-                    </div>
-                    <h3>Full Stack Job Board Prototype</h3>
-                    <p>A dynamic web application built with Flask, serving as a prototype for a job advertisement platform with full front-end and back-end functionality.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/FlaskOnReplit" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://web-development-with-flask.onrender.com/" target="_blank" class="recruiter-btn btn-live"><i class="fas fa-link"></i> Live Demo</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: ETL Pipeline -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/eltpic.png" alt="ETL Pipeline Project">
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>GCP</span><span>Cloud Functions</span><span>BigQuery</span>
-                    </div>
-                    <h3>ETL Pipeline on Google Cloud</h3>
-                    <p>An automated, serverless ETL pipeline on GCP that extracts data from APIs, transforms it, and loads it into BigQuery for analysis.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/Google-Cloud-ETL-Pipeline.git" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4: Geant4 Simulation -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/logo-tuebingen.jpg" alt="Geant4 Simulation Project">
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>GEANT4</span><span>C++</span><span>Monte Carlo</span>
-                    </div>
-                    <h3>Neutron Capture Simulation</h3>
-                    <p>A high-fidelity simulation using Geant4 and C++ to model neutron interactions for the LEGEND-1000 dark matter experiment.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/GEANT4_Netron_Capture_LEGEND100.git" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5: PINNs -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/deci-pytorch-2.0-supergradients-v1.jpg" alt="PINNs Project">
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>PyTorch</span><span>PINN</span><span>Deep Learning</span>
-                    </div>
-                    <h3>Physics-Informed Machine Learning</h3>
-                    <p>Using Physics-Informed Neural Networks (PINNs) in PyTorch to solve complex partial differential equations, blending deep learning with domain knowledge.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/PIML" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6: Telescope Classification -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/ml_in_Astro.jpg" alt="Cherenkov Telescope Project">
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>Scikit-learn</span><span>PyTorch</span><span>Computer Vision</span>
-                    </div>
-                    <h3>Gamma Telescope Event Classification</h3>
-                    <p>Developed ML models to classify astronomical events, discriminating gamma signals from background noise in telescope images.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/ComputerVisionProject" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 7: Higgs Boson Challenge -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/TF Image.jpg" alt="Higgs Boson Project"/>
-                </div>
-                <div class="project-content">
-                  <div class="tech-tags">
-                      <span>TensorFlow</span><span>Kaggle</span><span>Machine Learning</span>
-                  </div>
-                  <h3>Higgs Boson Machine Learning Challenge</h3>
-                  <p>Applied data science using TensorFlow to predict particle collisions at the Large Hadron Collider for a Kaggle competition.</p>
-                  <div class="project-buttons">
-                      <a href="https://github.com/QED137/HiggsBoson_Kaggle_Challenge" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                  </div>
-                </div>
-            </div>
-
-            <!-- Card 8: Computational Astrophysics -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/laneEmden.png" alt="Computational Astrophysics Coursework"/>
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>Astrophysics</span><span>NumPy</span><span>Fluid Dynamics</span>
-                    </div>
-                    <h3>Computational Astrophysics Coursework</h3>
-                    <p>Projects from my Master's course, including modeling the life of a star and other celestial phenomena using numerical methods.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/ComputationalAstrophysics" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 9: N-Body Simulation -->
-            <div class="recruiter-project-card">
-                <div class="project-image-wrapper">
-                    <img src="../images/nbody.jpeg" alt="N-Body Simulation"/>
-                </div>
-                <div class="project-content">
-                    <div class="tech-tags">
-                        <span>N-Body Sims</span><span>NumPy</span><span>Diff. Equations</span>
-                    </div>
-                    <h3>N-Body Problem Simulation</h3>
-                    <p>Implemented N-Body simulations to study the dynamics of celestial bodies using numerical methods in Python as part of my Master's.</p>
-                    <div class="project-buttons">
-                        <a href="https://github.com/QED137/N-Body" target="_blank" class="recruiter-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-        
-
-        </main>
+      </div>
     </div>
 
-    <footer class="footer">
-        <p>© 2024 Janmajay Kumar | All Rights Reserved</p>
-    </footer>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
+      <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
+        <a class="hover:text-brand-600" href="../index.html">Home</a>
+        <a class="hover:text-brand-600" href="../index.html#projects">Projects</a>
+        <a class="hover:text-brand-600" href="../blogs/blogs.html">Blog</a>
+        <a class="hover:text-brand-600" href="../index.html#skills">Skills</a>
+        <a class="hover:text-brand-600" href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </header>
 
+  <!-- Header block -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="text-xs font-semibold uppercase tracking-wider text-brand-600">Selected work</p>
+      <h1 class="mt-2 text-4xl font-black">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-teal-500">Projects</span>
+      </h1>
+      <p class="mt-6 italic text-slate-700 dark:text-slate-300">“If you can't solve a problem, there is an easier problem—find it and solve it.” — <span class="font-semibold">George Pólya</span></p>
+
+      <!-- Filters + Search -->
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+        <div id="projTagBar" class="flex flex-wrap justify-center gap-2">
+          <button data-tag="all"     class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">All</button>
+          <button data-tag="rag"     class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">RAG</button>
+          <button data-tag="neo4j"   class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">Neo4j</button>
+          <button data-tag="flask"   class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">Flask</button>
+          <button data-tag="gcp"     class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">GCP</button>
+          <button data-tag="ml"      class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">ML</button>
+          <button data-tag="c++"     class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">C++</button>
+          <button data-tag="physics" class="proj-chip rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm bg-white dark:bg-slate-800">Physics</button>
+        </div>
+        <div class="sm:ml-4">
+          <label class="relative block">
+            <span class="sr-only">Search projects</span>
+            <input id="projSearch" type="text" placeholder="Search projects…"
+                   class="w-full sm:w-72 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2 pl-9 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20" />
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+    <div id="projGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- 1 Graph RAG -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="rag,neo4j,openai,clip,react,flask">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/graphpoweredRag.png" alt="Graph RAG" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Neo4j</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">LLM & RAG</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Streamlit</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Graph-Powered RAG Recommendations</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Contextual recommendations with retrieval-augmented generation on a Neo4j graph.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/Graph-Powered-RAG-for-Smarter-Recommendations" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+          <a href="https://qed137-cinebot-app-yvadoa.streamlit.app/" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+        </div>
+      </article>
+
+      <!-- 2 Flask Job Board -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="flask,python,javascript,fullstack">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-700 flex items-center justify-center">
+          <img src="../images/flask.jpg" alt="Flask" class="max-h-full max-w-full object-contain" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Flask</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Python</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">JavaScript</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Full-Stack Job Board Prototype</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Dynamic prototype with full front- and back-end functionality.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/FlaskOnReplit" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+          <a href="https://web-development-with-flask.onrender.com/" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+        </div>
+      </article>
+
+      <!-- 3 ETL GCP -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="gcp,cloud,docker,cicd,etl">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/eltpic.png" alt="ETL" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">GCP</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Cloud Functions</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">BigQuery</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">ETL Pipeline on Google Cloud</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Serverless extraction and BigQuery analytics with monitoring and retries.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/Google-Cloud-ETL-Pipeline.git" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+
+      <!-- 4 GEANT4 -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="c++,physics,geant4,montecarlo">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/logo-tuebingen.jpg" alt="Geant4" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">GEANT4</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">C++</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Monte Carlo</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Neutron Capture Simulation</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">C++/GEANT4 simulation of neutron interactions for LEGEND-1000.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/GEANT4_Netron_Capture_LEGEND100.git" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+
+      <!-- 5 PINNs -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="ml,physics,pytorch">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/deci-pytorch-2.0-supergradients-v1.jpg" alt="PINNs" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">PyTorch</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">PINN</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Deep Learning</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Physics-Informed Machine Learning</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Solving PDEs with physics-informed neural networks in PyTorch.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/PIML" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+
+      <!-- 6 Telescope ML -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="ml,physics,computer-vision">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/ml_in_Astro.jpg" alt="Telescope ML" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Scikit-learn</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">PyTorch</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Computer Vision</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Gamma Telescope Event Classification</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Classifying astronomical events; discriminating gamma signals from noise.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/ComputerVisionProject" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+
+      <!-- 7 Higgs Kaggle -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="ml,physics,tensorflow,kaggle">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/TF Image.jpg" alt="Higgs Boson" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">TensorFlow</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Kaggle</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">ML</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Higgs Boson ML Challenge</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Predicting particle collisions at the LHC with ML approaches.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/HiggsBoson_Kaggle_Challenge" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+
+      <!-- 8 Computational Astro -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="astro,physics,numpy">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/laneEmden.png" alt="Computational Astrophysics" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Astrophysics</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">NumPy</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Fluid Dynamics</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">Computational Astrophysics Coursework</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Modeling stellar evolution and related phenomena using numerics.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/ComputationalAstrophysics" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+
+      <!-- 9 N-Body -->
+      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="astro,physics,numpy">
+        <div class="aspect-video overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
+          <img src="../images/nbody.jpeg" alt="N-Body Simulation" class="h-full w-full object-cover" />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">N-Body</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">NumPy</span>
+          <span class="rounded-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 px-2.5 py-1">Diff. Equations</span>
+        </div>
+        <h3 class="mt-2 text-lg font-semibold">N-Body Problem Simulation</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Dynamics of celestial bodies with numerical methods in Python.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="https://github.com/QED137/N-Body" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:underline"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Load More -->
+    <div class="mt-10 flex justify-center">
+      <button id="projLoadMore" class="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-3 text-sm hover:border-slate-300 dark:hover:border-slate-600">Load more</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-300">
+      <p>© <span id="year"></span> Janmajay Kumar</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const mm = document.getElementById('mobileMenu');
+    btn && btn.addEventListener('click', () => mm.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Client-side filtering + search + pagination for Projects ---
+    const pchips = document.querySelectorAll('.proj-chip');
+    const psearch = document.getElementById('projSearch');
+    const pgrid = document.getElementById('projGrid');
+    const pcards = Array.from(pgrid.querySelectorAll('article'));
+    const ploadMoreBtn = document.getElementById('projLoadMore');
+
+    let pactTag = 'all';
+    let pquery = '';
+    const P_PAGE_SIZE = 6;
+    let pshown = 0;
+
+    function pMatches(card) {
+      const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      const text = (card.textContent || '').toLowerCase();
+      const tagOk = pactTag === 'all' || tags.split(',').map(t=>t.trim()).includes(pactTag);
+      const queryOk = !pquery || text.includes(pquery);
+      return tagOk && queryOk;
+    }
+
+    function pApply() {
+      pcards.forEach(c => c.classList.add('hidden'));
+      pshown = 0;
+      for (const c of pcards) {
+        if (pMatches(c)) {
+          if (pshown < P_PAGE_SIZE) {
+            c.classList.remove('hidden');
+            pshown++;
+          }
+        }
+      }
+      pUpdateMore();
+    }
+
+    function pShowMore() {
+      let added = 0;
+      for (const c of pcards) {
+        if (pMatches(c) && c.classList.contains('hidden')) {
+          if (added < P_PAGE_SIZE) {
+            c.classList.remove('hidden');
+            added++;
+            pshown++;
+          } else break;
+        }
+      }
+      pUpdateMore();
+    }
+
+    function pUpdateMore() {
+      const remaining = pcards.some(c => pMatches(c) && c.classList.contains('hidden'));
+      ploadMoreBtn.style.display = remaining ? 'inline-flex' : 'none';
+    }
+
+    function pSetActiveChip(target) {
+      pchips.forEach(ch => {
+        ch.classList.remove('bg-brand-600','text-white','border-brand-600');
+        ch.classList.add('bg-white','dark:bg-slate-800','border','border-slate-200','dark:border-slate-700');
+      });
+      target.classList.remove('bg-white','dark:bg-slate-800');
+      target.classList.add('bg-brand-600','text-white','border-brand-600');
+    }
+
+    pchips.forEach(ch => ch.addEventListener('click', e => {
+      pactTag = e.currentTarget.getAttribute('data-tag');
+      pSetActiveChip(e.currentTarget);
+      pApply();
+    }));
+
+    psearch.addEventListener('input', e => {
+      pquery = e.target.value.trim().toLowerCase();
+      pApply();
+    });
+
+    ploadMoreBtn.addEventListener('click', pShowMore);
+
+    // init
+    pSetActiveChip(document.querySelector('[data-tag="all"]'));
+    pApply();
+
+    // --- Theme toggle (persisted) ---
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+
+      if (localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+
+      toggle?.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+      });
+    })();
+  </script>
+  <!-- Back-to-top button -->
+<button id="toTopBtn"
+  class="fixed right-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full
+         bg-brand-600 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
+         transition duration-200 ease-out
+         opacity-0 translate-y-2 pointer-events-none
+         hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/80"
+  aria-label="Back to top" title="Back to top">
+  <i class="fa-solid fa-arrow-up text-base"></i>
+</button>
+<script>
+  (function () {
+    const btn = document.getElementById('toTopBtn');
+    if (!btn) return;
+
+    const SHOW_AT = 300; // px scrolled before showing button
+
+    const toggle = () => {
+      if (window.scrollY > SHOW_AT) {
+        btn.classList.remove('opacity-0','translate-y-2','pointer-events-none');
+        btn.classList.add('opacity-100','translate-y-0','pointer-events-auto');
+      } else {
+        btn.classList.add('opacity-0','translate-y-2','pointer-events-none');
+        btn.classList.remove('opacity-100','translate-y-0','pointer-events-auto');
+      }
+    };
+
+    const toTop = () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    };
+
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', toTop);
+    toggle(); // initial state
+  })();
+</script>
+ <!-- Canvas background animation -->
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('graph-bg');
+  const ctx = canvas.getContext('2d');
+  let nodes = [], edges = [];
+  const N = 34, MAX_SPEED = 0.18, LINK_DIST = 180;
+
+  function fitCanvas(){
+    // HiDPI scale
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const w = window.innerWidth, h = window.innerHeight;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function init(){
+    fitCanvas();
+    nodes = Array.from({length: N}, () => ({
+      x: Math.random() * canvas.clientWidth,
+      y: Math.random() * canvas.clientHeight,
+      vx: (Math.random() - 0.5) * MAX_SPEED,
+      vy: (Math.random() - 0.5) * MAX_SPEED
+    }));
+    rebuildEdges();
+  }
+
+  function rebuildEdges(){
+    edges = [];
+    for (let i=0;i<nodes.length;i++){
+      for (let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        if (Math.hypot(a.x-b.x, a.y-b.y) < LINK_DIST) edges.push([i,j]);
+      }
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.clientWidth, canvas.clientHeight);
+
+    // subtle pulse
+    const pulse = 0.7 + 0.3 * Math.sin(Date.now()/900);
+
+    // adapt color to theme
+    const dark = document.documentElement.classList.contains('dark');
+    const line = dark ? `rgba(41,165,135,${0.12*pulse})` : `rgba(41,165,135,${0.15*pulse})`;
+    const dot  = dark ? 'rgba(41,165,135,0.85)' : 'rgba(41,165,135,0.9)';
+
+    ctx.strokeStyle = line;
+    ctx.lineWidth = 1.1;
+
+    // edges
+    edges.forEach(([i,j])=>{
+      const a=nodes[i], b=nodes[j];
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+    });
+
+    // nodes
+    ctx.fillStyle = dot;
+    nodes.forEach(n=>{
+      ctx.beginPath(); ctx.arc(n.x,n.y,2.2,0,Math.PI*2); ctx.fill();
+
+      n.x += n.vx; n.y += n.vy;
+      if (n.x<0||n.x>canvas.clientWidth)  n.vx *= -1;
+      if (n.y<0||n.y>canvas.clientHeight) n.vy *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { init(); });
+  // if you toggle dark mode, recolor immediately on next frame (handled automatically)
+
+  init();
+  draw();
+});
+</script>
 </body>
 </html>
