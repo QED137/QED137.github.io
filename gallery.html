@@ -4,76 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery-Janmajay</title>
-    <link rel="icon" href="/images/myfavicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="gallery.css">
+      <link rel="icon" href="../images/myfavicon.png" type="image/x-icon" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: { brand: { 500: '#29a587', 600: '#1f8a72' } },
+          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.08)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* light & dark background accents */
+    body {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
+        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent);
+    }
+    .dark body, .dark {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent),
+        radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.06), transparent);
+    }
+
+    /* card hover */
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+
+    /* mobile button positions */
+    @media (max-width: 640px) {
+      #backBtn { bottom: 1rem; left: 1rem; }
+      #toTopBtn { bottom: 1rem; right: 1rem; }
+    }
+    /* Canvas background animation */
+        #graph-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;              /* was -1 — this hides it under the body background */
+  pointer-events:none;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent);
+}
+/* Lightbox base (Tailwind handles most, this is just safety for old browsers) */
+#lightbox { display: none; }
+#lightbox.show { display: flex; }
+
+/* Prevent column layout from cutting shadows on last row */
+.columns-1, .columns-2, .columns-3 { overflow: visible; }
+
+  </style>
 </head>
-<body>
+<body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:bg-brand-500/10 selection:text-slate-900">
+  <canvas id="graph-bg"></canvas>
+    <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between relative">
+        <a href="/#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600">
+          <span>Janmajay Kumar</span>
+        </a>
 
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
+          <a class="hover:text-brand-600" href="/">Home</a>
+          <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
+          <a class="hover:text-brand-600" href="../blogs/blogs.html">Blog</a>
+          <a class="hover:text-brand-600" href="/#skills">Skills</a>
+          <a class="hover:text-brand-600" href="/#contact">Contact</a>
+          <a class="text-brand-600" href="#">Gallery</a>
+          <a class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90" href="../images/Janmajay_Kumar_data_analystCV.pdf" download>
+            <i class="fa-solid fa-download text-xs"></i>
+            <span>Download CV</span>
+          </a>
+        </nav>
 
-    <!--new design for menu bar ended-->
-      <nav class="navigation">
-        <div class="section-border"></div>
-        <div class="nav-items">
-          <a href="../index.html" >Home</a>
-          <a href="about/about.html">About</a>
-          <a href="projects/project.html">Projects</a>
-          <!-- <a href="#projects" class="tooltip" data-tooltip="See My Project here">Projects</a> -->
-          <a href="/gallery.html" class="tooltip" data-tooltip="Under Construction....">Gallery</a>
-          <a href="./blogs/blogs.html"class="tooltip" data-tooltip="Under Construction....">Blog</a>
+        <div class="flex items-center gap-2">
+          <!-- Theme toggle -->
+          <button id="theme-toggle"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700
+                   bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
+            aria-label="Toggle dark mode" title="Toggle theme">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:inline"></i>
+          </button>
 
-          <a href="#contacts" class="tooltip">Contact</a>
+          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
-      </nav>
-      <!-- End of Navigation -->
-       <!-- Navigation for bigger screen -->
-             <!-- Full Navbar for Large Screens -->
-             <nav class="navbar">
-              <ul class="nav-links">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="about/about.html">About</a></li>
-                  <li><a href="projects/project.html">Projects</a></li>
-                  <li><a href="blogs/blogs.html">Blog</a></li>
-                  <li><a href="gallery.html" class="active">Gallery</a></li>
-                  <li><a href="index.html#contacts">Contact</a></li>
-              </ul>
-          </nav>
-       <!-- end of navigation for bigger screen-->
+      </div>
+    </div>
 
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
+      <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
+        <a class="hover:text-brand-600" href="/">Home</a>
+        <a class="hover:text-brand-600" href="../projects/project.html">Projects</a>
+        <a class="hover:text-brand-600" href="../blogs/blogs.html">Blog</a>
+        <a class="hover:text-brand-600" href="/#skills">Skills</a>
+        <a class="hover:text-brand-600" href="/#contact">Contact</a>
+        <a class="text-brand-600" href="#">Gallery</a>
+      </div>
+    </div>
+  </header>
+<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+  <div class="text-center max-w-2xl mx-auto">
+    <p class="text-xs font-semibold uppercase tracking-wider text-brand-600">Gallery</p>
+    <h1 class="mt-2 text-3xl font-black">Photo Gallery</h1>
+    <p class="mt-3 text-slate-600 dark:text-slate-300">
+      <i>“A thing of beauty is a joy forever.”</i> — Keats
+    </p>
+  </div>
 
-    <section class="gallery-section">
-        <h1>Photo Gallery</h1>
-        <p><i style="font-size: 1.2em;">"A thing of beauty is a joy forever"</i> - Keats</p>
+  <!-- Masonry (CSS columns) -->
+  <div class="mt-10 columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+    <!-- TIP: ensure your folder really is 'gllary'. If it's 'gallery', update paths -->
+    <img src="gllary/myimage.jpg" alt="Portrait" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
 
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="gllary/myimage.jpg" alt="Photo 6" onclick="openLightbox('gllary/myimage.jpg')">
-            </div>
+    <img src="gllary/pi2.jpg" alt="Pi art" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
 
-            <div class="gallery-item">
-                <img src="gllary/pi2.jpg" alt="Photo 6" onclick="openLightbox('gllary/pi2.jpg')">
-            </div>
-            <div class="gallery-item">
-                <img src="gllary/106250110.png" alt="Photo 1" onclick="openLightbox('gllary/106250110.png')">
-            </div>
-            <div class="gallery-item">
-                <img src="gllary/picfour.jpg" alt="Photo 6" onclick="openLightbox('gllary/picfour.jpg')">
-            </div>
-            <div class="gallery-item">
-                <img src="gllary/harvard.png" alt="Photo 2" onclick="openLightbox('gllary/harvard.png')">
-            </div>
-            <div class="gallery-item">
-                <img src="gllary/IMG20210106-2.jpg" alt="Photo 3" onclick="openLightbox('gllary/IMG20210106-2')">
-            </div>
-            <div class="gallery-item">
-                <img src="gllary/IMG20201025.jpg" alt="Photo 4" onclick="openLightbox('gllary/IMG20201025.jpg')">
-            </div>
-            <div class="gallery-item">
-                <img src="gllary/IMG20210116.jpg" alt="Photo 5" onclick="openLightbox('gllary/IMG20210116.jpg')">
-            </div>
+    <img src="gllary/106250110.png" alt="Graphic" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
 
-        </div>
-    </section>
+    <img src="gllary/picfour.jpg" alt="Landscape" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
+
+    <img src="gllary/harvard.png" alt="Harvard" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
+
+    <!-- FIX: add the .jpg extension here if the file is .jpg -->
+    <img src="gllary/IMG20210106-2.jpg" alt="Travel" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
+
+    <img src="gllary/IMG20201025.jpg" alt="City" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
+
+    <img src="gllary/IMG20210116.jpg" alt="Nature" loading="lazy" decoding="async"
+         class="mb-4 w-full break-inside-avoid rounded-xl border border-slate-200 dark:border-slate-700 shadow-soft cursor-zoom-in hover:opacity-95"
+         onclick="openLightbox(this.src)">
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[9998] hidden items-center justify-center bg-black/75 p-4">
+  <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/90 dark:bg-slate-800/90 text-slate-900 dark:text-slate-100 shadow-soft"
+          aria-label="Close" onclick="closeLightbox()">
+    &times;
+  </button>
+  <img id="lightbox-img" class="max-h-[90vh] max-w-[90vw] rounded-xl shadow-soft border border-white/20" alt="">
+</div>
+
 
     <!-- Lightbox Popup -->
     <div id="lightbox" class="lightbox">
@@ -81,10 +185,193 @@
         <img id="lightbox-img" class="lightbox-content">
     </div>
 
-    <footer>
-        <p>&copy; 2024 Gallery & Blog | Created by Janmajay Kumar</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-300">
+      <p>© <span id="year"></span> QED137 Blog | Designed by Janmajay</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/janmajay-kumar-82b37121/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+    <script>
+  function openLightbox(src) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lb.classList.add('show');
+    lb.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('show');
+    lb.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  // Close on ESC or backdrop click
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  document.getElementById('lightbox')?.addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') closeLightbox();
+  });
+</script>
 
-    <script src="gallery.js"></script>
+  <script>
+    // Mobile menu functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn && menuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isHidden));
+    });
+
+    // Year footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (persisted) - Fixed for gallery page
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+
+      // Apply saved theme or system preference
+      if (localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+
+      // Theme toggle click handler
+      toggle?.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+        console.log('Theme toggled to:', localStorage.theme); // Debug log
+      });
+    })();
+  </script>
+
+  <!-- Back-to-home button -->
+  <a href="/"
+     id="backBtn"
+     class="fixed left-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full bg-slate-900 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
+            transition duration-200 ease-out hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-white/80
+            dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white/90"
+     aria-label="Back to Home" title="Back to Home">
+    <i class="fa-solid fa-arrow-left text-base"></i>
+  </a>
+
+  <!-- Back-to-top button -->
+  <button id="toTopBtn"
+    class="fixed right-6 bottom-6 z-[9999] grid h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-[0_10px_24px_rgba(0,0,0,.18)]
+           transition duration-200 ease-out opacity-0 translate-y-2 pointer-events-none
+           hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/80"
+    aria-label="Back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up text-base"></i>
+  </button>
+  <script>
+    (function () {
+      const btn = document.getElementById('toTopBtn');
+      if (!btn) return;
+      const SHOW_AT = 300;
+
+      const toggle = () => {
+        if (window.scrollY > SHOW_AT) {
+          btn.classList.remove('opacity-0','translate-y-2','pointer-events-none');
+          btn.classList.add('opacity-100','translate-y-0','pointer-events-auto');
+        } else {
+          btn.classList.add('opacity-0','translate-y-2','pointer-events-none');
+          btn.classList.remove('opacity-100','translate-y-0','pointer-events-auto');
+        }
+      };
+      const toTop = () => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      };
+      window.addEventListener('scroll', toggle, { passive: true });
+      btn.addEventListener('click', toTop);
+      toggle();
+    })();
+  </script>
+   <!-- Canvas background animation -->
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('graph-bg');
+  const ctx = canvas.getContext('2d');
+  let nodes = [], edges = [];
+  const N = 34, MAX_SPEED = 0.18, LINK_DIST = 180;
+
+  function fitCanvas(){
+    // HiDPI scale
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const w = window.innerWidth, h = window.innerHeight;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function init(){
+    fitCanvas();
+    nodes = Array.from({length: N}, () => ({
+      x: Math.random() * canvas.clientWidth,
+      y: Math.random() * canvas.clientHeight,
+      vx: (Math.random() - 0.5) * MAX_SPEED,
+      vy: (Math.random() - 0.5) * MAX_SPEED
+    }));
+    rebuildEdges();
+  }
+
+  function rebuildEdges(){
+    edges = [];
+    for (let i=0;i<nodes.length;i++){
+      for (let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        if (Math.hypot(a.x-b.x, a.y-b.y) < LINK_DIST) edges.push([i,j]);
+      }
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.clientWidth, canvas.clientHeight);
+
+    // subtle pulse
+    const pulse = 0.7 + 0.3 * Math.sin(Date.now()/900);
+
+    // adapt color to theme
+    const dark = document.documentElement.classList.contains('dark');
+    const line = dark ? `rgba(41,165,135,${0.12*pulse})` : `rgba(41,165,135,${0.15*pulse})`;
+    const dot  = dark ? 'rgba(41,165,135,0.85)' : 'rgba(41,165,135,0.9)';
+
+    ctx.strokeStyle = line;
+    ctx.lineWidth = 1.1;
+
+    // edges
+    edges.forEach(([i,j])=>{
+      const a=nodes[i], b=nodes[j];
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+    });
+
+    // nodes
+    ctx.fillStyle = dot;
+    nodes.forEach(n=>{
+      ctx.beginPath(); ctx.arc(n.x,n.y,2.2,0,Math.PI*2); ctx.fill();
+
+      n.x += n.vx; n.y += n.vy;
+      if (n.x<0||n.x>canvas.clientWidth)  n.vx *= -1;
+      if (n.y<0||n.y>canvas.clientHeight) n.vy *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { init(); });
+  // if you toggle dark mode, recolor immediately on next frame (handled automatically)
+
+  init();
+  draw();
+});
+</script>
 </body>
 </html>
