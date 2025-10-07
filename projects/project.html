@@ -423,6 +423,19 @@
         localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
       });
     })();
+
+    // Service Worker Registration for Mobile Performance
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered on projects page: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
   </script>
   <!-- Back-to-top button -->
 <button id="toTopBtn"

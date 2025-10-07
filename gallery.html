@@ -249,6 +249,19 @@
         console.log('Theme toggled to:', localStorage.theme); // Debug log
       });
     })();
+
+    // Service Worker Registration for Mobile Performance
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered on gallery page: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
   </script>
 
   <!-- Back-to-home button -->

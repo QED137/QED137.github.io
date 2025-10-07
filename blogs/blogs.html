@@ -121,7 +121,7 @@
     <h1 class="mt-2 text-4xl font-black">
       <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-teal-500">Blogs</span>
     </h1>
-    <p class="mt-4 max-w-2xl mx-auto text-sm text-slate-600 dark:text-slate-400 italic">"Write the first sentence so that the reader will want to read the second sentence" -William Faulkner</p>
+    <p class="mt-4 max-w-2xl mx-auto text-sm text-slate-600 dark:text-slate-400 italic font-bold">"Write the first sentence so that the reader will want to read the second sentence" -William Faulkner</p>
 
     <!-- Filter + Search -->
     <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
@@ -318,6 +318,19 @@
         localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
       });
     })();
+
+    // Service Worker Registration for Mobile Performance
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered on blogs page: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
   </script>
 
   <!-- Back-to-home button -->

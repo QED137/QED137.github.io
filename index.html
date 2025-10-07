@@ -16,12 +16,15 @@
   <meta property="og:url" content="https://janmajay.de" />
   <meta property="og:type" content="website" />
 
-  <!-- Fonts & Icons -->
+  <!-- Fonts & Icons - Optimized for mobile -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Load critical font weights only, with font-display swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Defer non-critical icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -41,21 +44,52 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; }
-    /* light & dark background accents */
+    /* Critical CSS for faster initial render */
+    html { 
+      scroll-behavior: smooth; 
+      -webkit-text-size-adjust: 100%; /* Prevent font scaling on iOS */
+    }
+    
+    /* Optimize background gradients for mobile */
     body {
       background:
         radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.12), transparent),
         radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.08), transparent);
+      /* Hardware acceleration */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
     .dark body, .dark {
       background:
         radial-gradient(1200px 600px at 10% -10%, rgba(41,165,135,.10), transparent),
         radial-gradient(1200px 600px at 90% 10%, rgba(41,165,135,.06), transparent);
     }
+    
+    /* Optimize shadows and transitions for mobile */
     .ring-glow { box-shadow: 0 0 0 6px rgba(41,165,135,.18); }
-    .card { transition: transform .25s ease, box-shadow .25s ease; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+    .card { 
+      transition: transform .25s ease, box-shadow .25s ease;
+      /* Reduce expensive effects on mobile */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    .card:hover { 
+      transform: translateY(-4px) translateZ(0); 
+      box-shadow: 0 16px 40px rgba(2,6,23,.12); 
+    }
+    
+    /* Mobile-specific optimizations */
+    @media (max-width: 767px) {
+      .card:hover {
+        /* Reduce hover effects on touch devices */
+        transform: translateY(-2px) translateZ(0);
+        box-shadow: 0 8px 20px rgba(2,6,23,.08);
+      }
+      /* Simplify background on small screens */
+      body {
+        background: radial-gradient(800px 400px at 50% 0%, rgba(41,165,135,.08), transparent);
+      }
+    }
     /* Canvas background animation */
     #graph-bg{
   position:fixed;
@@ -393,6 +427,49 @@
         </button>
       </form>
     </div>
+
+    <!-- Inspirational Quote Section -->
+    <div class="mt-16 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="relative">
+        <!-- Quote Card -->
+        <div class="rounded-3xl bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 
+                    border border-slate-200 dark:border-slate-700 p-8 sm:p-12 shadow-soft
+                    relative overflow-hidden">
+          
+          <!-- Background Accent -->
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand-500/10 to-transparent rounded-full blur-2xl"></div>
+          <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-xl"></div>
+          
+          <!-- Quote Mark -->
+          <div class="absolute top-4 left-4 sm:top-6 sm:left-6">
+            <i class="fa-solid fa-quote-left text-3xl sm:text-4xl text-brand-500/30"></i>
+          </div>
+          
+          <!-- Quote Content -->
+          <div class="relative text-center">
+            <blockquote class="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed text-slate-700 dark:text-slate-200">
+              <span class="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
+                Design creates culture. Culture shapes values. Values determine the future.
+              </span>
+            </blockquote>
+            
+            <!-- Author -->
+            <div class="mt-6 flex items-center justify-center gap-3">
+              <div class="w-12 h-px bg-gradient-to-r from-transparent via-brand-500 to-transparent"></div>
+              <cite class="text-sm sm:text-base font-semibold text-brand-600 dark:text-brand-400 not-italic">
+                Robert L. Peters
+              </cite>
+              <div class="w-12 h-px bg-gradient-to-r from-transparent via-brand-500 to-transparent"></div>
+            </div>
+          </div>
+          
+          <!-- Bottom Quote Mark -->
+          <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+            <i class="fa-solid fa-quote-right text-3xl sm:text-4xl text-brand-500/30"></i>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -406,18 +483,38 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts - Performance Optimized -->
   <script>
-    // mobile menu + ARIA
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn && menuBtn.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', String(!isHidden));
-    });
+    // Performance-first initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu + ARIA
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuBtn && menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!isHidden));
+      });
 
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
+      // year
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Mobile performance optimizations
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        // Reduce animation frame rate on mobile
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reducedMotion) {
+          document.documentElement.style.setProperty('--animation-duration', '0s');
+        }
+        
+        // Defer heavy operations
+        setTimeout(() => {
+          // Load non-critical resources after initial render
+          const deferredStyles = document.querySelectorAll('link[media="print"]');
+          deferredStyles.forEach(link => link.media = 'all');
+        }, 100);
+      }
+    });
 
     // theme toggle (persisted)
     (function () {
@@ -460,6 +557,19 @@
       btn.addEventListener('click', toTop);
       toggle();
     })();
+
+    // Service Worker Registration for Mobile Performance
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
   </script>
 
   <!-- Back-to-top button -->
@@ -470,15 +580,27 @@
     aria-label="Back to top" title="Back to top">
     <i class="fa-solid fa-arrow-up text-base"></i>
   </button>
-  <!-- Canvas background animation -->
+   <!-- Canvas background animation - Mobile Optimized -->
   <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // Skip animation on very small screens or low-power devices
+  const isMobile = window.innerWidth < 768;
+  const isLowPower = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+  
+  if (isMobile && isLowPower) {
+    // Fallback: simple static background for low-end mobile devices
+    const canvas = document.getElementById('graph-bg');
+    canvas.style.display = 'none';
+    return;
+  }
+
   const canvas = document.getElementById('graph-bg');
   const ctx = canvas.getContext('2d');
   let nodes = [], edges = [];
-  const N = 34, MAX_SPEED = 0.18, LINK_DIST = 180;
-
-  function fitCanvas(){
+  // Reduce node count on mobile for better performance
+  const N = isMobile ? 20 : 34;
+  const MAX_SPEED = isMobile ? 0.12 : 0.18;
+  const LINK_DIST = isMobile ? 120 : 180;  function fitCanvas(){
     // HiDPI scale
     const dpr = Math.max(1, window.devicePixelRatio || 1);
     const w = window.innerWidth, h = window.innerHeight;
