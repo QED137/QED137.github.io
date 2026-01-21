@@ -1,0 +1,739 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Backend Development from First Principles → Advanced (Theory + Practical Code).md</title><style></style></head><body id="preview">
+<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Backend_Development_from_First_Principles__Advanced_Theory__Practical_Code_0"></a>Backend Development from First Principles → Advanced (Theory + Practical Code)</h1>
+<p class="has-line-data" data-line-start="2" data-line-end="3">This is  <strong>complete backend roadmap</strong>: REST + HTTP semantics, API design, pagination (offset + cursor), validation, authentication/authorization, cookies, caching (Redis + ETag), ORM design with FastAPI, scaling (vertical vs horizontal), performance, background jobs (RQ/Celery), testing (pytest), and CI.</p>
+<blockquote>
+<p class="has-line-data" data-line-start="4" data-line-end="5">Examples use <strong>FastAPI + Python</strong> because they are concise and show backend concepts clearly. The principles apply to any backend stack.</p>
+</blockquote>
+<hr>
+<h2 class="code-line" data-line-start=8 data-line-end=9 ><a id="0_First_principles_what_a_backend_is_8"></a>0) First principles: what a backend <em>is</em></h2>
+<p class="has-line-data" data-line-start="10" data-line-end="11">A backend exists to do four fundamental jobs:</p>
+<ol>
+<li class="has-line-data" data-line-start="12" data-line-end="13"><strong>Expose capabilities</strong> via a stable interface (usually HTTP APIs).</li>
+<li class="has-line-data" data-line-start="13" data-line-end="14"><strong>Enforce correctness</strong> (validation + business rules).</li>
+<li class="has-line-data" data-line-start="14" data-line-end="15"><strong>Control access</strong> (authentication + authorization).</li>
+<li class="has-line-data" data-line-start="15" data-line-end="17"><strong>Manage state reliably</strong> (databases, caches, queues) and <strong>operate</strong> under load (performance, scaling, observability).</li>
+</ol>
+<p class="has-line-data" data-line-start="17" data-line-end="18">Everything else (frameworks, ORMs, caches, message queues) is a tool to serve these jobs.</p>
+<hr>
+<h2 class="code-line" data-line-start=21 data-line-end=22 ><a id="1_The_ground_network__HTTP_21"></a>1) The ground: network + HTTP</h2>
+<h3 class="code-line" data-line-start=23 data-line-end=24 ><a id="11_Request__Response_23"></a>1.1 Request → Response</h3>
+<p class="has-line-data" data-line-start="24" data-line-end="25">HTTP is a message protocol:</p>
+<ul>
+<li class="has-line-data" data-line-start="25" data-line-end="26">client sends a <strong>request</strong> (method, path, headers, body)</li>
+<li class="has-line-data" data-line-start="26" data-line-end="28">server sends a <strong>response</strong> (status code, headers, body)</li>
+</ul>
+<h3 class="code-line" data-line-start=28 data-line-end=29 ><a id="12_Methods_verbs_28"></a>1.2 Methods (verbs)</h3>
+<p class="has-line-data" data-line-start="29" data-line-end="30">Common methods:</p>
+<ul>
+<li class="has-line-data" data-line-start="30" data-line-end="31"><code>GET</code> read</li>
+<li class="has-line-data" data-line-start="31" data-line-end="32"><code>POST</code> create/submit action</li>
+<li class="has-line-data" data-line-start="32" data-line-end="33"><code>PUT</code> replace</li>
+<li class="has-line-data" data-line-start="33" data-line-end="34"><code>PATCH</code> partial update</li>
+<li class="has-line-data" data-line-start="34" data-line-end="35"><code>DELETE</code> delete</li>
+<li class="has-line-data" data-line-start="35" data-line-end="36"><code>HEAD</code> like GET but no body</li>
+<li class="has-line-data" data-line-start="36" data-line-end="38"><code>OPTIONS</code> capabilities / CORS preflight</li>
+</ul>
+<h3 class="code-line" data-line-start=38 data-line-end=39 ><a id="13_Status_codes_API_physics_38"></a>1.3 Status codes (API “physics”)</h3>
+<p class="has-line-data" data-line-start="39" data-line-end="40">Use status codes consistently:</p>
+<ul>
+<li class="has-line-data" data-line-start="40" data-line-end="41"><code>200 OK</code> success read/update</li>
+<li class="has-line-data" data-line-start="41" data-line-end="42"><code>201 Created</code> success create</li>
+<li class="has-line-data" data-line-start="42" data-line-end="43"><code>202 Accepted</code> accepted for async job</li>
+<li class="has-line-data" data-line-start="43" data-line-end="44"><code>204 No Content</code> success with no response body</li>
+<li class="has-line-data" data-line-start="44" data-line-end="45"><code>400 Bad Request</code> invalid request format</li>
+<li class="has-line-data" data-line-start="45" data-line-end="46"><code>401 Unauthorized</code> not authenticated</li>
+<li class="has-line-data" data-line-start="46" data-line-end="47"><code>403 Forbidden</code> authenticated but not allowed</li>
+<li class="has-line-data" data-line-start="47" data-line-end="48"><code>404 Not Found</code> resource not found</li>
+<li class="has-line-data" data-line-start="48" data-line-end="49"><code>409 Conflict</code> duplicates / version conflict</li>
+<li class="has-line-data" data-line-start="49" data-line-end="50"><code>422 Unprocessable Entity</code> validation errors (FastAPI default)</li>
+<li class="has-line-data" data-line-start="50" data-line-end="51"><code>429 Too Many Requests</code> rate limited</li>
+<li class="has-line-data" data-line-start="51" data-line-end="53"><code>500 Internal Server Error</code> unexpected failure</li>
+</ul>
+<hr>
+<h2 class="code-line" data-line-start=55 data-line-end=56 ><a id="2_What_is_a_REST_API_55"></a>2) What is a REST API?</h2>
+<p class="has-line-data" data-line-start="57" data-line-end="58">REST is an <strong>architecture style</strong> defined by constraints. It’s not a library.</p>
+<h3 class="code-line" data-line-start=59 data-line-end=60 ><a id="21_REST__Representation__State__Transfer_59"></a>2.1 REST = Representation + State + Transfer</h3>
+<ul>
+<li class="has-line-data" data-line-start="60" data-line-end="61"><strong>Representation (RE)</strong>: how the resource is represented (JSON, HTML, XML).</li>
+<li class="has-line-data" data-line-start="61" data-line-end="62"><strong>State (S)</strong>: current properties of the resource.</li>
+<li class="has-line-data" data-line-start="62" data-line-end="64"><strong>Transfer (T)</strong>: movement of representation via HTTP (GET/POST/…).</li>
+</ul>
+<p class="has-line-data" data-line-start="64" data-line-end="65">Example:</p>
+<ul>
+<li class="has-line-data" data-line-start="65" data-line-end="67"><code>GET /tasks/123</code> transfers a JSON representation of task #123.</li>
+</ul>
+<h3 class="code-line" data-line-start=67 data-line-end=68 ><a id="22_REST_constraints_your_list_clarified_67"></a>2.2 REST constraints (your list, clarified)</h3>
+<ol>
+<li class="has-line-data" data-line-start="68" data-line-end="70"><strong>Client–Server separation</strong>
+<ul>
+<li class="has-line-data" data-line-start="69" data-line-end="70">UI logic stays on the client; data + rules stay on the server.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="70" data-line-end="72"><strong>Uniform interface</strong>
+<ul>
+<li class="has-line-data" data-line-start="71" data-line-end="72">consistent endpoints, methods, status codes, and payload shapes.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="72" data-line-end="74"><strong>Layered system</strong>
+<ul>
+<li class="has-line-data" data-line-start="73" data-line-end="74">intermediaries (load balancer, gateway, proxy) can exist; each layer interacts with adjacent layer only.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="74" data-line-end="76"><strong>Cacheable</strong>
+<ul>
+<li class="has-line-data" data-line-start="75" data-line-end="76">responses explicitly declare if caching is allowed and for how long.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="76" data-line-end="78"><strong>Stateless</strong>
+<ul>
+<li class="has-line-data" data-line-start="77" data-line-end="78">server does not rely on stored client context between requests (unless you choose sessions explicitly).</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="78" data-line-end="81"><strong>Code on demand (optional)</strong>
+<ul>
+<li class="has-line-data" data-line-start="79" data-line-end="81">server may send executable code (e.g., JavaScript) to extend client functionality.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="code-line" data-line-start=83 data-line-end=84 ><a id="3_Method_semantics_safe__idempotent_critical_for_reliability_83"></a>3) Method semantics: safe + idempotent (critical for reliability)</h2>
+<p class="has-line-data" data-line-start="85" data-line-end="86">These properties matter for retries, caching, and correctness.</p>
+<h3 class="code-line" data-line-start=87 data-line-end=88 ><a id="31_Safe_87"></a>3.1 Safe</h3>
+<p class="has-line-data" data-line-start="88" data-line-end="89">A <strong>safe</strong> operation should not change server state:</p>
+<ul>
+<li class="has-line-data" data-line-start="89" data-line-end="91"><code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code></li>
+</ul>
+<h3 class="code-line" data-line-start=91 data-line-end=92 ><a id="32_Idempotent_91"></a>3.2 Idempotent</h3>
+<p class="has-line-data" data-line-start="92" data-line-end="93">An operation is <strong>idempotent</strong> if repeating it yields the same end state:</p>
+<ul>
+<li class="has-line-data" data-line-start="93" data-line-end="94"><code>GET</code> idempotent (and safe)</li>
+<li class="has-line-data" data-line-start="94" data-line-end="95"><code>PUT</code> idempotent (replace)</li>
+<li class="has-line-data" data-line-start="95" data-line-end="96"><code>DELETE</code> idempotent (delete again → still deleted)</li>
+<li class="has-line-data" data-line-start="96" data-line-end="97"><code>POST</code> usually <strong>not</strong> idempotent (creates a new resource each time)</li>
+<li class="has-line-data" data-line-start="97" data-line-end="99"><code>PATCH</code> depends on implementation (often not guaranteed)</li>
+</ul>
+<p class="has-line-data" data-line-start="99" data-line-end="100"><strong>Why it matters:</strong> if the client retries due to network failure, idempotent methods prevent duplicate side effects.</p>
+<hr>
+<h2 class="code-line" data-line-start=103 data-line-end=104 ><a id="4_Resources_design_by_nouns_103"></a>4) Resources: design by nouns</h2>
+<p class="has-line-data" data-line-start="105" data-line-end="106">A <strong>resource</strong> is any noun-like business object:</p>
+<ul>
+<li class="has-line-data" data-line-start="106" data-line-end="108"><code>users</code>, <code>tasks</code>, <code>tags</code>, <code>orders</code>, <code>documents</code></li>
+</ul>
+<h3 class="code-line" data-line-start=108 data-line-end=109 ><a id="41_Good_URL_patterns_108"></a>4.1 Good URL patterns</h3>
+<ul>
+<li class="has-line-data" data-line-start="109" data-line-end="110">collection: <code>/tasks</code></li>
+<li class="has-line-data" data-line-start="110" data-line-end="111">item: <code>/tasks/{id}</code></li>
+<li class="has-line-data" data-line-start="111" data-line-end="113">nested: <code>/users/{id}/tasks</code></li>
+</ul>
+<p class="has-line-data" data-line-start="113" data-line-end="114">Keep URLs:</p>
+<ul>
+<li class="has-line-data" data-line-start="114" data-line-end="115">noun-based (no verbs in path if possible)</li>
+<li class="has-line-data" data-line-start="115" data-line-end="116">stable</li>
+<li class="has-line-data" data-line-start="116" data-line-end="118">consistent across the API</li>
+</ul>
+<h3 class="code-line" data-line-start=118 data-line-end=119 ><a id="42_CRUD_mapping_118"></a>4.2 CRUD mapping</h3>
+<ul>
+<li class="has-line-data" data-line-start="119" data-line-end="120">Create: <code>POST /tasks</code></li>
+<li class="has-line-data" data-line-start="120" data-line-end="121">Read: <code>GET /tasks</code>, <code>GET /tasks/{id}</code></li>
+<li class="has-line-data" data-line-start="121" data-line-end="122">Update full: <code>PUT /tasks/{id}</code></li>
+<li class="has-line-data" data-line-start="122" data-line-end="123">Update partial: <code>PATCH /tasks/{id}</code></li>
+<li class="has-line-data" data-line-start="123" data-line-end="125">Delete: <code>DELETE /tasks/{id}</code></li>
+</ul>
+<h3 class="code-line" data-line-start=125 data-line-end=126 ><a id="43_Beyond_CRUD_actions_125"></a>4.3 Beyond CRUD (actions)</h3>
+<p class="has-line-data" data-line-start="126" data-line-end="127">Sometimes you need an action:</p>
+<ul>
+<li class="has-line-data" data-line-start="127" data-line-end="128"><code>POST /tasks/{id}/complete</code></li>
+<li class="has-line-data" data-line-start="128" data-line-end="130"><code>POST /payments/{id}/refund</code></li>
+</ul>
+<p class="has-line-data" data-line-start="130" data-line-end="131">Prefer modeling as state change (e.g., <code>done=true</code>) when possible.</p>
+<hr>
+<h2 class="code-line" data-line-start=134 data-line-end=135 ><a id="5_API_interface_design_in_practice_PostmanInsomnia_134"></a>5) API interface design in practice (Postman/Insomnia)</h2>
+<p class="has-line-data" data-line-start="136" data-line-end="137">Postman/Insomnia helps you:</p>
+<ul>
+<li class="has-line-data" data-line-start="137" data-line-end="138">test endpoints and payloads</li>
+<li class="has-line-data" data-line-start="138" data-line-end="139">validate status codes</li>
+<li class="has-line-data" data-line-start="139" data-line-end="141">keep “collections” as a living contract</li>
+</ul>
+<p class="has-line-data" data-line-start="141" data-line-end="142">A professional habit:</p>
+<ul>
+<li class="has-line-data" data-line-start="142" data-line-end="149">test <strong>success</strong> and <strong>all failure modes</strong>:
+<ul>
+<li class="has-line-data" data-line-start="143" data-line-end="144">invalid input → 422</li>
+<li class="has-line-data" data-line-start="144" data-line-end="145">unauthenticated → 401</li>
+<li class="has-line-data" data-line-start="145" data-line-end="146">unauthorized → 403</li>
+<li class="has-line-data" data-line-start="146" data-line-end="147">not found → 404</li>
+<li class="has-line-data" data-line-start="147" data-line-end="149">conflict → 409</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="code-line" data-line-start=151 data-line-end=152 ><a id="6_Pagination__sorting__filtering_151"></a>6) Pagination + sorting + filtering</h2>
+<h3 class="code-line" data-line-start=153 data-line-end=154 ><a id="61_Why_pagination_is_not_optional_153"></a>6.1 Why pagination is not optional</h3>
+<p class="has-line-data" data-line-start="154" data-line-end="155">Without pagination:</p>
+<ul>
+<li class="has-line-data" data-line-start="155" data-line-end="156">responses become huge</li>
+<li class="has-line-data" data-line-start="156" data-line-end="157">DB gets overloaded</li>
+<li class="has-line-data" data-line-start="157" data-line-end="159">UI becomes slow (especially infinite scroll)</li>
+</ul>
+<h3 class="code-line" data-line-start=159 data-line-end=160 ><a id="62_Offset_pagination_page__limit_159"></a>6.2 Offset pagination (page + limit)</h3>
+<p class="has-line-data" data-line-start="160" data-line-end="161">Query:</p>
+<ul>
+<li class="has-line-data" data-line-start="161" data-line-end="163"><code>GET /tasks?limit=20&amp;page=2&amp;sort=-created_at</code></li>
+</ul>
+<p class="has-line-data" data-line-start="163" data-line-end="164">Rules:</p>
+<ul>
+<li class="has-line-data" data-line-start="164" data-line-end="165"><code>limit</code> must have bounds (e.g. 1…100)</li>
+<li class="has-line-data" data-line-start="165" data-line-end="166"><code>page</code> starts at 1</li>
+<li class="has-line-data" data-line-start="166" data-line-end="168">provide defaults: <code>limit=20</code>, <code>page=1</code>, <code>sort=-created_at</code></li>
+</ul>
+<p class="has-line-data" data-line-start="168" data-line-end="170"><strong>Pros:</strong> easy<br>
+<strong>Cons:</strong> slow/unstable for deep pages, duplicates when data changes</p>
+<h3 class="code-line" data-line-start=171 data-line-end=172 ><a id="63_Cursor_pagination_best_for_infinite_scroll_171"></a>6.3 Cursor pagination (best for infinite scroll)</h3>
+<p class="has-line-data" data-line-start="172" data-line-end="173">Instead of <code>page</code>, you use a cursor token (like <code>created_at</code> + <code>id</code>):</p>
+<ul>
+<li class="has-line-data" data-line-start="173" data-line-end="175"><code>GET /tasks?limit=20&amp;cursor=2026-01-20T12:00:00Z|a1b2...</code></li>
+</ul>
+<p class="has-line-data" data-line-start="175" data-line-end="177"><strong>Pros:</strong> stable and scalable<br>
+<strong>Cons:</strong> more complex</p>
+<hr>
+<h2 class="code-line" data-line-start=180 data-line-end=181 ><a id="7_Serialization__deserialization_180"></a>7) Serialization &amp; deserialization</h2>
+<ul>
+<li class="has-line-data" data-line-start="182" data-line-end="183"><strong>Deserialization</strong>: request JSON → typed objects</li>
+<li class="has-line-data" data-line-start="183" data-line-end="185"><strong>Serialization</strong>: typed objects → response JSON</li>
+</ul>
+<p class="has-line-data" data-line-start="185" data-line-end="186">In FastAPI, Pydantic handles:</p>
+<ul>
+<li class="has-line-data" data-line-start="186" data-line-end="187">type coercion</li>
+<li class="has-line-data" data-line-start="187" data-line-end="188">validation</li>
+<li class="has-line-data" data-line-start="188" data-line-end="190">schema generation (OpenAPI docs)</li>
+</ul>
+<hr>
+<h2 class="code-line" data-line-start=192 data-line-end=193 ><a id="8_Validation_trust_nothing_from_the_network_192"></a>8) Validation (trust nothing from the network)</h2>
+<p class="has-line-data" data-line-start="194" data-line-end="195">Validation is your boundary against:</p>
+<ul>
+<li class="has-line-data" data-line-start="195" data-line-end="196">bugs</li>
+<li class="has-line-data" data-line-start="196" data-line-end="197">corrupted data</li>
+<li class="has-line-data" data-line-start="197" data-line-end="199">security issues</li>
+</ul>
+<p class="has-line-data" data-line-start="199" data-line-end="200">Examples:</p>
+<ul>
+<li class="has-line-data" data-line-start="200" data-line-end="201"><code>title</code> length</li>
+<li class="has-line-data" data-line-start="201" data-line-end="202">required fields</li>
+<li class="has-line-data" data-line-start="202" data-line-end="203">acceptable ranges</li>
+<li class="has-line-data" data-line-start="203" data-line-end="205">formats (email, UUID)</li>
+</ul>
+<hr>
+<h2 class="code-line" data-line-start=207 data-line-end=208 ><a id="9_Authentication_vs_Authorization_207"></a>9) Authentication vs Authorization</h2>
+<ul>
+<li class="has-line-data" data-line-start="209" data-line-end="210"><strong>Authentication</strong>: Who are you?</li>
+<li class="has-line-data" data-line-start="210" data-line-end="212"><strong>Authorization</strong>: What are you allowed to do?</li>
+</ul>
+<h3 class="code-line" data-line-start=212 data-line-end=213 ><a id="91_Typical_approaches_212"></a>9.1 Typical approaches</h3>
+<ul>
+<li class="has-line-data" data-line-start="213" data-line-end="214"><strong>Session cookie</strong> (stateful)</li>
+<li class="has-line-data" data-line-start="214" data-line-end="215"><strong>JWT Bearer token</strong> (stateless)</li>
+<li class="has-line-data" data-line-start="215" data-line-end="217"><strong>API keys</strong> (simple but limited)</li>
+</ul>
+<h3 class="code-line" data-line-start=217 data-line-end=218 ><a id="92_Cookies_short_but_important_217"></a>9.2 Cookies (short but important)</h3>
+<p class="has-line-data" data-line-start="218" data-line-end="219">For browser-based auth:</p>
+<ul>
+<li class="has-line-data" data-line-start="219" data-line-end="220"><code>HttpOnly</code> prevents JS reading cookies</li>
+<li class="has-line-data" data-line-start="220" data-line-end="221"><code>Secure</code> ensures HTTPS-only</li>
+<li class="has-line-data" data-line-start="221" data-line-end="223"><code>SameSite</code> reduces CSRF risk</li>
+</ul>
+<hr>
+<h2 class="code-line" data-line-start=225 data-line-end=226 ><a id="10_Caching_speed_by_remembering_225"></a>10) Caching (speed by remembering)</h2>
+<p class="has-line-data" data-line-start="227" data-line-end="228">Caching can exist at many layers:</p>
+<ul>
+<li class="has-line-data" data-line-start="228" data-line-end="229">browser cache</li>
+<li class="has-line-data" data-line-start="229" data-line-end="230">CDN</li>
+<li class="has-line-data" data-line-start="230" data-line-end="231">reverse proxy (Nginx)</li>
+<li class="has-line-data" data-line-start="231" data-line-end="232">app cache (Redis)</li>
+<li class="has-line-data" data-line-start="232" data-line-end="234">DB indexes (not cache, but essential performance)</li>
+</ul>
+<h3 class="code-line" data-line-start=234 data-line-end=235 ><a id="101_HTTP_caching_with_ETag_best_for_GET_234"></a>10.1 HTTP caching with ETag (best for GET)</h3>
+<p class="has-line-data" data-line-start="235" data-line-end="236">Idea:</p>
+<ul>
+<li class="has-line-data" data-line-start="236" data-line-end="237">server sends <code>ETag</code></li>
+<li class="has-line-data" data-line-start="237" data-line-end="238">client sends <code>If-None-Match</code></li>
+<li class="has-line-data" data-line-start="238" data-line-end="240">server returns <code>304 Not Modified</code> if unchanged</li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=242 data-line-end=243 ><a id="11_Scaling_vertical_vs_horizontal_with_concrete_examples_242"></a>11) Scaling: vertical vs horizontal (with concrete examples)</h1>
+<h3 class="code-line" data-line-start=244 data-line-end=245 ><a id="111_Vertical_scaling_scale_up_244"></a>11.1 Vertical scaling (scale up)</h3>
+<p class="has-line-data" data-line-start="245" data-line-end="246">You increase resources on one machine:</p>
+<ul>
+<li class="has-line-data" data-line-start="246" data-line-end="247">more CPU</li>
+<li class="has-line-data" data-line-start="247" data-line-end="248">more RAM</li>
+<li class="has-line-data" data-line-start="248" data-line-end="250">faster disk</li>
+</ul>
+<p class="has-line-data" data-line-start="250" data-line-end="251"><strong>Example</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="251" data-line-end="253">A single VM: upgrade from 2 CPU / 4GB RAM → 8 CPU / 16GB RAM</li>
+</ul>
+<p class="has-line-data" data-line-start="253" data-line-end="255"><strong>Pros:</strong> simple<br>
+<strong>Cons:</strong> hard limit; single point of failure</p>
+<h3 class="code-line" data-line-start=256 data-line-end=257 ><a id="112_Horizontal_scaling_scale_out_256"></a>11.2 Horizontal scaling (scale out)</h3>
+<p class="has-line-data" data-line-start="257" data-line-end="258">You run multiple replicas of your service:</p>
+<ul>
+<li class="has-line-data" data-line-start="258" data-line-end="259">2, 4, 10 backend instances</li>
+<li class="has-line-data" data-line-start="259" data-line-end="261">a load balancer distributes requests</li>
+</ul>
+<p class="has-line-data" data-line-start="261" data-line-end="263"><strong>Pros:</strong> scalable + resilient<br>
+<strong>Cons:</strong> requires stateless design + shared state in DB/cache</p>
+<h3 class="code-line" data-line-start=264 data-line-end=265 ><a id="113_Horizontal_scaling_example_with_Docker__Nginx_load_balancing_264"></a>11.3 Horizontal scaling example with Docker + Nginx load balancing</h3>
+<p class="has-line-data" data-line-start="266" data-line-end="267"><strong>docker-compose.yml</strong></p>
+<pre><code class="has-line-data" data-line-start="268" data-line-end="293" class="language-yaml"><span class="hljs-attr">services:</span>
+  <span class="hljs-attr">api:</span>
+    <span class="hljs-attr">build:</span> <span class="hljs-string">.</span>
+    <span class="hljs-attr">deploy:</span>
+      <span class="hljs-attr">replicas:</span> <span class="hljs-number">3</span>  <span class="hljs-comment"># (works in swarm; for local dev use multiple services or docker compose scale)</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">DATABASE_URL=postgresql://postgres:postgres@db:5432/app</span>
+    <span class="hljs-attr">depends_on:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">db</span>
+
+  <span class="hljs-attr">nginx:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx:alpine</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8080:80&quot;</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./nginx.conf:/etc/nginx/nginx.conf:ro</span>
+    <span class="hljs-attr">depends_on:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">api</span>
+
+  <span class="hljs-attr">db:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">postgres:16</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">POSTGRES_PASSWORD:</span> <span class="hljs-string">postgres</span>
+      <span class="hljs-attr">POSTGRES_DB:</span> <span class="hljs-string">app</span>
+</code></pre>
+<p class="has-line-data" data-line-start="294" data-line-end="295"><strong>nginx.conf</strong></p>
+<pre><code class="has-line-data" data-line-start="296" data-line-end="316" class="language-nginx"><span class="hljs-section">events</span> {}
+
+<span class="hljs-section">http</span> {
+  <span class="hljs-attribute">upstream</span> api_upstream {
+    <span class="hljs-comment"># in real setups, you&#x27;d list service DNS names or use service discovery</span>
+    <span class="hljs-comment"># Example conceptually:</span>
+    <span class="hljs-attribute">server</span> api:<span class="hljs-number">8000</span>;
+  }
+
+  <span class="hljs-section">server</span> {
+    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
+
+    <span class="hljs-attribute">location</span> / {
+      <span class="hljs-attribute">proxy_pass</span> http://api_upstream;
+      <span class="hljs-attribute">proxy_set_header</span> Host $host;
+      <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+  }
+}
+</code></pre>
+<blockquote>
+<p class="has-line-data" data-line-start="317" data-line-end="318">Key point: in horizontal scaling, your API must be <strong>stateless</strong> (or store session state in Redis / DB).</p>
+</blockquote>
+<hr>
+<h1 class="code-line" data-line-start=321 data-line-end=322 ><a id="12_Performance_what_matters_most_321"></a>12) Performance: what matters most</h1>
+<h3 class="code-line" data-line-start=323 data-line-end=324 ><a id="121_The_backend_performance_hierarchy_typical_323"></a>12.1 The backend performance hierarchy (typical)</h3>
+<ol>
+<li class="has-line-data" data-line-start="324" data-line-end="325"><strong>Database queries</strong> dominate latency</li>
+<li class="has-line-data" data-line-start="325" data-line-end="326">External API calls dominate latency</li>
+<li class="has-line-data" data-line-start="326" data-line-end="328">CPU-heavy work blocks worker threads/processes</li>
+</ol>
+<h3 class="code-line" data-line-start=328 data-line-end=329 ><a id="122_Practical_rules_328"></a>12.2 Practical rules</h3>
+<ul>
+<li class="has-line-data" data-line-start="329" data-line-end="330">paginate lists</li>
+<li class="has-line-data" data-line-start="330" data-line-end="331">index columns used in filters/sorts</li>
+<li class="has-line-data" data-line-start="331" data-line-end="332">avoid N+1 queries</li>
+<li class="has-line-data" data-line-start="332" data-line-end="333">cache expensive reads</li>
+<li class="has-line-data" data-line-start="333" data-line-end="334">use async for I/O waits (DB/network), not for CPU work</li>
+<li class="has-line-data" data-line-start="334" data-line-end="336">add timeouts for external calls</li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=338 data-line-end=339 ><a id="13_ORM_design_FastAPI__SQLAlchemy_with_created_atupdated_at__sorting_338"></a>13) ORM design (FastAPI + SQLAlchemy) with created_at/updated_at + sorting</h1>
+<p class="has-line-data" data-line-start="340" data-line-end="341">This is a realistic minimal stack:</p>
+<ul>
+<li class="has-line-data" data-line-start="341" data-line-end="342">SQLAlchemy ORM</li>
+<li class="has-line-data" data-line-start="342" data-line-end="344">SQLite for demo (swap to Postgres in production)</li>
+</ul>
+<h2 class="code-line" data-line-start=344 data-line-end=345 ><a id="131_Install_344"></a>13.1 Install</h2>
+<pre><code class="has-line-data" data-line-start="346" data-line-end="348" class="language-bash">pip install fastapi uvicorn sqlalchemy
+</code></pre>
+<h2 class="code-line" data-line-start=349 data-line-end=350 ><a id="132_dbpy_349"></a>13.2 <a href="http://db.py">db.py</a></h2>
+<pre><code class="has-line-data" data-line-start="351" data-line-end="363" class="language-python"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine
+<span class="hljs-keyword">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker, declarative_base
+
+DATABASE_URL = <span class="hljs-string">&quot;sqlite:///./app.db&quot;</span>
+
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={<span class="hljs-string">&quot;check_same_thread&quot;</span>: <span class="hljs-literal">False</span>},  <span class="hljs-comment"># sqlite only</span>
+)
+SessionLocal = sessionmaker(autocommit=<span class="hljs-literal">False</span>, autoflush=<span class="hljs-literal">False</span>, bind=engine)
+Base = declarative_base()
+</code></pre>
+<h2 class="code-line" data-line-start=364 data-line-end=365 ><a id="133_modelspy_with_created_at__updated_at_364"></a>13.3 <a href="http://models.py">models.py</a> (with created_at / updated_at)</h2>
+<pre><code class="has-line-data" data-line-start="366" data-line-end="380" class="language-python"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> Column, String, Boolean, DateTime, func
+<span class="hljs-keyword">from</span> uuid <span class="hljs-keyword">import</span> uuid4
+<span class="hljs-keyword">from</span> db <span class="hljs-keyword">import</span> Base
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskORM</span>(<span class="hljs-params">Base</span>):</span>
+    __tablename__ = <span class="hljs-string">&quot;tasks&quot;</span>
+
+    <span class="hljs-built_in">id</span> = Column(String, primary_key=<span class="hljs-literal">True</span>, default=<span class="hljs-keyword">lambda</span>: <span class="hljs-built_in">str</span>(uuid4()))
+    title = Column(String, nullable=<span class="hljs-literal">False</span>)
+    done = Column(Boolean, nullable=<span class="hljs-literal">False</span>, default=<span class="hljs-literal">False</span>)
+
+    created_at = Column(DateTime(timezone=<span class="hljs-literal">True</span>), server_default=func.now(), nullable=<span class="hljs-literal">False</span>)
+    updated_at = Column(DateTime(timezone=<span class="hljs-literal">True</span>), server_default=func.now(), onupdate=func.now(), nullable=<span class="hljs-literal">False</span>)
+</code></pre>
+<h2 class="code-line" data-line-start=381 data-line-end=382 ><a id="134_schemaspy_381"></a>13.4 <a href="http://schemas.py">schemas.py</a></h2>
+<pre><code class="has-line-data" data-line-start="383" data-line-end="401" class="language-python"><span class="hljs-keyword">from</span> pydantic <span class="hljs-keyword">import</span> BaseModel, Field
+<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskCreate</span>(<span class="hljs-params">BaseModel</span>):</span>
+    title: <span class="hljs-built_in">str</span> = Field(min_length=<span class="hljs-number">1</span>, max_length=<span class="hljs-number">200</span>)
+    done: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">False</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskUpdate</span>(<span class="hljs-params">BaseModel</span>):</span>
+    title: <span class="hljs-built_in">str</span> | <span class="hljs-literal">None</span> = Field(default=<span class="hljs-literal">None</span>, min_length=<span class="hljs-number">1</span>, max_length=<span class="hljs-number">200</span>)
+    done: <span class="hljs-built_in">bool</span> | <span class="hljs-literal">None</span> = <span class="hljs-literal">None</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskOut</span>(<span class="hljs-params">BaseModel</span>):</span>
+    <span class="hljs-built_in">id</span>: <span class="hljs-built_in">str</span>
+    title: <span class="hljs-built_in">str</span>
+    done: <span class="hljs-built_in">bool</span>
+    created_at: datetime
+    updated_at: datetime
+</code></pre>
+<h2 class="code-line" data-line-start=402 data-line-end=403 ><a id="135_mainpy_CRUD__pagination__sorting_402"></a>13.5 <a href="http://main.py">main.py</a> (CRUD + pagination + sorting)</h2>
+<pre><code class="has-line-data" data-line-start="404" data-line-end="487" class="language-python"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, Depends, HTTPException, Query
+<span class="hljs-keyword">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> Session
+<span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> desc, asc
+<span class="hljs-keyword">from</span> db <span class="hljs-keyword">import</span> Base, engine, SessionLocal
+<span class="hljs-keyword">from</span> models <span class="hljs-keyword">import</span> TaskORM
+<span class="hljs-keyword">from</span> schemas <span class="hljs-keyword">import</span> TaskCreate, TaskUpdate, TaskOut
+
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(title=<span class="hljs-string">&quot;FastAPI + ORM (First Principles → Realistic)&quot;</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_db</span>():</span>
+    db = SessionLocal()
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">yield</span> db
+    <span class="hljs-keyword">finally</span>:
+        db.close()
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply_sort</span>(<span class="hljs-params">query, sort: <span class="hljs-built_in">str</span></span>):</span>
+    <span class="hljs-comment"># sort examples: &quot;created_at&quot;, &quot;-created_at&quot;, &quot;title&quot;, &quot;-title&quot;</span>
+    mapping = {
+        <span class="hljs-string">&quot;created_at&quot;</span>: TaskORM.created_at,
+        <span class="hljs-string">&quot;updated_at&quot;</span>: TaskORM.updated_at,
+        <span class="hljs-string">&quot;title&quot;</span>: TaskORM.title,
+        <span class="hljs-string">&quot;done&quot;</span>: TaskORM.done,
+    }
+    direction = desc <span class="hljs-keyword">if</span> sort.startswith(<span class="hljs-string">&quot;-&quot;</span>) <span class="hljs-keyword">else</span> asc
+    key = sort[<span class="hljs-number">1</span>:] <span class="hljs-keyword">if</span> sort.startswith(<span class="hljs-string">&quot;-&quot;</span>) <span class="hljs-keyword">else</span> sort
+    col = mapping.get(key)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> col:
+        <span class="hljs-keyword">return</span> query  <span class="hljs-comment"># ignore unknown sort (or raise 400)</span>
+    <span class="hljs-keyword">return</span> query.order_by(direction(col), desc(TaskORM.<span class="hljs-built_in">id</span>))
+
+<span class="hljs-meta">@app.post(<span class="hljs-params"><span class="hljs-string">&quot;/tasks&quot;</span>, response_model=TaskOut, status_code=<span class="hljs-number">201</span></span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_task</span>(<span class="hljs-params">payload: TaskCreate, db: Session = Depends(<span class="hljs-params">get_db</span>)</span>):</span>
+    task = TaskORM(title=payload.title, done=payload.done)
+    db.add(task)
+    db.commit()
+    db.refresh(task)
+    <span class="hljs-keyword">return</span> task
+
+<span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/tasks/{task_id}&quot;</span>, response_model=TaskOut</span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_task</span>(<span class="hljs-params">task_id: <span class="hljs-built_in">str</span>, db: Session = Depends(<span class="hljs-params">get_db</span>)</span>):</span>
+    task = db.get(TaskORM, task_id)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> task:
+        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">404</span>, detail=<span class="hljs-string">&quot;Task not found&quot;</span>)
+    <span class="hljs-keyword">return</span> task
+
+<span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/tasks&quot;</span>, response_model=<span class="hljs-built_in">list</span>[TaskOut]</span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_tasks</span>(<span class="hljs-params">
+    limit: <span class="hljs-built_in">int</span> = Query(<span class="hljs-params"><span class="hljs-number">20</span>, ge=<span class="hljs-number">1</span>, le=<span class="hljs-number">100</span></span>),
+    page: <span class="hljs-built_in">int</span> = Query(<span class="hljs-params"><span class="hljs-number">1</span>, ge=<span class="hljs-number">1</span></span>),
+    sort: <span class="hljs-built_in">str</span> = Query(<span class="hljs-params"><span class="hljs-string">&quot;-created_at&quot;</span></span>),
+    db: Session = Depends(<span class="hljs-params">get_db</span>),
+</span>):</span>
+    offset = (page - <span class="hljs-number">1</span>) * limit
+    q = db.query(TaskORM)
+    q = apply_sort(q, sort)
+    <span class="hljs-keyword">return</span> q.offset(offset).limit(limit).<span class="hljs-built_in">all</span>()
+
+<span class="hljs-meta">@app.patch(<span class="hljs-params"><span class="hljs-string">&quot;/tasks/{task_id}&quot;</span>, response_model=TaskOut</span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">patch_task</span>(<span class="hljs-params">task_id: <span class="hljs-built_in">str</span>, payload: TaskUpdate, db: Session = Depends(<span class="hljs-params">get_db</span>)</span>):</span>
+    task = db.get(TaskORM, task_id)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> task:
+        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">404</span>, detail=<span class="hljs-string">&quot;Task not found&quot;</span>)
+
+    data = payload.model_dump(exclude_unset=<span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> data.items():
+        <span class="hljs-built_in">setattr</span>(task, k, v)
+
+    db.commit()
+    db.refresh(task)
+    <span class="hljs-keyword">return</span> task
+
+<span class="hljs-meta">@app.delete(<span class="hljs-params"><span class="hljs-string">&quot;/tasks/{task_id}&quot;</span>, status_code=<span class="hljs-number">204</span></span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_task</span>(<span class="hljs-params">task_id: <span class="hljs-built_in">str</span>, db: Session = Depends(<span class="hljs-params">get_db</span>)</span>):</span>
+    task = db.get(TaskORM, task_id)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> task:
+        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">404</span>, detail=<span class="hljs-string">&quot;Task not found&quot;</span>)
+    db.delete(task)
+    db.commit()
+    <span class="hljs-keyword">return</span>
+</code></pre>
+<p class="has-line-data" data-line-start="488" data-line-end="489">Run:</p>
+<pre><code class="has-line-data" data-line-start="490" data-line-end="492" class="language-bash">uvicorn main:app --reload
+</code></pre>
+<hr>
+<h1 class="code-line" data-line-start=495 data-line-end=496 ><a id="14_Cursor_pagination_example_conceptual__code_495"></a>14) Cursor pagination example (conceptual + code)</h1>
+<p class="has-line-data" data-line-start="497" data-line-end="498">Cursor pagination usually needs:</p>
+<ul>
+<li class="has-line-data" data-line-start="498" data-line-end="499">a stable sort: <code>(created_at, id)</code></li>
+<li class="has-line-data" data-line-start="499" data-line-end="501">a cursor token: <code>&quot;created_at|id&quot;</code></li>
+</ul>
+<p class="has-line-data" data-line-start="501" data-line-end="502"><strong>Endpoint idea</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="502" data-line-end="504"><code>GET /tasks?limit=20&amp;cursor=&lt;created_at&gt;|&lt;id&gt;</code></li>
+</ul>
+<p class="has-line-data" data-line-start="504" data-line-end="505"><strong>Pseudo-implementation</strong></p>
+<pre><code class="has-line-data" data-line-start="506" data-line-end="511" class="language-python"><span class="hljs-comment"># where tasks are ordered by created_at desc, id desc</span>
+<span class="hljs-comment"># cursor = &quot;2026-01-20T12:00:00Z|&lt;id&gt;&quot;</span>
+
+<span class="hljs-comment"># Fetch items with (created_at, id) &lt; cursor tuple in same order.</span>
+</code></pre>
+<p class="has-line-data" data-line-start="512" data-line-end="513">In production you also:</p>
+<ul>
+<li class="has-line-data" data-line-start="513" data-line-end="514">sign/encrypt the cursor token</li>
+<li class="has-line-data" data-line-start="514" data-line-end="515">validate token format</li>
+<li class="has-line-data" data-line-start="515" data-line-end="517">return <code>next_cursor</code> in response</li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=519 data-line-end=520 ><a id="15_Authorization_rolebased__JWT_minimal_example_519"></a>15) Authorization (role-based) + JWT (minimal example)</h1>
+<blockquote>
+<p class="has-line-data" data-line-start="521" data-line-end="522">This is intentionally minimal to show the concept; production JWT must include key rotation, stronger claims validation, etc.</p>
+</blockquote>
+<p class="has-line-data" data-line-start="523" data-line-end="524">Install:</p>
+<pre><code class="has-line-data" data-line-start="525" data-line-end="527" class="language-bash">pip install python-jose[cryptography] passlib[bcrypt]
+</code></pre>
+<p class="has-line-data" data-line-start="528" data-line-end="529"><strong>Idea</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="529" data-line-end="530">user logs in → receives JWT</li>
+<li class="has-line-data" data-line-start="530" data-line-end="531">requests include <code>Authorization: Bearer &lt;token&gt;</code></li>
+<li class="has-line-data" data-line-start="531" data-line-end="533">backend checks token → extracts <code>sub</code> + <code>role</code></li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=535 data-line-end=536 ><a id="16_Redis_cache__ETag_support_for_GET_535"></a>16) Redis cache + ETag support for GET</h1>
+<h3 class="code-line" data-line-start=537 data-line-end=538 ><a id="161_Redis_cache_concept_537"></a>16.1 Redis cache (concept)</h3>
+<p class="has-line-data" data-line-start="538" data-line-end="539">Cache read-heavy endpoints:</p>
+<ul>
+<li class="has-line-data" data-line-start="539" data-line-end="540">store serialized response for a key (e.g., <code>tasks:list:limit=20&amp;page=1</code>)</li>
+<li class="has-line-data" data-line-start="540" data-line-end="542">invalidate cache when tasks change (create/update/delete)</li>
+</ul>
+<h3 class="code-line" data-line-start=542 data-line-end=543 ><a id="162_ETag_HTTP_caching_542"></a>16.2 ETag (HTTP caching)</h3>
+<p class="has-line-data" data-line-start="543" data-line-end="544">If client has ETag and content unchanged → return <code>304</code>.</p>
+<hr>
+<h1 class="code-line" data-line-start=547 data-line-end=548 ><a id="17_Background_jobs_RQ__Celery_for_heavy_tasks_547"></a>17) Background jobs (RQ / Celery) for heavy tasks</h1>
+<h3 class="code-line" data-line-start=549 data-line-end=550 ><a id="Why_background_jobs_exist_549"></a>Why background jobs exist</h3>
+<ul>
+<li class="has-line-data" data-line-start="550" data-line-end="551">keep API fast</li>
+<li class="has-line-data" data-line-start="551" data-line-end="552">prevent timeouts</li>
+<li class="has-line-data" data-line-start="552" data-line-end="553">improve throughput</li>
+<li class="has-line-data" data-line-start="553" data-line-end="555">enable retries safely</li>
+</ul>
+<h3 class="code-line" data-line-start=555 data-line-end=556 ><a id="Common_pattern_555"></a>Common pattern</h3>
+<ul>
+<li class="has-line-data" data-line-start="556" data-line-end="557"><code>POST /jobs</code> → returns <code>job_id</code> (202 Accepted)</li>
+<li class="has-line-data" data-line-start="557" data-line-end="559"><code>GET /jobs/{job_id}</code> → status/result</li>
+</ul>
+<p class="has-line-data" data-line-start="559" data-line-end="560">(See the full RQ/Celery section near the end of this file if you want a ready copy-paste block.)</p>
+<hr>
+<h1 class="code-line" data-line-start=563 data-line-end=564 ><a id="18_Testing_with_pytest_backend_quality_563"></a>18) Testing with pytest (backend quality)</h1>
+<p class="has-line-data" data-line-start="565" data-line-end="566">Install:</p>
+<pre><code class="has-line-data" data-line-start="567" data-line-end="569" class="language-bash">pip install pytest httpx
+</code></pre>
+<p class="has-line-data" data-line-start="570" data-line-end="571">Example test using FastAPI TestClient:</p>
+<pre><code class="has-line-data" data-line-start="572" data-line-end="587" class="language-python"><span class="hljs-keyword">from</span> fastapi.testclient <span class="hljs-keyword">import</span> TestClient
+<span class="hljs-keyword">from</span> main <span class="hljs-keyword">import</span> app
+
+client = TestClient(app)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_create_and_get_task</span>():</span>
+    r = client.post(<span class="hljs-string">&quot;/tasks&quot;</span>, json={<span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-string">&quot;done&quot;</span>: <span class="hljs-literal">False</span>})
+    <span class="hljs-keyword">assert</span> r.status_code == <span class="hljs-number">201</span>
+    task = r.json()
+    <span class="hljs-keyword">assert</span> task[<span class="hljs-string">&quot;title&quot;</span>] == <span class="hljs-string">&quot;hello&quot;</span>
+
+    r2 = client.get(<span class="hljs-string">f&quot;/tasks/<span class="hljs-subst">{task[<span class="hljs-string">&#x27;id&#x27;</span>]}</span>&quot;</span>)
+    <span class="hljs-keyword">assert</span> r2.status_code == <span class="hljs-number">200</span>
+    <span class="hljs-keyword">assert</span> r2.json()[<span class="hljs-string">&quot;id&quot;</span>] == task[<span class="hljs-string">&quot;id&quot;</span>]
+</code></pre>
+<p class="has-line-data" data-line-start="588" data-line-end="589">Test principles:</p>
+<ul>
+<li class="has-line-data" data-line-start="589" data-line-end="590">unit tests for pure functions (fast)</li>
+<li class="has-line-data" data-line-start="590" data-line-end="591">integration tests for API endpoints</li>
+<li class="has-line-data" data-line-start="591" data-line-end="593">database tests using temporary DB (or test containers)</li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=595 data-line-end=596 ><a id="19_CI_GitHub_Actions_minimal_pipeline_595"></a>19) CI (GitHub Actions) minimal pipeline</h1>
+<p class="has-line-data" data-line-start="597" data-line-end="598"><code>.github/workflows/ci.yml</code></p>
+<pre><code class="has-line-data" data-line-start="599" data-line-end="614" class="language-yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">CI</span>
+
+<span class="hljs-attr">on:</span> [<span class="hljs-string">push</span>, <span class="hljs-string">pull_request</span>]
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">test:</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v4</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-python@v5</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">python-version:</span> <span class="hljs-string">&quot;3.11&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span> <span class="hljs-string">pip</span> <span class="hljs-string">install</span> <span class="hljs-string">-r</span> <span class="hljs-string">requirements.txt</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span> <span class="hljs-string">pytest</span> <span class="hljs-string">-q</span>
+</code></pre>
+<hr>
+<h1 class="code-line" data-line-start=617 data-line-end=618 ><a id="20_Security_essentials_musthave_mental_model_617"></a>20) Security essentials (must-have mental model)</h1>
+<ul>
+<li class="has-line-data" data-line-start="618" data-line-end="619">validate input (always)</li>
+<li class="has-line-data" data-line-start="619" data-line-end="620">authn + authz</li>
+<li class="has-line-data" data-line-start="620" data-line-end="621">rate limiting</li>
+<li class="has-line-data" data-line-start="621" data-line-end="622">CORS configuration</li>
+<li class="has-line-data" data-line-start="622" data-line-end="623">avoid leaking stack traces in production</li>
+<li class="has-line-data" data-line-start="623" data-line-end="624">secrets in env vars, not in repo</li>
+<li class="has-line-data" data-line-start="624" data-line-end="626">log carefully (no passwords/tokens)</li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=628 data-line-end=629 ><a id="21_Observability_operate_your_backend_628"></a>21) Observability (operate your backend)</h1>
+<ul>
+<li class="has-line-data" data-line-start="629" data-line-end="630">structured logs (JSON logs)</li>
+<li class="has-line-data" data-line-start="630" data-line-end="631">request IDs / correlation IDs</li>
+<li class="has-line-data" data-line-start="631" data-line-end="632">metrics (latency, error rate, throughput)</li>
+<li class="has-line-data" data-line-start="632" data-line-end="634">traces (distributed tracing if microservices)</li>
+</ul>
+<hr>
+<h1 class="code-line" data-line-start=636 data-line-end=637 ><a id="22_Full_Background_Jobs_section_copypaste_ready_636"></a>22) Full Background Jobs section (copy-paste ready)</h1>
+<h2 class="code-line" data-line-start=638 data-line-end=639 ><a id="Background_jobs_for_heavy_tasks_Celery__RQ__first_principles_638"></a>Background jobs for heavy tasks (Celery / RQ) — first principles</h2>
+<h3 class="code-line" data-line-start=640 data-line-end=641 ><a id="Why_background_jobs_exist_640"></a>Why background jobs exist</h3>
+<p class="has-line-data" data-line-start="641" data-line-end="642">HTTP request/response is meant for fast interactions. If you do heavy work inside a request:</p>
+<ul>
+<li class="has-line-data" data-line-start="642" data-line-end="643">the API becomes slow</li>
+<li class="has-line-data" data-line-start="643" data-line-end="644">requests time out</li>
+<li class="has-line-data" data-line-start="644" data-line-end="645">web workers get blocked</li>
+<li class="has-line-data" data-line-start="645" data-line-end="647">retries can duplicate work</li>
+</ul>
+<p class="has-line-data" data-line-start="647" data-line-end="648">So we separate execution into two planes:</p>
+<ol>
+<li class="has-line-data" data-line-start="648" data-line-end="649">Web plane: validate + authorize + enqueue work → return quickly</li>
+<li class="has-line-data" data-line-start="649" data-line-end="651">Worker plane: execute heavy work → store results → handle retries</li>
+</ol>
+<h3 class="code-line" data-line-start=651 data-line-end=652 ><a id="Option_A_RQ_Redis_Queue__simplest_651"></a>Option A: RQ (Redis Queue) — simplest</h3>
+<p class="has-line-data" data-line-start="652" data-line-end="653">Install:</p>
+<pre><code class="has-line-data" data-line-start="654" data-line-end="656" class="language-bash">pip install rq redis fastapi uvicorn
+</code></pre>
+<p class="has-line-data" data-line-start="657" data-line-end="658"><a href="http://worker.py">worker.py</a></p>
+<pre><code class="has-line-data" data-line-start="659" data-line-end="665" class="language-python"><span class="hljs-keyword">import</span> time
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heavy_task</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">dict</span>:</span>
+    time.sleep(<span class="hljs-number">5</span>)
+    <span class="hljs-keyword">return</span> {<span class="hljs-string">&quot;input&quot;</span>: n, <span class="hljs-string">&quot;output&quot;</span>: n * n}
+</code></pre>
+<p class="has-line-data" data-line-start="666" data-line-end="667"><a href="http://queue.py">queue.py</a></p>
+<pre><code class="has-line-data" data-line-start="668" data-line-end="676" class="language-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> redis <span class="hljs-keyword">import</span> Redis
+<span class="hljs-keyword">from</span> rq <span class="hljs-keyword">import</span> Queue
+
+REDIS_URL = os.getenv(<span class="hljs-string">&quot;REDIS_URL&quot;</span>, <span class="hljs-string">&quot;redis://localhost:6379/0&quot;</span>)
+redis_conn = Redis.from_url(REDIS_URL)
+q = Queue(<span class="hljs-string">&quot;default&quot;</span>, connection=redis_conn)
+</code></pre>
+<p class="has-line-data" data-line-start="677" data-line-end="678">FastAPI submit + poll:</p>
+<pre><code class="has-line-data" data-line-start="679" data-line-end="699" class="language-python"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI, HTTPException
+<span class="hljs-keyword">from</span> rq.job <span class="hljs-keyword">import</span> Job
+<span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> q, redis_conn
+<span class="hljs-keyword">from</span> worker <span class="hljs-keyword">import</span> heavy_task
+
+app = FastAPI()
+
+<span class="hljs-meta">@app.post(<span class="hljs-params"><span class="hljs-string">&quot;/jobs&quot;</span>, status_code=<span class="hljs-number">202</span></span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">submit_job</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>):</span>
+    job = q.enqueue(heavy_task, n)
+    <span class="hljs-keyword">return</span> {<span class="hljs-string">&quot;job_id&quot;</span>: job.<span class="hljs-built_in">id</span>}
+
+<span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/jobs/{job_id}&quot;</span></span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">job_status</span>(<span class="hljs-params">job_id: <span class="hljs-built_in">str</span></span>):</span>
+    <span class="hljs-keyword">try</span>:
+        job = Job.fetch(job_id, connection=redis_conn)
+    <span class="hljs-keyword">except</span> Exception:
+        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">404</span>, detail=<span class="hljs-string">&quot;Job not found&quot;</span>)
+    <span class="hljs-keyword">return</span> {<span class="hljs-string">&quot;job_id&quot;</span>: job.<span class="hljs-built_in">id</span>, <span class="hljs-string">&quot;status&quot;</span>: job.get_status(), <span class="hljs-string">&quot;result&quot;</span>: job.result}
+</code></pre>
+<p class="has-line-data" data-line-start="700" data-line-end="701">Run:</p>
+<pre><code class="has-line-data" data-line-start="702" data-line-end="706" class="language-bash">docker run -p 6379:6379 redis:7
+rq worker -u redis://localhost:6379/0 default
+uvicorn app:app --reload
+</code></pre>
+<h3 class="code-line" data-line-start=707 data-line-end=708 ><a id="Option_B_Celery__more_powerful_707"></a>Option B: Celery — more powerful</h3>
+<p class="has-line-data" data-line-start="708" data-line-end="709">Install:</p>
+<pre><code class="has-line-data" data-line-start="710" data-line-end="712" class="language-bash">pip install celery redis fastapi uvicorn
+</code></pre>
+<p class="has-line-data" data-line-start="713" data-line-end="714">celery_app.py</p>
+<pre><code class="has-line-data" data-line-start="715" data-line-end="721" class="language-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> celery <span class="hljs-keyword">import</span> Celery
+
+REDIS_URL = os.getenv(<span class="hljs-string">&quot;REDIS_URL&quot;</span>, <span class="hljs-string">&quot;redis://localhost:6379/0&quot;</span>)
+celery = Celery(<span class="hljs-string">&quot;tasks&quot;</span>, broker=REDIS_URL, backend=REDIS_URL)
+</code></pre>
+<p class="has-line-data" data-line-start="722" data-line-end="723"><a href="http://tasks.py">tasks.py</a></p>
+<pre><code class="has-line-data" data-line-start="724" data-line-end="732" class="language-python"><span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">from</span> celery_app <span class="hljs-keyword">import</span> celery
+
+<span class="hljs-meta">@celery.task(<span class="hljs-params">bind=<span class="hljs-literal">True</span>, autoretry_for=(<span class="hljs-params">Exception,</span>), retry_backoff=<span class="hljs-literal">True</span>, retry_kwargs={<span class="hljs-string">&quot;max_retries&quot;</span>: <span class="hljs-number">5</span>}</span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heavy_task</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">dict</span>:</span>
+    time.sleep(<span class="hljs-number">5</span>)
+    <span class="hljs-keyword">return</span> {<span class="hljs-string">&quot;input&quot;</span>: n, <span class="hljs-string">&quot;output&quot;</span>: n * n}
+</code></pre>
+<p class="has-line-data" data-line-start="733" data-line-end="734">FastAPI submit + poll:</p>
+<pre><code class="has-line-data" data-line-start="735" data-line-end="751" class="language-python"><span class="hljs-keyword">from</span> fastapi <span class="hljs-keyword">import</span> FastAPI
+<span class="hljs-keyword">from</span> celery_app <span class="hljs-keyword">import</span> celery
+<span class="hljs-keyword">from</span> tasks <span class="hljs-keyword">import</span> heavy_task
+
+app = FastAPI()
+
+<span class="hljs-meta">@app.post(<span class="hljs-params"><span class="hljs-string">&quot;/jobs&quot;</span>, status_code=<span class="hljs-number">202</span></span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">submit_job</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>):</span>
+    res = heavy_task.delay(n)
+    <span class="hljs-keyword">return</span> {<span class="hljs-string">&quot;job_id&quot;</span>: res.<span class="hljs-built_in">id</span>}
+
+<span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/jobs/{job_id}&quot;</span></span>)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">job_status</span>(<span class="hljs-params">job_id: <span class="hljs-built_in">str</span></span>):</span>
+    res = celery.AsyncResult(job_id)
+    <span class="hljs-keyword">return</span> {<span class="hljs-string">&quot;job_id&quot;</span>: job_id, <span class="hljs-string">&quot;status&quot;</span>: res.status, <span class="hljs-string">&quot;result&quot;</span>: res.result <span class="hljs-keyword">if</span> res.successful() <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>}
+</code></pre>
+<p class="has-line-data" data-line-start="752" data-line-end="753">Run:</p>
+<pre><code class="has-line-data" data-line-start="754" data-line-end="758" class="language-bash">docker run -p 6379:6379 redis:7
+celery -A celery_app.celery worker --loglevel=INFO
+uvicorn app:app --reload
+</code></pre>
+<hr>
+<h2 class="code-line" data-line-start=761 data-line-end=762 ><a id="Final_checklist_backend_maturity_761"></a>Final checklist: backend maturity</h2>
+<p class="has-line-data" data-line-start="762" data-line-end="763">When you build any feature, ask:</p>
+<ol>
+<li class="has-line-data" data-line-start="763" data-line-end="764">What is the resource + contract?</li>
+<li class="has-line-data" data-line-start="764" data-line-end="765">What validation and invariants must hold?</li>
+<li class="has-line-data" data-line-start="765" data-line-end="766">What authn/authz rules apply?</li>
+<li class="has-line-data" data-line-start="766" data-line-end="767">Where is truth stored (DB)?</li>
+<li class="has-line-data" data-line-start="767" data-line-end="768">How will it scale (stateless + cache + queue)?</li>
+<li class="has-line-data" data-line-start="768" data-line-end="769">How is it tested and deployed?</li>
+<li class="has-line-data" data-line-start="769" data-line-end="771">How do I observe it in production?</li>
+</ol>
+
+</body></html>

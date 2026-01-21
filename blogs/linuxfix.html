@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Fixing Microphone on ThinkPad X1 Carbon Gen 8 (Ubuntu 24–25)</title>
+
+<!-- Link your existing site CSS -->
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../blog.css">
+
+<!-- Prism.js Code Highlighter -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
+
+<style>
+/* Page Wrapper */
+.blog-article {
+    max-width: 950px;
+    margin: auto;
+    padding: 40px 20px;
+    color: white;
+    line-height: 1.8;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Blog Title */
+.blog-article h1 {
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    color: #29a587;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Rowdies', sans-serif;
+}
+
+/* Section Headings */
+.blog-article h2 {
+    font-size: 3.5rem;
+    color: #29a587;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.blog-article h3 {
+    font-size: 2.8rem;
+    color: #fff;
+    margin-top: 3rem;
+}
+
+/* Cards for highlights */
+.linux-card {
+    background: #1d222a;
+    border-left: 6px solid #29a587;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    font-size: 1.8rem;
+}
+
+/* Code blocks in your theme */
+pre {
+    background: #1b1b1b !important;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 10px;
+    overflow-x: auto;
+    font-size: 1.6rem;
+}
+
+/* Improve readability */
+.blog-article p, .blog-article li {
+    font-size: 2rem;
+}
+
+/* Lists */
+.blog-article ul {
+    margin: 20px 0 20px 25px;
+}
+
+/* Copy Button */
+.copy-btn {
+    float: right;
+    padding: 6px 12px;
+    background: #29a587;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 5px;
+}
+
+/* Blog Image (optional) */
+.blog-hero-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+</style>
+
+</head>
+<body>
+
+<!-- BACKGROUND from your portfolio -->
+<div class="container">
+
+<!-- BLOG CONTENT -->
+<div class="blog-article">
+
+<h1>Fixing Microphone on ThinkPad X1 Carbon Gen 8 (Ubuntu 24/25)</h1>
+
+<img class="blog-hero-image" src="../images/blogs_bg.jpg" alt="Linux Blog">
+
+<p>
+The ThinkPad X1 Carbon Gen 8 often has microphone issues on Ubuntu 24.04, 24.10, and 25.04.  
+This article gives the **complete, stable, and keyboard-safe solution**—  
+fully tested and used in production.
+</p>
+
+<div class="linux-card">
+<b>✓ Internal mic fixed  
+✓ Bluetooth mic fixed  
+✓ Wired headset mic (TRRS) supported  
+✓ No keyboard freeze  
+✓ PipeWire + WirePlumber restored</b>
+</div>
+
+<h2>🔍 Root Cause</h2>
+<p>There are three main issues:</p>
+
+<ul>
+<li>Wrong <code>snd-hda-intel model</code> parameters freeze keyboard + break audio</li>
+<li>SOF audio disabled by Ubuntu’s mistaken configuration</li>
+<li>WirePlumber incorrectly marks microphone as “not available”</li>
+</ul>
+
+<h2>🛠 Step 1 — Remove broken driver overrides</h2>
+
+<button class="copy-btn" onclick="copyCode(1)">Copy</button>
+<pre id="code1"><code class="language-bash">
+sudo rm /etc/modprobe.d/alsa-base.conf
+sudo rm /etc/modprobe.d/disable-sof.conf
+sudo rm /etc/modprobe.d/enable-sof.conf
+sudo rm /etc/modprobe.d/alc*.conf
+</code></pre>
+
+<h2>🛠 Step 2 — Reset PipeWire, WirePlumber, ALSA</h2>
+
+<button class="copy-btn" onclick="copyCode(2)">Copy</button>
+<pre id="code2"><code class="language-bash">
+sudo apt install --reinstall pipewire pipewire-pulse wireplumber libspa-0.2-modules
+sudo apt install --reinstall alsa-base alsa-utils linux-sound-base
+
+rm -rf ~/.config/pipewire ~/.config/pulse \
+       ~/.local/state/wireplumber ~/.cache/pipewire
+
+systemctl --user restart pipewire pipewire-pulse wireplumber
+</code></pre>
+
+<h2>🛠 Step 3 — Fix WirePlumber ALC285 microphone policy</h2>
+
+<button class="copy-btn" onclick="copyCode(3)">Copy</button>
+<pre id="code3"><code class="language-bash">
+mkdir -p ~/.config/wireplumber/main.lua.d
+nano ~/.config/wireplumber/main.lua.d/51-override-input.lua
+</code></pre>
+
+Paste:
+
+<button class="copy-btn" onclick="copyCode(4)">Copy</button>
+<pre id="code4"><code class="language-lua">
+-- Force-enable microphone on ALC285 devices
+alsa_monitor.rules = {
+  {
+    matches = {
+      {
+        { "node.name", "equals", "alsa_input.pci-0000_00_1f.3.analog-stereo" },
+      },
+    },
+    apply_properties = {
+      ["device.disabled"] = false,
+      ["device.disabled.reason"] = "",
+      ["api.acp.auto-port"] = true,
+      ["api.acp.auto-profile"] = true,
+      ["session.suspend-timeout-seconds"] = 0,
+    },
+  },
+}
+</code></pre>
+
+<h2>🎧 Wired Headset Notes</h2>
+
+<div class="linux-card">
+<b>Important:</b>  
+Only TRRS (4-pole) cables support microphone.  
+Bluetooth microphones work fully after this fix.
+</div>
+
+<h2>🏁 Final Result</h2>
+
+<p>Your microphone appears correctly in Ubuntu:</p>
+
+<pre><code class="language-bash">
+alsa_input.pci-0000_00_1f.3.capture.0.0   RUNNING
+</code></pre>
+
+<p>This setup is stable, permanent, and matches enterprise standards.  
+You can safely share this with your Linux team.</p>
+
+</div> <!-- blog-article -->
+
+</div> <!-- container -->
+
+<script>
+function copyCode(id) {
+    let code = document.getElementById("code" + id).innerText;
+    navigator.clipboard.writeText(code);
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
