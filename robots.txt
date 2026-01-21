@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Disallow old/backup folders
+Disallow: /blogs.old/
+Disallow: /about.old/
+Disallow: /projects.old/
+
+# Disallow temp files
+Disallow: /projecttemp.html
+Disallow: /index.html.old
+Disallow: /gallery.html.old
+
+# Sitemap location
+Sitemap: https://qed137.github.io/sitemap.xml
