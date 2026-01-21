@@ -3,14 +3,14 @@
   
   <!-- Main Pages -->
   <url>
-    <loc>https://qed137.github.io/</loc>
+    <loc>https://www.janmajay.de/</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/gallery.html</loc>
+    <loc>https://www.janmajay.de/gallery.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -18,14 +18,14 @@
   
   <!-- About Section -->
   <url>
-    <loc>https://qed137.github.io/about/about.html</loc>
+    <loc>https://www.janmajay.de/about/about.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/about/interest.html</loc>
+    <loc>https://www.janmajay.de/about/interest.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -33,7 +33,7 @@
   
   <!-- Projects -->
   <url>
-    <loc>https://qed137.github.io/projects/project.html</loc>
+    <loc>https://www.janmajay.de/projects/project.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -41,7 +41,7 @@
   
   <!-- Blog Index -->
   <url>
-    <loc>https://qed137.github.io/blogs/blogs.html</loc>
+    <loc>https://www.janmajay.de/blogs/blogs.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -49,42 +49,42 @@
   
   <!-- Blog Articles - Technical Tutorials -->
   <url>
-    <loc>https://qed137.github.io/blogs/backend-new.html</loc>
+    <loc>https://www.janmajay.de/blogs/backend-new.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/machinelearning.html</loc>
+    <loc>https://www.janmajay.de/blogs/machinelearning.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/mathematics.html</loc>
+    <loc>https://www.janmajay.de/blogs/mathematics.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/physics.html</loc>
+    <loc>https://www.janmajay.de/blogs/physics.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/statistics.html</loc>
+    <loc>https://www.janmajay.de/blogs/statistics.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/oop_cpp.html</loc>
+    <loc>https://www.janmajay.de/blogs/oop_cpp.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -92,35 +92,35 @@
   
   <!-- Specialized Blog Articles -->
   <url>
-    <loc>https://qed137.github.io/blogs/machineLearningRoadmap.html</loc>
+    <loc>https://www.janmajay.de/blogs/machineLearningRoadmap.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/realtimepipe.html</loc>
+    <loc>https://www.janmajay.de/blogs/realtimepipe.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/statisticalinequality.html</loc>
+    <loc>https://www.janmajay.de/blogs/statisticalinequality.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/linuxfix.html</loc>
+    <loc>https://www.janmajay.de/blogs/linuxfix.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://qed137.github.io/blogs/workethics.html</loc>
+    <loc>https://www.janmajay.de/blogs/workethics.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

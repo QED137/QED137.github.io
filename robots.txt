@@ -12,4 +12,4 @@ Disallow: /index.html.old
 Disallow: /gallery.html.old
 
 # Sitemap location
-Sitemap: https://qed137.github.io/sitemap.xml
+Sitemap: https://www.janmajay.de/sitemap.xml
