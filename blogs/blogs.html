@@ -42,8 +42,19 @@
     }
 
     /* card hover */
-    .card { transition: transform .25s ease, box-shadow .25s ease; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+    .card { 
+      transition: transform .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 16px 40px rgba(2,6,23,.12); 
+    }
+    .dark .card:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,.3);
+    }
 
     /* mobile button positions */
     @media (max-width: 640px) {
@@ -149,64 +160,64 @@
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
     <div id="blogGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <!-- 1 Statistics & Data Science -->
-      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="stats,ml">
+      <a href="statistics.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="stats,ml">
         <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
           <img src="../images/statistics.jpg" alt="Statistics" class="h-full w-full object-cover" loading="lazy" />
         </div>
         <h3 class="mt-4 text-lg font-semibold">Statistics & Data Science</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Mastering probability, inference, and the practical stats every engineer uses.</p>
-        <a href="statistics.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
-      </article>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
 
       <!-- 2 Real-Time Data Pipelines -->
-      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="devops,ml">
+      <a href="realtimepipe.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="devops,ml">
         <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
           <img src="../images/datapipe.png" alt="Real-Time Pipelines" class="h-full w-full object-cover" loading="lazy" />
         </div>
         <h3 class="mt-4 text-lg font-semibold">Real-Time Data Pipelines</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Weather + Flight APIs with Python & MySQL, automation patterns, and lessons learned.</p>
-        <a href="realtimepipe.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
-      </article>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
 
       <!-- 3 OOP in C++ -->
-      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="cpp,physics">
+      <a href="oop_cpp.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="cpp,physics">
         <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
           <img src="../images/cppoop2.png" alt="OOP C++" class="h-full w-full object-cover" loading="lazy" />
         </div>
         <h3 class="mt-4 text-lg font-semibold">Object Programming in C++</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">How OOP underpins Geant4 simulations and extensible scientific software.</p>
-        <a href="oop_cpp.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
-      </article>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
 
       <!-- 4 Roadmap Article -->
-      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="ml">
+      <a href="machineLearningRoadmap.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="ml">
         <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
           <img src="myfavicon.png" alt="ML Roadmap" class="h-full w-full object-cover" loading="lazy" />
         </div>
         <h3 class="mt-4 text-lg font-semibold">From Probability to Deep Learning: A Self-Study Roadmap</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">My personal journey into AI — not a unique roadmap, but a useful compass.</p>
-        <a href="machineLearningRoadmap.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
-      </article>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
 
       <!-- 5 Backend Development Tutorial -->
-      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="backend,devops">
+      <a href="backend-new.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="backend,devops">
         <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
           <img src="../images/backend-pic.png" alt="Backend Development" class="h-full w-full object-cover" loading="lazy" />
         </div>
         <h3 class="mt-4 text-lg font-semibold">Building a Production-Ready Backend API</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">A complete guide to FastAPI, REST APIs, system design, and deployment best practices.</p>
-        <a href="backend-new.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
-      </article>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
 
       <!-- 6 Work Ethics -->
-      <article class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft" data-tags="physics">
+      <a href="../blogs/workethics.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="physics">
         <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700">
           <img src="Richard_Feynman_Nobel.jpg" alt="Work Ethics" class="h-full w-full object-cover" loading="lazy" />
         </div>
         <h3 class="mt-4 text-lg font-semibold">Work Ethics</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">A practical approach to work ethics in tech.</p>
-        <a href="../blogs/workethics.html" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:underline"><i class="fa-solid fa-arrow-right"></i> Explore</a>
-      </article>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
     </div>
 
     <!-- Load More -->
