@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-
-<html class="" lang="en">
+<html lang="en" class="">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Backend Development from First Principles → Advanced (Theory + Practical Code)</title>
-<meta content="Complete backend development guide from first principles: REST APIs, HTTP, authentication, caching, scaling, performance, ORM, background jobs, testing &amp; CI/CD with FastAPI and Python examples." name="description"/>
-<meta content="backend development, REST API tutorial, FastAPI tutorial, Python backend, API design, HTTP methods, pagination, authentication JWT, caching Redis, horizontal scaling, vertical scaling, ORM SQLAlchemy, background jobs Celery, pytest testing, CI/CD, system design, web development, backend engineer" name="keywords"/>
-<meta content="Janmajay Kumar" name="author"/>
-<meta content="index, follow" name="robots"/>
-<!-- Open Graph / Facebook -->
-<meta content="article" property="og:type"/>
-<meta content="https://www.janmajay.de/blogs/backend-new.html" property="og:url"/>
-<meta content="Backend Development from First Principles → Advanced | Complete Guide" property="og:title"/>
-<meta content="Master backend development: REST APIs, authentication, caching, scaling, performance optimization with FastAPI. From fundamentals to production-ready code." property="og:description"/>
-<meta content="https://www.janmajay.de/images/backend-thumbnail.png" property="og:image"/>
-<meta content="2026-01-20T00:00:00Z" property="article:published_time"/>
-<meta content="Janmajay Kumar" property="article:author"/>
-<meta content="Backend Development" property="article:tag"/>
-<meta content="REST API" property="article:tag"/>
-<meta content="FastAPI" property="article:tag"/>
-<!-- Twitter -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="https://www.janmajay.de/blogs/backend-new.html" name="twitter:url"/>
-<meta content="Backend Development from First Principles → Advanced" name="twitter:title"/>
-<meta content="Complete backend roadmap: REST, APIs, auth, caching, scaling, performance, testing. FastAPI + Python examples." name="twitter:description"/>
-<meta content="https://www.janmajay.de/images/backend-thumbnail.png" name="twitter:image"/>
-<!-- Canonical URL -->
-<link href="https://www.janmajay.de/blogs/backend-new.html" rel="canonical"/>
-<!-- Fonts & Icons -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" rel="stylesheet">
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Backend Development from First Principles → Advanced (Theory + Practical Code)</title>
+
+  <meta name="description" content="Complete backend development guide from first principles: REST APIs, HTTP, authentication, caching, scaling, performance, ORM, background jobs, testing & CI/CD with FastAPI and Python examples." />
+  <meta name="keywords" content="backend development, REST API tutorial, FastAPI tutorial, Python backend, API design, HTTP methods, pagination, authentication JWT, caching Redis, horizontal scaling, vertical scaling, ORM SQLAlchemy, background jobs Celery, pytest testing, CI/CD, system design, web development, backend engineer" />
+  <meta name="author" content="Janmajay Kumar" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.janmajay.de/blogs/backend-new.html" />
+  <meta property="og:title" content="Backend Development from First Principles → Advanced | Complete Guide" />
+  <meta property="og:description" content="Master backend development: REST APIs, authentication, caching, scaling, performance optimization with FastAPI. From fundamentals to production-ready code." />
+  <meta property="og:image" content="https://www.janmajay.de/images/backend-thumbnail.png" />
+  <meta property="article:published_time" content="2026-01-20T00:00:00Z" />
+  <meta property="article:author" content="Janmajay Kumar" />
+  <meta property="article:tag" content="Backend Development" />
+  <meta property="article:tag" content="REST API" />
+  <meta property="article:tag" content="FastAPI" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.janmajay.de/blogs/backend-new.html" />
+  <meta name="twitter:title" content="Backend Development from First Principles → Advanced" />
+  <meta name="twitter:description" content="Complete backend roadmap: REST, APIs, auth, caching, scaling, performance, testing. FastAPI + Python examples." />
+  <meta name="twitter:image" content="https://www.janmajay.de/images/backend-thumbnail.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.janmajay.de/blogs/backend-new.html" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -47,9 +52,11 @@
       }
     }
   </script>
-<!-- Prism (code highlighting) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-<style>
+
+  <!-- Prism (code highlighting) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <style>
     html { scroll-behavior: smooth; }
     body {
       background:
@@ -228,414 +235,476 @@
       background: rgba(41, 165, 135, 0.15);
       color: #29a587;
     }
-
-    /* Scroll to top button */
-    #scrollToTop {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 3rem;
-      height: 3rem;
-      background: linear-gradient(135deg, #29a587 0%, #1f8a72 100%);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 12px rgba(41, 165, 135, 0.4);
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-    #scrollToTop:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(41, 165, 135, 0.6);
-    }
-    #scrollToTop.show {
-      display: flex;
-    }
-    @media (max-width: 640px) {
-      #scrollToTop {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.25rem;
-      }
-    }
   </style>
-</link></link></head>
+</head>
+
 <body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:bg-brand-500/10 selection:text-slate-900">
-<!-- Header / Nav -->
-<header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-<div class="flex h-16 items-center justify-between">
-<a class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600" href="/#top">
-<span>Janmajay Kumar</span>
-</a>
-<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
-<a class="hover:text-brand-600" href="/">Home</a>
-<a class="hover:text-brand-600" href="/#projects">Projects</a>
-<a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
-<a class="hover:text-brand-600" href="/#skills">Skills</a>
-<a class="hover:text-brand-600" href="/#contact">Contact</a>
-<a class="hover:text-brand-600" href="../gallery.html">Gallery</a>
-</nav>
-<div class="flex items-center gap-2">
-<button aria-label="Toggle dark mode" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200" id="theme-toggle" title="Toggle theme">
-<i class="fa-solid fa-moon dark:hidden"></i>
-<i class="fa-solid fa-sun hidden dark:inline"></i>
-</button>
-<button class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700" id="menuBtn">
-<i class="fa-solid fa-bars"></i>
-</button>
-</div>
-</div>
-</div>
-<div class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90" id="mobileMenu">
-<div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
-<a class="hover:text-brand-600" href="/">Home</a>
-<a class="hover:text-brand-600" href="/#projects">Projects</a>
-<a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
-<a class="hover:text-brand-600" href="/#skills">Skills</a>
-<a class="hover:text-brand-600" href="/#contact">Contact</a>
-<a class="hover:text-brand-600" href="../gallery.html">Gallery</a>
-</div>
-</div>
-</header>
-<!-- Hero -->
-<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-4">
-<nav class="text-xs text-slate-500">
-<a class="hover:text-brand-600" href="../blogs/blogs.html">← Back to Blog</a>
-</nav>
-<h1 class="mt-3 text-3xl sm:text-4xl font-black">Backend Development from First Principles → Advanced (Theory + Practical Code)</h1>
-<p class="mt-3 text-sm text-slate-600 dark:text-slate-400">By <strong>Janmajay Kumar</strong></p>
-<div class="article-meta mt-4">
-<div class="meta-item">
-<i class="fa-regular fa-clock"></i>
-<span>25 min read</span>
-</div>
-<div class="meta-item">
-<i class="fa-regular fa-calendar"></i>
-<span>January 20, 2026</span>
-</div>
-<div class="article-tags">
-<span class="tag">Backend</span>
-<span class="tag">REST API</span>
-<span class="tag">FastAPI</span>
-<span class="tag">Python</span>
-<span class="tag">System Design</span>
-</div>
-</div>
-</section>
-<!-- Article -->
-<main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
-<article class="content rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-soft leading-relaxed text-slate-800">
-<h1 id="intro">Backend Development from First Principles → Advanced (Theory + Practical Code)</h1>
-<p>This is <strong>complete backend roadmap</strong>: REST + HTTP semantics, API design, pagination (offset + cursor), validation, authentication/authorization, cookies, caching (Redis + ETag), ORM design with FastAPI, scaling (vertical vs horizontal), performance, background jobs (RQ/Celery), testing (pytest), and CI.</p>
-<div class="callout callout-info">
-<div class="callout-title"><i class="fa-solid fa-circle-info"></i> Note</div>
-<p>Examples use <strong>FastAPI + Python</strong> because they are concise and show backend concepts clearly. The principles apply to any backend stack.</p>
-</div>
-<div id="TOC">
-<h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">Table of contents</h2>
-<ul><li><a href="#section-0">0. First principles: what a backend is</a></li><li><a href="#section-1">1. The ground: network + HTTP</a></li><li><a href="#section-2">2. What is a REST API?</a></li><li><a href="#section-3">3. Method semantics: safe + idempotent</a></li><li><a href="#section-4">4. Resources: design by nouns</a></li><li><a href="#section-5">5. API interface design in practice (Postman/Insomnia)</a></li><li><a href="#section-6">6. Pagination + sorting + filtering</a></li><li><a href="#section-7">7. Serialization &amp; deserialization</a></li><li><a href="#section-8">8. Validation (trust nothing from the network)</a></li><li><a href="#section-9">9. Authentication and Authorization</a></li><li><a href="#section-10">10. Caching (speed by remembering)</a></li><li><a href="#section-11">11. Scaling: vertical vs horizontal</a></li><li><a href="#section-12">12. Performance: what matters most</a></li><li><a href="#section-13">13. Data layer: ORM design (FastAPI + SQLAlchemy)</a></li><li><a href="#section-14">14. Background jobs (RQ / Celery) for heavy tasks</a></li><li><a href="#section-15">15. Testing with pytest (backend quality)</a></li><li><a href="#section-16">16. CI (GitHub Actions)</a></li><li><a href="#section-17">17. Security essentials</a></li><li><a href="#section-18">18. Observability</a></li><li><a href="#section-19">19. Quick Review Table: 10 backend concepts</a></li><li><a href="#section-20">20. Production basics: Docker Compose + Nginx reverse proxy</a></li></ul>
-</div><h2 id="section-0">0) First principles: what a backend is</h2>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="/#top" class="inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-600">
+          <span>Janmajay Kumar</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 dark:text-slate-300">
+          <a class="hover:text-brand-600" href="/">Home</a>
+          <a class="hover:text-brand-600" href="/#projects">Projects</a>
+          <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
+          <a class="hover:text-brand-600" href="/#skills">Skills</a>
+          <a class="hover:text-brand-600" href="/#contact">Contact</a>
+          <a class="hover:text-brand-600" href="../gallery.html">Gallery</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 dark:border-slate-700
+                   bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200"
+            aria-label="Toggle dark mode" title="Toggle theme">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:inline"></i>
+          </button>
+          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 dark:border-slate-700">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
+      <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2 text-sm">
+        <a class="hover:text-brand-600" href="/">Home</a>
+        <a class="hover:text-brand-600" href="/#projects">Projects</a>
+        <a class="text-brand-600" href="../blogs/blogs.html">Blog</a>
+        <a class="hover:text-brand-600" href="/#skills">Skills</a>
+        <a class="hover:text-brand-600" href="/#contact">Contact</a>
+        <a class="hover:text-brand-600" href="../gallery.html">Gallery</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-4">
+    <nav class="text-xs text-slate-500">
+      <a class="hover:text-brand-600" href="../blogs/blogs.html">← Back to Blog</a>
+    </nav>
+    <h1 class="mt-3 text-3xl sm:text-4xl font-black">Backend Development from First Principles → Advanced (Theory + Practical Code)</h1>
+    <p class="mt-3 text-sm text-slate-600 dark:text-slate-400">By <strong>Janmajay Kumar</strong></p>
+    
+    <div class="article-meta mt-4">
+      <div class="meta-item">
+        <i class="fa-regular fa-clock"></i>
+        <span>25 min read</span>
+      </div>
+      <div class="meta-item">
+        <i class="fa-regular fa-calendar"></i>
+        <span>January 20, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag">Backend</span>
+        <span class="tag">REST API</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Python</span>
+        <span class="tag">System Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article -->
+  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
+   <article class="content rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-soft leading-relaxed text-slate-800">
+
+  <h2 id="intro">Introduction</h2>
+
+  <div class="callout callout-info">
+    <div class="callout-title"><i class="fa-solid fa-circle-info"></i> Why this guide?</div>
+    <p>
+      Most backend resources either stay too high-level (“use FastAPI”) or jump into code without a clean mental model.
+      This post builds backend engineering from <strong>first principles</strong> — so a motivated non-computer-science learner
+      can follow it, while still using correct CS language and real production patterns.
+    </p>
+    <p>
+      <strong>Who this is for:</strong> self-taught developers, scientists transitioning into software, and Python backend interview prep.
+      Examples use <strong>FastAPI + Python</strong>, but the principles apply to any stack.
+    </p>
+    <p><strong>How to read:</strong> skim the headings once, then re-read with the code blocks and build a tiny demo API as you go.</p>
+  </div>
+
+  <p><strong>What you’ll be able to explain after this:</strong></p>
+  <ul>
+    <li>Why HTTP is stateless and how apps still store user state (cookies/JWT/sessions)</li>
+    <li>How to design clean REST resources, status codes, and pagination</li>
+    <li>Validation as a trust boundary (controller → service → repository)</li>
+    <li>AuthN vs AuthZ + common security failures (CSRF, token leakage, brute force)</li>
+    <li>Caching layers (ETag/CDN/Nginx/Redis) and staleness/invalidation tradeoffs</li>
+    <li>Where performance really goes (DB queries, N+1, indexes, timeouts)</li>
+    <li>When to use background jobs and queues (Celery/RQ), retries, idempotency</li>
+    <li>What “production-ish” looks like (Docker Compose + Nginx reverse proxy)</li>
+  </ul>
+
+
+      <div id="TOC">
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">📚 Table of Contents</h2>
+        <ul style="margin: 0;">
+          <li style="margin-top: 0.75rem; font-weight: 600; color: rgb(41, 165, 135);">Part 1: HTTP & REST Fundamentals</li>
+          <li><a href="#section-0">0. What is a backend? (First principles)</a></li>
+          <li><a href="#section-1">1. Network + HTTP basics</a></li>
+          <li><a href="#section-2">2. What is REST?</a></li>
+          <li><a href="#section-3">3. HTTP methods: safe & idempotent</a></li>
+          <li><a href="#section-4">4. Resources & URL design</a></li>
+          <li><a href="#section-5">5. API design with Postman</a></li>
+          <li><a href="#section-6">6. Pagination, sorting, filtering</a></li>
+          <li><a href="#section-7">7. Serialization & deserialization</a></li>
+          
+          <li style="margin-top: 0.75rem; font-weight: 600; color: rgb(41, 165, 135);">Part 2: Core Backend Concepts</li>
+          <li><a href="#section-8">8. Validation (trust boundary)</a></li>
+          <li><a href="#section-9">9. Authentication & Authorization</a></li>
+          <li><a href="#section-10">10. Caching strategies</a></li>
+          <li><a href="#section-11">11. Scaling: vertical vs horizontal</a></li>
+          <li><a href="#section-12">12. Performance optimization</a></li>
+          
+          <li style="margin-top: 0.75rem; font-weight: 600; color: rgb(41, 165, 135);">Part 3: Practical Implementation</li>
+          <li><a href="#section-13">13. Database + ORM (SQLAlchemy)</a></li>
+          <li><a href="#section-14">14. Advanced pagination (cursor)</a></li>
+          <li><a href="#section-15">15. JWT implementation</a></li>
+          <li><a href="#section-16">16. Background jobs (Celery/RQ)</a></li>
+          
+          <li style="margin-top: 0.75rem; font-weight: 600; color: rgb(41, 165, 135);">Part 4: Production Readiness</li>
+          <li><a href="#section-17">17. Testing with pytest</a></li>
+          <li><a href="#section-18">18. CI/CD (GitHub Actions)</a></li>
+          <li><a href="#section-19">19. Security essentials</a></li>
+          <li><a href="#section-20">20. Observability & monitoring</a></li>
+          
+          <li style="margin-top: 0.75rem; font-weight: 600; color: rgb(41, 165, 135);">Part 5: Summary & Deployment</li>
+          <li><a href="#section-21">21. Quick review: 10 key concepts</a></li>
+          <li><a href="#section-22">22. Production setup (Docker + Nginx)</a></li>
+        </ul>
+      </div>
+
+<h2 id="section-0">0) First principles: what a backend <em>is</em></h2>
+
 <p>A backend exists to do four fundamental jobs:</p>
+
 <ol>
-<li><strong>Expose capabilities</strong> via a stable interface (usually HTTP APIs).</li>
-<li><strong>Enforce correctness</strong> (validation + business rules).</li>
-<li><strong>Control access</strong> (authentication + authorization).</li>
-<li><strong>Manage state reliably</strong> (databases, caches, queues) and <strong>operate</strong> under load (performance, scaling, observability).</li>
+  <li><strong>Expose capabilities</strong> via a stable interface (usually HTTP APIs).</li>
+  <li><strong>Enforce correctness</strong> (validation + business rules).</li>
+  <li><strong>Control access</strong> (authentication + authorization).</li>
+  <li><strong>Manage state reliably</strong> (databases, caches, queues) and <strong>operate</strong> under load (performance, scaling, observability).</li>
 </ol>
+
 <p>Everything else (frameworks, ORMs, caches, message queues) is a tool to serve these jobs.</p>
+
 <h2 id="section-1">1) The ground: network + HTTP</h2>
+
 <h3>1.1 Request → Response</h3>
 <p>HTTP is a message protocol:</p>
 <ul>
-<li>client sends a <strong>request</strong> (method, path, headers, body)</li>
-<li>server sends a <strong>response</strong> (status code, headers, body)</li>
+  <li>client sends a <strong>request</strong> (method, path, headers, body)</li>
+  <li>server sends a <strong>response</strong> (status code, headers, body)</li>
 </ul>
+
 <h3>1.2 Methods (verbs)</h3>
 <p>Common methods:</p>
 <ul>
-<li><code>GET</code> read</li>
-<li><code>POST</code> create/submit action</li>
-<li><code>PUT</code> replace</li>
-<li><code>PATCH</code> partial update</li>
-<li><code>DELETE</code> delete</li>
-<li><code>HEAD</code> like GET but no body</li>
-<li><code>OPTIONS</code> capabilities / CORS preflight</li>
+  <li><code>GET</code> read</li>
+  <li><code>POST</code> create/submit action</li>
+  <li><code>PUT</code> replace</li>
+  <li><code>PATCH</code> partial update</li>
+  <li><code>DELETE</code> delete</li>
+  <li><code>HEAD</code> like GET but no body</li>
+  <li><code>OPTIONS</code> capabilities / CORS preflight</li>
 </ul>
+
 <h3>1.3 Status codes (API "physics")</h3>
 <p>Use status codes consistently:</p>
 <ul>
-<li><code>200 OK</code> success read/update</li>
-<li><code>201 Created</code> success create</li>
-<li><code>202 Accepted</code> accepted for async job</li>
-<li><code>204 No Content</code> success with no response body</li>
-<li><code>400 Bad Request</code> invalid request format</li>
-<li><code>401 Unauthorized</code> not authenticated</li>
-<li><code>403 Forbidden</code> authenticated but not allowed</li>
-<li><code>404 Not Found</code> resource not found</li>
-<li><code>409 Conflict</code> duplicates / version conflict</li>
-<li><code>422 Unprocessable Entity</code> validation errors (FastAPI default)</li>
-<li><code>429 Too Many Requests</code> rate limited</li>
-<li><code>500 Internal Server Error</code> unexpected failure</li>
+  <li><code>200 OK</code> success read/update</li>
+  <li><code>201 Created</code> success create</li>
+  <li><code>202 Accepted</code> accepted for async job</li>
+  <li><code>204 No Content</code> success with no response body</li>
+  <li><code>400 Bad Request</code> invalid request format</li>
+  <li><code>401 Unauthorized</code> not authenticated</li>
+  <li><code>403 Forbidden</code> authenticated but not allowed</li>
+  <li><code>404 Not Found</code> resource not found</li>
+  <li><code>409 Conflict</code> duplicates / version conflict</li>
+  <li><code>422 Unprocessable Entity</code> validation errors (FastAPI default)</li>
+  <li><code>429 Too Many Requests</code> rate limited</li>
+  <li><code>500 Internal Server Error</code> unexpected failure</li>
 </ul>
+
 <h2 id="section-2">2) What is a REST API?</h2>
+
 <p>REST is an <strong>architecture style</strong> defined by constraints. It's not a library.</p>
+
 <h3>2.1 REST = Representation + State + Transfer</h3>
 <ul>
-<li><strong>Representation (RE)</strong>: how the resource is represented (JSON, HTML, XML).</li>
-<li><strong>State (S)</strong>: current properties of the resource.</li>
-<li><strong>Transfer (T)</strong>: movement of representation via HTTP (GET/POST/…).</li>
+  <li><strong>Representation (RE)</strong>: how the resource is represented (JSON, HTML, XML).</li>
+  <li><strong>State (S)</strong>: current properties of the resource.</li>
+  <li><strong>Transfer (T)</strong>: movement of representation via HTTP (GET/POST/…).</li>
 </ul>
+
 <p>Example:</p>
 <ul>
-<li><code>GET /tasks/123</code> transfers a JSON representation of task #123.</li>
+  <li><code>GET /tasks/123</code> transfers a JSON representation of task #123.</li>
 </ul>
+
 <h3>2.2 REST constraints </h3>
 <ol>
-<li><strong>Client–Server separation</strong>
-<ul>
-<li>UI logic stays on the client; data + rules stay on the server.</li>
-</ul>
-</li>
-<li><strong>Uniform interface</strong>
-<ul>
-<li>consistent endpoints, methods, status codes, and payload shapes.</li>
-</ul>
-</li>
-<li><strong>Layered system</strong>
-<ul>
-<li>intermediaries (load balancer, gateway, proxy) can exist; each layer interacts with adjacent layer only.</li>
-</ul>
-</li>
-<li><strong>Cacheable</strong>
-<ul>
-<li>responses explicitly declare if caching is allowed and for how long.</li>
-</ul>
-</li>
-<li><strong>Stateless</strong>
-<ul>
-<li>server does not rely on stored client context between requests (unless you choose sessions explicitly).</li>
-</ul>
-</li>
-<li><strong>Code on demand (optional)</strong>
-<ul>
-<li>server may send executable code (e.g., JavaScript) to extend client functionality.</li>
-</ul>
-</li>
+  <li><strong>Client–Server separation</strong>
+    <ul>
+      <li>UI logic stays on the client; data + rules stay on the server.</li>
+    </ul>
+  </li>
+  <li><strong>Uniform interface</strong>
+    <ul>
+      <li>consistent endpoints, methods, status codes, and payload shapes.</li>
+    </ul>
+  </li>
+  <li><strong>Layered system</strong>
+    <ul>
+      <li>intermediaries (load balancer, gateway, proxy) can exist; each layer interacts with adjacent layer only.</li>
+    </ul>
+  </li>
+  <li><strong>Cacheable</strong>
+    <ul>
+      <li>responses explicitly declare if caching is allowed and for how long.</li>
+    </ul>
+  </li>
+  <li><strong>Stateless</strong>
+    <ul>
+      <li>server does not rely on stored client context between requests (unless you choose sessions explicitly).</li>
+    </ul>
+  </li>
+  <li><strong>Code on demand (optional)</strong>
+    <ul>
+      <li>server may send executable code (e.g., JavaScript) to extend client functionality.</li>
+    </ul>
+  </li>
 </ol>
-<h2 id="section-3">3) Method semantics: safe + idempotent</h2>
+
+<h2 id="section-3">3) Method semantics: safe + idempotent (critical for reliability)</h2>
+
 <p>These properties matter for retries, caching, and correctness.</p>
+
 <h3>3.1 Safe</h3>
 <p>A <strong>safe</strong> operation should not change server state:</p>
 <ul>
-<li><code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code></li>
+  <li><code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code></li>
 </ul>
+
 <h3>3.2 Idempotent</h3>
 <p>An operation is <strong>idempotent</strong> if repeating it yields the same end state:</p>
 <ul>
-<li><code>GET</code> idempotent (and safe)</li>
-<li><code>PUT</code> idempotent (replace)</li>
-<li><code>DELETE</code> idempotent (delete again → still deleted)</li>
-<li><code>POST</code> usually <strong>not</strong> idempotent (creates a new resource each time)</li>
-<li><code>PATCH</code> depends on implementation (often not guaranteed)</li>
+  <li><code>GET</code> idempotent (and safe)</li>
+  <li><code>PUT</code> idempotent (replace)</li>
+  <li><code>DELETE</code> idempotent (delete again → still deleted)</li>
+  <li><code>POST</code> usually <strong>not</strong> idempotent (creates a new resource each time)</li>
+  <li><code>PATCH</code> depends on implementation (often not guaranteed)</li>
 </ul>
+
 <div class="callout callout-success">
-<div class="callout-title"><i class="fa-solid fa-lightbulb"></i> Key Insight</div>
-<p><strong>Why it matters:</strong> if the client retries due to network failure, idempotent methods prevent duplicate side effects.</p>
+  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> Key Insight</div>
+  <p><strong>Why it matters:</strong> if the client retries due to network failure, idempotent methods prevent duplicate side effects.</p>
 </div>
+
 <h2 id="section-4">4) Resources: design by nouns</h2>
+
 <p>A <strong>resource</strong> is any noun-like business object:</p>
 <ul>
-<li><code>users</code>, <code>tasks</code>, <code>tags</code>, <code>orders</code>, <code>documents</code></li>
+  <li><code>users</code>, <code>tasks</code>, <code>tags</code>, <code>orders</code>, <code>documents</code></li>
 </ul>
+
 <h3>4.1 Good URL patterns</h3>
 <ul>
-<li>collection: <code>/tasks</code></li>
-<li>item: <code>/tasks/{id}</code></li>
-<li>nested: <code>/users/{id}/tasks</code></li>
+  <li>collection: <code>/tasks</code></li>
+  <li>item: <code>/tasks/{id}</code></li>
+  <li>nested: <code>/users/{id}/tasks</code></li>
 </ul>
+
 <p>Keep URLs:</p>
 <ul>
-<li>noun-based (no verbs in path if possible)</li>
-<li>stable</li>
-<li>consistent across the API</li>
+  <li>noun-based (no verbs in path if possible)</li>
+  <li>stable</li>
+  <li>consistent across the API</li>
 </ul>
+
 <h3>4.2 CRUD mapping</h3>
 <ul>
-<li>Create: <code>POST /tasks</code></li>
-<li>Read: <code>GET /tasks</code>, <code>GET /tasks/{id}</code></li>
-<li>Update full: <code>PUT /tasks/{id}</code></li>
-<li>Update partial: <code>PATCH /tasks/{id}</code></li>
-<li>Delete: <code>DELETE /tasks/{id}</code></li>
+  <li>Create: <code>POST /tasks</code></li>
+  <li>Read: <code>GET /tasks</code>, <code>GET /tasks/{id}</code></li>
+  <li>Update full: <code>PUT /tasks/{id}</code></li>
+  <li>Update partial: <code>PATCH /tasks/{id}</code></li>
+  <li>Delete: <code>DELETE /tasks/{id}</code></li>
 </ul>
+
 <h3>4.3 Beyond CRUD (actions)</h3>
 <p>Sometimes one needs an action:</p>
 <ul>
-<li><code>POST /tasks/{id}/complete</code></li>
-<li><code>POST /payments/{id}/refund</code></li>
+  <li><code>POST /tasks/{id}/complete</code></li>
+  <li><code>POST /payments/{id}/refund</code></li>
 </ul>
+
 <p>Prefer modeling as state change (e.g., <code>done=true</code>) when possible.</p>
+
 <h2 id="section-5">5) API interface design in practice (Postman/Insomnia)</h2>
+
 <p>Postman/Insomnia helps :</p>
 <ul>
-<li>test endpoints and payloads</li>
-<li>validate status codes</li>
-<li>keep "collections" as a living contract</li>
+  <li>test endpoints and payloads</li>
+  <li>validate status codes</li>
+  <li>keep "collections" as a living contract</li>
 </ul>
+
 <p>A professional habit:</p>
 <ul>
-<li>test <strong>success</strong> and <strong>all failure modes</strong>:
+  <li>test <strong>success</strong> and <strong>all failure modes</strong>:
     <ul>
-<li>invalid input → 422</li>
-<li>unauthenticated → 401</li>
-<li>unauthorized → 403</li>
-<li>not found → 404</li>
-<li>conflict → 409</li>
+      <li>invalid input → 422</li>
+      <li>unauthenticated → 401</li>
+      <li>unauthorized → 403</li>
+      <li>not found → 404</li>
+      <li>conflict → 409</li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <h2 id="section-6">6) Pagination + sorting + filtering</h2>
+
 <h3>6.1 Why pagination is not optional</h3>
 <p>Without pagination:</p>
 <ul>
-<li>responses become huge</li>
-<li>DB gets overloaded</li>
-<li>UI becomes slow (especially infinite scroll)</li>
+  <li>responses become huge</li>
+  <li>DB gets overloaded</li>
+  <li>UI becomes slow (especially infinite scroll)</li>
 </ul>
+
 <h3>6.2 Offset pagination (page + limit)</h3>
 <p>Query:</p>
 <ul>
-<li><code>GET /tasks?limit=20&amp;page=2&amp;sort=-created_at</code></li>
+  <li><code>GET /tasks?limit=20&page=2&sort=-created_at</code></li>
 </ul>
+
 <p>Rules:</p>
 <ul>
-<li><code>limit</code> must have bounds (e.g. 1..100)</li>
-<li><code>page</code> starts at 1</li>
-<li>provide defaults: <code>limit=20</code>, <code>page=1</code>, <code>sort=-created_at</code></li>
+  <li><code>limit</code> must have bounds (e.g. 1..100)</li>
+  <li><code>page</code> starts at 1</li>
+  <li>provide defaults: <code>limit=20</code>, <code>page=1</code>, <code>sort=-created_at</code></li>
 </ul>
-<p><strong>Pros:</strong> easy<br/>
+
+<p><strong>Pros:</strong> easy<br>
 <strong>Cons:</strong> slow/unstable for deep pages, duplicates when data changes</p>
+
 <h3>6.3 Cursor pagination (best for infinite scroll)</h3>
 <p>Instead of <code>page</code>, you use a cursor token (like <code>created_at</code> + <code>id</code>):</p>
 <ul>
-<li><code>GET /tasks?limit=20&amp;cursor=2026-01-20T12:00:00Z|a1b2...</code></li>
+  <li><code>GET /tasks?limit=20&cursor=2026-01-20T12:00:00Z|a1b2...</code></li>
 </ul>
-<p><strong>Pros:</strong> stable and scalable<br/>
-<strong>Cons:</strong> more complex</p>
-<h3>6.4 Cursor pagination (stable infinite scroll)</h3>
-<p>Cursor pagination usually needs:</p>
-<ul>
-<li>a stable sort: <code>(created_at, id)</code></li>
-<li>a cursor token: <code>"created_at|id"</code></li>
-</ul>
-<p><strong>Endpoint idea</strong></p>
-<ul>
-<li><code>GET /tasks?limit=20&amp;cursor=&lt;created_at&gt;|&lt;id&gt;</code></li>
-</ul>
-<p><strong>Pseudo-implementation</strong></p>
-<pre><code class="language-python"># where tasks are ordered by created_at desc, id desc
-# cursor = "2026-01-20T12:00:00Z|&lt;id&gt;"
 
-# Fetch items with (created_at, id) &lt; cursor tuple in same order.</code></pre>
-<p>In production you also:</p>
+<p><strong>Pros:</strong> stable and scalable<br>
+<strong>Cons:</strong> more complex</p>
+
+<h2 id="section-7">7) Serialization & deserialization</h2>
+
 <ul>
-<li>sign/encrypt the cursor token</li>
-<li>validate token format</li>
-<li>return <code>next_cursor</code> in response</li>
+  <li><strong>Deserialization</strong>: request JSON → typed objects</li>
+  <li><strong>Serialization</strong>: typed objects → response JSON</li>
 </ul>
-<h2 id="section-7">7) Serialization &amp; deserialization</h2>
-<ul>
-<li><strong>Deserialization</strong>: request JSON → typed objects</li>
-<li><strong>Serialization</strong>: typed objects → response JSON</li>
-</ul>
+
 <p>In FastAPI, Pydantic handles:</p>
 <ul>
-<li>type coercion</li>
-<li>validation</li>
-<li>schema generation (OpenAPI docs)</li>
+  <li>type coercion</li>
+  <li>validation</li>
+  <li>schema generation (OpenAPI docs)</li>
 </ul>
+
 <h2 id="section-8">8) Validation (trust nothing from the network)</h2>
+
 <p>
-<strong>Validation</strong> enforces an input contract: structure (schema), types, and constraints.
+  <strong>Validation</strong> enforces an input contract: structure (schema), types, and constraints.
   In backend systems it is a <strong>trust boundary</strong>: every request payload is untrusted until it passes
   checks at the API edge and domain rules inside the application.
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">What validation protects against</div>
-<p>
+  <div class="callout-title">What validation protects against</div>
+  <p>
     Validation reduces failures caused by unexpected payloads (<strong>bugs</strong>), inconsistent/partial inputs
     (<strong>corrupted data</strong>), and hostile or abusive requests (<strong>security</strong>, including oversized bodies
     and injection attempts).
   </p>
 </div>
+
 <h3>8.1 What to validate (contract + invariants)</h3>
 <ul>
-<li><strong>Presence:</strong> required fields must exist</li>
-<li><strong>Types:</strong> string vs integer vs list/object</li>
-<li><strong>Constraints:</strong> min/max length, numeric ranges, allowed enums</li>
-<li><strong>Formats:</strong> email, UUID, URL, ISO-8601 datetime</li>
-<li><strong>Normalization:</strong> trim whitespace, lowercase emails, canonical forms</li>
-<li><strong>Cross-field rules:</strong> e.g., <code>start_date &lt; end_date</code>, <code>min ≤ max</code></li>
+  <li><strong>Presence:</strong> required fields must exist</li>
+  <li><strong>Types:</strong> string vs integer vs list/object</li>
+  <li><strong>Constraints:</strong> min/max length, numeric ranges, allowed enums</li>
+  <li><strong>Formats:</strong> email, UUID, URL, ISO-8601 datetime</li>
+  <li><strong>Normalization:</strong> trim whitespace, lowercase emails, canonical forms</li>
+  <li><strong>Cross-field rules:</strong> e.g., <code>start_date &lt; end_date</code>, <code>min ≤ max</code></li>
 </ul>
+
 <h3>8.2 Validation vs sanitization vs escaping</h3>
 <ul>
-<li><strong>Validation</strong> rejects inputs that violate the contract (correctness gate)</li>
-<li><strong>Sanitization</strong> transforms inputs into a canonical safer form (trim/normalize)</li>
-<li><strong>Escaping / parameterization</strong> prevents injection when input is used in a context (SQL/HTML)</li>
+  <li><strong>Validation</strong> rejects inputs that violate the contract (correctness gate)</li>
+  <li><strong>Sanitization</strong> transforms inputs into a canonical safer form (trim/normalize)</li>
+  <li><strong>Escaping / parameterization</strong> prevents injection when input is used in a context (SQL/HTML)</li>
 </ul>
+
 <div class="callout callout-warning">
-<div class="callout-title">Security note</div>
-<p>
+  <div class="callout-title">Security note</div>
+  <p>
     Validation is not a complete injection defense. For SQL use <strong>parameterized queries</strong>;
     for HTML/templates use correct escaping. Never concatenate raw user input into SQL.
   </p>
 </div>
+
 <h3>8.3 Validation across layers (Controller → Service → Repository)</h3>
 <p>
   In a layered backend architecture, validation is <strong>defense in depth</strong>. Each layer validates what it owns:
 </p>
+
 <ul>
-<li>
-<strong>Controller (FastAPI route + Pydantic):</strong> boundary validation of untrusted network input
+  <li>
+    <strong>Controller (FastAPI route + Pydantic):</strong> boundary validation of untrusted network input
     (schema, types, basic constraints). Invalid payloads typically return <code>422</code>.
   </li>
-<li>
-<strong>Service (domain/business rules):</strong> semantic validation (uniqueness, state transitions,
+  <li>
+    <strong>Service (domain/business rules):</strong> semantic validation (uniqueness, state transitions,
     cross-field domain rules, permission decisions). These map to stable application errors (e.g., <code>409</code> conflict).
   </li>
-<li>
-<strong>Repository/DB (integrity):</strong> final enforcement using constraints and transactions
+  <li>
+    <strong>Repository/DB (integrity):</strong> final enforcement using constraints and transactions
     (UNIQUE/NOT NULL/CHECK/FK). This layer prevents race-condition inconsistencies and translates DB exceptions into domain errors.
   </li>
 </ul>
+
 <div class="callout callout-success">
-<div class="callout-title">Why multiple layers?</div>
-<p>
+  <div class="callout-title">Why multiple layers?</div>
+  <p>
     Controller validation avoids wasting resources on bad input, service validation encodes business meaning,
     and repository/DB constraints guarantee correctness even under concurrency.
   </p>
 </div>
+
 <h3>8.4 Error semantics (API behavior)</h3>
 <ul>
-<li><code>400 Bad Request</code>: malformed JSON / invalid syntax</li>
-<li><code>422 Unprocessable Content</code>: valid JSON but fails schema/constraint validation (common in FastAPI)</li>
-<li><code>409 Conflict</code>: well-formed request but violates a business invariant (e.g., duplicate unique field)</li>
+  <li><code>400 Bad Request</code>: malformed JSON / invalid syntax</li>
+  <li><code>422 Unprocessable Content</code>: valid JSON but fails schema/constraint validation (common in FastAPI)</li>
+  <li><code>409 Conflict</code>: well-formed request but violates a business invariant (e.g., duplicate unique field)</li>
 </ul>
+
 <p>
   Good validation errors should be <strong>specific</strong>, <strong>consistent</strong>, and <strong>safe</strong>
   (do not leak internal stack traces, raw DB errors, or secrets).
 </p>
+
 <h3>8.5 FastAPI example (layered validation with clean error mapping)</h3>
 <p>
   This example shows: (1) Pydantic boundary validation, (2) service business checks, (3) repository integrity as a last guardrail.
 </p>
+
 <pre><code class="language-python">from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel, EmailStr, Field
 from typing import Dict
@@ -662,10 +731,10 @@ class UserRepository:
         self._users_by_email: Dict[str, dict] = {}
         self._id = 0
 
-    def email_exists(self, email: str) -&gt; bool:
+    def email_exists(self, email: str) -> bool:
         return email.lower() in self._users_by_email
 
-    def insert_user(self, email: str, name: str) -&gt; dict:
+    def insert_user(self, email: str, name: str) -> dict:
         # In real DB: UNIQUE(email) enforces this under concurrency.
         if self.email_exists(email):
             raise ConflictError("email already exists")
@@ -680,7 +749,7 @@ class UserService:
     def __init__(self, repo: UserRepository):
         self.repo = repo
 
-    def create_user(self, email: str, name: str) -&gt; dict:
+    def create_user(self, email: str, name: str) -> dict:
         # Business invariant: email must be unique
         if self.repo.email_exists(email):
             raise ConflictError("email already exists")
@@ -696,77 +765,92 @@ def create_user(payload: UserCreateIn):
     except ConflictError as e:
         raise HTTPException(status_code=409, detail=str(e))
 </code></pre>
+
 <h3>8.6 Practical limits (defense against abuse)</h3>
 <p>
   Validation also includes <strong>resource bounding</strong>: even “valid” inputs can be abusive if they are too large,
   too frequent, or too expensive to process. Limits preserve availability and stable latency.
 </p>
+
 <ul>
-<li><strong>Max request size</strong>: cap body size to prevent memory pressure and payload DoS</li>
-<li><strong>Rate limiting</strong>: protect expensive endpoints (login, search) from brute force and spikes</li>
-<li><strong>Pagination limits</strong>: cap <code>page_size</code> (e.g., max 100) to avoid large scans</li>
-<li><strong>Timeouts</strong>: apply timeouts to DB calls/external APIs to avoid stuck workers</li>
+  <li><strong>Max request size</strong>: cap body size to prevent memory pressure and payload DoS</li>
+  <li><strong>Rate limiting</strong>: protect expensive endpoints (login, search) from brute force and spikes</li>
+  <li><strong>Pagination limits</strong>: cap <code>page_size</code> (e.g., max 100) to avoid large scans</li>
+  <li><strong>Timeouts</strong>: apply timeouts to DB calls/external APIs to avoid stuck workers</li>
 </ul>
+
 <div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
+  <div class="callout-title">Interview one-liner</div>
+  <p>
     “In FastAPI, I validate request shape at the boundary with Pydantic (422), enforce business invariants in the service,
     rely on DB constraints in the repository for integrity under concurrency, and apply resource limits (payload size, rate limits,
     pagination caps, timeouts) to protect availability.”
   </p>
 </div>
-<h2 id="section-9">9) Authentication and Authorization</h2>
+
+
+
+<h2 id="section-9">9) Authentication vs Authorization</h2>
+
 <p>
-<strong>Authentication</strong> answers: <em>Who are you?</em><br>
-<strong>Authorization</strong> answers: <em>What are you allowed to do?</em>
-</br></p>
+  <strong>Authentication</strong> answers: <em>Who are you?</em><br/>
+  <strong>Authorization</strong> answers: <em>What are you allowed to do?</em>
+</p>
+
 <div class="callout callout-info">
-<div class="callout-title">Core concept</div>
-<p>
+  <div class="callout-title">Core concept</div>
+  <p>
     AuthN (authentication) establishes identity. AuthZ (authorization) enforces permissions on resources.
     You can be authenticated but not authorized (e.g., logged in but forbidden).
   </p>
 </div>
+
 <h3>9.0 Typical HTTP status codes</h3>
 <ul>
-<li><code>401 Unauthorized</code>: not authenticated (missing/invalid credentials)</li>
-<li><code>403 Forbidden</code>: authenticated but not authorized</li>
+  <li><code>401 Unauthorized</code>: not authenticated (missing/invalid credentials)</li>
+  <li><code>403 Forbidden</code>: authenticated but not authorized</li>
 </ul>
+
 <h3>9.1 Typical approaches</h3>
+
 <h4>1) Session cookie (stateful)</h4>
 <p>
   Server stores session state (e.g., in Redis/DB). Client holds a session ID cookie.
 </p>
 <ul>
-<li><strong>Pros:</strong> easy logout/invalidation, good for browsers</li>
-<li><strong>Cons:</strong> requires server-side state and storage; scaling needs shared session store</li>
+  <li><strong>Pros:</strong> easy logout/invalidation, good for browsers</li>
+  <li><strong>Cons:</strong> requires server-side state and storage; scaling needs shared session store</li>
 </ul>
+
 <h4>2) JWT Bearer token (stateless)</h4>
 <p>
   Client sends <code>Authorization: Bearer &lt;jwt&gt;</code>. JWT contains claims (user id, roles, expiry),
   signed by server. No session lookup is required for each request.
 </p>
 <ul>
-<li><strong>Pros:</strong> scalable; works well across services</li>
-<li><strong>Cons:</strong> revocation is harder (needs denylist/short expiry); token leakage is serious</li>
+  <li><strong>Pros:</strong> scalable; works well across services</li>
+  <li><strong>Cons:</strong> revocation is harder (needs denylist/short expiry); token leakage is serious</li>
 </ul>
+
 <h4>3) API keys (simple but limited)</h4>
 <p>
   Key identifies the client/application, often used for service-to-service or public APIs.
 </p>
 <ul>
-<li><strong>Pros:</strong> simple to implement</li>
-<li><strong>Cons:</strong> weak identity model (often no user context), rotation and leakage risks</li>
+  <li><strong>Pros:</strong> simple to implement</li>
+  <li><strong>Cons:</strong> weak identity model (often no user context), rotation and leakage risks</li>
 </ul>
+
 <h3>9.2 Cookies (short but important)</h3>
 <p>
   For browser-based auth, cookies must be configured to reduce XSS/CSRF risks:
 </p>
 <ul>
-<li><strong>HttpOnly</strong>: prevents JavaScript from reading the cookie (mitigates token theft via XSS)</li>
-<li><strong>Secure</strong>: cookie is only sent over HTTPS</li>
-<li><strong>SameSite</strong>: reduces CSRF by restricting cross-site cookie sending</li>
+  <li><strong>HttpOnly</strong>: prevents JavaScript from reading the cookie (mitigates token theft via XSS)</li>
+  <li><strong>Secure</strong>: cookie is only sent over HTTPS</li>
+  <li><strong>SameSite</strong>: reduces CSRF by restricting cross-site cookie sending</li>
 </ul>
+
 <h4>Cookie example (secure session cookie)</h4>
 <pre><code class="language-http">Set-Cookie: session_id=abc123;
   HttpOnly;
@@ -774,19 +858,22 @@ def create_user(payload: UserCreateIn):
   SameSite=Lax;
   Path=/;
 </code></pre>
+
 <div class="callout callout-warning">
-<div class="callout-title">CSRF note</div>
-<p>
+  <div class="callout-title">CSRF note</div>
+  <p>
     If you use cookies for authentication, you must consider CSRF defenses:
     <strong>SameSite</strong>, CSRF tokens, and verifying Origin/Referer for sensitive requests.
   </p>
 </div>
+
 <h3>9.3 Authorization models (how permissions are expressed)</h3>
 <ul>
-<li><strong>RBAC</strong> (Role-Based Access Control): roles like admin/editor/viewer</li>
-<li><strong>ABAC</strong> (Attribute-Based): policies based on attributes (user, resource, context)</li>
-<li><strong>Resource-based checks</strong>: “user can access only their own objects”</li>
+  <li><strong>RBAC</strong> (Role-Based Access Control): roles like admin/editor/viewer</li>
+  <li><strong>ABAC</strong> (Attribute-Based): policies based on attributes (user, resource, context)</li>
+  <li><strong>Resource-based checks</strong>: “user can access only their own objects”</li>
 </ul>
+
 <h3>9.4 Example: protect endpoint + role check (FastAPI)</h3>
 <pre><code class="language-python">from fastapi import FastAPI, Depends, HTTPException, status
 
@@ -805,308 +892,142 @@ def require_admin(user=Depends(get_current_user)):
 def delete_user(user_id: str, admin=Depends(require_admin)):
     return {"deleted": user_id}
 </code></pre>
+
 <div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
+  <div class="callout-title">Interview one-liner</div>
+  <p>
     “Authentication proves identity (401 if missing/invalid). Authorization enforces permissions (403 if not allowed).
     For browsers I prefer secure session cookies + CSRF defenses; for APIs JWT bearer tokens are common with short expiry and rotation.”
   </p>
 </div>
 <h3>9.5 Why “HTTP is stateless” matters</h3>
+
 <p>
-<strong>HTTP is stateless</strong>, meaning each request is independent and the server does not automatically
+  <strong>HTTP is stateless</strong>, meaning each request is independent and the server does not automatically
   remember any client state between requests. Request #2 must contain all information needed to handle it,
   or the server must be able to look up required context using identifiers provided by the client.
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">Stateless ≠ no state</div>
-<p>
+  <div class="callout-title">Stateless ≠ no state</div>
+  <p>
     Applications still need state (login sessions, shopping carts). Stateless means the <em>protocol</em>
     does not preserve that state automatically. State is carried by the client (cookies/tokens) or stored
     in a server-side database/cache and retrieved per request.
   </p>
 </div>
+
 <h4>Where state lives in practice</h4>
 <ul>
-<li><strong>Client-side:</strong> cookies or <code>Authorization</code> headers are sent with every request</li>
-<li><strong>Server-side:</strong> session data stored in Redis/DB, fetched by a session ID from the cookie</li>
+  <li><strong>Client-side:</strong> cookies or <code>Authorization</code> headers are sent with every request</li>
+  <li><strong>Server-side:</strong> session data stored in Redis/DB, fetched by a session ID from the cookie</li>
 </ul>
+
 <h4>Stateful vs stateless authentication</h4>
 <ul>
-<li><strong>Session cookie (stateful):</strong> cookie contains session ID, server loads session from storage</li>
-<li><strong>JWT bearer (stateless):</strong> token contains claims, server verifies signature without DB lookup</li>
+  <li><strong>Session cookie (stateful):</strong> cookie contains session ID, server loads session from storage</li>
+  <li><strong>JWT bearer (stateless):</strong> token contains claims, server verifies signature without DB lookup</li>
 </ul>
+
 <div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
+  <div class="callout-title">Interview one-liner</div>
+  <p>
     “HTTP is stateless: every request must be self-contained. We implement user state using cookies or tokens,
     and if we use sessions, the server retrieves state from a shared store like Redis.”
   </p>
 </div>
 <h4>Diagram: how “stateless HTTP” still supports login state</h4>
+
 <p>
   HTTP is stateless, so the server doesn’t remember you automatically. The client must send context
   on every request (cookie/token), and the server may fetch state from storage.
 </p>
+
 <pre><code class="language-text">STATEFUL AUTH (Session Cookie + Server-side session store)
 --------------------------------------------------------
 Browser                 API Server                    Redis/DB
   |  POST /login           |                            |
-  |-----------------------&gt;| create session             |
-  |                        |---------------------------&gt;| SET session:abc = {user_id, roles, ...}
-  |                        |&lt;---------------------------|
+  |----------------------->| create session             |
+  |                        |--------------------------->| SET session:abc = {user_id, roles, ...}
+  |                        |<---------------------------|
   |  Set-Cookie: session_id=abc                          |
-  |&lt;-----------------------|                            |
+  |<-----------------------|                            |
   |
   |  GET /profile
   |  Cookie: session_id=abc
-  |-----------------------&gt;| lookup session by ID       |
-  |                        |---------------------------&gt;| GET session:abc
-  |                        |&lt;---------------------------| {user_id, roles, ...}
+  |----------------------->| lookup session by ID       |
+  |                        |--------------------------->| GET session:abc
+  |                        |<---------------------------| {user_id, roles, ...}
   |                        | authorize + respond         |
-  |&lt;-----------------------| 200 OK                      |
+  |<-----------------------| 200 OK                      |
 
 
 STATELESS AUTH (JWT Bearer Token)
 ---------------------------------
 Client                 API Server
   |  POST /login          |
-  |----------------------&gt;| issue JWT (signed)
-  |&lt;----------------------| 200 OK + access_token
+  |---------------------->| issue JWT (signed)
+  |<----------------------| 200 OK + access_token
   |
   |  GET /profile
   |  Authorization: Bearer &lt;jwt&gt;
-  |----------------------&gt;| verify signature + exp
+  |---------------------->| verify signature + exp
   |                        (no session lookup needed)
-  |&lt;----------------------| 200 OK
+  |<----------------------| 200 OK
 </code></pre>
-<h3>9.6 JWT (Bearer token) + RBAC in FastAPI (minimal example)</h3>
-<p>
-  This section shows the core idea of <strong>JWT-based authentication</strong> and <strong>role-based authorization (RBAC)</strong>
-  in FastAPI. The flow is:
-</p>
-<ul>
-<li>User logs in → backend verifies credentials → issues a signed JWT</li>
-<li>Client sends <code>Authorization: Bearer &lt;token&gt;</code> on each request</li>
-<li>Backend verifies JWT signature + expiry → extracts identity (<code>sub</code>) and role → enforces permissions</li>
-</ul>
-<div class="callout callout-warning">
-<div class="callout-title">Production warning</div>
-<p>
-    This is intentionally minimal to teach the concept. Real production JWT systems require stronger controls:
-    key rotation (kid/JWKS), issuer/audience validation, refresh tokens, revocation strategy, secure secret management,
-    and careful claim validation.
-  </p>
-</div>
-<h3>Install</h3>
-<pre><code class="language-bash">pip install python-jose[cryptography] passlib[bcrypt]</code></pre>
-<h3>Conceptual model (claims you care about)</h3>
-<ul>
-<li><code>sub</code>: subject (user identifier)</li>
-<li><code>role</code>: authorization role (e.g., user/admin)</li>
-<li><code>exp</code>: expiration time (token lifetime)</li>
-</ul>
-<div class="callout callout-info">
-<div class="callout-title">AuthN vs AuthZ reminder</div>
-<p>
-    JWT verification gives you <strong>authentication</strong> (who the user is). Role checks implement
-    <strong>authorization</strong> (what the user is allowed to do). You will usually return <code>401</code> for invalid/missing tokens
-    and <code>403</code> for “authenticated but not allowed.”
-  </p>
-</div>
-<h3>Minimal FastAPI JWT + RBAC code</h3>
-<p>
-  The example below includes:
-  (1) password verification (bcrypt),
-  (2) token issuance (<code>/login</code>),
-  (3) dependency that extracts the current user from the Bearer token,
-  (4) an admin-only endpoint.
-</p>
-<pre><code class="language-python">from datetime import datetime, timedelta, timezone
-from typing import Optional, Dict
 
-from fastapi import FastAPI, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import jwt, JWTError
-from passlib.context import CryptContext
-from pydantic import BaseModel
 
-app = FastAPI()
-
-# -----------------------------
-# Minimal config (DO NOT hardcode secrets in production)
-# -----------------------------
-SECRET_KEY = "change-me-in-production"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
-
-# -----------------------------
-# Fake user store (replace with DB)
-# -----------------------------
-# In a real app: store password hashes, not plain passwords.
-# Here we hash at startup for demo clarity.
-fake_users_db: Dict[str, dict] = {
-    "alice": {"username": "alice", "role": "user", "password_hash": pwd_context.hash("alicepass")},
-    "admin": {"username": "admin", "role": "admin", "password_hash": pwd_context.hash("adminpass")},
-}
-
-class TokenOut(BaseModel):
-    access_token: str
-    token_type: str = "bearer"
-
-class User(BaseModel):
-    username: str
-    role: str
-
-# -----------------------------
-# Helpers
-# -----------------------------
-def verify_password(plain_password: str, password_hash: str) -&gt; bool:
-    return pwd_context.verify(plain_password, password_hash)
-
-def authenticate_user(username: str, password: str) -&gt; Optional[User]:
-    record = fake_users_db.get(username)
-    if not record:
-        return None
-    if not verify_password(password, record["password_hash"]):
-        return None
-    return User(username=record["username"], role=record["role"])
-
-def create_access_token(*, sub: str, role: str, expires_minutes: int) -&gt; str:
-    now = datetime.now(timezone.utc)
-    payload = {
-        "sub": sub,
-        "role": role,
-        "iat": int(now.timestamp()),
-        "exp": int((now + timedelta(minutes=expires_minutes)).timestamp()),
-    }
-    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
-
-# -----------------------------
-# Auth dependency: parse and validate JWT
-# -----------------------------
-def get_current_user(token: str = Depends(oauth2_scheme)) -&gt; User:
-    cred_error = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid authentication credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        role: str = payload.get("role")
-        if not username or not role:
-            raise cred_error
-    except JWTError:
-        raise cred_error
-
-    # Optional: verify user still exists (common in production)
-    if username not in fake_users_db:
-        raise cred_error
-
-    return User(username=username, role=role)
-
-# -----------------------------
-# Authorization dependency: RBAC
-# -----------------------------
-def require_admin(user: User = Depends(get_current_user)) -&gt; User:
-    if user.role != "admin":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Forbidden")
-    return user
-
-# -----------------------------
-# Routes
-# -----------------------------
-@app.post("/login", response_model=TokenOut)
-def login(form: OAuth2PasswordRequestForm = Depends()):
-    user = authenticate_user(form.username, form.password)
-    if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect username or password")
-
-    token = create_access_token(sub=user.username, role=user.role, expires_minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    return TokenOut(access_token=token)
-
-@app.get("/me")
-def read_me(user: User = Depends(get_current_user)):
-    return {"username": user.username, "role": user.role}
-
-@app.get("/admin/metrics")
-def admin_metrics(admin: User = Depends(require_admin)):
-    return {"ok": True, "message": f"Hello {admin.username}, you are an admin."}
-</code></pre>
-<h3>How to test quickly (curl)</h3>
-<pre><code class="language-bash"># 1) login to get JWT
-curl -X POST http://localhost:8000/login \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "username=admin&amp;password=adminpass"
-
-# 2) use the token on protected endpoint
-curl http://localhost:8000/admin/metrics \
-  -H "Authorization: Bearer &lt;PASTE_TOKEN_HERE&gt;"
-</code></pre>
-<h3>Minimum production checklist (what interviewers like to hear)</h3>
-<ul>
-<li><strong>Validate claims:</strong> check <code>exp</code> (and in production also <code>iss</code>, <code>aud</code>)</li>
-<li><strong>Key management:</strong> rotate keys; consider <code>kid</code> header + JWKS for multiple keys</li>
-<li><strong>Token lifetime:</strong> short-lived access tokens; refresh tokens for longer sessions</li>
-<li><strong>Revocation strategy:</strong> denylist or session store for “logout everywhere”</li>
-<li><strong>Secure transport:</strong> HTTPS everywhere; never log tokens</li>
-<li><strong>RBAC vs ABAC:</strong> roles are simple; attribute/policy checks may be needed for fine-grained control</li>
-</ul>
-<div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
-    “JWT gives stateless authentication: verify signature + expiry, extract <code>sub</code> and claims.
-    Authorization is enforced separately (RBAC dependency). Invalid/missing token → <code>401</code>; insufficient role → <code>403</code>.”
-  </p>
-</div>
 <h2 id="section-10">10) Caching (speed by remembering)</h2>
+
 <p>
-<strong>Caching</strong> is a performance technique where we store the result of an expensive operation
+  <strong>Caching</strong> is a performance technique where we store the result of an expensive operation
   (DB query, API call, computation) so repeated requests can reuse it instead of recomputing.
   In CS terms, caching trades <em>space</em> (memory/storage) for <em>time</em> (lower latency) and reduces
   load on upstream systems.
 </p>
+
 <p>
   Caching can exist at many layers (each with different scope and consistency guarantees):
 </p>
 <ul>
-<li><strong>Browser cache</strong> (HTTP caching, client-side)</li>
-<li><strong>CDN cache</strong> (edge caching, near end users)</li>
-<li><strong>Reverse proxy cache</strong> (Nginx/Varnish in front of your app)</li>
-<li><strong>Application cache</strong> (Redis/Memcached, app-controlled)</li>
-<li><strong>DB indexes</strong> (not a cache; query-acceleration structures inside the DB engine)</li>
+  <li><strong>Browser cache</strong> (HTTP caching, client-side)</li>
+  <li><strong>CDN cache</strong> (edge caching, near end users)</li>
+  <li><strong>Reverse proxy cache</strong> (Nginx/Varnish in front of your app)</li>
+  <li><strong>Application cache</strong> (Redis/Memcached, app-controlled)</li>
+  <li><strong>DB indexes</strong> (not a cache; query-acceleration structures inside the DB engine)</li>
 </ul>
+
 <p>
-<strong>Important:</strong> do not cache everything. Caching introduces the risk of <em>stale data</em>.
+  <strong>Important:</strong> do not cache everything. Caching introduces the risk of <em>stale data</em>.
   You must define a freshness policy (e.g., TTL), invalidation strategy, or revalidation mechanism.
 </p>
+
 <h3>10.0 Cache vocabulary: hit, miss, TTL</h3>
 <ul>
-<li><strong>Cache hit</strong>: data exists in cache → fast response</li>
-<li><strong>Cache miss</strong>: not in cache → fetch from origin/DB → store → return</li>
-<li><strong>TTL (Time-To-Live)</strong>: expiry time for a cached entry (limits staleness)</li>
+  <li><strong>Cache hit</strong>: data exists in cache → fast response</li>
+  <li><strong>Cache miss</strong>: not in cache → fetch from origin/DB → store → return</li>
+  <li><strong>TTL (Time-To-Live)</strong>: expiry time for a cached entry (limits staleness)</li>
 </ul>
+
 <h3>10.1 HTTP caching with ETag (best for GET)</h3>
 <p>
   HTTP caching is especially effective for <strong>GET</strong> endpoints and static resources.
   One robust strategy is <strong>revalidation</strong> using <code>ETag</code>.
 </p>
+
 <p>Idea:</p>
 <ul>
-<li>server responds with an <code>ETag</code> representing the current resource version (often a hash)</li>
-<li>client later sends <code>If-None-Match</code> with that ETag</li>
-<li>server returns <code>304 Not Modified</code> if unchanged (no body, saves bandwidth)</li>
-<li>server returns <code>200</code> with new content + new <code>ETag</code> if changed</li>
+  <li>server responds with an <code>ETag</code> representing the current resource version (often a hash)</li>
+  <li>client later sends <code>If-None-Match</code> with that ETag</li>
+  <li>server returns <code>304 Not Modified</code> if unchanged (no body, saves bandwidth)</li>
+  <li>server returns <code>200</code> with new content + new <code>ETag</code> if changed</li>
 </ul>
+
 <p>
   Combine ETag with <code>Cache-Control</code> for explicit freshness:
   <code>Cache-Control: public, max-age=60</code> means the response can be reused for 60 seconds before revalidation.
 </p>
+
 <p><strong>FastAPI example (ETag + Cache-Control):</strong></p>
 <pre><code class="language-python">from fastapi import FastAPI, Request, Response
 import hashlib, json
@@ -1128,21 +1049,24 @@ def get_config(request: Request, response: Response):
     response.headers["Cache-Control"] = "public, max-age=60"
     return payload
 </code></pre>
+
 <h3>10.2 CDN caching (edge cache, closest to the user)</h3>
 <p>
   A <strong>CDN</strong> caches responses at edge locations near users. It reduces latency and load on your origin server.
   CDNs work best for static assets and cacheable <strong>public GET</strong> responses.
 </p>
 <ul>
-<li>High impact for global audiences (lower round-trip time)</li>
-<li>Use TTL and cache rules carefully</li>
-<li><strong>Avoid caching private/user-specific responses as public</strong></li>
+  <li>High impact for global audiences (lower round-trip time)</li>
+  <li>Use TTL and cache rules carefully</li>
+  <li><strong>Avoid caching private/user-specific responses as public</strong></li>
 </ul>
+
 <h3>10.3 Reverse proxy caching with Nginx (cache in front of the app)</h3>
 <p>
   A reverse proxy (e.g., Nginx) can cache upstream responses so your app/DB does not get hit for repeated requests.
   This is useful for public GET endpoints and for absorbing traffic bursts.
 </p>
+
 <p><strong>Minimal Nginx proxy cache example:</strong></p>
 <pre><code class="language-nginx"># inside http { ... }
 proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=api_cache:10m
@@ -1170,20 +1094,23 @@ server {
     }
 }
 </code></pre>
+
 <p>
   Debug tip: the first request usually shows <code>X-Cache-Status: MISS</code>, the next shows <code>HIT</code>.
 </p>
+
 <h3>10.4 Application caching with Redis (cache-aside / lazy loading)</h3>
 <p>
-<strong>Redis</strong> is commonly used as an application cache because it is fast, supports TTL, and provides
+  <strong>Redis</strong> is commonly used as an application cache because it is fast, supports TTL, and provides
   atomic operations. A standard approach is <strong>cache-aside</strong>:
 </p>
 <ol>
-<li>read from cache</li>
-<li>if miss → read from DB</li>
-<li>store result in cache (with TTL)</li>
-<li>return result</li>
+  <li>read from cache</li>
+  <li>if miss → read from DB</li>
+  <li>store result in cache (with TTL)</li>
+  <li>return result</li>
 </ol>
+
 <p><strong>Python + Redis example (cache-aside):</strong></p>
 <pre><code class="language-python">import json
 from redis import Redis
@@ -1204,20 +1131,23 @@ def get_user_profile(user_id: str) -&gt; dict:
     r.set(key, json.dumps(profile), ex=60)
     return profile
 </code></pre>
+
 <p>
   Consistency note: TTL-based caching may serve stale data for up to TTL seconds.
   For stronger consistency, invalidate the relevant cache keys on writes/updates.
 </p>
+
 <h3>10.5 Cache stampede (thundering herd) + mitigation</h3>
 <p>
   A <strong>cache stampede</strong> occurs when many requests miss simultaneously (e.g., popular key expires),
   causing a burst of DB load. Common mitigations:
 </p>
 <ul>
-<li><strong>single-flight locking</strong>: only one request recomputes, others wait and reuse</li>
-<li><strong>TTL jitter</strong>: add small random noise to TTL to avoid synchronized expirations</li>
-<li><strong>stale-while-revalidate</strong>: serve slightly stale data while refreshing in the background</li>
+  <li><strong>single-flight locking</strong>: only one request recomputes, others wait and reuse</li>
+  <li><strong>TTL jitter</strong>: add small random noise to TTL to avoid synchronized expirations</li>
+  <li><strong>stale-while-revalidate</strong>: serve slightly stale data while refreshing in the background</li>
 </ul>
+
 <p><strong>Best-effort Redis lock example (single-flight + TTL jitter):</strong></p>
 <pre><code class="language-python">import json, random, time
 from redis import Redis
@@ -1251,35 +1181,45 @@ def get_with_lock(key: str, ttl_s: int, compute_fn):
     # fallback policy choice
     return compute_fn()
 </code></pre>
+
 <h3>10.6 DB indexes are not cache (but essential for performance)</h3>
 <p>
   A <strong>DB index</strong> is a data structure (e.g., B-tree) maintained by the database to accelerate queries.
   It is not a cache because it is part of the DB engine’s storage and changes query complexity (often from scan to
   logarithmic lookup). Indexes improve read performance but usually increase write cost and storage usage.
 </p>
-<h2 id="section-11">11) Scaling: vertical vs horizontal</h2>
+
+
+<h1 id="section-11">11) Scaling: vertical vs horizontal (with concrete examples)</h1>
+
 <h3>11.1 Vertical scaling (scale up)</h3>
 <p>You increase resources on one machine:</p>
 <ul>
-<li>more CPU</li>
-<li>more RAM</li>
-<li>faster disk</li>
+  <li>more CPU</li>
+  <li>more RAM</li>
+  <li>faster disk</li>
 </ul>
+
 <p><strong>Example</strong></p>
 <ul>
-<li>A single VM: upgrade from 2 CPU / 4GB RAM → 8 CPU / 16GB RAM</li>
+  <li>A single VM: upgrade from 2 CPU / 4GB RAM → 8 CPU / 16GB RAM</li>
 </ul>
-<p><strong>Pros:</strong> simple<br/>
+
+<p><strong>Pros:</strong> simple<br>
 <strong>Cons:</strong> hard limit; single point of failure</p>
+
 <h3>11.2 Horizontal scaling (scale out)</h3>
 <p>You run multiple replicas of your service:</p>
 <ul>
-<li>2, 4, 10 backend instances</li>
-<li>a load balancer distributes requests</li>
+  <li>2, 4, 10 backend instances</li>
+  <li>a load balancer distributes requests</li>
 </ul>
-<p><strong>Pros:</strong> scalable + resilient<br/>
+
+<p><strong>Pros:</strong> scalable + resilient<br>
 <strong>Cons:</strong> requires stateless design + shared state in DB/cache</p>
+
 <h3>11.3 Horizontal scaling example with Docker + Nginx load balancing</h3>
+
 <p><strong>docker-compose.yml</strong></p>
 <pre><code class="language-yaml">services:
   api:
@@ -1305,6 +1245,7 @@ def get_with_lock(key: str, ttl_s: int, compute_fn):
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: app</code></pre>
+
 <p><strong>nginx.conf</strong></p>
 <pre><code class="language-nginx">events {}
 
@@ -1325,58 +1266,70 @@ http {
     }
   }
 }</code></pre>
+
 <div class="callout callout-warning">
-<div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> Critical Requirement</div>
-<p>In horizontal scaling, your API must be <strong>stateless</strong> (or store session state in Redis / DB).</p>
+  <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> Critical Requirement</div>
+  <p>In horizontal scaling, your API must be <strong>stateless</strong> (or store session state in Redis / DB).</p>
 </div>
+
 <h2 id="section-12">12) Performance: what matters most</h2>
+
 <p>
   Backend performance is primarily about <strong>latency</strong> (time per request) and <strong>throughput</strong>
   (requests per second). In practice, most slow backends are not slow because of Python itself — they are slow
   because the request path spends time waiting on I/O (database, network) or doing too much work per request.
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">Mental model</div>
-<p>
+  <div class="callout-title">Mental model</div>
+  <p>
     A request handler is a pipeline: <strong>parse → validate → query/compute → respond</strong>.
     Performance work is about finding the dominant cost in that pipeline and reducing it.
   </p>
 </div>
+
 <h3>12.1 The backend performance hierarchy (typical bottlenecks)</h3>
+
 <p>
   The following “hierarchy” is a useful rule-of-thumb: when an endpoint is slow, these are usually the reasons,
   in roughly decreasing frequency.
 </p>
+
 <ul>
-<li>
-<strong>Database queries dominate latency</strong><br>
+  <li>
+    <strong>Database queries dominate latency</strong><br/>
     Poor queries, missing indexes, large result sets, and N+1 query patterns often outweigh everything else.
-  </br></li>
-<li>
-<strong>External API calls dominate latency</strong><br>
+  </li>
+  <li>
+    <strong>External API calls dominate latency</strong><br/>
     Network round trips and third-party services introduce unpredictable latency and failures.
-  </br></li>
-<li>
-<strong>CPU-heavy work blocks worker threads/processes</strong><br>
+  </li>
+  <li>
+    <strong>CPU-heavy work blocks worker threads/processes</strong><br/>
     Serialization, large JSON transformations, PDF/image processing, or ML inference can saturate CPU and reduce throughput.
-  </br></li>
+  </li>
 </ul>
+
 <div class="callout callout-warning">
-<div class="callout-title">Rule of thumb</div>
-<p>
+  <div class="callout-title">Rule of thumb</div>
+  <p>
     Optimize the biggest wait first: if you spend 300ms in the DB and 10ms in Python code, optimizing the Python part
     won’t move the needle.
   </p>
 </div>
+
 <h3>12.2 Measure first: where time actually goes</h3>
+
 <p>
   Performance tuning without measurement is guessing. The minimal professional approach:
 </p>
+
 <ul>
-<li><strong>Add timing logs</strong> around DB calls and external HTTP calls.</li>
-<li><strong>Inspect query plans</strong> (e.g., <code>EXPLAIN</code>) for slow database queries.</li>
-<li><strong>Track percentiles</strong>: p50 vs p95 vs p99 latency (tail latency matters in production).</li>
+  <li><strong>Add timing logs</strong> around DB calls and external HTTP calls.</li>
+  <li><strong>Inspect query plans</strong> (e.g., <code>EXPLAIN</code>) for slow database queries.</li>
+  <li><strong>Track percentiles</strong>: p50 vs p95 vs p99 latency (tail latency matters in production).</li>
 </ul>
+
 <p><strong>FastAPI example: timing middleware (quick visibility)</strong></p>
 <pre><code class="language-python">import time
 from fastapi import FastAPI, Request
@@ -1391,12 +1344,15 @@ async def timing_middleware(request: Request, call_next):
     resp.headers["X-Response-Time-ms"] = f"{duration_ms:.2f}"
     return resp
 </code></pre>
+
 <h3>12.3 Practical rules (high-impact improvements)</h3>
+
 <h4>1) Paginate lists (never return unbounded collections)</h4>
 <p>
   Returning “all rows” is a common performance and memory failure. Pagination bounds work per request and improves
   perceived performance. Prefer cursor-based pagination for large datasets; offset pagination is simpler but slows down at high offsets.
 </p>
+
 <pre><code class="language-python">from fastapi import Query
 
 @app.get("/items")
@@ -1404,22 +1360,26 @@ def list_items(limit: int = Query(20, ge=1, le=100), offset: int = Query(0, ge=0
     # SELECT ... LIMIT :limit OFFSET :offset
     return db_list_items(limit=limit, offset=offset)
 </code></pre>
+
 <h4>2) Index columns used in filters/sorts</h4>
 <p>
   Indexes speed up lookups and sorting, but cost extra work on writes. Index columns that appear frequently in:
   <code>WHERE</code>, <code>JOIN</code>, and <code>ORDER BY</code>. Verify with query plans rather than guessing.
 </p>
+
 <div class="callout callout-warning">
-<div class="callout-title">Index tradeoff</div>
-<p>
+  <div class="callout-title">Index tradeoff</div>
+  <p>
     More indexes → faster reads, slower writes, more storage. Use indexes based on real query patterns.
   </p>
 </div>
+
 <h4>3) Avoid N+1 queries</h4>
 <p>
   The N+1 problem happens when you fetch a list (1 query), then for each item fetch related data (N queries).
   It is common with ORMs if relationships are lazily loaded. Fix it by using joins, eager loading, or batch queries.
 </p>
+
 <p><strong>Example pattern:</strong></p>
 <pre><code class="language-text">Bad:
   1 query: fetch 100 posts
@@ -1429,11 +1389,13 @@ Total: 101 queries (slow)
 Good:
   1 query: fetch posts + authors (JOIN / eager load)
 </code></pre>
+
 <h4>4) Cache expensive reads (but handle staleness)</h4>
 <p>
   If the same expensive data is requested repeatedly, cache it (Redis, Nginx cache, HTTP caching).
   Use TTL to limit staleness and consider invalidation on writes for critical correctness.
 </p>
+
 <pre><code class="language-python">import json
 from redis import Redis
 
@@ -1449,23 +1411,27 @@ def get_stats():
     r.set(key, json.dumps(data), ex=30) # cache for 30s
     return data
 </code></pre>
+
 <h4>5) Use async for I/O waits, not for CPU-heavy work</h4>
 <p>
-<code>async</code>/<code>await</code> improves concurrency when your handler spends time waiting on I/O (HTTP calls, DB calls).
+  <code>async</code>/<code>await</code> improves concurrency when your handler spends time waiting on I/O (HTTP calls, DB calls).
   It does <strong>not</strong> make CPU-heavy code faster. CPU-heavy tasks should be moved to:
   <strong>background workers</strong> (Celery/RQ), or optimized with native libraries, or parallelized safely.
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">Practical rule</div>
-<p>
+  <div class="callout-title">Practical rule</div>
+  <p>
     Async helps when you wait on the network; background jobs help when you burn CPU.
   </p>
 </div>
+
 <h4>6) Add timeouts for external calls (performance + reliability)</h4>
 <p>
   External services can be slow or hang. Always set timeouts, and consider retries with backoff for transient failures.
   Without timeouts, slow dependencies can saturate workers and cascade into outages.
 </p>
+
 <pre><code class="language-python">import httpx
 
 def fetch_user_from_partner(user_id: str):
@@ -1474,73 +1440,83 @@ def fetch_user_from_partner(user_id: str):
         r.raise_for_status()
         return r.json()
 </code></pre>
+
 <h3>12.4 A realistic performance scenario (end-to-end)</h3>
 <p>
   Suppose <code>GET /orders</code> is slow. A typical optimization workflow:
 </p>
 <ol>
-<li><strong>Measure:</strong> log DB time + external call time + total time (p50/p95).</li>
-<li><strong>Fix query shape:</strong> avoid selecting unused columns, limit result size, paginate.</li>
-<li><strong>Add/adjust indexes:</strong> on <code>user_id</code>, <code>created_at</code> if used in filters/sorts.</li>
-<li><strong>Remove N+1:</strong> join related tables or eager load.</li>
-<li><strong>Cache:</strong> cache expensive aggregates (e.g., summary totals) with TTL.</li>
-<li><strong>Protect dependencies:</strong> add timeouts/retries for external services.</li>
+  <li><strong>Measure:</strong> log DB time + external call time + total time (p50/p95).</li>
+  <li><strong>Fix query shape:</strong> avoid selecting unused columns, limit result size, paginate.</li>
+  <li><strong>Add/adjust indexes:</strong> on <code>user_id</code>, <code>created_at</code> if used in filters/sorts.</li>
+  <li><strong>Remove N+1:</strong> join related tables or eager load.</li>
+  <li><strong>Cache:</strong> cache expensive aggregates (e.g., summary totals) with TTL.</li>
+  <li><strong>Protect dependencies:</strong> add timeouts/retries for external services.</li>
 </ol>
+
 <div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
+  <div class="callout-title">Interview one-liner</div>
+  <p>
     “Most backend latency is DB + network. I measure first (percentiles), then fix query patterns (pagination, indexes, avoid N+1),
     cache expensive reads, use async for I/O waits, and always set timeouts on external calls.”
   </p>
 </div>
-<h2 id="section-13">13) Data layer: ORM design (FastAPI + SQLAlchemy)</h2>
+
+<h2 id="section-13">13) ORM design (FastAPI + SQLAlchemy) — what an ORM is and why it exists</h2>
+
 <p>
   An <strong>ORM (Object–Relational Mapper)</strong> is a programming abstraction that maps
   <strong>relational database tables</strong> (rows/columns) to <strong>language objects</strong> (Python classes/instances).
   Instead of writing raw SQL for every operation, you work with objects and relations, and the ORM generates SQL
   and tracks changes for you.
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">Core mapping idea</div>
-<p>
+  <div class="callout-title">Core mapping idea</div>
+  <p>
     Table <code>users</code> ↔ Python class <code>User</code><br/>
     Row in <code>users</code> ↔ instance of <code>User</code><br/>
     Column <code>email</code> ↔ attribute <code>User.email</code>
-</p>
+  </p>
 </div>
+
 <h3>13.1 Why ORMs are used (benefits)</h3>
 <ul>
-<li><strong>Productivity:</strong> CRUD operations become concise and less error-prone</li>
-<li><strong>Maintainability:</strong> domain model lives in code (types, relationships, constraints)</li>
-<li><strong>Portability:</strong> same ORM code can target SQLite/Postgres/MySQL (with caveats)</li>
-<li><strong>Safety:</strong> parameterized queries by default reduce SQL injection risk</li>
-<li><strong>Transactions:</strong> ORMs integrate well with unit-of-work + session patterns</li>
+  <li><strong>Productivity:</strong> CRUD operations become concise and less error-prone</li>
+  <li><strong>Maintainability:</strong> domain model lives in code (types, relationships, constraints)</li>
+  <li><strong>Portability:</strong> same ORM code can target SQLite/Postgres/MySQL (with caveats)</li>
+  <li><strong>Safety:</strong> parameterized queries by default reduce SQL injection risk</li>
+  <li><strong>Transactions:</strong> ORMs integrate well with unit-of-work + session patterns</li>
 </ul>
+
 <h3>13.2 What an ORM does under the hood (unit of work + identity map)</h3>
 <p>
   Mature ORMs (including SQLAlchemy ORM) implement two key ideas:
 </p>
 <ul>
-<li>
-<strong>Identity map:</strong> within a session, each DB row is represented by a single Python object.
+  <li>
+    <strong>Identity map:</strong> within a session, each DB row is represented by a single Python object.
     If you query the same row twice, you usually get the same object instance (consistency inside the session).
   </li>
-<li>
-<strong>Unit of work:</strong> the ORM tracks changes you make to objects and flushes them as SQL
+  <li>
+    <strong>Unit of work:</strong> the ORM tracks changes you make to objects and flushes them as SQL
     (<code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code>) on <code>commit()</code>.
   </li>
 </ul>
+
 <div class="callout callout-warning">
-<div class="callout-title">Important tradeoffs</div>
-<p>
+  <div class="callout-title">Important tradeoffs</div>
+  <p>
     ORMs are not “free performance.” You still must understand SQL, indexes, and query patterns
     (especially to avoid <strong>N+1 queries</strong> and accidental full-table scans).
   </p>
 </div>
+
 <h3>13.3 A small theoretical example: objects vs tables</h3>
 <p>
   Suppose you have a relational table:
 </p>
+
 <pre><code class="language-sql">CREATE TABLE posts (
   id INTEGER PRIMARY KEY,
   title TEXT NOT NULL,
@@ -1548,38 +1524,44 @@ def fetch_user_from_partner(user_id: str):
   updated_at TIMESTAMP NOT NULL
 );
 </code></pre>
+
 <p>
   In an ORM, you represent this table as a class. The ORM maps class attributes to columns and generates SQL for you.
   When you create an object and commit, the ORM emits an <code>INSERT</code>. When you modify an attribute and commit,
   it emits an <code>UPDATE</code>.
 </p>
+
 <h3>13.4 created_at / updated_at (timestamps for auditing)</h3>
 <p>
   In production systems, <code>created_at</code> and <code>updated_at</code> are common auditing fields:
 </p>
 <ul>
-<li><strong>created_at:</strong> time the row was created (immutable)</li>
-<li><strong>updated_at:</strong> time the row was last modified (changes on update)</li>
+  <li><strong>created_at:</strong> time the row was created (immutable)</li>
+  <li><strong>updated_at:</strong> time the row was last modified (changes on update)</li>
 </ul>
+
 <h3>13.5 Minimal FastAPI + SQLAlchemy ORM stack (SQLite demo)</h3>
 <p>
   This is a realistic minimal stack:
 </p>
 <ul>
-<li><strong>SQLAlchemy ORM</strong> for mapping classes ↔ tables</li>
-<li><strong>SQLite</strong> for demo (swap to <strong>Postgres</strong> in production)</li>
+  <li><strong>SQLAlchemy ORM</strong> for mapping classes ↔ tables</li>
+  <li><strong>SQLite</strong> for demo (swap to <strong>Postgres</strong> in production)</li>
 </ul>
+
 <div class="callout callout-info">
-<div class="callout-title">SQLite vs Postgres</div>
-<p>
+  <div class="callout-title">SQLite vs Postgres</div>
+  <p>
     SQLite is great for demos and local dev. In production, Postgres is preferred for concurrency,
     robustness, and advanced indexing/features. The ORM layer remains similar, but performance and operational behavior differ.
   </p>
 </div>
+
 <h3>13.6 Minimal code example (model + session + sorting)</h3>
 <p>
   The code below shows: (1) an ORM model, (2) automatic timestamps, and (3) sorting by <code>created_at</code>.
 </p>
+
 <pre><code class="language-python">from datetime import datetime
 from fastapi import FastAPI, Depends, Query
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, select, desc, asc
@@ -1631,82 +1613,337 @@ def list_posts(
     posts = db.execute(select(Post).order_by(order).limit(50)).scalars().all()
     return [{"id": p.id, "title": p.title, "created_at": p.created_at, "updated_at": p.updated_at} for p in posts]
 </code></pre>
+
 <h3>13.7 Common ORM pitfalls (fast interview checklist)</h3>
 <ul>
-<li><strong>N+1 queries:</strong> fetching relationships in a loop; fix with joins/eager loading</li>
-<li><strong>Unbounded queries:</strong> missing pagination/limits</li>
-<li><strong>Missing indexes:</strong> slow filters/sorts without indexes (verify with query plans)</li>
-<li><strong>Session misuse:</strong> long-lived sessions or leaking sessions across requests</li>
+  <li><strong>N+1 queries:</strong> fetching relationships in a loop; fix with joins/eager loading</li>
+  <li><strong>Unbounded queries:</strong> missing pagination/limits</li>
+  <li><strong>Missing indexes:</strong> slow filters/sorts without indexes (verify with query plans)</li>
+  <li><strong>Session misuse:</strong> long-lived sessions or leaking sessions across requests</li>
 </ul>
+
 <div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
+  <div class="callout-title">Interview one-liner</div>
+  <p>
     “An ORM maps tables to objects and uses a session (identity map + unit of work) to generate SQL and manage transactions.
     It improves productivity, but you still need SQL awareness to avoid N+1 queries and slow scans.”
   </p>
 </div>
-<h2 id="section-14">14) Background jobs (RQ / Celery) for heavy tasks</h2>
+
+
+<h1 id="section-14">14) Cursor pagination example (conceptual + code)</h1>
+
+<p>Cursor pagination usually needs:</p>
+<ul>
+  <li>a stable sort: <code>(created_at, id)</code></li>
+  <li>a cursor token: <code>"created_at|id"</code></li>
+</ul>
+
+<p><strong>Endpoint idea</strong></p>
+<ul>
+  <li><code>GET /tasks?limit=20&cursor=&lt;created_at&gt;|&lt;id&gt;</code></li>
+</ul>
+
+<p><strong>Pseudo-implementation</strong></p>
+<pre><code class="language-python"># where tasks are ordered by created_at desc, id desc
+# cursor = "2026-01-20T12:00:00Z|&lt;id&gt;"
+
+# Fetch items with (created_at, id) &lt; cursor tuple in same order.</code></pre>
+
+<p>In production you also:</p>
+<ul>
+  <li>sign/encrypt the cursor token</li>
+  <li>validate token format</li>
+  <li>return <code>next_cursor</code> in response</li>
+</ul>
+
+<h1 id="section-15">15) Authorization (role-based) + JWT (minimal example)</h1>
+
+<div class="callout callout-warning">
+  <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> Production Warning</div>
+  <p>This is intentionally minimal to show the concept; production JWT must include key rotation, stronger claims validation, etc.</p>
+</div>
+
+<p>Install:</p>
+<pre><code class="language-bash">pip install python-jose[cryptography] passlib[bcrypt]</code></pre>
+
+<p><strong>Idea</strong></p>
+<ul>
+  <li>user logs in → receives JWT</li>
+  <li>requests include <code>Authorization: Bearer &lt;token&gt;</code></li>
+  <li>backend checks token → extracts <code>sub</code> + <code>role</code></li>
+</ul>
+
+<h2 id="section-15">15) Authorization (role-based) + JWT (minimal FastAPI example)</h2>
+
+<p>
+  This section shows the core idea of <strong>JWT-based authentication</strong> and <strong>role-based authorization (RBAC)</strong>
+  in FastAPI. The flow is:
+</p>
+
+<ul>
+  <li>User logs in → backend verifies credentials → issues a signed JWT</li>
+  <li>Client sends <code>Authorization: Bearer &lt;token&gt;</code> on each request</li>
+  <li>Backend verifies JWT signature + expiry → extracts identity (<code>sub</code>) and role → enforces permissions</li>
+</ul>
+
+<div class="callout callout-warning">
+  <div class="callout-title">Production warning</div>
+  <p>
+    This is intentionally minimal to teach the concept. Real production JWT systems require stronger controls:
+    key rotation (kid/JWKS), issuer/audience validation, refresh tokens, revocation strategy, secure secret management,
+    and careful claim validation.
+  </p>
+</div>
+
+<h3>Install</h3>
+<pre><code class="language-bash">pip install python-jose[cryptography] passlib[bcrypt]</code></pre>
+
+<h3>Conceptual model (claims you care about)</h3>
+<ul>
+  <li><code>sub</code>: subject (user identifier)</li>
+  <li><code>role</code>: authorization role (e.g., user/admin)</li>
+  <li><code>exp</code>: expiration time (token lifetime)</li>
+</ul>
+
+<div class="callout callout-info">
+  <div class="callout-title">AuthN vs AuthZ reminder</div>
+  <p>
+    JWT verification gives you <strong>authentication</strong> (who the user is). Role checks implement
+    <strong>authorization</strong> (what the user is allowed to do). You will usually return <code>401</code> for invalid/missing tokens
+    and <code>403</code> for “authenticated but not allowed.”
+  </p>
+</div>
+
+<h3>Minimal FastAPI JWT + RBAC code</h3>
+<p>
+  The example below includes:
+  (1) password verification (bcrypt),
+  (2) token issuance (<code>/login</code>),
+  (3) dependency that extracts the current user from the Bearer token,
+  (4) an admin-only endpoint.
+</p>
+
+<pre><code class="language-python">from datetime import datetime, timedelta, timezone
+from typing import Optional, Dict
+
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import jwt, JWTError
+from passlib.context import CryptContext
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# -----------------------------
+# Minimal config (DO NOT hardcode secrets in production)
+# -----------------------------
+SECRET_KEY = "change-me-in-production"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+
+# -----------------------------
+# Fake user store (replace with DB)
+# -----------------------------
+# In a real app: store password hashes, not plain passwords.
+# Here we hash at startup for demo clarity.
+fake_users_db: Dict[str, dict] = {
+    "alice": {"username": "alice", "role": "user", "password_hash": pwd_context.hash("alicepass")},
+    "admin": {"username": "admin", "role": "admin", "password_hash": pwd_context.hash("adminpass")},
+}
+
+class TokenOut(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+class User(BaseModel):
+    username: str
+    role: str
+
+# -----------------------------
+# Helpers
+# -----------------------------
+def verify_password(plain_password: str, password_hash: str) -> bool:
+    return pwd_context.verify(plain_password, password_hash)
+
+def authenticate_user(username: str, password: str) -> Optional[User]:
+    record = fake_users_db.get(username)
+    if not record:
+        return None
+    if not verify_password(password, record["password_hash"]):
+        return None
+    return User(username=record["username"], role=record["role"])
+
+def create_access_token(*, sub: str, role: str, expires_minutes: int) -> str:
+    now = datetime.now(timezone.utc)
+    payload = {
+        "sub": sub,
+        "role": role,
+        "iat": int(now.timestamp()),
+        "exp": int((now + timedelta(minutes=expires_minutes)).timestamp()),
+    }
+    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+
+# -----------------------------
+# Auth dependency: parse and validate JWT
+# -----------------------------
+def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
+    cred_error = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid authentication credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        role: str = payload.get("role")
+        if not username or not role:
+            raise cred_error
+    except JWTError:
+        raise cred_error
+
+    # Optional: verify user still exists (common in production)
+    if username not in fake_users_db:
+        raise cred_error
+
+    return User(username=username, role=role)
+
+# -----------------------------
+# Authorization dependency: RBAC
+# -----------------------------
+def require_admin(user: User = Depends(get_current_user)) -> User:
+    if user.role != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Forbidden")
+    return user
+
+# -----------------------------
+# Routes
+# -----------------------------
+@app.post("/login", response_model=TokenOut)
+def login(form: OAuth2PasswordRequestForm = Depends()):
+    user = authenticate_user(form.username, form.password)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect username or password")
+
+    token = create_access_token(sub=user.username, role=user.role, expires_minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    return TokenOut(access_token=token)
+
+@app.get("/me")
+def read_me(user: User = Depends(get_current_user)):
+    return {"username": user.username, "role": user.role}
+
+@app.get("/admin/metrics")
+def admin_metrics(admin: User = Depends(require_admin)):
+    return {"ok": True, "message": f"Hello {admin.username}, you are an admin."}
+</code></pre>
+
+<h3>How to test quickly (curl)</h3>
+
+<pre><code class="language-bash"># 1) login to get JWT
+curl -X POST http://localhost:8000/login \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin&password=adminpass"
+
+# 2) use the token on protected endpoint
+curl http://localhost:8000/admin/metrics \
+  -H "Authorization: Bearer &lt;PASTE_TOKEN_HERE&gt;"
+</code></pre>
+
+<h3>Minimum production checklist (what interviewers like to hear)</h3>
+<ul>
+  <li><strong>Validate claims:</strong> check <code>exp</code> (and in production also <code>iss</code>, <code>aud</code>)</li>
+  <li><strong>Key management:</strong> rotate keys; consider <code>kid</code> header + JWKS for multiple keys</li>
+  <li><strong>Token lifetime:</strong> short-lived access tokens; refresh tokens for longer sessions</li>
+  <li><strong>Revocation strategy:</strong> denylist or session store for “logout everywhere”</li>
+  <li><strong>Secure transport:</strong> HTTPS everywhere; never log tokens</li>
+  <li><strong>RBAC vs ABAC:</strong> roles are simple; attribute/policy checks may be needed for fine-grained control</li>
+</ul>
+
+<div class="callout callout-success">
+  <div class="callout-title">Interview one-liner</div>
+  <p>
+    “JWT gives stateless authentication: verify signature + expiry, extract <code>sub</code> and claims.
+    Authorization is enforced separately (RBAC dependency). Invalid/missing token → <code>401</code>; insufficient role → <code>403</code>.”
+  </p>
+</div>
+
+<h1 id="section-16">16) Background Jobs: Async Work with Celery & RQ</h1>
+
 <p>
   A <strong>background job</strong> is work that runs <em>outside</em> the HTTP request–response lifecycle.
   The API handler enqueues a task and returns quickly; the heavy/slow part is executed by a separate worker
   process (often on another machine). This design increases reliability and throughput for real-world systems.
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">Definition</div>
-<p>
+  <div class="callout-title">Definition</div>
+  <p>
     Background jobs are tasks executed asynchronously after the API response, typically via a
     <strong>queue</strong> (Redis/RabbitMQ/SQS) and <strong>workers</strong> that consume tasks.
   </p>
 </div>
-<h3>14.1 Why background jobs exist</h3>
+
+<h3>17.1 Why background jobs exist</h3>
 <ul>
-<li><strong>Keep API fast:</strong> return response quickly (low latency)</li>
-<li><strong>Prevent timeouts:</strong> avoid long blocking operations inside web workers</li>
-<li><strong>Improve throughput:</strong> free request handlers to serve more traffic</li>
-<li><strong>Enable retries safely:</strong> transient failures can be retried with backoff</li>
-<li><strong>Isolate resources:</strong> heavy CPU/RAM work runs in worker pool, not API processes</li>
+  <li><strong>Keep API fast:</strong> return response quickly (low latency)</li>
+  <li><strong>Prevent timeouts:</strong> avoid long blocking operations inside web workers</li>
+  <li><strong>Improve throughput:</strong> free request handlers to serve more traffic</li>
+  <li><strong>Enable retries safely:</strong> transient failures can be retried with backoff</li>
+  <li><strong>Isolate resources:</strong> heavy CPU/RAM work runs in worker pool, not API processes</li>
 </ul>
-<h3>14.2 Typical use cases</h3>
+
+<h3>17.2 Typical use cases</h3>
 <ul>
-<li><strong>Email/SMS:</strong> verification email after signup, password reset</li>
-<li><strong>RAG pipelines:</strong> chunking documents, generating embeddings, indexing vectors</li>
-<li><strong>Media processing:</strong> resizing images, transcoding video/audio</li>
-<li><strong>Analytics:</strong> event ingestion, aggregation, periodic reports</li>
-<li><strong>Webhooks:</strong> delivery with retries and exponential backoff</li>
+  <li><strong>Email/SMS:</strong> verification email after signup, password reset</li>
+  <li><strong>RAG pipelines:</strong> chunking documents, generating embeddings, indexing vectors</li>
+  <li><strong>Media processing:</strong> resizing images, transcoding video/audio</li>
+  <li><strong>Analytics:</strong> event ingestion, aggregation, periodic reports</li>
+  <li><strong>Webhooks:</strong> delivery with retries and exponential backoff</li>
 </ul>
-<h3>14.3 Common pattern (Producer → Queue → Worker)</h3>
+
+<h3>17.3 Common pattern (Producer → Queue → Worker)</h3>
 <p>
   The web server acts as a <strong>producer</strong> and enqueues jobs. A queue/broker stores jobs.
   A worker acts as a <strong>consumer</strong> and executes them. Results are stored in a DB/cache and can
   be queried through a status endpoint.
 </p>
+
 <ul>
-<li><code>POST /jobs</code> → enqueue job → returns <code>job_id</code> (<code>202 Accepted</code>)</li>
-<li><code>GET /jobs/{job_id}</code> → job state + result/error</li>
+  <li><code>POST /jobs</code> → enqueue job → returns <code>job_id</code> (<code>202 Accepted</code>)</li>
+  <li><code>GET /jobs/{job_id}</code> → job state + result/error</li>
 </ul>
+
 <div class="callout callout-warning">
-<div class="callout-title">Async vs Background (important)</div>
-<p>
-<code>async/await</code> is primarily about <strong>non-blocking I/O</strong> inside the same process.
+  <div class="callout-title">Async vs Background (important)</div>
+  <p>
+    <code>async/await</code> is primarily about <strong>non-blocking I/O</strong> inside the same process.
     Background jobs mean the work happens in <strong>separate execution</strong> (workers), potentially durable and retriable.
   </p>
 </div>
-<h3>14.4 Response semantics</h3>
+
+<h3>17.4 Response semantics</h3>
 <p>
   For heavy tasks, the API should usually return <code>202 Accepted</code> with a <code>job_id</code>.
   This indicates the request was accepted for processing, but is not complete yet.
 </p>
+
 <p><strong>Example response:</strong></p>
 <pre><code class="language-json">{
   "status": "queued",
   "job_id": "a1b2c3d4"
 }
 </code></pre>
-<h3>14.5 Minimal in-process background tasks (FastAPI BackgroundTasks)</h3>
+
+<h3>17.5 Minimal in-process background tasks (FastAPI BackgroundTasks)</h3>
 <p>
   Framework background tasks (e.g., FastAPI <code>BackgroundTasks</code>) are useful for small, best-effort jobs
   but they are not a durable queue (tasks can be lost if the server restarts).
 </p>
+
 <pre><code class="language-python">from fastapi import FastAPI, BackgroundTasks
 
 app = FastAPI()
@@ -1721,18 +1958,21 @@ def signup(email: str, background_tasks: BackgroundTasks):
     background_tasks.add_task(send_verification_email, email)
     return {"status": "created"}
 </code></pre>
+
 <div class="callout callout-danger">
-<div class="callout-title">Limitations of in-process tasks</div>
-<p>
+  <div class="callout-title">Limitations of in-process tasks</div>
+  <p>
     Not durable (lost on crash), competes with API for CPU/memory, limited visibility/retry control.
     For heavy tasks, use a real queue (RQ/Celery).
   </p>
 </div>
-<h3>14.6 Celery + Redis example (durable queue + workers)</h3>
+
+<h3>17.6 Celery + Redis example (durable queue + workers)</h3>
 <p>
   Celery uses a broker (Redis/RabbitMQ) to store jobs and worker processes to execute them. This is a standard
   production pattern for background processing.
 </p>
+
 <p><strong>Worker: define task (tasks.py)</strong></p>
 <pre><code class="language-python">from celery import Celery
 
@@ -1755,6 +1995,7 @@ def build_embeddings(self, document_id: str):
         # exponential backoff for transient failures
         raise self.retry(exc=exc, countdown=2 ** self.request.retries)
 </code></pre>
+
 <p><strong>API server: enqueue job (app.py)</strong></p>
 <pre><code class="language-python">from fastapi import FastAPI
 from tasks import build_embeddings, celery_app
@@ -1771,24 +2012,31 @@ def job_status(job_id: str):
     res = celery_app.AsyncResult(job_id)
     return {"state": res.state, "result": res.result}
 </code></pre>
-<h3>14.7 Reliability topics (what interviewers care about)</h3>
+
+<h3>17.7 Reliability topics (what interviewers care about)</h3>
 <ul>
-<li><strong>Idempotency:</strong> tasks may retry; ensure re-running does not create duplicates</li>
-<li><strong>Retry policy:</strong> retry transient errors; fail fast on permanent input errors</li>
-<li><strong>Dead-letter queue (DLQ):</strong> move repeatedly failing jobs for later inspection</li>
-<li><strong>Observability:</strong> log <code>job_id</code>, duration, failures; track metrics</li>
-<li><strong>Ordering/priority:</strong> some systems need priority queues and rate limiting</li>
+  <li><strong>Idempotency:</strong> tasks may retry; ensure re-running does not create duplicates</li>
+  <li><strong>Retry policy:</strong> retry transient errors; fail fast on permanent input errors</li>
+  <li><strong>Dead-letter queue (DLQ):</strong> move repeatedly failing jobs for later inspection</li>
+  <li><strong>Observability:</strong> log <code>job_id</code>, duration, failures; track metrics</li>
+  <li><strong>Ordering/priority:</strong> some systems need priority queues and rate limiting</li>
 </ul>
+
 <div class="callout callout-success">
-<div class="callout-title">Interview one-liner</div>
-<p>
+  <div class="callout-title">Interview one-liner</div>
+  <p>
     “For heavy work, return <code>202</code> + <code>job_id</code>, process via queue + workers, and design tasks to be idempotent with retries/backoff and good observability.”
   </p>
 </div>
+
+
 <p>(See the full RQ/Celery section near the end of this file )</p>
-<h2 id="section-15">15) Testing with pytest (backend quality)</h2>
+
+<h1 id="section-17">17) Testing with pytest</h1>
+
 <p>Install:</p>
 <pre><code class="language-bash">pip install pytest httpx</code></pre>
+
 <p>Example test using FastAPI TestClient:</p>
 <pre><code class="language-python">from fastapi.testclient import TestClient
 from main import app
@@ -1804,13 +2052,16 @@ def test_create_and_get_task():
     r2 = client.get(f"/tasks/{task['id']}")
     assert r2.status_code == 200
     assert r2.json()["id"] == task["id"]</code></pre>
+
 <p>Test principles:</p>
 <ul>
-<li>unit tests for pure functions (fast)</li>
-<li>integration tests for API endpoints</li>
-<li>database tests using temporary DB (or test containers)</li>
+  <li>unit tests for pure functions (fast)</li>
+  <li>integration tests for API endpoints</li>
+  <li>database tests using temporary DB (or test containers)</li>
 </ul>
-<h2 id="section-16">16) CI (GitHub Actions)</h2>
+
+<h1 id="section-18">18) CI/CD with GitHub Actions</h1>
+
 <p><code>.github/workflows/ci.yml</code></p>
 <pre><code class="language-yaml">name: CI
 
@@ -1826,164 +2077,185 @@ jobs:
           python-version: "3.11"
       - run: pip install -r requirements.txt
       - run: pytest -q</code></pre>
-<h2 id="section-17">17) Security essentials</h2>
+
+<h1 id="section-19">19) Security Essentials Checklist</h1>
 <ul>
-<li>validate input (always)</li>
-<li>authn + authz</li>
-<li>rate limiting</li>
-<li>CORS configuration</li>
-<li>avoid leaking stack traces in production</li>
-<li>secrets in env vars, not in repo</li>
-<li>log carefully (no passwords/tokens)</li>
+  <li>validate input (always)</li>
+  <li>authn + authz</li>
+  <li>rate limiting</li>
+  <li>CORS configuration</li>
+  <li>avoid leaking stack traces in production</li>
+  <li>secrets in env vars, not in repo</li>
+  <li>log carefully (no passwords/tokens)</li>
 </ul>
-<h2 id="section-18">18) Observability</h2>
+
+<h1 id="section-20">20) Observability & Monitoring</h1>
 <ul>
-<li>structured logs (JSON logs)</li>
-<li>request IDs / correlation IDs</li>
-<li>metrics (latency, error rate, throughput)</li>
-<li>traces (distributed tracing if microservices)</li>
+  <li>structured logs (JSON logs)</li>
+  <li>request IDs / correlation IDs</li>
+  <li>metrics (latency, error rate, throughput)</li>
+  <li>traces (distributed tracing if microservices)</li>
 </ul>
-<h2 id="section-19">19) Quick Review Table: 10 backend concepts</h2>
+
+<h2 id="section-21">21) Quick Review: 10 Key Backend Concepts</h2>
+
 <p>
   This table is a fast revision checklist. For each row, you should be able to explain:
   (1) what it is, (2) why it matters, (3) one real example.
 </p>
+
 <table>
-<thead>
-<tr>
-<th style="width: 22%;">Concept</th>
-<th style="width: 38%;">What it is (theory)</th>
-<th style="width: 40%;">Why it matters + typical tools</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1) Authentication vs Authorization</strong></td>
-<td>
+  <thead>
+    <tr>
+      <th style="width: 22%;">Concept</th>
+      <th style="width: 38%;">What it is (theory)</th>
+      <th style="width: 40%;">Why it matters + typical tools</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1) Authentication vs Authorization</strong></td>
+      <td>
         AuthN proves identity (“who are you?”). AuthZ enforces permissions (“what can you do?”).
         HTTP: <code>401</code> vs <code>403</code>.
       </td>
-<td>
+      <td>
         Prevents unauthorized access and defines security model.
         Tools: session cookies, JWT bearer tokens, OAuth2, RBAC/ABAC policies.
       </td>
-</tr>
-<tr>
-<td><strong>2) Rate limiting</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>2) Rate limiting</strong></td>
+      <td>
         Bounds requests per identity (IP/user/token) using algorithms like token bucket/leaky bucket.
       </td>
-<td>
+      <td>
         Protects availability, prevents brute force, stabilizes latency.
         Tools: Nginx/Cloudflare rate limits, Redis counters, API gateways.
       </td>
-</tr>
-<tr>
-<td><strong>3) Database indexing</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>3) Database indexing</strong></td>
+      <td>
         Indexes are DB-managed data structures (often B-trees) that accelerate query lookup and ordering.
       </td>
-<td>
+      <td>
         Faster reads, but increased write cost + storage. Don’t index everything; index based on query patterns.
         Tools: EXPLAIN query plans, composite indexes.
       </td>
-</tr>
-<tr>
-<td><strong>4) Transactions + ACID</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>4) Transactions + ACID</strong></td>
+      <td>
         Transaction = atomic unit of work. ACID: Atomicity, Consistency, Isolation, Durability.
       </td>
-<td>
+      <td>
         Guarantees correctness under concurrency; prevents partial updates.
         Tools: DB transactions, isolation levels, row locks, optimistic locking.
       </td>
-</tr>
-<tr>
-<td><strong>5) Caching</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>5) Caching</strong></td>
+      <td>
         Stores results to avoid recomputation (space ↔ time tradeoff). Key issues: staleness, invalidation, TTL.
       </td>
-<td>
+      <td>
         Lower latency and reduced DB/origin load; risk of stale reads and stampedes.
         Tools: Redis, Nginx cache, CDN cache, HTTP cache (ETag/Cache-Control).
       </td>
-</tr>
-<tr>
-<td><strong>6) Message queues</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>6) Message queues</strong></td>
+      <td>
         Producer → queue → consumer model for async work; jobs processed by workers with ack/retry semantics.
       </td>
-<td>
+      <td>
         Handles heavy tasks reliably, decouples services, smooths spikes.
         Tools: Celery/RQ, Redis/RabbitMQ/SQS, DLQ, idempotency patterns.
       </td>
-</tr>
-<tr>
-<td><strong>7) Load balancing</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>7) Load balancing</strong></td>
+      <td>
         Distributes traffic across instances. Strategies: round-robin, least-connections, hashing, sticky sessions.
       </td>
-<td>
+      <td>
         Improves availability and throughput; enables horizontal scaling.
         Tools: Nginx/HAProxy/Cloud LB, autoscaling, health checks.
       </td>
-</tr>
-<tr>
-<td><strong>8) CAP theorem</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>8) CAP theorem</strong></td>
+      <td>
         Under network partition, choose between Consistency and Availability; Partition tolerance is required.
       </td>
-<td>
+      <td>
         Guides distributed DB/service design tradeoffs (CP vs AP).
         Tools: consensus (Raft), eventual consistency, quorum reads/writes.
       </td>
-</tr>
-<tr>
-<td><strong>9) Reverse proxy</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>9) Reverse proxy</strong></td>
+      <td>
         Front door for apps: routes requests to upstreams and can terminate TLS, cache, compress, and filter traffic.
       </td>
-<td>
+      <td>
         Central place for security + performance controls; improves deployability.
         Tools: Nginx, Envoy, Traefik (TLS, caching, rate limiting, routing).
       </td>
-</tr>
-<tr>
-<td><strong>10) CDN</strong></td>
-<td>
+    </tr>
+
+    <tr>
+      <td><strong>10) CDN</strong></td>
+      <td>
         Distributed edge network that caches/serves content near users; reduces origin load and latency.
       </td>
-<td>
+      <td>
         Faster global delivery, better burst handling; must set caching rules carefully.
         Tools: Cloudflare/Akamai/Fastly, cache rules, TTL, purge/invalidation.
       </td>
-</tr>
-</tbody>
+    </tr>
+  </tbody>
 </table>
+
 <div class="callout callout-success">
-<div class="callout-title">30-second drill</div>
-<p>
+  <div class="callout-title">30-second drill</div>
+  <p>
     For each row: say one definition sentence, one tradeoff sentence, and one tool/example sentence.
     That’s usually enough to answer most backend interview “concept” questions cleanly.
   </p>
 </div>
-<h2 id="section-20">20) Production basics: Docker Compose + Nginx reverse proxy</h2>
+
+
+<h2 id="section-22">22) Production Setup: Docker Compose + Nginx</h2>
+
 <p>
   A common production setup is: <strong>Nginx</strong> as a reverse proxy in front of your app container.
   Nginx terminates HTTP traffic, handles routing, and can add TLS, compression, caching, and rate limiting.
   Your FastAPI app runs behind it (often with Uvicorn/Gunicorn).
 </p>
+
 <div class="callout callout-info">
-<div class="callout-title">Typical architecture</div>
-<p>
+  <div class="callout-title">Typical architecture</div>
+  <p>
     Client → Nginx (reverse proxy) → FastAPI (app) → DB/Redis
   </p>
 </div>
+
 <h3>Docker Compose example (FastAPI + Nginx)</h3>
 <p>
   This Compose file runs two services: <code>app</code> (FastAPI) and <code>nginx</code> (reverse proxy).
   Nginx forwards requests to the app using the Docker service name <code>app</code> on port <code>8000</code>.
 </p>
+
 <pre><code class="language-yaml">version: "3.9"
 
 services:
@@ -2007,11 +2279,13 @@ services:
       - app
     restart: unless-stopped
 </code></pre>
+
 <h3>Minimal Nginx reverse proxy config</h3>
 <p>
   This configuration forwards all requests to the FastAPI app. It also forwards common proxy headers so your app
   can read the real client IP and scheme (useful for logs, redirects, auth callbacks).
 </p>
+
 <pre><code class="language-nginx">server {
   listen 80;
   server_name _;
@@ -2032,62 +2306,64 @@ services:
   }
 }
 </code></pre>
+
 <h3>Production notes (short but essential)</h3>
 <ul>
-<li><strong>Don’t run debug:</strong> use production settings and proper logging.</li>
-<li>
-<strong>Run multiple workers:</strong> for CPU-bound scaling, prefer Gunicorn with Uvicorn workers
+  <li><strong>Don’t run debug:</strong> use production settings and proper logging.</li>
+  <li>
+    <strong>Run multiple workers:</strong> for CPU-bound scaling, prefer Gunicorn with Uvicorn workers
     (or scale containers horizontally behind Nginx).
   </li>
-<li><strong>Health checks:</strong> add a <code>/health</code> endpoint and configure monitoring.</li>
-<li><strong>TLS/HTTPS:</strong> terminate TLS at Nginx or use a managed proxy (e.g., Cloudflare). For real production, add HTTPS.</li>
-<li><strong>Secrets:</strong> never bake API keys into images; use env vars or secret managers.</li>
+  <li><strong>Health checks:</strong> add a <code>/health</code> endpoint and configure monitoring.</li>
+  <li><strong>TLS/HTTPS:</strong> terminate TLS at Nginx or use a managed proxy (e.g., Cloudflare). For real production, add HTTPS.</li>
+  <li><strong>Secrets:</strong> never bake API keys into images; use env vars or secret managers.</li>
 </ul>
+
 <div class="callout callout-warning">
-<div class="callout-title">HTTPS hint</div>
-<p>
+  <div class="callout-title">HTTPS hint</div>
+  <p>
     In real production you should serve HTTPS. A common pattern is Nginx + Let’s Encrypt (Certbot) or a managed edge proxy.
     Keep HTTP (80) only for redirecting to HTTPS (443).
   </p>
 </div>
+
+
 <h2>Final checklist: backend maturity</h2>
 <p>When you build any feature, ask:</p>
 <ol>
-<li>What is the resource + contract?</li>
-<li>What validation and invariants must hold?</li>
-<li>What authn/authz rules apply?</li>
-<li>Where is truth stored (DB)?</li>
-<li>How will it scale (stateless + cache + queue)?</li>
-<li>How is it tested and deployed?</li>
-<li>How do I observe it in production?</li>
+  <li>What is the resource + contract?</li>
+  <li>What validation and invariants must hold?</li>
+  <li>What authn/authz rules apply?</li>
+  <li>Where is truth stored (DB)?</li>
+  <li>How will it scale (stateless + cache + queue)?</li>
+  <li>How is it tested and deployed?</li>
+  <li>How do I observe it in production?</li>
 </ol>
-</article>
-</main>
 
-<!-- Scroll to Top Button -->
-<button id="scrollToTop" aria-label="Scroll to top" title="Back to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</button>
+    </article>
+  </main>
 
-<!-- Footer -->
-<footer class="border-t border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-300">
-<p>© <span id="year"></span> QED137 Blog | Designed by Janmajay</p>
-<div class="flex items-center gap-4">
-<a class="hover:text-brand-600" href="https://github.com/QED137" target="_blank"><i class="fa-brands fa-github"></i></a>
-<a class="hover:text-brand-600" href="https://www.linkedin.com/in/jkiit/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-</div>
-</div>
-</footer>
-<!-- Prism -->
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-nginx.min.js"></script>
-<script>
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-300">
+      <p>© <span id="year"></span> QED137 Blog | Designed by Janmajay</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/QED137" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jkiit/" target="_blank" class="hover:text-brand-600"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Prism -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-nginx.min.js"></script>
+
+  <script>
     // mobile menu
     const btn = document.getElementById('menuBtn');
     const mm = document.getElementById('mobileMenu');
@@ -2113,31 +2389,10 @@ services:
         localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
       });
     })();
-
-    // Scroll to top button
-    (function () {
-      const scrollBtn = document.getElementById('scrollToTop');
-      
-      // Show/hide button based on scroll position
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          scrollBtn.classList.add('show');
-        } else {
-          scrollBtn.classList.remove('show');
-        }
-      });
-
-      // Scroll to top when clicked
-      scrollBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    })();
   </script>
-<!-- Structured Data (JSON-LD) for SEO -->
-<script type="application/ld+json">
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
