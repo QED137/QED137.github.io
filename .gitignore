@@ -1,71 +1,278 @@
-# Ignore system files
-.DS_Store        # macOS metadata files
-Thumbs.db        # Windows thumbnail cache
-*.log            # Log files
-*.bak            # Backup files
-*.tmp            # Temporary files
+# ============================================
+# GitHub Pages Site - Comprehensive .gitignore
+# ============================================
 
-# Ignore node_modules (if using npm)
+# ===== Operating System Files =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ===== Editor & IDE Files =====
+# VS Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs (WebStorm, PhpStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+Session.vim
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+
+# ===== Backup & Temporary Files =====
+*.bak
+*.old
+*.tmp
+*.temp
+*.cache
+*.orig
+*_backup
+*_old
+*.html.old
+*.css.old
+*.js.old
+*.half-cleaned
+*.cleaned
+
+# ===== Node.js & NPM =====
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+.pnp.*
 
-# Ignore dependencies (if using a package manager)
-vendor/          # PHP/Composer vendor files
-*.zip            # Compressed files
-
-# Ignore environment/config files
-.env             # Environment variables
-*.sqlite         # Local SQLite databases
-config.php       # Custom server config files
-
-# Ignore IDE/editor files
-.vscode/         # VS Code settings
-.idea/           # JetBrains/PhpStorm settings
-*.swp            # Vim swap files
-
-# Ignore build artifacts
-dist/            # Output folders from site generators
-public/          # Avoid committing generated static files (optional)
-
-# Ignore Hostinger-specific cache files
-cache/
-public_html/.htaccess # Only if modified manually
-
-# Ignore large files
-*.mp4
-*.mov
-*.iso
-# Ignore personal files
-*.pdf  # Avoid uploading your CV unless intentional
-state_text.html
-# Ignore specific files
-*.log            # Log files
-*.bak            # Backup files
-*.tmp            # Temporary files
-# Ignore history files
-.history/       # Local history files
-.history/*
-.git/
-.vscode/
-.idea/
-*.swp
-# Ignore build artifacts
-dist/
-public/
-# Ignore large files
-*.mp4
-*.mov
-*.iso
-.venv/
+# ===== Python =====
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
 env/
 ENV/
+.venv/
 env.bak/
 venv.bak/
-# Ignore Jupyter Notebook checkpoints
+virtualenv/
+
+# Jupyter Notebook
 .ipynb_checkpoints
-# Ignore TensorFlow model files
+*.ipynb_checkpoints/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# ===== Build Tools & Bundlers =====
+dist/
+build/
+public/
+out/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.docusaurus/
+
+# Webpack
+.webpack/
+webpack-stats.json
+
+# Rollup
+.rollup.cache/
+
+# ===== Logs =====
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.eslintcache
+
+# ===== Environment & Secrets =====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+*.pem
+*.key
+secrets/
+config.local.*
+
+# ===== Database Files =====
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+
+# ===== Compression & Archives =====
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.gz
+*.bz2
+*.xz
+
+# ===== Media Files (Large) =====
+# Videos
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.flv
+*.webm
+*.mkv
+*.m4v
+
+# Large images (if not needed)
+*.psd
+*.ai
+*.eps
+
+# Other large files
+*.iso
+*.dmg
+*.pkg
+
+# ===== Testing =====
+coverage/
+.nyc_output/
+*.lcov
+.coverage
+htmlcov/
+.pytest_cache/
+.hypothesis/
+test-results/
+junit.xml
+
+# ===== Git & Version Control =====
+.git/
+.gitattributes
+*.orig
+*.rej
+
+# ===== Miscellaneous =====
+.history/
+.history/*
+cache/
+.cache
+
+# Personal files
+# *.pdf  # Uncomment if you don't want PDFs in repo
+state_text.html
+
+# Server configs (only if modified manually)
+# .htaccess  # Uncomment if you don't want to track this
+
+# Dependency directories
+vendor/
+bower_components/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ===== macOS Specific =====
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ===== Keep These Patterns at the End =====
+# Add project-specific ignores below this line
+
+.vscode
