@@ -1,5 +1,5 @@
 // Service Worker for Mobile Performance
-const CACHE_NAME = 'janmajay-portfolio-v1';
+const CACHE_NAME = 'janmajay-portfolio-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -44,6 +44,24 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
+  const requestUrl = new URL(event.request.url);
+  const isHtmlNavigation = event.request.mode === 'navigate' || requestUrl.pathname.endsWith('.html');
+
+  if (isHtmlNavigation) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
     return;
   }
 

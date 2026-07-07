@@ -7,8 +7,7 @@
   --primary-color: #29a587;
   --bg-dark: #1d222a;
   --text-light: #fff;
-  --tilt-}
-
+  --tilt-angle: 5deg;}
 /* Universal Reset with Cross-Browser Support */
 * {
   margin: 0;

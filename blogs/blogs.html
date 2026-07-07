@@ -56,6 +56,16 @@
       box-shadow: 0 16px 40px rgba(0,0,0,.3);
     }
 
+    .blog-card-hidden {
+      display: none !important;
+    }
+
+    .tag-chip.is-active {
+      background: #1f8a72;
+      border-color: #1f8a72;
+      color: #fff;
+    }
+
     /* mobile button positions */
     @media (max-width: 640px) {
       #backBtn { bottom: 1rem; left: 1rem; }
@@ -218,6 +228,21 @@
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">A practical approach to work ethics in tech.</p>
         <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
       </a>
+
+      <!-- 7 Peskin Chapter 12 Notes -->
+      <a href="peskin_ch12_notes.html" class="card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-soft block" data-tags="physics">
+        <div class="aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 dark:border-slate-700 bg-gradient-to-br from-emerald-50 via-white to-amber-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-700 flex items-center justify-center">
+          <img src="../images/peskin2.jpeg" alt="Work Ethics" class="h-full w-full object-cover" loading="lazy" />
+          <div class="text-center px-4">
+            <div class="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700 dark:text-emerald-300">Physics Notes</div>
+            <div class="mt-2 text-lg font-black text-slate-900 dark:text-slate-100">Peskin &amp; Schroeder</div>
+            <div class="mt-1 text-sm text-slate-600 dark:text-slate-300">Chapter 12</div>
+          </div>
+        </div>
+        <h3 class="mt-4 text-lg font-semibold">Renormalization Group: Chapter 12 Study Notes</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">A visual and mathematical walkthrough of locality, quantum fluctuations, virtual particles, and Wilsonian RG.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-600"><i class="fa-solid fa-arrow-right"></i> Explore</div>
+      </a>
     </div>
 
     <!-- Load More -->
@@ -248,7 +273,7 @@
     const chips = document.querySelectorAll('.tag-chip');
     const searchInput = document.getElementById('searchInput');
     const grid = document.getElementById('blogGrid');
-    const cards = Array.from(grid.querySelectorAll('article'));
+    const cards = Array.from(grid.querySelectorAll('.card'));
     const loadMoreBtn = document.getElementById('loadMoreBtn');
 
     let activeTag = 'all';
@@ -265,12 +290,12 @@
     }
 
     function applyFilters() {
-      cards.forEach(c => c.classList.add('hidden'));
+      cards.forEach(c => c.classList.add('blog-card-hidden'));
       shown = 0;
       for (const c of cards) {
         if (matches(c)) {
           if (shown < PAGE_SIZE) {
-            c.classList.remove('hidden');
+            c.classList.remove('blog-card-hidden');
             shown++;
           }
         }
@@ -281,9 +306,9 @@
     function showMore() {
       let added = 0;
       for (const c of cards) {
-        if (matches(c) && c.classList.contains('hidden')) {
+        if (matches(c) && c.classList.contains('blog-card-hidden')) {
           if (added < PAGE_SIZE) {
-            c.classList.remove('hidden');
+            c.classList.remove('blog-card-hidden');
             added++;
             shown++;
           } else break;
@@ -293,17 +318,15 @@
     }
 
     function updateLoadMoreVisibility() {
-      const remaining = cards.some(c => matches(c) && c.classList.contains('hidden'));
+      const remaining = cards.some(c => matches(c) && c.classList.contains('blog-card-hidden'));
       loadMoreBtn.style.display = remaining ? 'inline-flex' : 'none';
     }
 
     function setActiveChip(target) {
       chips.forEach(ch => {
-        ch.classList.remove('bg-brand-600','text-white','border-brand-600');
-        ch.classList.add('bg-white','dark:bg-slate-800','border','border-slate-200','dark:border-slate-700');
+        ch.classList.remove('is-active');
       });
-      target.classList.remove('bg-white','dark:bg-slate-800');
-      target.classList.add('bg-brand-600','text-white','border-brand-600');
+      target.classList.add('is-active');
     }
 
     chips.forEach(ch => ch.addEventListener('click', e => {
