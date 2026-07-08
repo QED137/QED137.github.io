@@ -12,6 +12,7 @@ window.MathJax = {
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <style>
   :root {
     --ink: #1d2733;
@@ -54,8 +55,6 @@ window.MathJax = {
   th { background: #ece9df; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: .9em; }
   tr:nth-child(even) td { background: #f7f5ee; }
   img { display: block; max-width: 100%; height: auto; margin: 1.8rem auto .5rem; border: 1px solid var(--rule); border-radius: 4px; background: #fff; padding: 6px; }
-  img + p em, p:has(> em:only-child) { }
-  em { }
   /* figure captions: the italic paragraph right after an image */
   img + p { font-size: .88em; color: #4b5563; max-width: 92%; margin: .4rem auto 2rem; }
   code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; font-size: .88em; }
@@ -75,9 +74,147 @@ window.MathJax = {
     font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: .18em;
     text-transform: uppercase; font-size: .72rem; color: var(--accent2); margin: 0 0 .4rem;
   }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgba(216, 210, 196, .9);
+    backdrop-filter: blur(10px);
+    background: rgba(253, 252, 248, .92);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .site-header .inner,
+  .site-header .mobile-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .site-header .inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .site-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .35rem .5rem;
+    color: #10213a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: .95rem;
+  }
+  .site-nav {
+    display: none;
+    align-items: center;
+    gap: 1.1rem;
+    font-size: .95rem;
+    font-weight: 600;
+  }
+  .site-nav a,
+  .mobile-inner a {
+    color: #4b5563;
+    text-decoration: none;
+  }
+  .site-nav a:hover,
+  .mobile-inner a:hover,
+  .site-nav a.active {
+    color: var(--accent);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,.8);
+    color: #334155;
+    cursor: pointer;
+  }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .menu-btn { border-radius: .5rem; }
+  .mobile-menu {
+    display: none;
+    border-top: 1px solid rgba(216, 210, 196, .9);
+    background: rgba(253, 252, 248, .96);
+  }
+  .mobile-inner {
+    padding-top: .75rem;
+    padding-bottom: .9rem;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    font-size: .95rem;
+    font-weight: 600;
+  }
+  .mobile-inner a.active { color: var(--accent); }
+  .hidden { display: none !important; }
+  .dark .site-header,
+  .dark .mobile-menu {
+    background: rgba(15, 23, 42, .92);
+    border-color: rgba(51, 65, 85, .95);
+  }
+  .dark .site-brand,
+  .dark .site-nav a,
+  .dark .mobile-inner a,
+  .dark .icon-btn {
+    color: #e2e8f0;
+  }
+  .dark .icon-btn {
+    background: rgba(15, 23, 42, .7);
+    border-color: rgba(51, 65, 85, .95);
+  }
+  .dark .icon-btn:hover { color: #7dd3fc; border-color: #7dd3fc; }
+  @media (min-width: 768px) {
+    .site-nav { display: flex; }
+    .menu-btn { display: none; }
+  }
 </style>
 </head>
 <body>
+<header class="site-header">
+  <div class="inner">
+    <a class="site-brand" href="/">
+      <span>Janmajay Kumar</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="../projects/project.html">Projects</a>
+      <a class="active" href="../blogs/blogs.html">Blog</a>
+      <a href="/#skills">Skills</a>
+      <a href="/#contact">Contact</a>
+      <a href="../gallery.html">Gallery</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle theme">
+        <i class="fa-solid fa-moon" data-theme-icon="dark"></i>
+        <i class="fa-solid fa-sun hidden" data-theme-icon="light"></i>
+      </button>
+      <button id="menuBtn" class="icon-btn menu-btn" aria-label="Open menu" title="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu hidden" aria-label="Mobile navigation">
+    <div class="mobile-inner">
+      <a href="/">Home</a>
+      <a href="../projects/project.html">Projects</a>
+      <a class="active" href="../blogs/blogs.html">Blog</a>
+      <a href="/#skills">Skills</a>
+      <a href="/#contact">Contact</a>
+      <a href="../gallery.html">Gallery</a>
+    </div>
+  </div>
+</header>
 <main>
 <header class="doc">
   <p class="eyebrow">A Conceptual Companion</p>
@@ -111,6 +248,41 @@ window.MathJax = {
 <h2>The Renormalization Group: Why Short-Distance Physics Is Innocuous</h2>
 <p><em>Study notes — built from the ground up, assuming graduate-level QFT (Chapters 6–10 of P&amp;S: loop diagrams, divergences, renormalized perturbation theory).</em></p>
 <hr />
+<script>
+  (function () {
+    const root = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const darkIcon = document.querySelector('[data-theme-icon="dark"]');
+    const lightIcon = document.querySelector('[data-theme-icon="light"]');
+
+    if (localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+
+    const syncThemeIcons = () => {
+      const isDark = root.classList.contains('dark');
+      darkIcon?.classList.toggle('hidden', !isDark);
+      lightIcon?.classList.toggle('hidden', isDark);
+    };
+
+    syncThemeIcons();
+
+    toggle?.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+      syncThemeIcons();
+    });
+
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+  })();
+</script>
 <h1 id="part-0-the-paragraph-itself-cleaned-up">Part 0 — The Paragraph Itself (cleaned up)</h1>
 <blockquote>
 <p>"The cancellation of ultraviolet divergences is essential if a theory is to yield quantitative physical predictions. But, at a deep level, the fact that high-momentum virtual quanta can have so little effect on a theory is quite surprising. One of the essential features of quantum field theory is <strong>locality</strong>, that is, the fact that fields at different spacetime points are independent degrees of freedom with independent quantum fluctuations. The quantum fluctuations at arbitrarily short distances appear in Feynman diagram computations as virtual quanta with arbitrarily high momenta. In a renormalizable theory, the loop integrals over virtual-particle momenta are always dominated by values comparable to the finite external particle momenta. <strong>But why?</strong> It is not easy to understand how the quantum fluctuations associated with extremely short distances can be so innocuous as to affect a theory only through the values of a few of its parameters."</p>
@@ -182,7 +354,7 @@ window.MathJax = {
 <p>$$\phi(x,t) = \sum_{n=1}^{\infty} q_n(t)\,\sin\!\left(\frac{n\pi x}{L}\right)$$</p>
 <p>→ one dof per mode: the amplitudes q$_{1}$, q$_{2}$, q$_{3}$, …</p>
 <p>Same dof, different basis (a Fourier transform is a rotation in configuration space). Knowing all φ(x) $\Longleftrightarrow$ knowing all q_n.</p>
-<p><img src="fig2_two_bases.png" alt="Position basis vs mode basis: two labelings of the same dof" style="max-width:100%;height:auto;display:block;margin:1.8rem auto .5rem;border:1px solid #d8d2c4;border-radius:4px;background:#fff;padding:6px;"></p>
+<p><img src="fig2_two_bases_v2.png" alt="Position basis vs mode basis: two labelings of the same dof" style="max-width:100%;height:auto;display:block;margin:1.8rem auto .5rem;border:1px solid #d8d2c4;border-radius:4px;background:#fff;padding:6px;"></p>
 <p><em>Figure 2 — Left: one string shape, with a few of its position-basis dof marked (green bars = values φ(x)). Right: the SAME shape decomposed into eigenmodes; the mode-basis dof are the amplitudes q$_{1}$, q$_{2}$, q$_{3}$, q$_{4}$. The two descriptions are related by a Fourier rotation — nothing gained, nothing lost.</em></p>
 <p><strong>Why the mode basis is better:</strong> the Lagrangian decouples into independent oscillators —</p>
 <p>$$L = \sum_n \left[\tfrac{\mu}{2}\dot{q}_n^2 - \tfrac{\mu\omega_n^2}{2} q_n^2\right],\qquad \omega_n = \frac{n\pi v}{L}$$</p>
